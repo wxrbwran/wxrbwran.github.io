@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>使用MockJs进行独立于后端的前端开发 | 晓然的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Mock.js实现的功能
+基于 数据模板 生成数据
+基于 HTML模板 生成数据
+拦截并模拟 Ajax请求用法
+
+
+浏览器：123456789101112&amp;lt;!-- （必选）加载 Mock --&amp;gt;&amp;lt;script src=&quot;http://mockjs.com/dist/mock.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;// 使用 Mockvar dat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用MockJs进行独立于后端的前端开发">
+<meta property="og:url" content="http://wxrbwran.github.io/2016/11/01/使用MockJs进行独立于后端的前端开发/index.html">
+<meta property="og:site_name" content="晓然的自留地">
+<meta property="og:description" content="Mock.js实现的功能
+基于 数据模板 生成数据
+基于 HTML模板 生成数据
+拦截并模拟 Ajax请求用法
+
+
+浏览器：123456789101112&amp;lt;!-- （必选）加载 Mock --&amp;gt;&amp;lt;script src=&quot;http://mockjs.com/dist/mock.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;// 使用 Mockvar dat">
+<meta property="og:updated_time" content="2016-10-31T22:16:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用MockJs进行独立于后端的前端开发">
+<meta name="twitter:description" content="Mock.js实现的功能
+基于 数据模板 生成数据
+基于 HTML模板 生成数据
+拦截并模拟 Ajax请求用法
+
+
+浏览器：123456789101112&amp;lt;!-- （必选）加载 Mock --&amp;gt;&amp;lt;script src=&quot;http://mockjs.com/dist/mock.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;// 使用 Mockvar dat">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">晓然的自留地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+            <h2 id="name">吴晓然</h2>
+            <h3 id="title">Web 前端 &amp; 业余Python</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
+            <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                36
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                18
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/wxrbwran/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-使用MockJs进行独立于后端的前端开发" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            使用MockJs进行独立于后端的前端开发
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/11/01/使用MockJs进行独立于后端的前端开发/">
+            <time datetime="2016-11-01T03:17:36.000Z" itemprop="datePublished">2016-11-01</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tools/">tools</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Mock-js实现的功能"><a href="#Mock-js实现的功能" class="headerlink" title="Mock.js实现的功能"></a>Mock.js实现的功能</h2><ol>
+<li>基于<strong> 数据模板 </strong>生成数据</li>
+<li>基于<strong> HTML模板 </strong>生成数据</li>
+<li>拦截并模拟<strong> Ajax请求</strong><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2></li>
+</ol>
+<hr>
+<p>浏览器：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!-- （必选）加载 Mock --&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://mockjs.com/dist/mock.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line"><span class="comment">// 使用 Mock</span></div><div class="line"><span class="keyword">var</span> data = Mock.mock(&#123;</div><div class="line">    <span class="string">'list|1-10'</span>: [&#123;</div><div class="line">        <span class="string">'id|+1'</span>: <span class="number">1</span></div><div class="line">    &#125;]</div><div class="line">&#125;);</div><div class="line">$(<span class="string">'&lt;pre&gt;'</span>).text(<span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>))</div><div class="line">.appendTo(<span class="string">'body'</span>)</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<p>返回值:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="string">"list"</span>: [</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="string">"id"</span>: <span class="number">3</span></div><div class="line">    &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="JQuery："><a href="#JQuery：" class="headerlink" title="JQuery："></a>JQuery：</h3><p>配置模拟数据：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Mock.mock(<span class="string">'http://g.cn'</span>, &#123;</div><div class="line">    <span class="string">'name'</span>     : <span class="string">'@name'</span>,</div><div class="line">    <span class="string">'age|1-100'</span>: <span class="number">100</span>,</div><div class="line">    <span class="string">'color'</span>    : <span class="string">'@color'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>发送Ajax请求：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'http://g.cn'</span>,</div><div class="line">    <span class="attr">dataType</span>:<span class="string">'json'</span></div><div class="line">    &#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">data, status, xhr</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(</div><div class="line">    <span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>)</div><div class="line">    )    </div><div class="line">&#125;)；</div></pre></td></tr></table></figure></p>
+<p>返回数据：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 结果1</span></div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"Elizabeth Hall"</span>,</div><div class="line"><span class="string">"age"</span>: <span class="number">91</span>,</div><div class="line"><span class="string">"color"</span>: <span class="string">"#0e64ea"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 结果2</span></div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"Michael Taylor"</span>,</div><div class="line"><span class="string">"age"</span>: <span class="number">61</span>,</div><div class="line"><span class="string">"color"</span>: <span class="string">"#081086"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Node.js：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 安装</span></div><div class="line">npm install mockjs</div><div class="line"></div><div class="line"><span class="comment">// 使用</span></div><div class="line"><span class="keyword">var</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>);</div><div class="line"><span class="keyword">var</span> data = Mock.mock(&#123;</div><div class="line">    <span class="string">'list|1-10'</span>: [&#123;</div><div class="line">        <span class="string">'id|+1'</span>: <span class="number">1</span></div><div class="line">    &#125;]</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(data, <span class="literal">null</span>, <span class="number">4</span>))</div></pre></td></tr></table></figure></p>
+<p>mock数据mockData.js:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Mock.mock(<span class="string">'http://www.baidu.com'</span>, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'@name()'</span>,</div><div class="line">    <span class="string">'age|1-100'</span>: <span class="number">100</span>,</div><div class="line">    <span class="string">'color'</span>: <span class="string">'@color'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<hr>
+<a id="more"></a>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>Mock.js 的语法规范包括两部分：</p>
+<ol>
+<li>数据模板定义（Data Temaplte Definition，DTD）</li>
+<li>数据占位符定义（Data Placeholder Definition，DPD）</li>
+</ol>
+<h3 id="数据模板定义-DTD"><a href="#数据模板定义-DTD" class="headerlink" title="数据模板定义 DTD"></a>数据模板定义 DTD</h3><p>数据模板中的每个属性由 3 部分构成：属性名、生成规则、属性值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 属性名   name</span></div><div class="line"><span class="comment">// 生成规则 rule</span></div><div class="line"><span class="comment">// 属性值   value</span></div><div class="line"><span class="string">'name|rule'</span>: value</div></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ul>
+<li>属性名 和 生成规则 之间用 | 分隔。</li>
+<li>生成规则 是可选的。</li>
+<li><p>生成规则 有 7 种格式：</p>
+<ol>
+<li><code>&#39;name|min-max&#39;: value</code></li>
+<li><code>&#39;name|count&#39;: value</code></li>
+<li><code>&#39;name|min-max.dmin-dmax&#39;: value</code></li>
+<li><code>&#39;name|min-max.dcount&#39;: value</code></li>
+<li><code>&#39;name|count.dmin-dmax&#39;: value</code></li>
+<li><code>&#39;name|count.dcount&#39;: value</code></li>
+<li><code>&#39;name|+step&#39;: value</code></li>
+</ol>
+</li>
+<li><p>生成规则含需要依赖<strong>属性值 </strong>才能确定。</p>
+</li>
+<li>属性值 中可以含有 <code>@占位符</code>。</li>
+<li>属性值 还指定了最终值的初始值和类型。</li>
+</ul>
+<h4 id="生成规则和示例："><a href="#生成规则和示例：" class="headerlink" title="生成规则和示例："></a>生成规则和示例：</h4><ol>
+<li><p>属性值是字符串 String</p>
+<ol>
+<li>‘name|min-max’: ‘value’ 通过重复 ‘value’ 生成一个字符串，重复次数大于等于 min，小于等于 max。</li>
+<li>‘name|count’: ‘value’ 通过重复 ‘value’ 生成一个字符串，重复次数等于 count。</li>
+</ol>
+</li>
+<li><p>属性值是数字 Number</p>
+<ol>
+<li>‘name|+1’: 100 属性值自动加 1，初始值为 100</li>
+<li>‘name|1-100’: 100 生成一个大于等于 1、小于等于 100 的整数，属性值 100 只用来确定类型。</li>
+<li>‘name|1-100.1-10’: 100 生成一个浮点数，整数部分大于等于 1、小于等于 100，小数部分保留 1 到 10 位。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="string">'number1|1-100.1-10'</span>: <span class="number">1</span>,</div><div class="line"><span class="string">'number2|123.1-10'</span>: <span class="number">1</span>,</div><div class="line"><span class="string">'number3|123.3'</span>: <span class="number">1</span>,</div><div class="line"><span class="string">'number4|123.10'</span>: <span class="number">1.123</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// =&gt;</span></div><div class="line">&#123;</div><div class="line"><span class="string">"number1"</span>: <span class="number">12.92</span>,</div><div class="line"><span class="string">"number2"</span>: <span class="number">123.51</span>,</div><div class="line"><span class="string">"number3"</span>: <span class="number">123.777</span>,</div><div class="line"><span class="string">"number4"</span>: <span class="number">123.1231091814</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>属性值是布尔型 Boolean</p>
+<ol>
+<li>‘name|1’: value 随机生成一个布尔值，值为 true 的概率是 1/2，值为 false 的概率是 1/2。</li>
+<li>‘name|min-max’: value 随机生成一个布尔值，值为 value 的概率是 min / (min + max)，值为 !value 的概率是 max / (min + max)。</li>
+</ol>
+</li>
+<li><p>属性值是对象 Object</p>
+<ol>
+<li>‘name|min-max’: {} 从属性值 {} 中随机选取 min 到 max 个属性。</li>
+<li>‘name|count’: {} 从属性值 {} 中随机选取 count 个属性。</li>
+</ol>
+</li>
+<li><p>属性值是数组 Array</p>
+<ol>
+<li>‘name|1’: [{}, {} …] 从属性值 [{}, {} …] 中随机选取 1 个元素，作为最终值。</li>
+<li>‘name|min-max’: [{}, {} …] 通过重复属性值 [{}, {} …] 生成一个新数组，重复次数大于等于 min，小于等于 max。</li>
+<li>‘name|count’: [{}, {} …] 通过重复属性值 [{}, {} …] 生成一个新数组，重复次数为 count。</li>
+</ol>
+</li>
+<li>属性值是数组 Function</li>
+</ol>
+<p>‘name’: function(){} 执行函数 function(){}，取其返回值作为最终的属性值，上下文为 ‘name’ 所在的对象。</p>
+<h2 id="数据占位符定义-DPD"><a href="#数据占位符定义-DPD" class="headerlink" title="数据占位符定义 DPD"></a>数据占位符定义 DPD</h2><p>占位符 只是在属性值字符串中占个位置，并不出现在最终的属性值中。占位符 的格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@占位符</div><div class="line">@占位符(参数 [, 参数])</div></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ol>
+<li>用 @ 来标识其后的字符串是 占位符。</li>
+<li>占位符 引用的是 Mock.Random 中的方法。</li>
+<li>通过 Mock.Random.extend() 来扩展自定义占位符。</li>
+<li>占位符 也可以引用 <strong>数据模板</strong>中的属性。</li>
+<li>占位符 会优先引用 <strong>数据模板</strong>中的属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> <span class="attr">name</span>: &#123;</div><div class="line"> <span class="attr">first</span>: <span class="string">'@FIRST'</span>,</div><div class="line"> <span class="attr">middle</span>: <span class="string">'@FIRST'</span>,</div><div class="line"> <span class="attr">last</span>: <span class="string">'@LAST'</span>,</div><div class="line"> <span class="attr">full</span>: <span class="string">'@first @middle @last'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// =&gt;</span></div><div class="line">&#123;</div><div class="line"> <span class="string">"name"</span>: &#123;</div><div class="line"> <span class="string">"first"</span>: <span class="string">"Charles"</span>,</div><div class="line"> <span class="string">"middle"</span>: <span class="string">"Brenda"</span>,</div><div class="line"> <span class="string">"last"</span>: <span class="string">"Lopez"</span>,</div><div class="line"> <span class="string">"full"</span>: <span class="string">"Charles Brenda Lopez"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="Mock-mock-rurl-rtype-template-function-options"><a href="#Mock-mock-rurl-rtype-template-function-options" class="headerlink" title="Mock.mock( rurl?, rtype?, template|function(options) )"></a>Mock.mock( rurl?, rtype?, template|function(options) )</h3><p>根据数据模板生成模拟数据。</p>
+<p><strong>参数的含义和默认值</strong>如下所示：</p>
+<ul>
+<li>参数 rurl：可选。表示需要拦截的 URL，可以是 URL 字符串或 URL 正则。例如 /\/domain\/list.json/、’/domian/list.json’。</li>
+<li>参数 rtype：可选。表示需要拦截的 Ajax 请求类型。例如 GET、POST、PUT、DELETE 等。</li>
+<li>参数 template：可选。表示数据模板，可以是对象或字符串。例如 { ‘data|1-10’:[{}] }、’@EMAIL’。</li>
+<li>参数 function(options)：可选。表示用于生成响应数据的函数。</li>
+<li>参数 options：指向本次请求的 Ajax 选项集。</li>
+</ul>
+<h3 id="Mock-mockjax-library"><a href="#Mock-mockjax-library" class="headerlink" title="Mock.mockjax(library)"></a>Mock.mockjax(library)</h3><p>覆盖（拦截） Ajax 请求，目前内置支持 jQuery、Zepto、KISSY。</p>
+<h3 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h3><p>Mock.Random 是一个工具类，用于生成各种随机数据。Mock.Random 的方法在数据模板中称为“占位符”，引用格式为 @占位符(参数 [, 参数]) 。</p>
+<h3 id="Mock-tpl-input-options-helpers-partials"><a href="#Mock-tpl-input-options-helpers-partials" class="headerlink" title="Mock.tpl(input, options, helpers, partials)"></a>Mock.tpl(input, options, helpers, partials)</h3><p>基于 Handlebars、Mustache 的 HTML 模板生成模拟数据。</p>
+<p>方法使用详情请参考<a href="http://mockjs.com/#mock" target="_blank" rel="external">mock.js文档</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://wxrbwran.github.io/2016/11/01/使用MockJs进行独立于后端的前端开发/" data-id="ciy8eaq4u001kev4odh3rxwgn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://wxrbwran.github.io/2016/11/01/使用MockJs进行独立于后端的前端开发/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://wxrbwran.github.io/2016/11/01/使用MockJs进行独立于后端的前端开发/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/11/01/ES2015中的数组扩展/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Es2015中的数组扩展
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/10/31/ES2015的数值扩展/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Es2015的数值扩展</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/11/01/使用MockJs进行独立于后端的前端开发/" data-title="使用MockJs进行独立于后端的前端开发" data-url="http://wxrbwran.github.io/2016/11/01/使用MockJs进行独立于后端的前端开发/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/调试手机端微信X5浏览器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/调试手机端微信X5浏览器/" class="title">调试手机端微信X5浏览器</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T03:22:04.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/09/ES2015的模块化/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/09/ES2015的模块化/" class="title">ES2015的模块化</a></p>
+                            <p class="item-date"><time datetime="2016-11-09T02:26:59.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/07/ES2015之Class/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/07/ES2015之Class/" class="title">ES2015之Class</a></p>
+                            <p class="item-date"><time datetime="2016-11-07T09:51:37.000Z" itemprop="datePublished">2016-11-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/02/ES2015第七种数据结构Symbols/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/02/ES2015第七种数据结构Symbols/" class="title">ES2015第七种数据结构Symbols</a></p>
+                            <p class="item-date"><time datetime="2016-11-02T15:39:29.000Z" itemprop="datePublished">2016-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/02/ES2015新的数据结构Set和Map/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/02/ES2015新的数据结构Set和Map/" class="title">ES2015新的数据结构Set和Map</a></p>
+                            <p class="item-date"><time datetime="2016-11-02T08:38:05.000Z" itemprop="datePublished">2016-11-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 织幻z<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'xiaoranhexo'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

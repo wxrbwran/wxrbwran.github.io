@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>安装ubuntu后要做的几件事 | 晓然的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这几天自己的笔记本坏了，屏幕闪现，几个按键也失灵了…这次上船的姿势可能不对，哎…
+
+闲话少说，换了公司的备用机，重装ubuntu，之后还有很多事要做，记录在此。
+
+更换安装源。国外的源一是特别慢，第二就是大家都懂得～打开System Setting-&amp;gt; Software &amp;amp; Update,在Ubuntu Softwaretab下”Download from”选择阿里云的源。
+挂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装ubuntu后要做的几件事">
+<meta property="og:url" content="http://wxrbwran.github.io/2016/10/08/安装ubuntu后要做的几件事/index.html">
+<meta property="og:site_name" content="晓然的自留地">
+<meta property="og:description" content="这几天自己的笔记本坏了，屏幕闪现，几个按键也失灵了…这次上船的姿势可能不对，哎…
+
+闲话少说，换了公司的备用机，重装ubuntu，之后还有很多事要做，记录在此。
+
+更换安装源。国外的源一是特别慢，第二就是大家都懂得～打开System Setting-&amp;gt; Software &amp;amp; Update,在Ubuntu Softwaretab下”Download from”选择阿里云的源。
+挂">
+<meta property="og:image" content="http://baike.baidu.com/pic/ubuntu/155795/0/024f78f0f736afc31a149928b119ebc4b7451266?fr=lemma&ct=single#aid=0&pic=024f78f0f736afc31a149928b119ebc4b7451266">
+<meta property="og:updated_time" content="2016-10-09T19:06:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安装ubuntu后要做的几件事">
+<meta name="twitter:description" content="这几天自己的笔记本坏了，屏幕闪现，几个按键也失灵了…这次上船的姿势可能不对，哎…
+
+闲话少说，换了公司的备用机，重装ubuntu，之后还有很多事要做，记录在此。
+
+更换安装源。国外的源一是特别慢，第二就是大家都懂得～打开System Setting-&amp;gt; Software &amp;amp; Update,在Ubuntu Softwaretab下”Download from”选择阿里云的源。
+挂">
+<meta name="twitter:image" content="http://baike.baidu.com/pic/ubuntu/155795/0/024f78f0f736afc31a149928b119ebc4b7451266?fr=lemma&ct=single#aid=0&pic=024f78f0f736afc31a149928b119ebc4b7451266">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">晓然的自留地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+            <h2 id="name">吴晓然</h2>
+            <h3 id="title">Web 前端 &amp; 业余Python</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
+            <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                36
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                18
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/wxrbwran/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-安装ubuntu后要做的几件事" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            安装ubuntu后要做的几件事
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/08/安装ubuntu后要做的几件事/">
+            <time datetime="2016-10-08T05:19:10.000Z" itemprop="datePublished">2016-10-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>  这几天自己的笔记本坏了，屏幕闪现，几个按键也失灵了…这次上船的姿势可能不对，哎…</p>
+</blockquote>
+<p>闲话少说，换了公司的备用机，重装ubuntu，之后还有很多事要做，记录在此。</p>
+<ol>
+<li>更换安装源。国外的源一是特别慢，第二就是大家都懂得～打开System Setting-&gt; Software &amp; Update,在<strong>Ubuntu Software</strong>tab下”Download from”选择阿里云的源。</li>
+<li>挂载NTFS磁盘。现在基本默认自动挂载，但有时也会出错，比如我这次。解决也很简单：<ul>
+<li>检查ntfs-3g 是否已经安装    locate ntfs-3g  若是有一大堆反馈，那么就是已经安装了，要是没有安装，输入下面代码<br><code>sudo apt install ntfs-3g</code></li>
+<li>挂载的错误。可能一般都是这个吧，除非你一直都不可以访问<br><code>sudo ntfsfix /dev/sda5</code><br>不同的分区，记得更换位置与名称，我的是上图中的sda5</li>
+</ul>
+</li>
+<li>挂载ExFat格式U盘。fat格式不支持<del>大文件</del>，ntfs或者hfs<del>日志格式</del>不适合U盘，只好使用exfat咯。支持大文件，并且不是日志式。不过ubuntu默认不支持，需要下载软件支持，一句话解决：<br> <code>sudo apt install exfat-utils</code></li>
+<li><p>安装flash。这个就是纯粹娱乐了，直接去<a href="https://get.adobe.com/flashplayer/?loc=cn" target="_blank" rel="external">adobe官网</a>,选择APT方式下载就好了。</p>
+</li>
+<li><p>安装pip3。现在的linux发行版基本都支持python了，人生苦短，我用python~<br> <code>sudo apt-get install python3-pip</code></p>
+</li>
+<li>安装windows字体。好多文件和网页由于字体不全都不怎么好看，那我们直接把windows的字体拷过来就好了。windows字体文件在C:\windows\fonts目录下，cp到/usr/share/fonts目录新建winfonts文件夹中，然后:<ol>
+<li>mkfontscale</li>
+<li>mkfontdir</li>
+<li>fc-cache</li>
+</ol>
+</li>
+<li>换ubuntu了，markdown用什么写呢？<br> <code>sudo apt install retext</code></li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://wxrbwran.github.io/2016/10/08/安装ubuntu后要做的几件事/" data-id="ciy8eaq53001vev4ovfzipnji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://wxrbwran.github.io/2016/10/08/安装ubuntu后要做的几件事/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://wxrbwran.github.io/2016/10/08/安装ubuntu后要做的几件事/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/10/08/key之后push还要输入账号密码的解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    github添加ssh-key之后push还要输入账号密码的解决方法
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/10/02/javascript数据结构-队列/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Javascript数据结构:队列</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/10/08/安装ubuntu后要做的几件事/" data-title="安装ubuntu后要做的几件事" data-url="http://wxrbwran.github.io/2016/10/08/安装ubuntu后要做的几件事/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/调试手机端微信X5浏览器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/调试手机端微信X5浏览器/" class="title">调试手机端微信X5浏览器</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T03:22:04.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/09/ES2015的模块化/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/09/ES2015的模块化/" class="title">ES2015的模块化</a></p>
+                            <p class="item-date"><time datetime="2016-11-09T02:26:59.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/07/ES2015之Class/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/07/ES2015之Class/" class="title">ES2015之Class</a></p>
+                            <p class="item-date"><time datetime="2016-11-07T09:51:37.000Z" itemprop="datePublished">2016-11-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/02/ES2015第七种数据结构Symbols/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/02/ES2015第七种数据结构Symbols/" class="title">ES2015第七种数据结构Symbols</a></p>
+                            <p class="item-date"><time datetime="2016-11-02T15:39:29.000Z" itemprop="datePublished">2016-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/02/ES2015新的数据结构Set和Map/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/02/ES2015新的数据结构Set和Map/" class="title">ES2015新的数据结构Set和Map</a></p>
+                            <p class="item-date"><time datetime="2016-11-02T08:38:05.000Z" itemprop="datePublished">2016-11-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 织幻z<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'xiaoranhexo'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
