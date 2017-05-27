@@ -3,17 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档 | 晓然的自留地</title>
+    <title>react中context的使用 | 晓然的自留地</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="前端工程师的自我修养">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晓然的自留地">
-<meta property="og:url" content="http://wxrbwran.github.io/archives/index.html">
+    <meta name="description" content="使用 Context 的原因为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react中context的使用">
+<meta property="og:url" content="http://wxrbwran.github.io/2017/05/27/react中context的使用/index.html">
 <meta property="og:site_name" content="晓然的自留地">
-<meta property="og:description" content="前端工程师的自我修养">
+<meta property="og:description" content="使用 Context 的原因为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。">
+<meta property="og:updated_time" content="2017-05-27T07:04:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="晓然的自留地">
-<meta name="twitter:description" content="前端工程师的自我修养">
+<meta name="twitter:title" content="react中context的使用">
+<meta name="twitter:description" content="使用 Context 的原因为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。">
     
 
     
@@ -180,25 +182,21 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-react中context的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/27/react中context的使用/">react中context的使用</a>
+        <h1 class="article-title" itemprop="name">
+            react中context的使用
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2017/05/27/react中context的使用/">
@@ -207,151 +205,177 @@
     </div>
 
 
-                    
-                    
+                        
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/react/">react</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/01/22/使用ES2015全局对象--webpack下添加polyfill/">使用ES2015全局对象--webpack下添加polyfill</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/01/22/使用ES2015全局对象--webpack下添加polyfill/">
-            <time datetime="2017-01-22T08:32:07.000Z" itemprop="datePublished">2017-01-22</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/webpack-babel/">webpack babel</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2016</h1>
-            </div>
+            </header>
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/11/15/调试手机端微信X5浏览器/">调试手机端微信X5浏览器</a>
-        </h1>
-    
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="使用-Context-的原因"><a href="#使用-Context-的原因" class="headerlink" title="使用 Context 的原因"></a>使用 Context 的原因</h2><p>为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。</p>
+<a id="more"></a>
+<p>有时候 A组件 为了给 B组件 中的 C组件 传递一个 prop ，而需要把参数在组件中传递两次才能最终将 A组件 中的 prop 传递给 C组件 。</p>
+<p>官方文档的示例代码如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Button = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">&#123;&#123;background:</span> <span class="attr">this.props.color</span>&#125;&#125;&gt;</span></span></div><div class="line">        &#123;this.props.children&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> Message = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        &#123;this.props.text&#125; <span class="tag">&lt;<span class="name">Button</span> <span class="attr">color</span>=<span class="string">&#123;this.props.color&#125;</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> MessageList = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> color = <span class="string">"purple"</span>;</div><div class="line">    <span class="keyword">var</span> children = <span class="keyword">this</span>.props.messages.map(<span class="function"><span class="keyword">function</span>(<span class="params">message</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Message</span> <span class="attr">text</span>=<span class="string">&#123;message.text&#125;</span> <span class="attr">color</span>=<span class="string">&#123;color&#125;</span> /&gt;</span>;</span></div><div class="line">    &#125;);</div><div class="line">    return <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="使用-context-改进数据传递"><a href="#使用-context-改进数据传递" class="headerlink" title="使用 context 改进数据传递"></a>使用 context 改进数据传递</h3><p>现在我们使用 context 来完成参数的传递试试<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Button = React.createClass(&#123;</div><div class="line">  <span class="comment">// 必须指定context的数据类型</span></div><div class="line">  contextTypes: &#123;</div><div class="line">    <span class="attr">color</span>: React.PropTypes.string</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">&#123;&#123;background:</span> <span class="attr">this.context.color</span>&#125;&#125;&gt;</span></span></div><div class="line">        &#123;this.props.children&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> Message = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">        &#123;this.props.text&#125; <span class="tag">&lt;<span class="name">Button</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> MessageList = React.createClass(&#123;</div><div class="line">  <span class="comment">//</span></div><div class="line">  childContextTypes: &#123;</div><div class="line">    <span class="attr">color</span>: React.PropTypes.string</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">getChildContext</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">color</span>: <span class="string">"purple"</span>&#125;;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> children = <span class="keyword">this</span>.props.messages.map(<span class="function"><span class="keyword">function</span>(<span class="params">message</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Message</span> <span class="attr">text</span>=<span class="string">&#123;message.text&#125;</span> /&gt;</span>;</span></div><div class="line">    &#125;);</div><div class="line">    return <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>示例代码中通过添加 <strong>childContextTypes</strong> 和<strong>getChildContext()</strong> 到 MessageList （ context 的提供者），React 自动向下传递数据然后在组件树中的任意组件（也就是说任意子组件，在此示例代码中也就是 Button ）都能通过定义 <strong>contextTypes</strong> 访问 context 中的数据。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>指定数据并要将数据传递下去的父组件要定义 <strong>childContextTypes</strong> 和 <strong>getChildContext()</strong>；</li>
+<li>想要接收到数据的子组件 必须定义 <strong>contextTypes</strong> 来使用传递过来的 context 。</li>
+</ol>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/15/调试手机端微信X5浏览器/">
-            <time datetime="2016-11-15T03:22:04.000Z" itemprop="datePublished">2016-11-15</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/微信/">微信</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/11/09/ES2015的模块化/">ES2015的模块化</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/09/ES2015的模块化/">
-            <time datetime="2016-11-09T02:26:59.000Z" itemprop="datePublished">2016-11-09</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ES2015/">ES2015</a>
-    </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/11/07/ES2015之Class/">ES2015之Class</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/07/ES2015之Class/">
-            <time datetime="2016-11-07T09:51:37.000Z" itemprop="datePublished">2016-11-07</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ES2015/">ES2015</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
 
-    <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
-    </nav>
+    <a data-url="http://wxrbwran.github.io/2017/05/27/react中context的使用/" data-id="cj36xoof10013infym0sxi1jn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://wxrbwran.github.io/2017/05/27/react中context的使用/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://wxrbwran.github.io/2017/05/27/react中context的使用/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/01/22/使用ES2015全局对象--webpack下添加polyfill/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">使用ES2015全局对象--webpack下添加polyfill</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/05/27/react中context的使用/" data-title="react中context的使用" data-url="http://wxrbwran.github.io/2017/05/27/react中context的使用/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
