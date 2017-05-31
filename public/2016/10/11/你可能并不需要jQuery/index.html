@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>你可能并不需要jQuery | 晓然的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。  也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。 浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScri">
+<meta name="keywords" content="javascript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能并不需要jQuery">
+<meta property="og:url" content="http://wxrbwran.github.io/2016/10/11/你可能并不需要jQuery/index.html">
+<meta property="og:site_name" content="晓然的自留地">
+<meta property="og:description" content="jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。  也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。 浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScri">
+<meta property="og:updated_time" content="2016-10-11T02:41:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能并不需要jQuery">
+<meta name="twitter:description" content="jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。  也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。 浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScri">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">晓然的自留地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+            <h2 id="name">吴晓然</h2>
+            <h3 id="title">Web 前端 &amp; 业余Python</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
+            <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                38
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                20
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/wxrbwran/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-你可能并不需要jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            你可能并不需要jQuery
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/11/你可能并不需要jQuery/">
+            <time datetime="2016-10-11T02:54:55.000Z" itemprop="datePublished">2016-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/jQuery/">jQuery</a>, <a class="tag-link" href="/tags/javascript/">javascript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。</p>
+<ul>
+<li>也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。</li>
+<li>浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScript功能可以很大程度的实现jQuery提供的功能。如果你能了解这些JavaScript新技术，就能在很多地方用纯JavaScript实现以前需要jQuery才能实现的技术。</li>
+<li>新的mvvm框架的出现，数据驱动的方式解决了项目数据交互量大的时候，操作dom的代码混乱的问题。<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><h4 id="addClass"><a href="#addClass" class="headerlink" title="addClass"></a>addClass</h4>jQuery<br><code>$(el).addClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (el.classList)</div><div class="line">  el.classList.add(className);</div><div class="line">else</div><div class="line">  el.className += &apos; &apos; + className;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.add(className);</code></p>
+<h4 id="After"><a href="#After" class="headerlink" title="After"></a>After</h4><p>jQuery<br><code>$(el).after(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;afterend&#39;, htmlString);</code></p>
+<h4 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h4><p>jQuery<br><code>$(parent).append(el);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>parent.appendChild(el);</code></p>
+<h4 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h4><p>jQuery<br><code>$(el).before(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;beforebegin&#39;, htmlString);</code></p>
+<h4 id="Children"><a href="#Children" class="headerlink" title="Children"></a>Children</h4><p>jQuery<br><code>$(el).children();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var children = [];</div><div class="line">for (var i = el.children.length; i--;) &#123;</div><div class="line">  // Skip comment nodes on IE8</div><div class="line">  if (el.children[i].nodeType != 8)</div><div class="line">    children.unshift(el.children[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.children</code><br><a id="more"></a></p>
+<h4 id="Clone"><a href="#Clone" class="headerlink" title="Clone"></a>Clone</h4><p>jQuery<br><code>$(el).clone();</code><br>谷歌浏览器，火狐浏览器，IE8+<br>`el.cloneNode(true);``</p>
+<h4 id="Contains"><a href="#Contains" class="headerlink" title="Contains"></a>Contains</h4><p>jQuery<br><code>$.contains(el, child);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el !== child &amp;&amp; el.contains(child);</code></p>
+<h4 id="Contains-Selector"><a href="#Contains-Selector" class="headerlink" title="Contains Selector"></a>Contains Selector</h4><p>jQuery<br><code>$(el).find(selector).length;</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.querySelector(selector) !== null</code></p>
+<h4 id="Each"><a href="#Each" class="headerlink" title="Each"></a>Each</h4><p>jQuery<br><code>$(selector).each(function(i, el){});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function forEachElement(selector, fn) &#123;</div><div class="line">  var elements = document.querySelectorAll(selector);</div><div class="line">  for (var i = 0; i &lt; elements.length; i++)</div><div class="line">    fn(elements[i], i);</div><div class="line">&#125;</div><div class="line">forEachElement(selector, function(el, i)&#123;&#125;);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var elements = document.querySelectorAll(selector);</div><div class="line">Array.prototype.forEach.call(elements, function(el, i)&#123;&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="Empty"><a href="#Empty" class="headerlink" title="Empty"></a>Empty</h4><p>jQuery<br><code>$(el).empty();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">while(el.firstChild)</div><div class="line">  el.removeChild(el.firstChild);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.innerHTML = &#39;&#39;;</code></p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>jQuery<br><code>$(selector).filter(filterFn);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function filter(selector, filterFn) &#123;</div><div class="line">  var elements = document.querySelectorAll(selector);</div><div class="line">  var out = [];</div><div class="line">  for (var i = elements.length; i--;) &#123;</div><div class="line">    if (filterFn(elements[i]))&#123;</div><div class="line">      out.unshift(elements[i]);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return out;</div><div class="line">&#125;</div><div class="line">filter(selector, filterFn);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);</code></p>
+<h4 id="查找子元素"><a href="#查找子元素" class="headerlink" title="查找子元素"></a>查找子元素</h4><p>jQuery<br><code>$(el).find(selector);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.querySelectorAll(selector);</code></p>
+<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>jQuery<br><code>$(&#39;.my #awesome selector&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>document.querySelectorAll(&#39;.my #awesome selector&#39;);</code></p>
+<h4 id="获取属性值"><a href="#获取属性值" class="headerlink" title="获取属性值"></a>获取属性值</h4><p>jQuery<br><code>$(el).attr(&#39;tabindex&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.getAttribute(&#39;tabindex&#39;);</code></p>
+<h4 id="获取Html内容"><a href="#获取Html内容" class="headerlink" title="获取Html内容"></a>获取Html内容</h4><p>jQuery<br><code>$(el).html();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.innerHTML</code></p>
+<h4 id="获取外层Html内容"><a href="#获取外层Html内容" class="headerlink" title="获取外层Html内容"></a>获取外层Html内容</h4><p>jQuery<br><code>$(&#39;&lt;div&gt;&#39;).append($(el).clone()).html();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.outerHTML</code></p>
+<h4 id="获取CSS样式"><a href="#获取CSS样式" class="headerlink" title="获取CSS样式"></a>获取CSS样式</h4><p>jQuery<br><code>$(el).css(ruleName);</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// Varies based on the properties being retrieved, some can be retrieved from</p>
+<p>el.currentStyle<br>// <a href="https://github.com/jonathantneal/Polyfills-for-IE8/blob/master/" target="_blank" rel="external">https://github.com/jonathantneal/Polyfills-for-IE8/blob/master/</a></p>
+<p>getComputedStyle.js<br>谷歌浏览器，火狐浏览器，IE9+<br><code>getComputedStyle(el)[ruleName];</code></p>
+<h4 id="获取文本内容"><a href="#获取文本内容" class="headerlink" title="获取文本内容"></a>获取文本内容</h4><p>jQuery<br><code>$(el).text();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.textContent || el.innerText</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>el.textContent</code></p>
+<h4 id="Has-Class"><a href="#Has-Class" class="headerlink" title="Has Class"></a>Has Class</h4><p>jQuery<br><code>$(el).hasClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if (el.classList)&#123;</div><div class="line">  el.classList.contains(className);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">  new RegExp(&apos;(^| )&apos; + className + &apos;( |$)&apos;, &apos;gi&apos;).test(el.className);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.contains(className);</code></p>
+<h4 id="元素比较"><a href="#元素比较" class="headerlink" title="元素比较"></a>元素比较</h4><p>jQuery<br><code>$(el).is($(otherEl));</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el === otherEl</code></p>
+<h4 id="比较类名"><a href="#比较类名" class="headerlink" title="比较类名"></a>比较类名</h4><p>jQuery<br><code>$(el).is(&#39;.my-class&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var matches = function(el, selector) &#123;</div><div class="line">  var _matches = (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector);</div><div class="line">  if (_matches) &#123;</div><div class="line">    return _matches.call(el, selector);</div><div class="line">  &#125; else &#123;</div><div class="line">    var nodes = el.parentNode.querySelectorAll(selector);</div><div class="line">    for (var i = nodes.length; i--;) &#123;</div><div class="line">      if (nodes[i] === el)</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">matches(el, &apos;.my-class&apos;);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var matches = function(el, selector) &#123;</div><div class="line">  return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);</div><div class="line">&#125;;</div><div class="line">matches(el, &apos;.my-class&apos;);</div></pre></td></tr></table></figure></p>
+<h4 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h4><p>jQuery<br><code>$(el).next();</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// nextSibling can include text nodes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function nextElementSibling(el) &#123;</div><div class="line">  do &#123; el = el.nextSibling; &#125; while ( el &amp;&amp; el.nodeType !== 1 );</div><div class="line">  return el;</div><div class="line">&#125;</div><div class="line">el.nextElementSibling || nextElementSibling(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.nextElementSibling</code></p>
+<h4 id="Offset"><a href="#Offset" class="headerlink" title="Offset"></a>Offset</h4><p>jQuery<br><code>$(el).offset();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var rect = el.getBoundingClientRect()</div><div class="line">&#123;</div><div class="line">  top: rect.top + document.body.scrollTop,</div><div class="line">  left: rect.left + document.body.scrollLeft</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Offset-Parent"><a href="#Offset-Parent" class="headerlink" title="Offset Parent"></a>Offset Parent</h4><p>jQuery<br><code>$(el).offsetParent();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetParent || el</code></p>
+<h4 id="Outer-Height"><a href="#Outer-Height" class="headerlink" title="Outer Height"></a>Outer Height</h4><p>jQuery<br><code>$(el).outerHeight();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetHeight</code></p>
+<h4 id="Outer-Height-With-Margin"><a href="#Outer-Height-With-Margin" class="headerlink" title="Outer Height With Margin"></a>Outer Height With Margin</h4><p>jQuery<br><code>$(el).outerHeight(true);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function outerHeight(el) &#123;</div><div class="line">  var height = el.offsetHeight;</div><div class="line">  var style = el.currentStyle || getComputedStyle(el);</div><div class="line"></div><div class="line">  height += parseInt(style.marginTop) + parseInt(style.marginBottom);</div><div class="line">  return height;</div><div class="line">&#125;</div><div class="line">outerHeight(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function outerHeight(el) &#123;</div><div class="line">  var height = el.offsetHeight;</div><div class="line">  var style = getComputedStyle(el);</div><div class="line"></div><div class="line">  height += parseInt(style.marginTop) + parseInt(style.marginBottom);</div><div class="line">  return height;</div><div class="line">&#125;</div><div class="line">outerHeight(el);</div></pre></td></tr></table></figure></p>
+<h4 id="Outer-Width-With-Margin"><a href="#Outer-Width-With-Margin" class="headerlink" title="Outer Width With Margin"></a>Outer Width With Margin</h4><p>jQuery<br><code>$(el).outerWidth(true);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function outerWidth(el) &#123;</div><div class="line">  var width = el.offsetWidth;</div><div class="line">  var style = el.currentStyle || getComputedStyle(el);</div><div class="line"></div><div class="line">  width += parseInt(style.marginLeft) + parseInt(style.marginRight);</div><div class="line">  return width;</div><div class="line">&#125;</div><div class="line">outerWidth(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function outerWidth(el) &#123;</div><div class="line">  var width = el.offsetWidth;</div><div class="line">  var style = getComputedStyle(el);</div><div class="line"></div><div class="line">  width += parseInt(style.marginLeft) + parseInt(style.marginRight);</div><div class="line">  return width;</div><div class="line">&#125;</div><div class="line">outerWidth(el);</div></pre></td></tr></table></figure></p>
+<h4 id="Outer-Width"><a href="#Outer-Width" class="headerlink" title="Outer Width"></a>Outer Width</h4><p>jQuery<br><code>$(el).outerWidth();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetWidth</code></p>
+<h4 id="Parent"><a href="#Parent" class="headerlink" title="Parent"></a>Parent</h4><p>jQuery<br><code>$(el).parent();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.parentNode</code></p>
+<h4 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h4><p>jQuery<br><code>$(el).position();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>{left: el.offsetLeft, top: el.offsetTop}</code></p>
+<h4 id="Position-Relative-To-Viewport"><a href="#Position-Relative-To-Viewport" class="headerlink" title="Position Relative To Viewport"></a>Position Relative To Viewport</h4><p>jQuery<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var offset = el.offset();</div><div class="line">&#123;</div><div class="line">  top: offset.top - document.body.scrollTop,</div><div class="line">  left: offset.left - document.body.scrollLeft</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE8+<br><code>el.getBoundingClientRect()</code></p>
+<h4 id="Prepend"><a href="#Prepend" class="headerlink" title="Prepend"></a>Prepend</h4><p>jQuery<br><code>$(parent).prepend(el);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>parent.insertBefore(el, parent.firstChild);</code></p>
+<h4 id="Prev"><a href="#Prev" class="headerlink" title="Prev"></a>Prev</h4><p>jQuery<br><code>$(el).prev();</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// prevSibling can include text nodes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function previousElementSibling(el) &#123;</div><div class="line">  do &#123; el = el.previousSibling; &#125; while ( el &amp;&amp; el.nodeType !== 1 );</div><div class="line">  return el;</div><div class="line">&#125;</div><div class="line">el.previousElementSibling || previousElementSibling(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.previousElementSibling</code></p>
+<h4 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h4><p>jQuery<br><code>$(el).remove();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.parentNode.removeChild(el);</code></p>
+<h4 id="Remove-Class"><a href="#Remove-Class" class="headerlink" title="Remove Class"></a>Remove Class</h4><p>jQuery<br><code>$(el).removeClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (el.classList)</div><div class="line">  el.classList.remove(className);</div><div class="line">else</div><div class="line">  el.className = el.className.replace(new RegExp(&apos;(^|\\b)&apos; + className.split(&apos; &apos;).join(&apos;|&apos;) + &apos;(\\b|$)&apos;, &apos;gi&apos;), &apos; &apos;);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.remove(className);</code></p>
+<h4 id="Replace-From-Html"><a href="#Replace-From-Html" class="headerlink" title="Replace From Html"></a>Replace From Html</h4><p>jQuery<br><code>$(el).replaceWith(string);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.outerHTML = string;</code></p>
+<h4 id="Set-Attributes"><a href="#Set-Attributes" class="headerlink" title="Set Attributes"></a>Set Attributes</h4><p>jQuery<br><code>$(el).attr(&#39;tabindex&#39;, 3);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.setAttribute(&#39;tabindex&#39;, 3);</code></p>
+<h4 id="Set-Html"><a href="#Set-Html" class="headerlink" title="Set Html"></a>Set Html</h4><p>jQuery<br><code>$(el).html(string);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.innerHTML = string;</code></p>
+<h4 id="Set-Style"><a href="#Set-Style" class="headerlink" title="Set Style"></a>Set Style</h4><p>jQuery<br><code>$(el).css(&#39;border-width&#39;, &#39;20px&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// Use a class if possible<br><code>el.style.borderWidth = &#39;20px&#39;;</code></p>
+<h4 id="Set-Text"><a href="#Set-Text" class="headerlink" title="Set Text"></a>Set Text</h4><p>jQuery<br><code>$(el).text(string);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (el.textContent !== undefined)</div><div class="line">  el.textContent = string;</div><div class="line">else</div><div class="line">  el.innerText = string;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.textContent = string;</code></p>
+<h4 id="Siblings"><a href="#Siblings" class="headerlink" title="Siblings"></a>Siblings</h4><p>jQuery<br><code>$(el).siblings();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var siblings = Array.prototype.slice.call(el.parentNode.children);</div><div class="line">for (var i = siblings.length; i--;) &#123;</div><div class="line">  if (siblings[i] === el) &#123;</div><div class="line">    siblings.splice(i, 1);</div><div class="line">    break;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>Array.prototype.filter.call(el.parentNode.children, function(child){
+  return child !== el;
+});</code></p>
+<h4 id="Toggle-Class"><a href="#Toggle-Class" class="headerlink" title="Toggle Class"></a>Toggle Class</h4><p>jQuery<br><code>$(el).toggleClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">if (el.classList) &#123;</div><div class="line">  el.classList.toggle(className);</div><div class="line">&#125; else &#123;</div><div class="line">    var classes = el.className.split(&apos; &apos;);</div><div class="line">    var existingIndex = -1;</div><div class="line">    for (var i = classes.length; i--;) &#123;</div><div class="line">      if (classes[i] === className)</div><div class="line">        existingIndex = i;</div><div class="line">    &#125;</div><div class="line">    if (existingIndex &gt;= 0)</div><div class="line">      classes.splice(existingIndex, 1);</div><div class="line">    else</div><div class="line">      classes.push(className);</div><div class="line">  el.className = classes.join(&apos; &apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (el.classList) &#123;</div><div class="line">  el.classList.toggle(className);</div><div class="line">&#125; else &#123;</div><div class="line">  var classes = el.className.split(&apos; &apos;);</div><div class="line">  var existingIndex = classes.indexOf(className);</div><div class="line">  if (existingIndex &gt;= 0)</div><div class="line">    classes.splice(existingIndex, 1);</div><div class="line">  else</div><div class="line">    classes.push(className);</div><div class="line">  el.className = classes.join(&apos; &apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.toggle(className);</code></p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h4 id="Off"><a href="#Off" class="headerlink" title="#### Off"></a>#### Off</h4><p>jQuery<br><code>$(el).off(eventName, eventHandler);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function removeEventListener(el, eventName, handler) &#123;</div><div class="line">  if (el.removeEventListener)</div><div class="line">    el.removeEventListener(eventName, handler);</div><div class="line">  else</div><div class="line">    el.detachEvent(&apos;on&apos; + eventName, handler);</div><div class="line">&#125;</div><div class="line">removeEventListener(el, eventName, handler);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.removeEventListener(eventName, eventHandler);</code></p>
+<h4 id="On"><a href="#On" class="headerlink" title="On"></a>On</h4><p>jQuery<br><code>$(el).on(eventName, eventHandler);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function addEventListener(el, eventName, handler) &#123;</div><div class="line">  if (el.addEventListener) &#123;</div><div class="line">    el.addEventListener(eventName, handler);</div><div class="line">  &#125; else &#123;</div><div class="line">    el.attachEvent(&apos;on&apos; + eventName, function()&#123;</div><div class="line">      handler.call(el);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">addEventListener(el, eventName, handler);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.addEventListener(eventName, eventHandler);</code></p>
+<h4 id="Ready"><a href="#Ready" class="headerlink" title="Ready"></a>Ready</h4><p>jQuery<br><code>$(document).ready(function(){});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function ready(fn) &#123;</div><div class="line">  if (document.readyState != &apos;loading&apos;)&#123;</div><div class="line">    fn();</div><div class="line">  &#125; else if (document.addEventListener) &#123;</div><div class="line">    document.addEventListener(&apos;DOMContentLoaded&apos;, fn);</div><div class="line">  &#125; else &#123;</div><div class="line">    document.attachEvent(&apos;onreadystatechange&apos;, function() &#123;</div><div class="line">      if (document.readyState != &apos;loading&apos;)</div><div class="line">        fn();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function ready(fn) &#123;</div><div class="line">  if (document.readyState != &apos;loading&apos;)&#123;</div><div class="line">    fn();</div><div class="line">  &#125; else &#123;</div><div class="line">    document.addEventListener(&apos;DOMContentLoaded&apos;, fn);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="指定事件触发"><a href="#指定事件触发" class="headerlink" title="指定事件触发"></a>指定事件触发</h4><p>jQuery<br><code>$(el).trigger(&#39;my-event&#39;, {some: &#39;data&#39;});</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// Custom events are not natively supported, so you have to hijack a rndomevent.<br>// Just use jQuery.<br>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (window.CustomEvent) &#123;</div><div class="line">  var event = new CustomEvent(&apos;my-event&apos;, &#123;detail: &#123;some: &apos;data&apos;&#125;&#125;);</div><div class="line">&#125; else &#123;</div><div class="line">  var event = document.createEvent(&apos;CustomEvent&apos;);</div><div class="line">  event.initCustomEvent(&apos;my-event&apos;, true, true, &#123;some: &apos;data&apos;&#125;);</div><div class="line">&#125;</div><div class="line">el.dispatchEvent(event);</div></pre></td></tr></table></figure></p>
+<h4 id="Trigger-Native"><a href="#Trigger-Native" class="headerlink" title="Trigger Native"></a>Trigger Native</h4><p>jQuery<br><code>$(el).trigger(&#39;change&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (document.createEvent) &#123;</div><div class="line">  var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">  event.initEvent(&apos;change&apos;, true, false);</div><div class="line">  el.dispatchEvent(event);</div><div class="line">&#125; else &#123;</div><div class="line">  el.fireEvent(&apos;onchange&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br>// For a full list of event types: <a href="https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event.initEvent(&apos;change&apos;, true, false);</div><div class="line">el.dispatchEvent(event);</div></pre></td></tr></table></figure></p>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h4 id="Array-Each"><a href="#Array-Each" class="headerlink" title="Array Each"></a>Array Each</h4><p>jQuery<br><code>$.each(array, function(i, item){});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function forEach(array, fn) &#123;</div><div class="line">  for (i = 0; i &lt; array.length; i++)</div><div class="line">    fn(array[i], i);</div><div class="line">&#125;</div><div class="line">forEach(array, function(item, i)&#123;&#125;);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>array.forEach(function(item, i){});</code></p>
+<h4 id="深度扩展"><a href="#深度扩展" class="headerlink" title="深度扩展"></a>深度扩展</h4><p>jQuery<br><code>$.extend(true, {}, objA, objB);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var deepExtend = function(out) &#123;</div><div class="line">  out = out || &#123;&#125;;</div><div class="line">  for (var i = 1; i &lt; arguments.length; i++) &#123;</div><div class="line">    var obj = arguments[i];</div><div class="line">    if (!obj)</div><div class="line">      continue;</div><div class="line">    for (var key in obj) &#123;</div><div class="line">      if (obj.hasOwnProperty(key)) &#123;</div><div class="line">        if (typeof obj[key] === &apos;object&apos;)</div><div class="line">          deepExtend(out[key], obj[key]);</div><div class="line">        else</div><div class="line">          out[key] = obj[key];</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return out;</div><div class="line">&#125;;</div><div class="line">deepExtend(&#123;&#125;, objA, objB);</div></pre></td></tr></table></figure></p>
+<h4 id="Bind"><a href="#Bind" class="headerlink" title="Bind"></a>Bind</h4><p>jQuery<br><code>$.proxy(fn, context);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>fn.apply(context, arguments);</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>fn.bind(context);</code><br>jQuery<br><code>$.extend({}, objA, objB);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var extend = function(out) &#123;</div><div class="line">  out = out || &#123;&#125;;</div><div class="line">  for (var i = 1; i &lt; arguments.length; i++) &#123;</div><div class="line">    if (!arguments[i])</div><div class="line">      continue;</div><div class="line">    for (var key in arguments[i]) &#123;</div><div class="line">      if (arguments[i].hasOwnProperty(key))</div><div class="line">        out[key] = arguments[i][key];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return out;</div><div class="line">&#125;;</div><div class="line">extend(&#123;&#125;, objA, objB);</div></pre></td></tr></table></figure></p>
+<h4 id="Index-Of"><a href="#Index-Of" class="headerlink" title="Index Of"></a>Index Of</h4><p>jQuery<br><code>$.inArray(item, array);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function indexOf(array, item) &#123;</div><div class="line">  for (var i = 0; i &lt; array.length; i++) &#123;</div><div class="line">    if (array[i] === item)</div><div class="line">      return i;</div><div class="line">  &#125;</div><div class="line">  return -1;</div><div class="line">&#125;</div><div class="line">indexOf(array, item);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>array.indexOf(item);</code></p>
+<h4 id="Is-Array"><a href="#Is-Array" class="headerlink" title="Is Array"></a>Is Array</h4><p>jQuery<br><code>$.isArray(arr);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(arr) &#123;</div><div class="line">  return Object.prototype.toString.call(arr) == &apos;[object Array]&apos;;</div><div class="line">&#125;</div><div class="line">isArray(arr);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>Array.isArray(arr);</code></p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>jQuery<br><code>$.map(array, function(value, index){});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function map(arr, fn) &#123;</div><div class="line">  var results = [];</div><div class="line">  for (var i = 0; i &lt; arr.length; i++)</div><div class="line">    results.push(fn(arr[i], i));</div><div class="line">  return results;</div><div class="line">map(array, function(value, index)&#123;&#125;);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>array.map(function(value, index){});</code></p>
+<h4 id="Now"><a href="#Now" class="headerlink" title="Now"></a>Now</h4><p>jQuery<br><code>$.now();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>new Date().getTime();</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>Date.now();</code></p>
+<h4 id="Parse-Html"><a href="#Parse-Html" class="headerlink" title="Parse Html"></a>Parse Html</h4><p>jQuery<br><code>$.parseHTML(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var parseHTML = function(str) &#123;</div><div class="line">  var el = document.createElement(&apos;div&apos;);</div><div class="line">  el.innerHTML = str;</div><div class="line">  return el.children;</div><div class="line">&#125;;</div><div class="line">parseHTML(htmlString);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>var parseHTML = function(str) {
+  var tmp = document.implementation.createHTMLDocument();
+  tmp.body.innerHTML = str;
+  return tmp.body.children;
+};
+parseHTML(htmlString);</code></p>
+<h4 id="解析-Json"><a href="#解析-Json" class="headerlink" title="解析 Json"></a>解析 Json</h4><p>jQuery<br><code>$.parseJSON(string);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>JSON.parse(string);</code></p>
+<h4 id="Trim"><a href="#Trim" class="headerlink" title="Trim"></a>Trim</h4><p>jQuery<br><code>$.trim(string);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>string.replace(/^\s+|\s+$/g, &#39;&#39;);</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>string.trim();</code></p>
+<h4 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h4><p>jQuery<br><code>$.type(obj);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, &quot;$1&quot;).toLowerCase();</div></pre></td></tr></table></figure></p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><p>jQuery<br><code>$.getJSON(&#39;/my/url&#39;, function(data) {});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onreadystatechange = function() &#123;</div><div class="line">  if (this.readyState === 4) &#123;</div><div class="line">    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</div><div class="line">      // Success!</div><div class="line">      var data = JSON.parse(this.responseText);</div><div class="line">    &#125; else &#123;</div><div class="line">      // Error :(</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.send();</div><div class="line">request = null;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onload = function() &#123;</div><div class="line">  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400) &#123;</div><div class="line">    // Success!</div><div class="line">    var data = JSON.parse(request.responseText);</div><div class="line">  &#125; else &#123;</div><div class="line">    // We reached our target server, but it returned an error</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.onerror = function() &#123;</div><div class="line">  // There was a connection error of some sort</div><div class="line">&#125;;</div><div class="line">request.send();</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onload = function() &#123;</div><div class="line">  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</div><div class="line">    // Success!</div><div class="line">    var data = JSON.parse(this.response);</div><div class="line">  &#125; else &#123;</div><div class="line">    // We reached our target server, but it returned an error</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.onerror = function() &#123;</div><div class="line">  // There was a connection error of some sort</div><div class="line">&#125;;</div><div class="line">request.send();</div></pre></td></tr></table></figure></p>
+<h4 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h4><p>jQuery<br><code>$.ajax({type: &#39;POST&#39;,url: &#39;/my/url&#39;,data: data});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;POST&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;);</div><div class="line">request.send(data);</div></pre></td></tr></table></figure></p>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p>jQuery<br><code>$.ajax({type: &#39;GET&#39;,url: &#39;/my/url&#39;,success: function(resp) {},error: function() {}});</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onreadystatechange = function() &#123;</div><div class="line">  if (this.readyState === 4) &#123;</div><div class="line">    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</div><div class="line">      // Success!</div><div class="line">      var resp = this.responseText;</div><div class="line">    &#125; else &#123;</div><div class="line">      // Error :(</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.send();</div><div class="line">request = null;</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onload = function() &#123;</div><div class="line">  if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400) &#123;</div><div class="line">    // Success!</div><div class="line">    var resp = request.responseText;</div><div class="line">  &#125; else &#123;</div><div class="line">    // We reached our target server, but it returned an error</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.onerror = function() &#123;</div><div class="line">  // There was a connection error of some sort</div><div class="line">&#125;;</div><div class="line">request.send();</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div><div class="line">request.open(&apos;GET&apos;, &apos;/my/url&apos;, true);</div><div class="line">request.onload = function() &#123;</div><div class="line">  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</div><div class="line">    // Success!</div><div class="line">    var resp = this.response;</div><div class="line">  &#125; else &#123;</div><div class="line">    // We reached our target server, but it returned an error</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">request.onerror = function() &#123;</div><div class="line">  // There was a connection error of some sort</div><div class="line">&#125;;</div><div class="line">request.send();</div></pre></td></tr></table></figure></p>
+<h2 id="特效"><a href="#特效" class="headerlink" title="特效"></a>特效</h2><h4 id="淡入淡出"><a href="#淡入淡出" class="headerlink" title="淡入淡出"></a>淡入淡出</h4><p>jQuery<br><code>$(el).fadeIn();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function fadeIn(el) &#123;</div><div class="line">  var opacity = 0;</div><div class="line">  el.style.opacity = 0;</div><div class="line">  el.style.filter = &apos;&apos;;</div><div class="line">  var last = +new Date();</div><div class="line">  var tick = function() &#123;</div><div class="line">    opacity += (new Date() - last) / 400;</div><div class="line">    el.style.opacity = opacity;</div><div class="line">    el.style.filter = &apos;alpha(opacity=&apos; + (100 * opacity)|0 + &apos;)&apos;;</div><div class="line">    last = +new Date();</div><div class="line">    if (opacity &lt; 1) &#123;</div><div class="line">      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  tick();</div><div class="line">&#125;</div><div class="line">fadeIn(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><figure class="highlight plain"><figcaption><span>fadeIn(el) &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  el.style.opacity = 0;</div><div class="line">  var last = +new Date();</div><div class="line">  var tick = function() &#123;</div><div class="line">    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;</div><div class="line">    last = +new Date();</div><div class="line">    if (+el.style.opacity &lt; 1) &#123;</div><div class="line">      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16)</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  tick();</div><div class="line">&#125;</div><div class="line">fadeIn(el);</div></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">el.classList.add(&apos;show&apos;);</div><div class="line">el.classList.remove(&apos;hide&apos;);</div><div class="line">.show &#123;transition: opacity 400ms;&#125;</div><div class="line">.hide &#123;opacity: 0;&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Hide"><a href="#Hide" class="headerlink" title="Hide"></a>Hide</h4><p>jQuery<br><code>$(el).hide();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.style.display = &#39;none&#39;;</code></p>
+<h4 id="Show"><a href="#Show" class="headerlink" title="Show"></a>Show</h4><p>jQuery<br><code>$(el).show();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.style.display = &#39;&#39;;</code></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://wxrbwran.github.io/2016/10/11/你可能并不需要jQuery/" data-id="cj36xoofc001kinfyo78kz3qq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://wxrbwran.github.io/2016/10/11/你可能并不需要jQuery/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://wxrbwran.github.io/2016/10/11/你可能并不需要jQuery/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/10/12/使用requestAnimationFrame做动画控制/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    使用requestAnimationFrame做动画控制
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">如何避免打开谷歌自动跳转香港GOOGLE.COM.HK</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/10/11/你可能并不需要jQuery/" data-title="你可能并不需要jQuery" data-url="http://wxrbwran.github.io/2016/10/11/你可能并不需要jQuery/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/27/react中context的使用/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/27/react中context的使用/" class="title">react中context的使用</a></p>
+                            <p class="item-date"><time datetime="2017-05-27T06:29:39.000Z" itemprop="datePublished">2017-05-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/22/使用ES2015全局对象--webpack下添加polyfill/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/01/22/使用ES2015全局对象--webpack下添加polyfill/" class="title">使用ES2015全局对象--webpack下添加polyfill</a></p>
+                            <p class="item-date"><time datetime="2017-01-22T08:32:07.000Z" itemprop="datePublished">2017-01-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/调试手机端微信X5浏览器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/调试手机端微信X5浏览器/" class="title">调试手机端微信X5浏览器</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T03:22:04.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/09/ES2015的模块化/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/09/ES2015的模块化/" class="title">ES2015的模块化</a></p>
+                            <p class="item-date"><time datetime="2016-11-09T02:26:59.000Z" itemprop="datePublished">2016-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/07/ES2015之Class/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/07/ES2015之Class/" class="title">ES2015之Class</a></p>
+                            <p class="item-date"><time datetime="2016-11-07T09:51:37.000Z" itemprop="datePublished">2016-11-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-babel/">webpack babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/webpack-babel/" style="font-size: 10px;">webpack babel</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 织幻z<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'xiaoranhexo'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

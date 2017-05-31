@@ -1,0 +1,19 @@
+---
+title: ubuntu设置杂记
+date: 2016-10-08 15:13:34
+tags: ubuntu
+---
+### 在任务栏显示网速
+```
+sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+sudo apt-get install indicator-netspeed```
+
+### 设置显示桌面快捷键
+
+如果想设置“显示桌面”为“win + D”，步骤如下：
+```
+sudo apt-get install compizconfig-settings-manager
+ccsm```
+
+
