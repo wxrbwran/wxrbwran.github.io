@@ -71,8 +71,9 @@ theme: icarus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
    type: git
-   repo: git@git.coding.net:wxrbw/hexo_blog.git,master
-     #git@github.com:wxrbwran/wxrbwran.github.io.git,master
+   repo:
+     git@git.coding.net:wxrbw/hexo_blog.git,master,
+     git@github.com:wxrbwran/wxrbwran.github.io.git,master
 #   branch: master
 
 duoshuo_shortname: xiaoranhexo
