@@ -74,7 +74,6 @@ deploy:
    repo:
      coding: git@git.coding.net:wxrbw/hexo_blog.git,master
      github: git@github.com:wxrbwran/wxrbwran.github.io.git,master
-#   branch: master
 
 duoshuo_shortname: xiaoranhexo
 duoshuo_share: true
