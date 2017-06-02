@@ -28,7 +28,7 @@ tags:
 deploy:
    type: git
    repo:
-     coding: git@git.coding.net:wxrbw/hexo_blog.git,master
+     coding: git@git.coding.net:wxrbw/wxrbw.coding.me.git,master
      github: git@github.com:wxrbwran/wxrbwran.github.io.git,master
 ```
 
