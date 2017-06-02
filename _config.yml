@@ -72,7 +72,7 @@ theme: icarus
 deploy:
    type: git
    repo:
-     git@git.coding.net:wxrbw/hexo_blog.git,master,
+     git@git.coding.net:wxrbw/hexo_blog.git,master
      git@github.com:wxrbwran/wxrbwran.github.io.git,master
 #   branch: master
 
