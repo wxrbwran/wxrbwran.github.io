@@ -8,7 +8,7 @@
     <meta name="description" content="前端工程师的自我修养">
 <meta property="og:type" content="website">
 <meta property="og:title" content="晓然的自留地">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/9/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="前端工程师的自我修养">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
 
             
             <section id="main">
-    <article id="post-react-router实现按需加载" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-安装ubuntu后要做的几件事" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -189,7 +189,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/08/react-router实现按需加载/">react-router实现按需加载</a>
+            <a class="article-title" href="/2016/10/08/安装ubuntu后要做的几件事/">安装ubuntu后要做的几件事</a>
         </h1>
     
 
@@ -198,8 +198,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/08/react-router实现按需加载/">
-            <time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time>
+        <a href="/2016/10/08/安装ubuntu后要做的几件事/">
+            <time datetime="2016-10-08T05:19:10.000Z" itemprop="datePublished">2016-10-08</time>
         </a>
     </div>
 
@@ -208,273 +208,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/react-react-router/">react react-router</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><strong>本文使用的 react-router 版本为3.0</strong></p>
-<blockquote>
-<p>React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆” — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。<br>实际上就是将一个大 javascript 文件拆分成了若干个 chunk file。</p>
-</blockquote>
-<h3 id="Webpack-配置"><a href="#Webpack-配置" class="headerlink" title="Webpack 配置"></a>Webpack 配置</h3><p>首先在 webpack.config.js 的 output 内加上 chunkFilename<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  <span class="attr">path</span>: path.join(__dirname, <span class="string">'/../dist/assets'</span>),</div><div class="line">  <span class="attr">filename</span>: <span class="string">'app.js'</span>,</div><div class="line">  <span class="attr">publicPath</span>: defaultSettings.publicPath,</div><div class="line">  <span class="comment">// 添加 chunkFilename</span></div><div class="line">  chunkFilename: <span class="string">'[name].[chunkhash:5].chunk.js'</span>,</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-<p>name 是在代码里为创建的 chunk 指定的名字，如果代码中没指定则 webpack 默认分配 id 作为 name。<br></p>
-            <p class="article-more-link">
-                <a href="/2017/07/08/react-router实现按需加载/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/08/react-router实现按需加载/" data-id="cj4vdtwl100167lwyew7twszc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/07/08/react-router实现按需加载/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/07/08/react-router实现按需加载/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-express的上传中间件multer" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/10/express的上传中间件multer/">express的上传中间件multer</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/10/express的上传中间件multer/">
-            <time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/express/">express</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><blockquote>
-<p>Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。</p>
-</blockquote>
-<p><strong>注意</strong>: Multer <del>不会处理</del>任何非 multipart/form-data 类型的表单数据.</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save multer</div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></p>
-            <p class="article-more-link">
-                <a href="/2017/06/10/express的上传中间件multer/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/06/10/express的上传中间件multer/" data-id="cj4vdtwku000z7lwy88gzvju6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/06/10/express的上传中间件multer/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/10/express的上传中间件multer/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-使用Travis将Hexo同时部署到Coding-net" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/02/使用Travis将Hexo同时部署到Coding-net/">使用Travis将Hexo同时部署到Coding.net</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/02/使用Travis将Hexo同时部署到Coding-net/">
-            <time datetime="2017-06-02T15:57:18.000Z" itemprop="datePublished">2017-06-02</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Travis/">Travis</a>
+        <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
     </div>
 
                     </div>
@@ -486,17 +220,29 @@
         
             
             <blockquote>
-<p>既然使用了Travis在push后发不到github，那就再加点东西，发布到coding.net的Pages服务上，理论上国内服务应该快一点点。<br>  同时搭建的教程可以看看<a href="http://www.ithome.com/html/win10/311572.htm" target="_blank" rel="external">这里</a></p>
+<p>  这几天自己的笔记本坏了，屏幕闪现，几个按键也失灵了…这次上船的姿势可能不对，哎…</p>
 </blockquote>
+<p>闲话少说，换了公司的备用机，重装ubuntu，之后还有很多事要做，记录在此。</p>
 <ol>
-<li><p>修改.travis文件夹下的<strong>ssh_config,</strong>添加coding.net</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Host github.com</div><div class="line">  User git</div><div class="line">  StrictHostKeyChecking no</div><div class="line">  IdentityFile ~/.ssh/id_rsa</div><div class="line">  IdentitiesOnly yes</div><div class="line">Host git.coding.net</div><div class="line">  User git</div><div class="line">  StrictHostKeyChecking no</div><div class="line">  IdentityFile ~/.ssh/id_rsa</div><div class="line">  IdentitiesOnly yes</div></pre></td></tr></table></figure>
+<li>更换安装源。国外的源一是特别慢，第二就是大家都懂得～打开System Setting-&gt; Software &amp; Update,在<strong>Ubuntu Software</strong>tab下”Download from”选择阿里云的源。</li>
+<li>挂载NTFS磁盘。现在基本默认自动挂载，但有时也会出错，比如我这次。解决也很简单：<ul>
+<li>检查ntfs-3g 是否已经安装    locate ntfs-3g  若是有一大堆反馈，那么就是已经安装了，要是没有安装，输入下面代码<br><code>sudo apt install ntfs-3g</code></li>
+<li>挂载的错误。可能一般都是这个吧，除非你一直都不可以访问<br><code>sudo ntfsfix /dev/sda5</code><br>不同的分区，记得更换位置与名称，我的是上图中的sda5</li>
+</ul>
 </li>
-<li><p>修改hexo的配置文件<strong>_config.yml</strong></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">   type:</span> <span class="string">git</span></div><div class="line"><span class="attr">   repo:</span></div><div class="line"><span class="attr">     coding:</span> <span class="string">git@git.coding.net:wxrbw/wxrbw.coding.me.git,master</span></div><div class="line"><span class="attr">     github:</span> <span class="string">git@github.com:wxrbwran/wxrbwran.github.io.git,master</span></div></pre></td></tr></table></figure>
+<li>挂载ExFat格式U盘。fat格式不支持<del>大文件</del>，ntfs或者hfs<del>日志格式</del>不适合U盘，只好使用exfat咯。支持大文件，并且不是日志式。不过ubuntu默认不支持，需要下载软件支持，一句话解决：<br> <code>sudo apt install exfat-utils</code></li>
+<li><p>安装flash。这个就是纯粹娱乐了，直接去<a href="https://get.adobe.com/flashplayer/?loc=cn" target="_blank" rel="external">adobe官网</a>,选择APT方式下载就好了。</p>
 </li>
+<li><p>安装pip3。现在的linux发行版基本都支持python了，人生苦短，我用python~<br> <code>sudo apt-get install python3-pip</code></p>
+</li>
+<li>安装windows字体。好多文件和网页由于字体不全都不怎么好看，那我们直接把windows的字体拷过来就好了。windows字体文件在C:\windows\fonts目录下，cp到/usr/share/fonts目录新建winfonts文件夹中，然后:<ol>
+<li>mkfontscale</li>
+<li>mkfontdir</li>
+<li>fc-cache</li>
 </ol>
-<p>再push到github就可以自动发布到两个Pages了。</p>
+</li>
+<li>换ubuntu了，markdown用什么写呢？<br> <code>sudo apt install retext</code></li>
+</ol>
 
         
         </div>
@@ -507,7 +253,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/02/使用Travis将Hexo同时部署到Coding-net/" data-id="cj4vdyakb00008uwyqiwvfrld" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/08/安装ubuntu后要做的几件事/" data-id="cj4vdtwlz00267lwysjwlpe6f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -575,7 +321,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/02/使用Travis将Hexo同时部署到Coding-net/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/02/使用Travis将Hexo同时部署到Coding-net/">评论</a>
+        <a href="http://yoursite.com/2016/10/08/安装ubuntu后要做的几件事/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/08/安装ubuntu后要做的几件事/">评论</a>
     
 
         </footer>
@@ -585,7 +331,7 @@
 
 
 
-    <article id="post-在express中使用es2015的新特性" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript数据结构-队列" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -593,7 +339,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/01/在express中使用es2015的新特性/">在express中使用es2015的新特性</a>
+            <a class="article-title" href="/2016/10/02/javascript数据结构-队列/">Javascript数据结构:队列</a>
         </h1>
     
 
@@ -602,8 +348,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/06/01/在express中使用es2015的新特性/">
-            <time datetime="2017-06-01T10:20:55.000Z" itemprop="datePublished">2017-06-01</time>
+        <a href="/2016/10/02/javascript数据结构-队列/">
+            <time datetime="2016-10-02T02:15:27.000Z" itemprop="datePublished">2016-10-02</time>
         </a>
     </div>
 
@@ -612,7 +358,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/es2015/">es2015</a>, <a class="tag-link" href="/tags/express/">express</a>
+        <a class="tag-link" href="/tags/Javascript/">Javascript</a>, <a class="tag-link" href="/tags/队列/">队列</a>
     </div>
 
                     </div>
@@ -624,13 +370,16 @@
         
             
             <blockquote>
-<p>在前端开发中使用es2015及正在stage中的js特性已经屡见不鲜，但是在express中使用还是第一次尝试，稍微配置下也是可以的。有没有坑，等使用后再补齐。</p>
+<p> 队列是遵循FIFO(First In First Out,先进先出,也称为先来先服务)原则的一组有序的项。 队列在尾部添加新元素,并从顶部移除元素。最新添加的元素必须排在队列的末尾。<br>在现实中,最常见的队列的例子就是排队，在电影院、自助餐厅、杂货店收银台,我们也都会排队。排在第一位的人会先接受服务。</p>
 </blockquote>
-<h3 id="安装babel"><a href="#安装babel" class="headerlink" title="安装babel"></a>安装babel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;babel-cli&quot;: &quot;^6.24.1&quot;,</div><div class="line">&quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,</div><div class="line">&quot;babel-preset-stage-2&quot;: &quot;^6.24.1&quot;,</div></pre></td></tr></table></figure>
-<p>###根目录下创建.babelrc文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;es2015&quot;, &quot;stage-2&quot;],</div><div class="line">  &quot;plugins&quot;: []</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="安装nodemon"><a href="#安装nodemon" class="headerlink" title="安装nodemon"></a>安装nodemon</h3><p>不使用supervisor是因为配合不了babel<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install nodemon -g</div></pre></td></tr></table></figure></p>
-<h3 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;nodemon ./bin/www.js --exec babel-node&quot;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
-<p>之后就可以使用es新的语法特性了~</p>
+<h3 id="创建队列"><a href="#创建队列" class="headerlink" title="创建队列"></a>创建队列</h3><p>队列方法</p>
+<ul>
+<li>enqueue(element(s)):向队列尾部添加一个(或多个)新的项。</li>
+<li>dequeue():移除队列的第一(即排在队列最前面的)项,并返回被移除的元素。 </li>
+<li>front():返回队列中第一个元素——最先被添加,也将是最先被移除的元素。队列不做任何变动(不移除元素,只返回元素信息——与Stack类的peek方法非常类似)。 </li>
+<li>isEmpty():如果队列中不包含任何元素,返回true,否则返回false。 </li>
+<li>size():返回队列包含的元素个数,与数组的length属性类似。<figure class="highlight javascript"><figcaption><span>Queue</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">funcion Queue()&#123;</div><div class="line">	<span class="keyword">var</span> items = [];</div><div class="line">	<span class="keyword">this</span>.enqueue = <span class="function"><span class="keyword">function</span>(<span class="params">ele</span>)</span>&#123;</div><div class="line">		items.push(ele)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.dequeue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.unshift();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.front = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items[<span class="number">0</span>]</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.isEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.length===<span class="number">0</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.length</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(items.toString())</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
 
         
         </div>
@@ -641,7 +390,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/01/在express中使用es2015的新特性/" data-id="cj4vdtwly00257lwyqp62jkum" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/02/javascript数据结构-队列/" data-id="cj4vdtwky00147lwyrbcqolcr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -709,7 +458,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/01/在express中使用es2015的新特性/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/01/在express中使用es2015的新特性/">评论</a>
+        <a href="http://yoursite.com/2016/10/02/javascript数据结构-队列/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/02/javascript数据结构-队列/">评论</a>
     
 
         </footer>
@@ -719,7 +468,7 @@
 
 
 
-    <article id="post-hexo＋Travis-ci＋github构建自动化博客" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript-数据结构-栈" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -727,7 +476,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/">hexo＋Travis-ci＋github构建自动化博客</a>
+            <a class="article-title" href="/2016/09/30/javascript-数据结构-栈/">Javascript 数据结构:栈</a>
         </h1>
     
 
@@ -736,8 +485,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/">
-            <time datetime="2017-06-01T02:08:52.000Z" itemprop="datePublished">2017-06-01</time>
+        <a href="/2016/09/30/javascript-数据结构-栈/">
+            <time datetime="2016-09-30T09:03:14.000Z" itemprop="datePublished">2016-09-30</time>
         </a>
     </div>
 
@@ -746,7 +495,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ci/">ci</a>, <a class="tag-link" href="/tags/hexo/">hexo</a>
+        <a class="tag-link" href="/tags/Javascript/">Javascript</a>, <a class="tag-link" href="/tags/栈/">栈</a>
     </div>
 
                     </div>
@@ -756,30 +505,21 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><blockquote>
-<p>Travis CI：是目前新兴的开源持续集成构建项目，它与jenkins，GO的很明显的特别在于采用yaml格式，简洁清晰。</p>
+            
+            <blockquote>
+<p> 栈是一种遵从后进先出(LIFO)原则的有序集合。新添加的或待删除的元素都保存在栈的 末尾,称作栈顶,另一端就叫栈底。在栈里,新元素都靠近栈顶,旧元素都接近栈底。<br>在现实生活中也能发现很多栈的例子。例如,下图里的一摞书或者餐厅里堆放的盘子。</p>
 </blockquote>
-<p>tarvis－ci是远端服务器构建，跟jenkins 不一样，不用自己搭建一个jenkins服务器。tarvis－ci是用的远端官方提供的服务器。用hexo 搭建博客，然后将博客源码提交到 Git上，用travis－ci 编译git 上的源码，然后将编译后的文件，推送到Github.io仓库下，达到自动化编译构建。</p>
-<hr>
-<h4 id="构建自动化博客的步骤"><a href="#构建自动化博客的步骤" class="headerlink" title="构建自动化博客的步骤"></a>构建自动化博客的步骤</h4><p>由于需要搭建hexo 和本地搭建Travis 所以本地需要有ruby 和 node 环境。本地搭建Travis 是为了和Travis－ci 服务器进行加密解密获得密匙，获得一次即可。</p>
-<ol>
-<li><p>安装rubu 和node.js</p>
+<h3 id="栈的创建"><a href="#栈的创建" class="headerlink" title="栈的创建"></a>栈的创建</h3><p>栈的方法:</p>
+<ul>
+<li>push(element(s)):添加一个(或几个)新元素到栈顶。 </li>
+<li>pop():移除栈顶的元素,同时返回被移除的元素。 </li>
+<li>peek():返回栈顶的元素,不对栈做任何修改(这个方法不会移除栈顶的元素,仅仅返回它)。</li>
+<li>isEmpty():如果栈里没有任何元素就返回true,否则返回false。 </li>
+<li>clear():移除栈里的所有元素。 </li>
+<li>size():返回栈里的元素个数。这个方法和数组的length属性很类似。<br>使用数组来保存栈里的元素。    <figure class="highlight javascript"><figcaption><span>Stack</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">funcion Stack()&#123;</div><div class="line">	<span class="keyword">var</span> items = [];</div><div class="line">	<span class="keyword">this</span>.push = <span class="function"><span class="keyword">function</span>(<span class="params">ele</span>)</span>&#123;</div><div class="line">		items.push(ele)</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.pop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.pop()</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.peek = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items[items.length<span class="number">-1</span>]</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.isEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.length ===<span class="number">0</span></div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		items.lenth=<span class="number">0</span></div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> items.length</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(items.toString())</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>搭建hexo</p>
-</li>
-<li><p>安装 travis</p>
-</li>
-<li><p>配置git 的ssh key</p>
-</li>
-<li><p>配置Travis</p>
-</li>
-<li><p>验证</p>
-</li>
-</ol>
-<hr></p>
-            <p class="article-more-link">
-                <a href="/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/#more">查看更多</a>
-            </p>
+</ul>
+
         
         </div>
         <footer class="article-footer">
@@ -789,7 +529,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/" data-id="cj4vdtwkv00107lwys9cxlnap" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/09/30/javascript-数据结构-栈/" data-id="cj4vdtwkw00127lwy405twhno" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -857,7 +597,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/">评论</a>
+        <a href="http://yoursite.com/2016/09/30/javascript-数据结构-栈/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/09/30/javascript-数据结构-栈/">评论</a>
     
 
         </footer>
@@ -868,7 +608,7 @@
 
 
     <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
     </nav>
 </section>
             
