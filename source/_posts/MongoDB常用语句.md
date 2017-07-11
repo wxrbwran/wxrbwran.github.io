@@ -92,8 +92,7 @@ db.article.insert({"title": "mongodb", "author": "tg", "content": "haha"})
 ```sql
 db.collecion.update(query, update[, options] )
 ```
->
-query : 必选，查询条件，类似find中的查询条件。
+>query : 必选，查询条件，类似find中的查询条件。
 update : 必选，update的对象和一些更新的操作符（如$,$inc...）等
 options：可选，一些更新配置的对象。
 upsert：可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
