@@ -70,13 +70,13 @@ db.article.find({ "author": { "$ne": "a" }})
 ```
 
 （11）排序
+升序：
 ```sql
-#升序：
 select * from article where type = "mongodb" order by read desc
 db.article.find({"type": "mongodb"}).sort({"read": -1})
 ```
+降序：
 ```sql
-#降序：
 select * from article where type = "mongodb" order by read asc
 db.article.find({"type": "mongodb"}).sort({"read": 1})
 ```
