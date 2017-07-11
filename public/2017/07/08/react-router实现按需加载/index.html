@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/08/react-router实现按需加载/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="本文使用的 react-router 版本为3.0  React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆” — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。实际上">
-<meta property="og:updated_time" content="2017-07-08T14:34:01.000Z">
+<meta property="og:updated_time" content="2017-07-11T09:31:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router实现按需加载">
 <meta name="twitter:description" content="本文使用的 react-router 版本为3.0  React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆” — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。实际上">
@@ -154,11 +154,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                43
+                44
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                26
+                27
                 <span>标签</span>
             </div>
         </div>
@@ -227,7 +227,7 @@
 <h3 id="Webpack-配置"><a href="#Webpack-配置" class="headerlink" title="Webpack 配置"></a>Webpack 配置</h3><p>首先在 webpack.config.js 的 output 内加上 chunkFilename<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  <span class="attr">path</span>: path.join(__dirname, <span class="string">'/../dist/assets'</span>),</div><div class="line">  <span class="attr">filename</span>: <span class="string">'app.js'</span>,</div><div class="line">  <span class="attr">publicPath</span>: defaultSettings.publicPath,</div><div class="line">  <span class="comment">// 添加 chunkFilename</span></div><div class="line">  chunkFilename: <span class="string">'[name].[chunkhash:5].chunk.js'</span>,</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <p>name 是在代码里为创建的 chunk 指定的名字，如果代码中没指定则 webpack 默认分配 id 作为 name。<br><a id="more"></a><br>chunkhash 是文件的 hash 码，这里只使用前五位。</p>
 <h3 id="添加首页"><a href="#添加首页" class="headerlink" title="添加首页"></a>添加首页</h3><p>以前你的路由大概应该是这样的：（作为需要按需加载的大型应用，路由肯定是相当复杂，这里只列举部分路由举例）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(</div><div class="line"> (</div><div class="line">  &lt;Router history=&#123;browserHistory&#125;&gt;</div><div class="line">   &#123;/* 主页 */&#125;</div><div class="line">   &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">    &#123;/* 默认 */&#125;</div><div class="line">    &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</div><div class="line"></div><div class="line">    &#123;/* baidu */&#125;</div><div class="line">    &lt;Route path="/baidu" component=&#123;BaiduPage&#125;&gt;</div><div class="line">     &lt;Route path="result" component=&#123;BaiduResultPage&#125; /&gt;</div><div class="line">     &lt;Route path="frequency" component=&#123;BaiduFrequencyPage&#125; /&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line"></div><div class="line">    &#123;/* 404 */&#125;</div><div class="line">    &lt;Route path='/404' component=&#123;NotFoundPage&#125; /&gt;</div><div class="line">    </div><div class="line">    &#123;/* 其他重定向到 404 */&#125;</div><div class="line">    &lt;Redirect from='*' to='/404' /&gt;</div><div class="line">   &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line"> ), document.getElementById('app')</div><div class="line">);</div></pre></td></tr></table></figure></p>
-<p>按需加载之后，我们需要让路由动态加载组件，需要将 component 换成 getComponent。首先将路由拆出来（因为路由庞大之后全部写在一起会很难看），创建一个根路由 rootRoute：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rootRoute = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line"> <span class="attr">indexRoute</span>: &#123;</div><div class="line">  getComponent(nextState, cb) &#123;</div><div class="line">   <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/HomePage'</span>))</div><div class="line">   &#125;, <span class="string">'HomePage'</span>)</div><div class="line">  &#125;,</div><div class="line"> &#125;,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/Main'</span>))</div><div class="line">  &#125;, <span class="string">'Main'</span>)</div><div class="line"> &#125;,</div><div class="line"> <span class="attr">childRoutes</span>: [</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/baidu'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/404'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/redirect'</span>)</div><div class="line"> ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line"> (</div><div class="line">  &lt;Router</div><div class="line">   history=&#123;browserHistory&#125;</div><div class="line">   routes=&#123;rootRoute&#125;</div><div class="line">   /&gt;</div><div class="line"> ), document.getElementById('app')</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>按需加载之后，我们需要让路由动态加载组件，需要将 component 换成 getComponent。首先将路由拆出来（因为路由庞大之后全部写在一起会很难看），创建一个根路由 rootRoute：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rootRoute = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line"> <span class="attr">indexRoute</span>: &#123;</div><div class="line">  getComponent(nextState, cb) &#123;</div><div class="line">   <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/HomePage'</span>))</div><div class="line">   &#125;, <span class="string">'HomePage'</span>)</div><div class="line">  &#125;,</div><div class="line"> &#125;,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/Main'</span>))</div><div class="line">  &#125;, <span class="string">'Main'</span>)</div><div class="line"> &#125;,</div><div class="line"> <span class="attr">childRoutes</span>: [</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/baidu'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/404'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/redirect'</span>)</div><div class="line"> ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line"> (</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Router</span></span></span></div><div class="line">   <span class="attr">history</span>=<span class="string">&#123;browserHistory&#125;</span></div><div class="line">   <span class="attr">routes</span>=<span class="string">&#123;rootRoute&#125;</span></div><div class="line">   /&gt;</div><div class="line"> ), document.getElementById('app')</div><div class="line">);</div></pre></td></tr></table></figure></p>
 <p>history 不变，在 Router 中添加 routes 属性，将创建的路由传递进去。<br>这里有四个属性：</p>
 <h4 id="path"><a href="#path" class="headerlink" title="path"></a>path</h4><p>将匹配的路由，也就是以前的 path。</p>
 <h4 id="getComponent"><a href="#getComponent" class="headerlink" title="getComponent"></a>getComponent</h4><p>对应于以前的 component 属性，但是这个方法是异步的，也就是当路由匹配时，才会调用这个方法。<br>这里面有个 require.ensure 方法</p>
@@ -253,7 +253,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/08/react-router实现按需加载/" data-id="cj4vdtwl100167lwyew7twszc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/08/react-router实现按需加载/" data-id="cj4zdnand001bi14oiaumkef0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -330,6 +330,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2017/07/11/Mongodb之mongoose入门/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Mongodb之mongoose入门
+                
+            </div>
+        </a>
+    
     
         <a href="/2017/06/10/express的上传中间件multer/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
@@ -398,6 +407,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
+                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -475,25 +503,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/01/hexo＋Travis-ci＋github构建自动化博客/" class="title">hexo＋Travis-ci＋github构建自动化博客</a></p>
-                            <p class="item-date"><time datetime="2017-06-01T02:08:52.000Z" itemprop="datePublished">2017-06-01</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -505,7 +514,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -514,7 +523,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-react-router/">react react-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-babel/">webpack babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-react-router/">react react-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-babel/">webpack babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -523,7 +532,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es2015/" style="font-size: 10px;">es2015</a> <a href="/tags/express/" style="font-size: 12.5px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-react-router/" style="font-size: 10px;">react react-router</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/webpack-babel/" style="font-size: 10px;">webpack babel</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es2015/" style="font-size: 10px;">es2015</a> <a href="/tags/express/" style="font-size: 12.5px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-react-router/" style="font-size: 10px;">react react-router</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/webpack-babel/" style="font-size: 10px;">webpack babel</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
         </div>
     </div>
 
