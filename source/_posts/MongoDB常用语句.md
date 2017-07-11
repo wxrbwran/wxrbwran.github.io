@@ -108,8 +108,7 @@ db.article.update({"read": {"$gt": 100}}, {"$set": { "title": "mongodb"}})
 ```sql
 db.article.save({_id: 123, title: "mongodb"})
 ```
->
-执行上面的语句，如果集合中已经存在一个_id为123的文档，则更新对应字段;否则插入。
+>执行上面的语句，如果集合中已经存在一个_id为123的文档，则更新对应字段;否则插入。
 注：**如果更新对象不存在_id，系统会自动生成并作为新的文档插入。**
 
 #### 更新操作符
@@ -163,7 +162,7 @@ db.game.update({"_id": 123}, {"$pull": {"score": 123}})
 db.game.update({"_id": 123}, {"$pullAll": {score: [123,12]}})
 ```
 上面的语句表示删除数组内值等于123或12的元素。
-更新嵌套数组的值：
+##### 更新嵌套数组的值：
 使用数组下标（从0开始）：
 ```sql
 {
@@ -180,7 +179,7 @@ db.game.update({"address.place": "nanji"}, {"$set": {"address.$.tel": 123}})
 #### 删除所有文档：
 ```sql
 delete from article
-db.article.remove()
+db.article.remove({})
 ```
 #### 删除指定文档：
 ```sql
