@@ -152,11 +152,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                44
+                46
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                27
+                20
                 <span>标签</span>
             </div>
         </div>
@@ -181,6 +181,297 @@
 
             
             <section id="main">
+    <article id="post-vue-router2的一些变化" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/28/vue-router2的一些变化/">vue-router2的一些变化</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/28/vue-router2的一些变化/">
+            <time datetime="2016-10-28T09:23:32.000Z" itemprop="datePublished">2016-10-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue/">vue</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://router.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vue-router2详细文档</a><br>v-link由router-link替换，router-view 的name属性，可以匹配多个路由component<strong>(s)</strong><br><del>hashbang 弃用</del><br>router.map,router.start,router.redirect，saveScrollPosition等都变为router的实例属性<br>router.go()-&gt;router.push()<br><figure class="highlight html"><figcaption><span>router</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"display: flex;justify-content:space-around;</span></span></div><div class="line">    align-items:center;flex-flow:row wrap;align-content:flex-start;"&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>go to foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/bar"</span>&gt;</span>go to bar<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/user/dxf"</span>&gt;</span>go to user:dxf<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/user/wxr/profile"</span>&gt;</span>go to wxr profile<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/user/wxr/posts"</span>&gt;</span>go to wxr posts<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/multi"</span>&gt;</span>go to multi<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">"fade"</span> <span class="attr">mode</span>=<span class="string">"out-in"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">"default"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">"r2"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></div></pre></td></tr></table></figure><br></p>
+            <p class="article-more-link">
+                <a href="/2016/10/28/vue-router2的一些变化/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/28/vue-router2的一些变化/" data-id="cj50p3675001pucfyufdt9e20" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/28/vue-router2的一些变化/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/28/vue-router2的一些变化/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Vue中的过渡效果" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/26/Vue中的过渡效果/">Vue中的过渡效果</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/26/Vue中的过渡效果/">
+            <time datetime="2016-10-26T03:10:31.000Z" itemprop="datePublished">2016-10-26</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue/">vue</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><blockquote>
+<p> 这里只写由css实现的简单过渡，js用到在做记录。</p>
+</blockquote>
+<h3 id="过渡效果"><a href="#过渡效果" class="headerlink" title="过渡效果"></a>过渡效果</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。<br>包括以下工具：</p>
+<ol>
+<li>在 CSS 过渡和动画中自动应用 class</li>
+<li>可以配合使用第三方 CSS 动画库，如 <a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">Animate.css</a></li>
+<li>在过渡钩子函数中使用 JavaScript 直接操作 DOM</li>
+<li>可以配合使用第三方 JavaScript 动画库，如 <a href="http://velocityjs.org/" target="_blank" rel="external">Velocity.js</a></li>
+</ol>
+<h4 id="单元素-组件的过渡"><a href="#单元素-组件的过渡" class="headerlink" title="单元素/组件的过渡"></a>单元素/组件的过渡</h4><p>Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加 entering/leaving 过渡</p>
+<ul>
+<li>条件渲染 （使用 v-if）</li>
+<li>条件展示 （使用 v-show）</li>
+<li>动态组件</li>
+<li>组件根节点<br>这里是一个典型的例子：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;div id="demo"&gt;</div><div class="line">  &lt;button v-on:click="show = !show"&gt;</div><div class="line">    Toggle</div><div class="line">  &lt;/button&gt;</div><div class="line">  &lt;transition name="fade"&gt;</div><div class="line">    &lt;p v-if="show"&gt;hello&lt;/p&gt;</div><div class="line">  &lt;/transition&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">new Vue(&#123;</div><div class="line">  el: '#demo',</div><div class="line">  data: &#123;</div><div class="line">    show: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">.fade-enter-active, .fade-leave-active &#123;</div><div class="line">  transition: opacity .5s</div><div class="line">&#125;</div><div class="line">.fade-enter, .fade-leave-active &#123;</div><div class="line">  opacity: 0</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>元素封装成过渡组件之后，在遇到插入或删除时，Vue 将自动嗅探目标元素是否有 CSS 过渡或动画，并在合适时添加/删除 CSS 类名。</p>
+<p>如果过渡组件设置了过渡的 JavaScript 钩子函数，会在相应的阶段调用钩子函数。</p>
+<p>如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作（插入/删除）在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，与 Vue，和Vue的 nextTick 概念不同)</p>
+<h4 id="过渡的-CSS-类名"><a href="#过渡的-CSS-类名" class="headerlink" title="过渡的-CSS-类名"></a>过渡的-CSS-类名</h4><p>会有 4 个(CSS)类名在 enter/leave 的过渡中切换</p>
+<p><strong>v-enter</strong>: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。</p>
+<p><strong>v-enter-active</strong>: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。</p>
+<p><strong>v-leave</strong>: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。</p>
+<p><strong>v-leave-active</strong>: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。</p>
+<p><img src="https://vuefe.cn/images/transition.png" alt="Transition Diagram"></p>
+<p>对于这些在 enter/leave 过渡中切换的类名，v- 是这些类名的前缀。使用 &lt;name=”my-transition&gt;” 可以重置前缀，比如 v-enter 替换为 my-transition-enter。</p>
+<p>v-enter-active 和 v-leave-active 可以控制 进入/离开 过渡的不同阶段，在下面章节会有个示例说明。</p>
+<h3 id="CSS-过渡"><a href="#CSS-过渡" class="headerlink" title="CSS 过渡"></a>CSS 过渡</h3><p><strong>常用的过渡都是使用 CSS 过渡。</strong></p>
+<p>下面是一个简单例子：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;div id="example-1"&gt;</div><div class="line">  &lt;button @click="show = !show"&gt;</div><div class="line">    Toggle render</div><div class="line">  &lt;/button&gt;</div><div class="line">  &lt;transition name="slide-fade"&gt;</div><div class="line">    &lt;p v-if="show"&gt;hello&lt;/p&gt;</div><div class="line">  &lt;/transition&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">new Vue(&#123;</div><div class="line">  el: '#example-1',</div><div class="line">  data: &#123;</div><div class="line">    show: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">/* 可以设置不同的进入和离开动画 */</div><div class="line">/* 设置持续时间和动画函数 */</div><div class="line">.slide-fade-enter-active &#123;</div><div class="line">  transition: all .3s ease;</div><div class="line">&#125;</div><div class="line">.slide-fade-leave-active &#123;</div><div class="line">  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);</div><div class="line">&#125;</div><div class="line">.slide-fade-enter, .slide-fade-leave-active &#123;</div><div class="line">  padding-left: 10px;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="CSS-动画"><a href="#CSS-动画" class="headerlink" title="CSS 动画"></a>CSS 动画</h4><p>CSS 动画用法同 CSS 过渡，区别是在动画中 v-enter 类名在节点插入 DOM 后不会立即删除，而是在 animationend 事件触发时删除。</p>
+<p>示例： (省略了兼容性前缀)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;div id="example-2"&gt;</div><div class="line">  &lt;button @click="show = !show"&gt;Toggle show&lt;/button&gt;</div><div class="line">  &lt;transition name="bounce"&gt;</div><div class="line">    &lt;p v-if="show"&gt;Look at me!&lt;/p&gt;</div><div class="line">  &lt;/transition&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">new Vue(&#123;</div><div class="line">  el: '#example-2',</div><div class="line">  data: &#123;</div><div class="line">    show: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">.bounce-enter-active &#123;</div><div class="line">  animation: bounce-in .5s;</div><div class="line">&#125;</div><div class="line">.bounce-leave-active &#123;</div><div class="line">  animation: bounce-out .5s;</div><div class="line">&#125;</div><div class="line">@keyframes bounce-in &#123;</div><div class="line">  0% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@keyframes bounce-out &#123;</div><div class="line">  0% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="自定义过渡类名"><a href="#自定义过渡类名" class="headerlink" title="自定义过渡类名"></a>自定义过渡类名</h4><p>我们可以通过以下特性来自定义过渡类名：</p>
+<p><strong>enter-class</strong><br><strong>enter-active-class</strong><br><strong>leave-class</strong><br><strong>leave-active-class</strong><br>他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如<strong> Animate.css </strong>结合使用十分有用。</p>
+<p>示例：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css"&gt;</div><div class="line">&lt;div id="example-3"&gt;</div><div class="line">  &lt;button @click="show = !show"&gt;</div><div class="line">    Toggle render</div><div class="line">  &lt;/button&gt;</div><div class="line">  &lt;transition</div><div class="line">    name="custom-classes-transition"</div><div class="line">    enter-active-class="animated tada"</div><div class="line">    leave-active-class="animated bounceOutRight"</div><div class="line">  &gt;</div><div class="line">    &lt;p v-if="show"&gt;hello&lt;/p&gt;</div><div class="line">  &lt;/transition&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">new Vue(&#123;</div><div class="line">  el: '#example-3',</div><div class="line">  data: &#123;</div><div class="line">    show: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p></p>
+            <p class="article-more-link">
+                <a href="/2016/10/26/Vue中的过渡效果/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/26/Vue中的过渡效果/" data-id="cj50p366q0010ucfyxh8ep1bl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/26/Vue中的过渡效果/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/26/Vue中的过渡效果/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Vue2-中的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -208,7 +499,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Vue/">Vue</a>
+        <a class="tag-link" href="/tags/vue/">vue</a>
     </div>
 
                     </div>
@@ -233,7 +524,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/25/Vue2-中的生命周期/" data-id="cj4zdnan0000ti14ocjuph32y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/25/Vue2-中的生命周期/" data-id="cj50p366o000vucfyqrdt86sq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -338,7 +629,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Html5/">Html5</a>
+        <a class="tag-link" href="/tags/html5/">html5</a>
     </div>
 
                     </div>
@@ -368,7 +659,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/21/Html5的file-API/" data-id="cj4zdnamw000oi14o48fqhx8g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/21/Html5的file-API/" data-id="cj50p366j000rucfy0xeelp8u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -516,7 +807,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/17/flex/" data-id="cj4zdnan40010i14oexk3hkz4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/17/flex/" data-id="cj50p366w0016ucfyc1opq4og" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -594,276 +885,8 @@
 
 
 
-    <article id="post-css3笔记" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/14/css3笔记/">css3笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/14/css3笔记/">
-            <time datetime="2016-10-14T07:26:35.000Z" itemprop="datePublished">2016-10-14</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/css3/">css3</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><blockquote>
-<p> 仅记录一些常用的css3属性</p>
-</blockquote>
-<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><h5 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h5><p>向元素添加圆角边框。<br>border-radius: 5px 4px 3px 2px; /<em> 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 </em>/ </p>
-<h5 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h5><p>向盒子添加阴影,支持添加一个或者多个。<br>box-shadow:<strong>X轴偏移</strong> <strong>Y轴偏移</strong> <em>阴影模糊半径</em> <em>阴影扩展半径</em> <em>阴影颜色</em> <em>投影方式</em>;</p>
-<ol>
-<li>阴影模糊半径与阴影扩展半径的区别<br>阴影模糊半径：此参数可选，其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；<br>阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值时，则缩小；</li>
-<li>X轴偏移量和Y轴偏移量值可以设置为负数<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h5 id="Gradient渐变色彩"><a href="#Gradient渐变色彩" class="headerlink" title="Gradient渐变色彩"></a>Gradient渐变色彩</h5>CSS3 Gradient 分为线性渐变(linear)和径向渐变(radial)。由于不同的渲染引擎实现渐变的语法不同，这里我们只针对线性渐变的 W3C 标准语法来分析其用法，其余大家可以查阅相关资料。W3C 语法已经得到了 IE10+、Firefox19.0+、Chrome26.0+ 和 Opera12.1+等浏览器的支持。<br><code>linear-gradient:(to top,#fff,#999)</code><ul>
-<li>第一个参数省略时，默认为“180deg”，等同于“to bottom”。</li>
-<li>第二个和第三个参数，表示颜色的起始点和结束点，可以有多个颜色值。</li>
-</ul>
-</li>
-</ol></p>
-            <p class="article-more-link">
-                <a href="/2016/10/14/css3笔记/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/14/css3笔记/" data-id="cj4zdnan60011i14o4upsf1ru" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/14/css3笔记/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/14/css3笔记/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-linux-交换alt和ctrl按键" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/14/linux-交换alt和ctrl按键/">linux 交换alt和ctrl按键</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/14/linux-交换alt和ctrl按键/">
-            <time datetime="2016-10-14T03:49:11.000Z" itemprop="datePublished">2016-10-14</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="为什么要交换alt键和ctrl键呢"><a href="#为什么要交换alt键和ctrl键呢" class="headerlink" title="为什么要交换alt键和ctrl键呢?"></a>为什么要交换alt键和ctrl键呢?</h3><p>珍爱小拇指,远离ctrl, ctrl键每次按时都要移动整个手掌, 而且还要看一眼键盘,实在是不爽啊<br>alt键就好了只要大拇指稍微移一下就可以按到了.<br>方法:<br>在home目录建一个文件  <code>.Xmodmap</code><br>然后在文件中写入下面几句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">remove control = Control_L                                                  </div><div class="line">remove mod1 = Alt_L</div><div class="line">keysym Control_L = Alt_L</div><div class="line">keysym Alt_L = Control_L</div><div class="line">add control = Control_L</div><div class="line">add mod1 = Alt_L</div></pre></td></tr></table></figure></p>
-<p>然后logout再登录就好了.上面的代码一定要写在 .Xmodmap 文件中才行.</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/" data-id="cj4zdnane001di14oyajbwfnd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
     </nav>
 </section>
             
@@ -874,6 +897,44 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="title">Express 模板传值对象app.locals、res.locals</a></p>
+                            <p class="item-date"><time datetime="2017-07-12T07:30:07.000Z" itemprop="datePublished">2017-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
+                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -932,44 +993,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/02/使用Travis将Hexo同时部署到Coding-net/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/02/使用Travis将Hexo同时部署到Coding-net/" class="title">使用Travis将Hexo同时部署到Coding.net</a></p>
-                            <p class="item-date"><time datetime="2017-06-02T15:57:18.000Z" itemprop="datePublished">2017-06-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/01/在express中使用es2015的新特性/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/01/在express中使用es2015的新特性/" class="title">在express中使用es2015的新特性</a></p>
-                            <p class="item-date"><time datetime="2017-06-01T10:20:55.000Z" itemprop="datePublished">2017-06-01</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -981,7 +1004,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -990,7 +1013,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html5/">Html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-react-router/">react react-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-babel/">webpack babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -999,7 +1022,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ES2015/" style="font-size: 20px;">ES2015</a> <a href="/tags/Html5/" style="font-size: 10px;">Html5</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es2015/" style="font-size: 10px;">es2015</a> <a href="/tags/express/" style="font-size: 12.5px;">express</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 12.5px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-react-router/" style="font-size: 10px;">react react-router</a> <a href="/tags/software/" style="font-size: 12.5px;">software</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 17.5px;">ubuntu</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/webpack-babel/" style="font-size: 10px;">webpack babel</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 

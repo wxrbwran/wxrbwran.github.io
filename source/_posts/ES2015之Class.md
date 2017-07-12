@@ -1,7 +1,7 @@
 ---
 title: ES2015之Class
 date: 2016-11-07 17:51:37
-tags: ES2015
+tags: es2015
 ---
 ## Class基本语法
 

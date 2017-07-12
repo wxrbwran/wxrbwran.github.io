@@ -1,0 +1,30 @@
+---
+title: 使用Travis将Hexo同时部署到Coding.net
+date: 2017-06-02 23:57:18
+tags: Travis
+---
+> 既然使用了Travis在push后发不到github，那就再加点东西，发布到coding.net的Pages服务上，理论上国内服务应该快一点点。
+>   同时搭建的教程可以看看[这里](http://www.ithome.com/html/win10/311572.htm)
+
+1. 修改.travis文件夹下的**ssh_config,**添加coding.net
+    ```  
+    Host github.com
+      User git
+      StrictHostKeyChecking no
+      IdentityFile ~/.ssh/id_rsa
+      IdentitiesOnly yes
+    Host git.coding.net
+      User git
+      StrictHostKeyChecking no
+      IdentityFile ~/.ssh/id_rsa
+      IdentitiesOnly yes
+    ```
+2. 修改hexo的配置文件**_config.yml**
+``` yml
+deploy:
+   type: git
+   repo:
+     coding: git@git.coding.net:wxrbw/wxrbw.coding.me.git,master
+     github: git@github.com:wxrbwran/wxrbwran.github.io.git,master
+```
+再push到github就可以自动发布到两个Pages了。

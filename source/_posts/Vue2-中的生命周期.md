@@ -1,7 +1,7 @@
 ---
 title: Vue2 中的生命周期
 date: 2016-10-25 16:56:34
-tags: Vue
+tags: vue
 ---
 >  项目从Vue1升级到Vue2，记录常见的改动。
 

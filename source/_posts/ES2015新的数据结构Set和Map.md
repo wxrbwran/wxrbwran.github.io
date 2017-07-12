@@ -1,7 +1,7 @@
 ---
 title: ES2015新的数据结构Set和Map
 date: 2016-11-02 16:38:05
-tags: ES2015
+tags: es2015
 ---
 ## Set
 

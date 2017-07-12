@@ -1,7 +1,7 @@
 ---
 title: 使用Travis将Hexo同时部署到Coding.net
 date: 2017-06-02 23:57:18
-tags: Travis
+tags: travis
 ---
 > 既然使用了Travis在push后发不到github，那就再加点东西，发布到coding.net的Pages服务上，理论上国内服务应该快一点点。
 >   同时搭建的教程可以看看[这里](http://www.ithome.com/html/win10/311572.htm)

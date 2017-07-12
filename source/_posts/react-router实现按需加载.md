@@ -1,7 +1,7 @@
 ---
 title: react-router实现按需加载
 date: 2017-07-08 21:56:09
-tags: react react-router
+tags: react
 ---
 **本文使用的 react-router 版本为3.0**
 > React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆" — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。

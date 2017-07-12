@@ -1,7 +1,7 @@
 ---
 title: 使用MockJs进行独立于后端的前端开发
 date: 2016-11-01 11:17:36
-tags: tools
+tags: mock
 ---
 
 ## Mock.js实现的功能

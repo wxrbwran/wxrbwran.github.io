@@ -1,7 +1,7 @@
 ---
 title: vuex2 的一些变化
 date: 2016-10-28 17:46:15
-tags: Vue
+tags: vue
 ---
 
 `` $store.state.count ``可以直接获取Store中的状态参数，但是getters可以返回对参数进行处理后的结果。

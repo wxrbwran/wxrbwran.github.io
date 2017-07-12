@@ -1,7 +1,7 @@
 ---
 title: ES2015之let 和 const
 date: 2016-10-29 11:45:52
-tags: ES2015
+tags: es2015
 ---
 ## let命令
 

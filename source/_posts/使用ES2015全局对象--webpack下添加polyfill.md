@@ -1,7 +1,7 @@
 ---
 title: 使用ES2015全局对象--webpack下添加polyfill
 date: 2017-01-22 16:32:07
-tags: webpack babel
+tags: webpack
 ---
 
 >公司使用的技术栈是*react全家桶*，使用*axios*进行ajax通信,axios使用的基于**Promise**实现。在现代浏览器上使用并没有什么问题，但是~~IE全系列不支持Promise~~，包括IE11...

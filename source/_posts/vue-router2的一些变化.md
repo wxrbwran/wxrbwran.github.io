@@ -1,7 +1,7 @@
 ---
 title: vue-router2的一些变化
 date: 2016-10-28 17:23:32
-tags: Vue
+tags: vue
 ---
 [vue-router2详细文档](http://router.vuejs.org/zh-cn/index.html)
 v-link由router-link替换，router-view 的name属性，可以匹配多个路由component**(s)**

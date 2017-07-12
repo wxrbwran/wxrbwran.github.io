@@ -1,7 +1,7 @@
 ---
 title: Vue中的过渡效果
 date: 2016-10-26 11:10:31
-tags: Vue
+tags: vue
 ---
 
 >  这里只写由css实现的简单过渡，js用到在做记录。
