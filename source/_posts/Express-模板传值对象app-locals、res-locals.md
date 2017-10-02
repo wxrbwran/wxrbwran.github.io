@@ -1,4 +1,4 @@
----
+z---
 title: Express 模板传值对象app.locals、res.locals
 date: 2017-07-12 15:30:07
 tags: express
