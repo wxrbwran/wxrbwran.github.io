@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/10/express的上传中间件multer/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  注意: Multer 不会处理任何非 multipart/form-data 类型的表单数据. 安装1npm install --save multer 使用">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-11T09:31:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express的上传中间件multer">
@@ -154,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -224,27 +225,27 @@
 <p>Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。</p>
 </blockquote>
 <p><strong>注意</strong>: Multer <del>不会处理</del>任何非 multipart/form-data 类型的表单数据.</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save multer</div></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><a id="more"></a>
-<p>Multer 会添加一个 body 对象 以及 <strong>file</strong> 或 <strong>files</strong> 对象 到 request 对象中. body 对象包含表单的文本域信息, file 或 files 对象包含对象表单上传的文件信息.<br>基本使用方法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</div><div class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</div><div class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">dest</span>: <span class="string">'uploads/'</span> &#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express()</div><div class="line"></div><div class="line">app.post(<span class="string">'/profile'</span>, upload.single(<span class="string">'avatar'</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="comment">// req.file 是 `avatar` 文件的信息</span></div><div class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.post(<span class="string">'/photos/upload'</span>, upload.array(<span class="string">'photos'</span>, <span class="number">12</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="comment">// req.files 是 `photos` 文件数组的信息</span></div><div class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> cpUpload = upload.fields([&#123; <span class="attr">name</span>: <span class="string">'avatar'</span>, <span class="attr">maxCount</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'gallery'</span>, <span class="attr">maxCount</span>: <span class="number">8</span> &#125;])</div><div class="line">app.post(<span class="string">'/cool-profile'</span>, cpUpload, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="comment">// req.files 是一个对象 (String -&gt; Array) 键是文件名, 值是文件数组</span></div><div class="line">  <span class="comment">//</span></div><div class="line">  <span class="comment">// 例如：</span></div><div class="line">  <span class="comment">//  req.files['avatar'][0] -&gt; File</span></div><div class="line">  <span class="comment">//  req.files['gallery'] -&gt; Array</span></div><div class="line">  <span class="comment">//</span></div><div class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>Multer 会添加一个 body 对象 以及 <strong>file</strong> 或 <strong>files</strong> 对象 到 request 对象中. body 对象包含表单的文本域信息, file 或 files 对象包含对象表单上传的文件信息.<br>基本使用方法:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">dest</span>: <span class="string">'uploads/'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/profile'</span>, upload.single(<span class="string">'avatar'</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.file 是 `avatar` 文件的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/photos/upload'</span>, upload.array(<span class="string">'photos'</span>, <span class="number">12</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是 `photos` 文件数组的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cpUpload = upload.fields([&#123; <span class="attr">name</span>: <span class="string">'avatar'</span>, <span class="attr">maxCount</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'gallery'</span>, <span class="attr">maxCount</span>: <span class="number">8</span> &#125;])</span><br><span class="line">app.post(<span class="string">'/cool-profile'</span>, cpUpload, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是一个对象 (String -&gt; Array) 键是文件名, 值是文件数组</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 例如：</span></span><br><span class="line">  <span class="comment">//  req.files['avatar'][0] -&gt; File</span></span><br><span class="line">  <span class="comment">//  req.files['gallery'] -&gt; Array</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>#API</p>
 <h2 id="multer-opts"><a href="#multer-opts" class="headerlink" title="multer(opts)"></a>multer(opts)</h2><p>Multer 接受一个 options 对象, 其中最基本的是 dest 属性, 这将告诉 Multer 将上传文件保存在哪. 如果你省略 options 对象, 这些文件将保存在内存中，永远不会写入磁盘。</p>
 <p>为了避免命名冲突, Multer 会修改上传的文件名. 这个重命名功能可以根据您的需要定制。</p>
 <p>以下是可以传递给Multer的选项.<br>&gt;<br>    Key                      Description<br>    dest or storage         在哪里存储文件<br>    fileFilter             文件过滤器，控制哪些文件可以被接受<br>    limits                 限制上传的数据</p>
-<p>通常, 只需要设置 dest 属性 像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var upload = multer(&#123; dest: &apos;uploads/&apos; &#125;)</div></pre></td></tr></table></figure></p>
+<p>通常, 只需要设置 dest 属性 像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var upload = multer(&#123; dest: &apos;uploads/&apos; &#125;)</span><br></pre></td></tr></table></figure></p>
 <p>如果你想在上传时进行更多的控制, 你可以使用storage选项替代dest. Multer 具有 DiskStorage 和 MemoryStorage 两个存储引擎; 另外还可以从第三方获得更多可用的引擎.</p>
 <h3 id="single-fieldname"><a href="#single-fieldname" class="headerlink" title=".single(fieldname)"></a>.single(fieldname)</h3><p>接受<strong>一个</strong>以 fieldname 命名的文件. 这个文件的信息保存在 <strong>req.file</strong>.</p>
 <h3 id="array-fieldname-maxCount"><a href="#array-fieldname-maxCount" class="headerlink" title=".array(fieldname[, maxCount])"></a>.array(fieldname[, maxCount])</h3><p>接受一个以 fieldname 命名的文件<strong>数组</strong>. 可以配置 maxCount 来限制上传的最大数量. 这些文件的信息保存在 <strong>req.files</strong>.</p>
 <h3 id="fields-fields"><a href="#fields-fields" class="headerlink" title=".fields(fields)"></a>.fields(fields)</h3><p>接受指定 fields 的混合文件. 这些文件的信息保存在 <strong>req.files</strong>.<br>fields 应该是一个对象数组，应该具有 name 和可选的 maxCount属性. Example:<br>[<br>  { name: ‘avatar’, maxCount: 1 },<br>  { name: ‘gallery’, maxCount: 8 }<br>]</p>
 <h3 id="none"><a href="#none" class="headerlink" title=".none()"></a>.none()</h3><p>只接受文本域. 如果任何文件上传到这个模式, 将发生 “LIMIT_UNEXPECTED_FILE” 错误. 这和 upload.fields([]) 的效果一样.</p>
 <h3 id="any"><a href="#any" class="headerlink" title=".any()"></a>.any()</h3><p>接受一切. 文件数组将保存在 <strong>req.files</strong>.<br><strong>警告</strong>: 确保你总是处理了用户的文件上传. 永远不要将multer作为全局中间件使用，因为恶意用户可以上传文件到一个你没有预料到的路由，应该只在你需要处理上传文件的路由上使用.</p>
-<h2 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h2><h3 id="DiskStorage"><a href="#DiskStorage" class="headerlink" title="DiskStorage"></a>DiskStorage</h3><p>磁盘存储引擎可以让你控制文件的存储.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> storage = multer.diskStorage(&#123;</div><div class="line">  <span class="attr">destination</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</div><div class="line">    cb(<span class="literal">null</span>, <span class="string">'/tmp/my-uploads'</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">filename</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</div><div class="line">    cb(<span class="literal">null</span>, file.fieldname + <span class="string">'-'</span> + <span class="built_in">Date</span>.now())</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">storage</span>: storage &#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h2><h3 id="DiskStorage"><a href="#DiskStorage" class="headerlink" title="DiskStorage"></a>DiskStorage</h3><p>磁盘存储引擎可以让你控制文件的存储.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storage = multer.diskStorage(&#123;</span><br><span class="line">  destination: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="string">'/tmp/my-uploads'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  filename: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, file.fieldname + <span class="string">'-'</span> + <span class="built_in">Date</span>.now())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">storage</span>: storage &#125;)</span><br></pre></td></tr></table></figure></p>
 <p>destination 是用来确定上传的文件应该存储在哪个文件夹中. 也可以提供一个 string (例如 ‘/tmp/uploads’). 如果没有设置 destination , 则使用操作默认的临时文件夹.<br>filename 用于确定文件夹中的文件名的确定。 如果没有设置filename , 每个文件将设置为一个随机文件名，并且是<strong>没有扩展名</strong>的<br>注意: Multer 不会为你添加任何扩展名, 你的程序应该返回一个完整的文件名.此时就可以在file.originName中获取扩展名。</p>
 <h3 id="limits"><a href="#limits" class="headerlink" title="limits"></a>limits</h3><p>可以使用下面这些:</p>
 <blockquote>
 <p>Key                                    Description                            Default<br><strong>fieldNameSize</strong>                  field 名字最大长度            <strong>100 bytes</strong><br><strong>fieldSize </strong>                         field 值的最大长度               <strong>1MB</strong><br><strong>fields</strong>                                非文件 field 的最大数量    <strong>无限</strong><br><strong>fileSize</strong>                               在multipart表单中, 文件最大长度 (字节单位)       <strong>无限</strong><br><strong>files</strong>                                   在multipart表单中, 文件最大数量                         <strong>无限</strong><br><strong>parts </strong>                                  在multipart表单中, part传输的最大数量(fields + files)    <strong>无限</strong><br><strong>headerPairs</strong>          For multipart forms, the max number of header key=&gt;value pairs to parse    <strong>2000</strong></p>
 </blockquote>
-<h3 id="fileFilter"><a href="#fileFilter" class="headerlink" title="fileFilter"></a>fileFilter</h3><p>设置一个函数来控制什么文件可以上传以及什么文件应该跳过，这个函数应该看起来像这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileFilter</span> (<span class="params">req, file, cb</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// 这个函数应该调用 `cb` 用boolean值来</span></div><div class="line">  <span class="comment">// 指示是否应接受该文件</span></div><div class="line"></div><div class="line">  <span class="comment">// 拒绝这个文件，使用`false`, 像这样:</span></div><div class="line">  cb(<span class="literal">null</span>, <span class="literal">false</span>)</div><div class="line"></div><div class="line">  <span class="comment">// 接受这个文件，使用`true`, 像这样:</span></div><div class="line">  cb(<span class="literal">null</span>, <span class="literal">true</span>)</div><div class="line"></div><div class="line">  <span class="comment">// 如果有问题，你可以总是这样发送一个错误:</span></div><div class="line">  cb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'I don\'t have a clue!'</span>))</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="fileFilter"><a href="#fileFilter" class="headerlink" title="fileFilter"></a>fileFilter</h3><p>设置一个函数来控制什么文件可以上传以及什么文件应该跳过，这个函数应该看起来像这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileFilter</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这个函数应该调用 `cb` 用boolean值来</span></span><br><span class="line">  <span class="comment">// 指示是否应接受该文件</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 拒绝这个文件，使用`false`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 接受这个文件，使用`true`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有问题，你可以总是这样发送一个错误:</span></span><br><span class="line">  cb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'I don\'t have a clue!'</span>))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -255,7 +256,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/10/express的上传中间件multer/" data-id="cj50p366u0014ucfy26xtvfpg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/06/10/express的上传中间件multer/" data-id="cjjhywkti0017b2fyzel6ewy9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -413,6 +414,82 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -429,82 +506,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -516,7 +517,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -525,7 +526,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -534,7 +535,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -562,7 +563,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>

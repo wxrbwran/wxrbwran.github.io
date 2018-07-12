@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/14/css3笔记/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="仅记录一些常用的css3属性  边框border-radius向元素添加圆角边框。border-radius: 5px 4px 3px 2px; / 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 /  box-shadow向盒子添加阴影,支持添加一个或者多个。box-shadow:X轴偏移 Y轴偏移 阴影模糊半径 阴影扩展半径 阴影颜色 投影方式;  阴影模糊半径与阴影扩展半径的区别">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f8t3j7iejxj309z066mxr.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tgw1f8t3kqlvs1j30a805t0ta.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tgw1f8t3l1aem0j30a705saak.jpg">
@@ -165,11 +166,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -245,7 +246,7 @@
 </li>
 </ol>
 <a id="more"></a>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><h5 id="text-overflow"><a href="#text-overflow" class="headerlink" title="text-overflow"></a>text-overflow</h5><p>用来设置是否使用一个省略标记（…）标示对象内文本的溢出。<br>但是text-overflow只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示省略号的效果，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">text-overflow:ellipsis; </div><div class="line">overflow:hidden; </div><div class="line">white-space:nowrap;</div></pre></td></tr></table></figure></p>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><h5 id="text-overflow"><a href="#text-overflow" class="headerlink" title="text-overflow"></a>text-overflow</h5><p>用来设置是否使用一个省略标记（…）标示对象内文本的溢出。<br>但是text-overflow只是用来说明文字溢出时用什么方式显示，要实现溢出时产生省略号的效果，还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示省略号的效果，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text-overflow:ellipsis; </span><br><span class="line">overflow:hidden; </span><br><span class="line">white-space:nowrap;</span><br></pre></td></tr></table></figure></p>
 <p>word-wrap也可以用来设置文本行为，当前行超过指定容器的边界时是否断开转行<br>word-wrap:normal|| break-word</p>
 <h5 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h5><p>可以用来设置文本的阴影效果。<br><code>text-shadow: X-Offset Y-Offset blur color;</code></p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h5 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h5><p>设置元素背景图片的原始起始位置。<br>语法：<br><code>background-origin ： border-box | padding-box | content-box;</code><br>参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。<br>需要注意的是，如果背景不是no-repeat，这个属性无效，它会从边框开始显示。</p>
@@ -257,8 +258,8 @@
 <li>cover：顾名思义为覆盖，即将背景图片等比缩放以填满整个容器；</li>
 <li>contain：容纳，即将背景图片等比缩放至某一边紧贴容器边缘为止。</li>
 </ol>
-<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><h5 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h5><figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx.pdf"</span>&gt;</span>我链接的是PDF文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"icon"</span>&gt;</span>我类名是icon<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">title</span>=<span class="string">"我的title是more"</span>&gt;</span>我的title是more<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><figcaption><span>CSS</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[class^=icon]</span>&#123;</div><div class="line">  <span class="attribute">background</span>: green;</div><div class="line">  <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=pdf]</span>&#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[title*=more]</span>&#123;</div><div class="line">  <span class="attribute">background</span>: blue;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><h5 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h5><figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx.pdf"</span>&gt;</span>我链接的是PDF文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"icon"</span>&gt;</span>我类名是icon<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">title</span>=<span class="string">"我的title是more"</span>&gt;</span>我的title是more<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><figcaption><span>CSS</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[class^=icon]</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$=pdf]</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: orange;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[title*=more]</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="结构性伪类选择器—root"><a href="#结构性伪类选择器—root" class="headerlink" title="结构性伪类选择器—root"></a>结构性伪类选择器—root</h5><p><code>:root</code>选择器，从字面上我们就可以很清楚的理解是根选择器，他的意思就是匹配元素E所在文档的根元素。在HTML文档中，根元素始终是<html>。</html></p>
 <h5 id="结构性伪类选择器—not"><a href="#结构性伪类选择器—not" class="headerlink" title="结构性伪类选择器—not"></a>结构性伪类选择器—not</h5><p><code>:not</code>选择器称为否定选择器，和jQuery中的:not选择器一模一样，可以选择除某个元素之外的所有元素。</p>
 <h5 id="结构性伪类选择器—empty"><a href="#结构性伪类选择器—empty" class="headerlink" title="结构性伪类选择器—empty"></a>结构性伪类选择器—empty</h5><p>:empty选择器表示的就是空。用来选择没有任何内容的元素，这里没有内容指的是一点内容都没有，哪怕是一个空格。</p>
@@ -304,9 +305,9 @@
 <h5 id="read-write选择器"><a href="#read-write选择器" class="headerlink" title=":read-write选择器"></a>:read-write选择器</h5><p>“:read-write”选择器刚好与“:read-only”选择器相反，主要用来指定当元素处于非只读状态时的样式。<br><code>input[type=&quot;text&quot;]:read-write{
   border-color: #f36;
 }</code><br>使用“:read-write”选择器来设置不是只读控件的文本框样式。</p>
-<h5 id="before和-after"><a href="#before和-after" class="headerlink" title="::before和::after"></a>::before和::after</h5><p><strong>::before</strong>和<strong>::after</strong>这两个主要用来给元素的前面或后面插入内容，这两个常和”content”配合使用，使用的场景最多的就是清除浮动。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,</div><div class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">"."</span>;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;<span class="attribute">clear</span>: both;&#125;</div><div class="line"><span class="selector-class">.clearfix</span> &#123;<span class="attribute">zoom</span>: <span class="number">1</span>;&#125;</div></pre></td></tr></table></figure><br>当然可以利用他们制作出其他更好的效果，比如右侧中的阴影效果，也是通过这个来实现的。</p>
-<p>关键代码分析：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.effect</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.effect</span><span class="selector-pseudo">::after</span>&#123;</div><div class="line">    <span class="attribute">content</span>:<span class="string">""</span>;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">z-index</span>:-<span class="number">1</span>;</div><div class="line">    <span class="attribute">-webkit-box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</div><div class="line">    <span class="attribute">-moz-box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</div><div class="line">    <span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</div><div class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">10px</span>;</div><div class="line">    <span class="attribute">right</span>:<span class="number">10px</span>;</div><div class="line">    <span class="attribute">-moz-border-radius</span>:<span class="number">100px</span> / <span class="number">10px</span>;</div><div class="line">    <span class="attribute">border-radius</span>:<span class="number">100px</span> / <span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>上面代码作用在class名叫.effect上的div的前（before）后(after)都添加一个空元素，然后为这两个空元素添加阴影特效。</p>
-<h2 id="变形与动画-transform"><a href="#变形与动画-transform" class="headerlink" title="变形与动画 transform"></a>变形与动画 transform</h2><h5 id="变形–旋转-rotate"><a href="#变形–旋转-rotate" class="headerlink" title="变形–旋转 rotate()"></a>变形–旋转 rotate()</h5><p>旋转rotate()函数通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.wrapper div &#123;</div><div class="line">  width: 200px;</div><div class="line">  height: 200px;</div><div class="line">  background: orange;</div><div class="line">  -webkit-transform: rotate(45deg);</div><div class="line">  transform: rotate(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="before和-after"><a href="#before和-after" class="headerlink" title="::before和::after"></a>::before和::after</h5><p><strong>::before</strong>和<strong>::after</strong>这两个主要用来给元素的前面或后面插入内容，这两个常和”content”配合使用，使用的场景最多的就是清除浮动。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"."</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;<span class="attribute">clear</span>: both;&#125;</span><br><span class="line"><span class="selector-class">.clearfix</span> &#123;<span class="attribute">zoom</span>: <span class="number">1</span>;&#125;</span><br></pre></td></tr></table></figure><br>当然可以利用他们制作出其他更好的效果，比如右侧中的阴影效果，也是通过这个来实现的。</p>
+<p>关键代码分析：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.effect</span><span class="selector-pseudo">::before</span>, <span class="selector-class">.effect</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">""</span>;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">z-index</span>:-<span class="number">1</span>;</span><br><span class="line">    <span class="attribute">-webkit-box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</span><br><span class="line">    <span class="attribute">-moz-box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</span><br><span class="line">    <span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="built_in">rgba</span>(0,0,0,0.8);</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">right</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">-moz-border-radius</span>:<span class="number">100px</span> / <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>:<span class="number">100px</span> / <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>上面代码作用在class名叫.effect上的div的前（before）后(after)都添加一个空元素，然后为这两个空元素添加阴影特效。</p>
+<h2 id="变形与动画-transform"><a href="#变形与动画-transform" class="headerlink" title="变形与动画 transform"></a>变形与动画 transform</h2><h5 id="变形–旋转-rotate"><a href="#变形–旋转-rotate" class="headerlink" title="变形–旋转 rotate()"></a>变形–旋转 rotate()</h5><p>旋转rotate()函数通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.wrapper div &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: orange;</span><br><span class="line">  -webkit-transform: rotate(45deg);</span><br><span class="line">  transform: rotate(45deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h5 id="变形–扭曲-skew"><a href="#变形–扭曲-skew" class="headerlink" title="变形–扭曲 skew()"></a>变形–扭曲 skew()</h5><p>扭曲skew()函数能够让元素倾斜显示。它可以将一个对象以其中心位置围绕着X轴和Y轴按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变元素的形状。skew()函数不会旋转，而只会改变元素的形状。<br>Skew()具有<strong>三种</strong>情况：</p>
 <ol>
 <li>skew(x,y)使元素在水平和垂直方向同时扭曲（X轴和Y轴同时按一定的角度值进行扭曲变形）；<br><img src="http://ww1.sinaimg.cn/large/0060lm7Tgw1f8t3j7iejxj309z066mxr.jpg" alt="X,Y扭曲"><br>第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则值为0，也就是Y轴方向上无斜切。</li>
@@ -318,8 +319,8 @@
 transform: scale(1.5,0.5);
 }</code><br><strong>注意：Y是一个可选参数，如果没有设置Y值，则表示X，Y两个方向的缩放倍数是一样的。</strong></li>
 <li>scaleX(x)元素仅水平方向缩放（X轴缩放）<br><img src="http://img.mukewang.com/53391b0b00016a7002920170.jpg" alt="X缩放"></li>
-<li>scaleY(y)元素仅垂直方向缩放（Y轴缩放）<br><img src="http://img.mukewang.com/53391b14000169cf03280183.jpg" alt="Y缩放"><h5 id="变形–位移-translate"><a href="#变形–位移-translate" class="headerlink" title="变形–位移 translate()"></a>变形–位移 translate()</h5>translate()函数可以将元素向指定的方向移动，类似于position中的relative。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上的任何Web组件。<br>translate我们分为<strong>三种</strong>情况：<br>1、translate(x,y)水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动），一个参数时仅X位移。<br><img src="http://img.mukewang.com/53391c640001709503850257.jpg" alt="X,Y位移"><br>2、translateX(x)仅水平方向移动（X轴移动）<br><img src="http://img.mukewang.com/53391c920001420703810201.jpg" alt="X位移"><br>3、translateY(Y)仅垂直方向移动（Y轴移动）<br><img src="http://img.mukewang.com/53391ca70001da5e03570211.jpg" alt="Y位移"><h5 id="变形–矩阵-matrix"><a href="#变形–矩阵-matrix" class="headerlink" title="变形–矩阵 matrix()"></a>变形–矩阵 matrix()</h5>matrix() 是一个含六个值的(a,b,c,d,e,f)变换矩阵，用来指定一个2D变换，相当于直接应用一个[a b c d e f]变换矩阵。就是基于水平方向（X轴）和垂直方向（Y轴）重新定位元素,此属性值使用涉及到数学中的矩阵，我在这里只是简单的说一下CSS3中的transform有这么一个属性值，如果需要深入了解，需要对数学矩阵有一定的知识。<br>示例演示：通过matrix()函数来模拟transform中translate()位移的效果。<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">2px</span> dotted red;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">40px</span> auto;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.wrapper</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">300px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">matrix</span>(1,0,0,1,50,50);</div><div class="line">  <span class="attribute">-moz-transform</span>:<span class="built_in">matrix</span>(1,0,0,1,50,50);</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">matrix</span>(1,0,0,1,50,50);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>scaleY(y)元素仅垂直方向缩放（Y轴缩放）<br><img src="http://img.mukewang.com/53391b14000169cf03280183.jpg" alt="Y缩放"><h5 id="变形–位移-translate"><a href="#变形–位移-translate" class="headerlink" title="变形–位移 translate()"></a>变形–位移 translate()</h5>translate()函数可以将元素向指定的方向移动，类似于position中的relative。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上的任何Web组件。<br>translate我们分为<strong>三种</strong>情况：<br>1、translate(x,y)水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动），一个参数时仅X位移。<br><img src="http://img.mukewang.com/53391c640001709503850257.jpg" alt="X,Y位移"><br>2、translateX(x)仅水平方向移动（X轴移动）<br><img src="http://img.mukewang.com/53391c920001420703810201.jpg" alt="X位移"><br>3、translateY(Y)仅垂直方向移动（Y轴移动）<br><img src="http://img.mukewang.com/53391ca70001da5e03570211.jpg" alt="Y位移"><h5 id="变形–矩阵-matrix"><a href="#变形–矩阵-matrix" class="headerlink" title="变形–矩阵 matrix()"></a>变形–矩阵 matrix()</h5>matrix() 是一个含六个值的(a,b,c,d,e,f)变换矩阵，用来指定一个2D变换，相当于直接应用一个[a b c d e f]变换矩阵。就是基于水平方向（X轴）和垂直方向（Y轴）重新定位元素,此属性值使用涉及到数学中的矩阵，我在这里只是简单的说一下CSS3中的transform有这么一个属性值，如果需要深入了解，需要对数学矩阵有一定的知识。<br>示例演示：通过matrix()函数来模拟transform中translate()位移的效果。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">2px</span> dotted red;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">40px</span> auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background</span>: orange;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">matrix</span>(1,0,0,1,50,50);</span><br><span class="line">  <span class="attribute">-moz-transform</span>:<span class="built_in">matrix</span>(1,0,0,1,50,50);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">matrix</span>(1,0,0,1,50,50);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 演示结果：<br><img src="http://img.mukewang.com/53391e000001b60b03890278.jpg" alt="矩阵变换"><blockquote>
 <p> matrix(scaleX(),skewX(),skewY(),scaleY(),translateX(),translateY());</p>
 </blockquote>
@@ -338,8 +339,8 @@ transform: scale(1.5,0.5);
 <blockquote>
 <p> 假设你的初始状态设置了样式“width”,“height”,“background”,当你在终始状态都改变了这三个属性，那么all代表的就是“width”、“height”和“background”。如果你的终始状态只改变了“width”和“height”时，那么all代表的就是“width”和“height”。</p>
 </blockquote>
-<h2 id="动画–animation"><a href="#动画–animation" class="headerlink" title="动画–animation"></a>动画–animation</h2><h5 id="Keyframes介绍"><a href="#Keyframes介绍" class="headerlink" title="Keyframes介绍"></a>Keyframes介绍</h5><p>Keyframes被称为关键帧，其类似于Flash中的关键帧。在CSS3中其主要以“@keyframes”开头，后面紧跟着是动画名称加上一对花括号“{…}”，括号中就是一些不同时间段样式规则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@keyframes changecolor&#123;</div><div class="line">  0%&#123;</div><div class="line">   background: red;</div><div class="line">  &#125;</div><div class="line">  100%&#123;</div><div class="line">    background: green;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在一个“@keyframes”中的样式规则可以由多个百分比构成的，如在“0%”到“100%”之间创建更多个百分比，分别给每个百分比中给需要有动画效果的元素加上不同的样式，从而达到一种在不断变化的效果。<br>经验与技巧：在@keyframes中定义动画名称时，<strong>其中0%和100%还可以使用关键词from和to来代表，其中0%对应的是from，100%对应的是to。</strong><br>案例演示<br>通过“@keyframes”声明一个名叫“wobble”的动画，从“0%”开始到“100%”结束，同时还经历了一个“40%”和“60%”两个过程。“wobble”动画在“0%”时元素定位到left为100px，背景色为green，然后在“40%”时元素过渡到left为150px,背景色为orange,接着在“60%”时元素过渡到left为75px，背景色为blue，最后“100%”时结束动画，元素又回到起点left为100px处，背景色变为red。<br><code>animation: wobble 5s ease .1s;</code>后三个参数与transition相同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">HTML:</div><div class="line"></div><div class="line">&lt;div&gt;鼠标放到我身上&lt;/div&gt;</div><div class="line">CSS:</div><div class="line"></div><div class="line">@keyframes wobble &#123;</div><div class="line">  0% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">    background:green;</div><div class="line">  &#125;</div><div class="line">  40% &#123;</div><div class="line">    margin-left:150px;</div><div class="line">    background:orange;</div><div class="line">  &#125;</div><div class="line">  60% &#123;</div><div class="line">    margin-left: 75px;</div><div class="line">    background: blue;</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">    background: red;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  height: 100px;</div><div class="line">  background:red;</div><div class="line">  color: #fff;</div><div class="line">&#125;</div><div class="line">div:hover&#123;</div><div class="line">  animation: wobble 5s ease .1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="动画–animation"><a href="#动画–animation" class="headerlink" title="动画–animation"></a>动画–animation</h2><h5 id="Keyframes介绍"><a href="#Keyframes介绍" class="headerlink" title="Keyframes介绍"></a>Keyframes介绍</h5><p>Keyframes被称为关键帧，其类似于Flash中的关键帧。在CSS3中其主要以“@keyframes”开头，后面紧跟着是动画名称加上一对花括号“{…}”，括号中就是一些不同时间段样式规则。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@keyframes changecolor&#123;</span><br><span class="line">  0%&#123;</span><br><span class="line">   background: red;</span><br><span class="line">  &#125;</span><br><span class="line">  100%&#123;</span><br><span class="line">    background: green;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在一个“@keyframes”中的样式规则可以由多个百分比构成的，如在“0%”到“100%”之间创建更多个百分比，分别给每个百分比中给需要有动画效果的元素加上不同的样式，从而达到一种在不断变化的效果。<br>经验与技巧：在@keyframes中定义动画名称时，<strong>其中0%和100%还可以使用关键词from和to来代表，其中0%对应的是from，100%对应的是to。</strong><br>案例演示<br>通过“@keyframes”声明一个名叫“wobble”的动画，从“0%”开始到“100%”结束，同时还经历了一个“40%”和“60%”两个过程。“wobble”动画在“0%”时元素定位到left为100px，背景色为green，然后在“40%”时元素过渡到left为150px,背景色为orange,接着在“60%”时元素过渡到left为75px，背景色为blue，最后“100%”时结束动画，元素又回到起点left为100px处，背景色变为red。<br><code>animation: wobble 5s ease .1s;</code>后三个参数与transition相同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">HTML:</span><br><span class="line"></span><br><span class="line">&lt;div&gt;鼠标放到我身上&lt;/div&gt;</span><br><span class="line">CSS:</span><br><span class="line"></span><br><span class="line">@keyframes wobble &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    margin-left: 100px;</span><br><span class="line">    background:green;</span><br><span class="line">  &#125;</span><br><span class="line">  40% &#123;</span><br><span class="line">    margin-left:150px;</span><br><span class="line">    background:orange;</span><br><span class="line">  &#125;</span><br><span class="line">  60% &#123;</span><br><span class="line">    margin-left: 75px;</span><br><span class="line">    background: blue;</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    margin-left: 100px;</span><br><span class="line">    background: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">div &#123;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  background:red;</span><br><span class="line">  color: #fff;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">  animation: wobble 5s ease .1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>animation-iteration-count</strong>属性主要用来定义动画的播放次数。<br>语法规则：<br>animation-iteration-count: infinite | <number> [, infinite | <number>]*</number></number></p>
 <ol>
 <li>其值通常为整数，但也可以使用带有小数的数字，其默认值为1，这意味着动画将从开始到结束只播放一次。</li>
@@ -386,7 +387,7 @@ transform: scale(1.5,0.5);
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/14/css3笔记/" data-id="cj50p366x001bucfyp1f2y706" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/14/css3笔记/" data-id="cjjhywkth0015b2fytuof4zn3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -544,6 +545,82 @@ transform: scale(1.5,0.5);
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -560,82 +637,6 @@ transform: scale(1.5,0.5);
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -647,7 +648,7 @@ transform: scale(1.5,0.5);
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -656,7 +657,7 @@ transform: scale(1.5,0.5);
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -665,7 +666,7 @@ transform: scale(1.5,0.5);
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -693,7 +694,7 @@ transform: scale(1.5,0.5);
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>

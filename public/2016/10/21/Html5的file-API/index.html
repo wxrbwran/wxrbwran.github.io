@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/21/Html5的file-API/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="在html4的年代，我们如果要在网页上呈现一张用户本地的图片，需要用户先把图片上传到服务器，再根据服务器提供的图片地址把图片下载下来，才能把图片在网页上呈现出来。这一来二往，起码已经费了两倍于这张图片的流量了，更别说服务器为了存储这张图片所花费的资源以及用户上传错了图片的冤枉成本（因为在html4时代，用户选择好图片后，往往只能看到图片的文件名，而无法通过预览图来进一步确认这张图片是否就是自己想">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-12T07:32:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Html5的file API">
@@ -154,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -226,8 +227,8 @@
 <p>  首先是<em>数据结构</em>，html5定义了一个<strong>file</strong>对象类型来表示文件，每个file对象对应一个文件。file对象有3个属性：<em>name</em>、<em>size</em>、<em>type</em>。name是不包含路径的文件名，size是以字节为单位的文件体积大小，type则是文件的MIME（例如image/jpg）。</p>
 <p>  file对象不单独存在，而是以数组形式，存在一个名为FileList的数组中。那么，如何拿到这个FileList数组呢？目前，html5有两个途径可以拿到FileList，<strong>一是通过file类型的input</strong>，<strong>二是通过拖放操作的drop事件</strong>。</p>
 <h3 id="通过file类型的input获取FileList"><a href="#通过file类型的input获取FileList" class="headerlink" title="通过file类型的input获取FileList"></a>通过file类型的input获取FileList</h3><p><code>&lt;input id=&quot;file-input&quot; type=&quot;file&quot; /&gt;</code><br>或html5新增的可进行文件多选的multiple属性：</p>
-<p><code>&lt;input id=&quot;file-input&quot; type=&quot;file&quot; multiple /&gt;</code><br>一般，我们都是给input:file绑上一个<em>onchange</em>事件，以便在用户选定文件后，马上进行读取文件等下一步操作：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//原生js</span></div><div class="line"><span class="keyword">var</span> inputElement = <span class="built_in">document</span>.getElementById(<span class="string">"file-input"</span>);</div><div class="line">inputElement.addEventListener(<span class="string">"change"</span>, handleFiles, <span class="literal">false</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFiles</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> fileList = <span class="keyword">this</span>.files; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//jquery版</span></div><div class="line">$(<span class="string">'#file-input'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> fileList = <span class="keyword">this</span>.files;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h3 id="通过拖放操作drop事件"><a href="#通过拖放操作drop事件" class="headerlink" title="通过拖放操作drop事件"></a>通过拖放操作drop事件</h3><p>首先要设定一个可供拖放的区域：<br><code>&lt;div id=&quot;dropbox&quot; style=&quot;width: 200px;height: 200px;&quot;&gt;&lt;/div&gt;</code><br>另外，为了能<strong>触发drop</strong>事件，我们必须阻止dragenter和dragover事件的默认行为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dropbox;</div><div class="line">dropbox = <span class="built_in">document</span>.getElementById(<span class="string">"dropbox"</span>);</div><div class="line">dropbox.addEventListener(<span class="string">"dragenter"</span>, dragenter, <span class="literal">false</span>);</div><div class="line">dropbox.addEventListener(<span class="string">"dragover"</span>, dragover, <span class="literal">false</span>);</div><div class="line">dropbox.addEventListener(<span class="string">"drop"</span>, drop, <span class="literal">false</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dragenter</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  e.stopPropagation();</div><div class="line">  e.preventDefault();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dragover</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  e.stopPropagation();</div><div class="line">  e.preventDefault();</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>然后，我们就可以在drop事件的callback中，获取到fileList：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  e.stopPropagation();</div><div class="line">  e.preventDefault();</div><div class="line"></div><div class="line">  <span class="keyword">var</span> dt = e.dataTransfer;</div><div class="line">  <span class="keyword">var</span> files = dt.files;</div><div class="line"></div><div class="line">  handleFiles(files);</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><a id="more"></a></p>
+<p><code>&lt;input id=&quot;file-input&quot; type=&quot;file&quot; multiple /&gt;</code><br>一般，我们都是给input:file绑上一个<em>onchange</em>事件，以便在用户选定文件后，马上进行读取文件等下一步操作：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原生js</span></span><br><span class="line"><span class="keyword">var</span> inputElement = <span class="built_in">document</span>.getElementById(<span class="string">"file-input"</span>);</span><br><span class="line">inputElement.addEventListener(<span class="string">"change"</span>, handleFiles, <span class="literal">false</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFiles</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fileList = <span class="keyword">this</span>.files; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//jquery版</span></span><br><span class="line">$(<span class="string">'#file-input'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fileList = <span class="keyword">this</span>.files;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过拖放操作drop事件"><a href="#通过拖放操作drop事件" class="headerlink" title="通过拖放操作drop事件"></a>通过拖放操作drop事件</h3><p>首先要设定一个可供拖放的区域：<br><code>&lt;div id=&quot;dropbox&quot; style=&quot;width: 200px;height: 200px;&quot;&gt;&lt;/div&gt;</code><br>另外，为了能<strong>触发drop</strong>事件，我们必须阻止dragenter和dragover事件的默认行为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dropbox;</span><br><span class="line">dropbox = <span class="built_in">document</span>.getElementById(<span class="string">"dropbox"</span>);</span><br><span class="line">dropbox.addEventListener(<span class="string">"dragenter"</span>, dragenter, <span class="literal">false</span>);</span><br><span class="line">dropbox.addEventListener(<span class="string">"dragover"</span>, dragover, <span class="literal">false</span>);</span><br><span class="line">dropbox.addEventListener(<span class="string">"drop"</span>, drop, <span class="literal">false</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dragenter</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.stopPropagation();</span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dragover</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.stopPropagation();</span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>然后，我们就可以在drop事件的callback中，获取到fileList：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drop</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.stopPropagation();</span><br><span class="line">  e.preventDefault();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> dt = e.dataTransfer;</span><br><span class="line">  <span class="keyword">var</span> files = dt.files;</span><br><span class="line"></span><br><span class="line">  handleFiles(files);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><a id="more"></a></p>
 <blockquote>
 <p> 怎么读取或利用file对象呢？html5提供了两个方案：<strong>FileReader</strong>和<strong>ObjectUrl</strong>。</p>
 </blockquote>
@@ -240,7 +241,7 @@
 <li>readAsDataURL(file) ：读取file对象并存放为data: URL格式的字符串。</li>
 </ol>
 <h3 id="利用ObjectURL"><a href="#利用ObjectURL" class="headerlink" title="利用ObjectURL"></a>利用ObjectURL</h3><p>ObjectURL相当于文件的一个临时路径，此临时路径可随时生成、随时释放，在本地浏览器使用起来时，与普通的url无异。以把一张本地图片显示在页面上为例：<br><code>var img = document.createElement(&quot;img&quot;);
-img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:<a href="http://test.local.com/e03e8bbf-66ce-4fea-a8c8-772f9fdb4d40" target="_blank" rel="external">http://test.local.com/e03e8bbf-66ce-4fea-a8c8-772f9fdb4d40</a><br>用这个src就能让浏览器从本地读取图片。<br>这种方案相对用FileReader生成图片的base64编码并放到<img>的src里来说，性能有了很大的提升。</p>
+img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:<a href="http://test.local.com/e03e8bbf-66ce-4fea-a8c8-772f9fdb4d40" target="_blank" rel="noopener">http://test.local.com/e03e8bbf-66ce-4fea-a8c8-772f9fdb4d40</a><br>用这个src就能让浏览器从本地读取图片。<br>这种方案相对用FileReader生成图片的base64编码并放到<img>的src里来说，性能有了很大的提升。</p>
 <p>比较这两种读取File对象的方案，<strong>FileReader适合用来上传文件</strong>，而<strong>ObjectURL则适合直接在浏览器进行操作，然后操作后再把处理后的数据进行上传，例如利用canvas截图或进行图片压缩等</strong>。当然，这一切都是要考虑<em>兼容性</em>的。</p>
 
         
@@ -252,7 +253,7 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/21/Html5的file-API/" data-id="cj50p366j000rucfy0xeelp8u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/21/Html5的file-API/" data-id="cjjhywktb000tb2fyvto4bc1n" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -410,6 +411,82 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -426,82 +503,6 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -513,7 +514,7 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -522,7 +523,7 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -531,7 +532,7 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -559,7 +560,7 @@ img.src = window.URL.createObjectURL(file);</code><br>此时，src形如：blob:
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>

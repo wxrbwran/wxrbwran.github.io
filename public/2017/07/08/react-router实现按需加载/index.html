@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/08/react-router实现按需加载/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="本文使用的 react-router 版本为3.0  React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆” — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。实际上">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-12T07:33:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router实现按需加载">
@@ -154,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -224,23 +225,23 @@
 <blockquote>
 <p>React Router 是一个非常出色的路由解决方案，同时也非常容易上手。但是当网站规模越来越大的时候，首先出现的问题是 Javascript 文件变得巨大，这导致首页渲染的时间让人难以忍受。实际上程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码分拆” — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。<br>实际上就是将一个大 javascript 文件拆分成了若干个 chunk file。</p>
 </blockquote>
-<h3 id="Webpack-配置"><a href="#Webpack-配置" class="headerlink" title="Webpack 配置"></a>Webpack 配置</h3><p>首先在 webpack.config.js 的 output 内加上 chunkFilename<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  <span class="attr">path</span>: path.join(__dirname, <span class="string">'/../dist/assets'</span>),</div><div class="line">  <span class="attr">filename</span>: <span class="string">'app.js'</span>,</div><div class="line">  <span class="attr">publicPath</span>: defaultSettings.publicPath,</div><div class="line">  <span class="comment">// 添加 chunkFilename</span></div><div class="line">  chunkFilename: <span class="string">'[name].[chunkhash:5].chunk.js'</span>,</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<h3 id="Webpack-配置"><a href="#Webpack-配置" class="headerlink" title="Webpack 配置"></a>Webpack 配置</h3><p>首先在 webpack.config.js 的 output 内加上 chunkFilename<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  path: path.join(__dirname, <span class="string">'/../dist/assets'</span>),</span><br><span class="line">  filename: <span class="string">'app.js'</span>,</span><br><span class="line">  publicPath: defaultSettings.publicPath,</span><br><span class="line">  <span class="comment">// 添加 chunkFilename</span></span><br><span class="line">  chunkFilename: <span class="string">'[name].[chunkhash:5].chunk.js'</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
 <p>name 是在代码里为创建的 chunk 指定的名字，如果代码中没指定则 webpack 默认分配 id 作为 name。<br><a id="more"></a><br>chunkhash 是文件的 hash 码，这里只使用前五位。</p>
-<h3 id="添加首页"><a href="#添加首页" class="headerlink" title="添加首页"></a>添加首页</h3><p>以前你的路由大概应该是这样的：（作为需要按需加载的大型应用，路由肯定是相当复杂，这里只列举部分路由举例）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(</div><div class="line"> (</div><div class="line">  &lt;Router history=&#123;browserHistory&#125;&gt;</div><div class="line">   &#123;/* 主页 */&#125;</div><div class="line">   &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">    &#123;/* 默认 */&#125;</div><div class="line">    &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</div><div class="line"></div><div class="line">    &#123;/* baidu */&#125;</div><div class="line">    &lt;Route path="/baidu" component=&#123;BaiduPage&#125;&gt;</div><div class="line">     &lt;Route path="result" component=&#123;BaiduResultPage&#125; /&gt;</div><div class="line">     &lt;Route path="frequency" component=&#123;BaiduFrequencyPage&#125; /&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line"></div><div class="line">    &#123;/* 404 */&#125;</div><div class="line">    &lt;Route path='/404' component=&#123;NotFoundPage&#125; /&gt;</div><div class="line">    </div><div class="line">    &#123;/* 其他重定向到 404 */&#125;</div><div class="line">    &lt;Redirect from='*' to='/404' /&gt;</div><div class="line">   &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div><div class="line"> ), document.getElementById('app')</div><div class="line">);</div></pre></td></tr></table></figure></p>
-<p>按需加载之后，我们需要让路由动态加载组件，需要将 component 换成 getComponent。首先将路由拆出来（因为路由庞大之后全部写在一起会很难看），创建一个根路由 rootRoute：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rootRoute = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line"> <span class="attr">indexRoute</span>: &#123;</div><div class="line">  getComponent(nextState, cb) &#123;</div><div class="line">   <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/HomePage'</span>))</div><div class="line">   &#125;, <span class="string">'HomePage'</span>)</div><div class="line">  &#125;,</div><div class="line"> &#125;,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/Main'</span>))</div><div class="line">  &#125;, <span class="string">'Main'</span>)</div><div class="line"> &#125;,</div><div class="line"> <span class="attr">childRoutes</span>: [</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/baidu'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/404'</span>),</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./routes/redirect'</span>)</div><div class="line"> ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line"> (</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Router</span></span></span></div><div class="line">   <span class="attr">history</span>=<span class="string">&#123;browserHistory&#125;</span></div><div class="line">   <span class="attr">routes</span>=<span class="string">&#123;rootRoute&#125;</span></div><div class="line">   /&gt;</div><div class="line"> ), document.getElementById('app')</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h3 id="添加首页"><a href="#添加首页" class="headerlink" title="添加首页"></a>添加首页</h3><p>以前你的路由大概应该是这样的：（作为需要按需加载的大型应用，路由肯定是相当复杂，这里只列举部分路由举例）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line"> (</span><br><span class="line">  &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">   &#123;<span class="comment">/* 主页 */</span>&#125;</span><br><span class="line">   &lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</span><br><span class="line">    &#123;<span class="comment">/* 默认 */</span>&#125;</span><br><span class="line">    &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</span><br><span class="line"></span><br><span class="line">    &#123;<span class="comment">/* baidu */</span>&#125;</span><br><span class="line">    &lt;Route path=<span class="string">"/baidu"</span> component=&#123;BaiduPage&#125;&gt;</span><br><span class="line">     &lt;Route path=<span class="string">"result"</span> component=&#123;BaiduResultPage&#125; /&gt;</span><br><span class="line">     &lt;Route path=<span class="string">"frequency"</span> component=&#123;BaiduFrequencyPage&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#123;/</span>* <span class="number">404</span> *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">    &lt;Route path='/</span><span class="number">404</span><span class="string">' component=&#123;NotFoundPage&#125; /&gt;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &#123;/* 其他重定向到 404 */&#125;</span></span><br><span class="line"><span class="string">    &lt;Redirect from='</span>*<span class="string">' to='</span>/<span class="number">404</span><span class="string">' /&gt;</span></span><br><span class="line"><span class="string">   &lt;/Route&gt;</span></span><br><span class="line"><span class="string">  &lt;/Router&gt;</span></span><br><span class="line"><span class="string"> ), document.getElementById('</span>app<span class="string">')</span></span><br><span class="line"><span class="string">);</span></span><br></pre></td></tr></table></figure></p>
+<p>按需加载之后，我们需要让路由动态加载组件，需要将 component 换成 getComponent。首先将路由拆出来（因为路由庞大之后全部写在一起会很难看），创建一个根路由 rootRoute：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rootRoute = &#123;</span><br><span class="line"> path: <span class="string">'/'</span>,</span><br><span class="line"> indexRoute: &#123;</span><br><span class="line">  getComponent(nextState, cb) &#123;</span><br><span class="line">   <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/HomePage'</span>))</span><br><span class="line">   &#125;, <span class="string">'HomePage'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> &#125;,</span><br><span class="line"> getComponent(nextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/Main'</span>))</span><br><span class="line">  &#125;, <span class="string">'Main'</span>)</span><br><span class="line"> &#125;,</span><br><span class="line"> childRoutes: [</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'./routes/baidu'</span>),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'./routes/404'</span>),</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'./routes/redirect'</span>)</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line"> (</span><br><span class="line">  &lt;Router</span><br><span class="line">   history=&#123;browserHistory&#125;</span><br><span class="line">   routes=&#123;rootRoute&#125;</span><br><span class="line">   /&gt;</span><br><span class="line"> ), <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>history 不变，在 Router 中添加 routes 属性，将创建的路由传递进去。<br>这里有四个属性：</p>
 <h4 id="path"><a href="#path" class="headerlink" title="path"></a>path</h4><p>将匹配的路由，也就是以前的 path。</p>
 <h4 id="getComponent"><a href="#getComponent" class="headerlink" title="getComponent"></a>getComponent</h4><p>对应于以前的 component 属性，但是这个方法是异步的，也就是当路由匹配时，才会调用这个方法。<br>这里面有个 require.ensure 方法</p>
 <h4 id="require-ensure-dependencies-callback-chunkName"><a href="#require-ensure-dependencies-callback-chunkName" class="headerlink" title="require.ensure(dependencies, callback, chunkName)"></a>require.ensure(dependencies, callback, chunkName)</h4><p>这是 webpack 提供的方法，这也是按需加载的核心方法。第一个参数是依赖，第二个是回调函数，第三个就是上面提到的 chunkName，用来指定这个 chunk file 的 name。<br>如果需要返回多个子组件，则使用 getComponents 方法，将多个组件作为一个对象的属性通过 cb 返回出去即可。这个在官方示例也有，但是我们这里并不需要，而且根组件是不能返回多个子组件的，所以使用 getComponent。</p>
 <h4 id="indexRoute"><a href="#indexRoute" class="headerlink" title="indexRoute"></a>indexRoute</h4><p>用来设置主页，对应于以前的 <indexroute>。<br>注意这里的 indexRoute 写法， 这是个对象，在对象里面使用 getComponent。</indexroute></p>
 <h4 id="childRoutes"><a href="#childRoutes" class="headerlink" title="childRoutes"></a>childRoutes</h4><p>这里面放置的就是子路由的配置，对应于以前的子路由们。我们将以前的 /baidu、/404 和 * 都拆了出来，接下来将分别为他们创建路由配置。</p>
-<h3 id="路由控制"><a href="#路由控制" class="headerlink" title="路由控制"></a>路由控制</h3><p>上面的childRoutes 里面，我们 require 了三个子路由，在目录下创建 routes 目录，将这三个路由放置进去。<br>routes/<br>├── 404<br>│  └── index.js<br>├── baidu<br>│  ├── index.js<br>│  └── routes<br>│    ├── frequency<br>│    │  └── index.js<br>│    └── result<br>│      └── index.js<br>└── redirect<br>  └── index.js<br>和 rootRoute 类似，里面的每个 index.js 都是一个路由对象：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/<span class="number">404</span>/index.js</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'404'</span>,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/NotFoundPage'</span>))</div><div class="line">  &#125;, <span class="string">'NotFoundPage'</span>)</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">/baidu/index.js</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'baidu'</span>,</div><div class="line"> getChildRoutes(partialNextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, [</div><div class="line">    <span class="built_in">require</span>(<span class="string">'./routes/result'</span>),</div><div class="line">    <span class="built_in">require</span>(<span class="string">'./routes/frequency'</span>)</div><div class="line">   ])</div><div class="line">  &#125;)</div><div class="line"> &#125;,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/BaiduPage'</span>))</div><div class="line">  &#125;, <span class="string">'BaiduPage'</span>)</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">/baidu/routes/frequency/index.js</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'frequency'</span>,</div><div class="line"> getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/BaiduFrequencyPage'</span>))</div><div class="line">  &#125;, <span class="string">'BaiduFrequencyPage'</span>)</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="路由控制"><a href="#路由控制" class="headerlink" title="路由控制"></a>路由控制</h3><p>上面的childRoutes 里面，我们 require 了三个子路由，在目录下创建 routes 目录，将这三个路由放置进去。<br>routes/<br>├── 404<br>│  └── index.js<br>├── baidu<br>│  ├── index.js<br>│  └── routes<br>│    ├── frequency<br>│    │  └── index.js<br>│    └── result<br>│      └── index.js<br>└── redirect<br>  └── index.js<br>和 rootRoute 类似，里面的每个 index.js 都是一个路由对象：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/<span class="number">404</span>/index.js</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> path: <span class="string">'404'</span>,</span><br><span class="line"> getComponent(nextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/NotFoundPage'</span>))</span><br><span class="line">  &#125;, <span class="string">'NotFoundPage'</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">/baidu/index.js</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> path: <span class="string">'baidu'</span>,</span><br><span class="line"> getChildRoutes(partialNextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   cb(<span class="literal">null</span>, [</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'./routes/result'</span>),</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'./routes/frequency'</span>)</span><br><span class="line">   ])</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;,</span><br><span class="line"> getComponent(nextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/BaiduPage'</span>))</span><br><span class="line">  &#125;, <span class="string">'BaiduPage'</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">/baidu/routes/frequency/index.js</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> path: <span class="string">'frequency'</span>,</span><br><span class="line"> getComponent(nextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/BaiduFrequencyPage'</span>))</span><br><span class="line">  &#125;, <span class="string">'BaiduFrequencyPage'</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>举这几个例子应该就差不多了，其他都是一样的，稍微有点特别的是 redirect。</p>
-<h3 id="设置-Redirect"><a href="#设置-Redirect" class="headerlink" title="设置 Redirect"></a>设置 Redirect</h3><p>之前我们在根路由下是这么设置重定向的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;Router history=&#123;browserHistory&#125;&gt;</div><div class="line">   &lt;Route path="/" component=&#123;App&#125;&gt;</div><div class="line">    &#123;/* home */&#125;</div><div class="line">    &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</div><div class="line"></div><div class="line">    &lt;Route path="/baidu" component=&#123;BaiduPage&#125;&gt;</div><div class="line">     &lt;Route path="result" component=&#123;BaiduResultPage&#125; /&gt;</div><div class="line">     &lt;Route path="frequency" component=&#123;BaiduFrequencyPage&#125; /&gt;</div><div class="line">    &lt;/Route&gt;</div><div class="line"></div><div class="line">    &lt;Route path='/404' component=&#123;NotFoundPage&#125; /&gt;</div><div class="line">    &#123;/* 如果都不匹配，重定向到 404 */&#125;</div><div class="line">    &lt;Redirect from='*' to='/404' /&gt;</div><div class="line">   &lt;/Route&gt;</div><div class="line">  &lt;/Router&gt;</div></pre></td></tr></table></figure></p>
-<p>当改写之后，我们需要把这个重定向的路由单独拆出来，也就是 * 这个路由，我们上面已经为他创建了一个 redirect 目录。这里使用到 onEnter 方法，然后在这个方法里改变路由状态，调到另外的路由，实现 redirect ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/redirect/index.js</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"> <span class="attr">path</span>: <span class="string">'*'</span>,</div><div class="line"> <span class="attr">onEnter</span>: <span class="function">(<span class="params">_, replaceState</span>) =&gt;</span> replaceState(<span class="literal">null</span>, <span class="string">"/404"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="设置-Redirect"><a href="#设置-Redirect" class="headerlink" title="设置 Redirect"></a>设置 Redirect</h3><p>之前我们在根路由下是这么设置重定向的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">   &lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</span><br><span class="line">    &#123;<span class="comment">/* home */</span>&#125;</span><br><span class="line">    &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Route path=<span class="string">"/baidu"</span> component=&#123;BaiduPage&#125;&gt;</span><br><span class="line">     &lt;Route path=<span class="string">"result"</span> component=&#123;BaiduResultPage&#125; /&gt;</span><br><span class="line">     &lt;Route path=<span class="string">"frequency"</span> component=&#123;BaiduFrequencyPage&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;Route path='/</span><span class="number">404</span><span class="string">' component=&#123;NotFoundPage&#125; /&gt;</span></span><br><span class="line"><span class="string">    &#123;/* 如果都不匹配，重定向到 404 */&#125;</span></span><br><span class="line"><span class="string">    &lt;Redirect from='</span>*<span class="string">' to='</span>/<span class="number">404</span><span class="string">' /&gt;</span></span><br><span class="line"><span class="string">   &lt;/Route&gt;</span></span><br><span class="line"><span class="string">  &lt;/Router&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>当改写之后，我们需要把这个重定向的路由单独拆出来，也就是 * 这个路由，我们上面已经为他创建了一个 redirect 目录。这里使用到 onEnter 方法，然后在这个方法里改变路由状态，调到另外的路由，实现 redirect ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/redirect/index.js</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> path: <span class="string">'*'</span>,</span><br><span class="line"> onEnter: <span class="function">(<span class="params">_, replaceState</span>) =&gt;</span> replaceState(<span class="literal">null</span>, <span class="string">"/404"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="The-root-route-must-render-a-single-element"><a href="#The-root-route-must-render-a-single-element" class="headerlink" title="The root route must render a single element"></a>The root route must render a single element</h4><p>跟着官方示例和上面码出来之后，可能页面并没有渲染出来，而是报 The root route must render a single element 这个异常，这是因为 <strong>module.exports 和 ES6 里的 export default 有区别</strong>。</p>
 <blockquote>
-<p>如果你是使用 es6 的写法，也就是你的组件都是通过 export default 导出的，那么在 getComponent 方法里面需要加入 .default。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">getComponent(nextState, cb) &#123;</div><div class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</div><div class="line">   <span class="comment">// 在后面加 .default</span></div><div class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/ReportPage'</span>)).default</div><div class="line">  &#125;, <span class="string">'ReportPage'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果你是使用 es6 的写法，也就是你的组件都是通过 export default 导出的，那么在 getComponent 方法里面需要加入 .default。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getComponent(nextState, cb) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>) =&gt; &#123;</span><br><span class="line">   <span class="comment">// 在后面加 .default</span></span><br><span class="line">   cb(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">'components/layer/ReportPage'</span>)).default</span><br><span class="line">  &#125;, <span class="string">'ReportPage'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>如果你是使用 CommonJS 的写法，也就是通过 module.exports 导出的，那就无须加 .default 了。</p>
 
@@ -253,7 +254,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/08/react-router实现按需加载/" data-id="cj50p3674001mucfyjgr7jqf8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/08/react-router实现按需加载/" data-id="cjjhywkts001pb2fyot5wfdgh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -411,6 +412,82 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -427,82 +504,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -514,7 +515,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -523,7 +524,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -532,7 +533,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -560,7 +561,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>

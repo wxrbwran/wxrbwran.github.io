@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/11/Mongodb之mongoose入门/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="最近一直在看node，先从简单的express学起，其他的还好说，主要是和数据库的连接。既然是js，那就先从mongodb开始吧，我们使用mongoose中间件连接mongodb。  基本操作关于mongoose的基本操作其实网上很多教程，按照mongoose官网的quick start guide，很快就能有个大概的了解。123$ npm install mongoose --savevar">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-11T09:27:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mongodb之mongoose入门">
@@ -154,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -223,24 +224,24 @@
             <blockquote>
 <p>最近一直在看node，先从简单的express学起，其他的还好说，主要是和数据库的连接。既然是js，那就先从mongodb开始吧，我们使用mongoose中间件连接mongodb。</p>
 </blockquote>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>关于mongoose的基本操作其实网上很多教程，按照mongoose官网的<a href="http://mongoosejs.com/docs/index.html" target="_blank" rel="external">quick start guide</a>，很快就能有个大概的了解。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install mongoose --save</div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</div><div class="line">mongoose.connect(<span class="string">'mongodb://ip:port/database'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>关于mongoose的基本操作其实网上很多教程，按照mongoose官网的<a href="http://mongoosejs.com/docs/index.html" target="_blank" rel="noopener">quick start guide</a>，很快就能有个大概的了解。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install mongoose --save</span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</span><br><span class="line">mongoose.connect(<span class="string">'mongodb://ip:port/database'</span>)</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>这里注意，很多教程都没有详细说明对于有权限的数据库的连接方式，也让我在刚接触时郁闷了很久，数据库加密是防止数据库发生损失的第一道锁，如下(在数据库中操作)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ use database</div><div class="line">$ db.createUser(&#123;</div><div class="line">    <span class="attr">user</span>: user,</div><div class="line">    <span class="attr">pwd</span>: pwd,</div><div class="line">    <span class="attr">roles</span>:[</div><div class="line">        &#123;</div><div class="line">            <span class="attr">role</span>: <span class="string">"readWrite ..."</span>, <span class="comment">// 具体的权限</span></div><div class="line">            db: <span class="string">""</span> <span class="comment">//datebase</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;)</div><div class="line">$ db.auth(<span class="string">"userName"</span>,<span class="string">"password"</span>)</div></pre></td></tr></table></figure></p>
+<p>这里注意，很多教程都没有详细说明对于有权限的数据库的连接方式，也让我在刚接触时郁闷了很久，数据库加密是防止数据库发生损失的第一道锁，如下(在数据库中操作)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ use database</span><br><span class="line">$ db.createUser(&#123;</span><br><span class="line">    user: user,</span><br><span class="line">    pwd: pwd,</span><br><span class="line">    roles:[</span><br><span class="line">        &#123;</span><br><span class="line">            role: <span class="string">"readWrite ..."</span>, <span class="comment">// 具体的权限</span></span><br><span class="line">            db: <span class="string">""</span> <span class="comment">//datebase</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line">$ db.auth(<span class="string">"userName"</span>,<span class="string">"password"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>注意，在服务器上，如果要直接操作数据库，可以先连接，再通过db.auth()来验证权限，可是如果在node中该怎么做呢？</p>
-<p>example：我的数据库账号是admin,密码为password,需要连接的database为test，数据库地址是111.222.333.444:1024那么再连接的时候就可以直接指定连接的地址为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoose.connect(<span class="string">'mongodb://admin:password@111.222.333.444:1024/test'</span>)</div></pre></td></tr></table></figure></p>
-<p>这样就不会出现由于权限的问题而无法连接了，但是要注意，在mongodb的admin下建的账户，在子数据库中是不能直接验证的，同时也为了安全，应该在每个数据库下都建立不同权限的账户<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ use admin <span class="comment">//切换到admin</span></div><div class="line">$ db.system.users.find().pretty()   <span class="comment">//查看系统下所有的账户</span></div><div class="line">$ use test  <span class="comment">//切换到test</span></div><div class="line">$ show users  <span class="comment">//查询test下的账户</span></div></pre></td></tr></table></figure></p>
+<p>example：我的数据库账号是admin,密码为password,需要连接的database为test，数据库地址是111.222.333.444:1024那么再连接的时候就可以直接指定连接的地址为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connect(<span class="string">'mongodb://admin:password@111.222.333.444:1024/test'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这样就不会出现由于权限的问题而无法连接了，但是要注意，在mongodb的admin下建的账户，在子数据库中是不能直接验证的，同时也为了安全，应该在每个数据库下都建立不同权限的账户<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ use admin <span class="comment">//切换到admin</span></span><br><span class="line">$ db.system.users.find().pretty()   <span class="comment">//查看系统下所有的账户</span></span><br><span class="line">$ use test  <span class="comment">//切换到test</span></span><br><span class="line">$ show users  <span class="comment">//查询test下的账户</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p>在成功连接了数据库并通过正好验证以后，就该对数据库进行增删改查了，很多关于mongoose的入门的教程都是寥寥几句，尤其对于最核心的Schema和Model，并没有过多的深入，而官方文档对于刚接触不深的我来说，也是比较吃力，下面是个人在学习过程中的一些小小的总结</p>
-<p>Schema是mongoose的一种模式，这是比较抽象的一个东西，它对应的是数据库中的collection,比如，db.collection.find({})的数据是这样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'Jack'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="string">'25'</span>,</div><div class="line">    <span class="attr">date</span>: <span class="string">'2017-05-25'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>那么对应的这个Schema就是这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>: &#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;,</div><div class="line">    <span class="attr">age</span>: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>&#125;,</div><div class="line">    <span class="attr">date</span>: &#123;<span class="attr">type</span>: <span class="built_in">Date</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Schema是mongoose的一种模式，这是比较抽象的一个东西，它对应的是数据库中的collection,比如，db.collection.find({})的数据是这样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'Jack'</span>,</span><br><span class="line">    age: <span class="string">'25'</span>,</span><br><span class="line">    date: <span class="string">'2017-05-25'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么对应的这个Schema就是这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: &#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;,</span><br><span class="line">    age: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>&#125;,</span><br><span class="line">    date: &#123;<span class="attr">type</span>: <span class="built_in">Date</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Schema定义了一个集合中数据的基本格式，但控制数据的，其实是model,关于model稍后再细谈。</p>
-<p>好了，现在就可以进行下一步了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"><span class="keyword">var</span> newSchema = <span class="keyword">new</span> Schema(</div><div class="line">    &#123;</div><div class="line">        <span class="attr">name</span>: &#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;,</div><div class="line">        <span class="attr">age</span>: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>&#125;,</div><div class="line">        <span class="attr">date</span>: &#123;<span class="attr">type</span>: <span class="built_in">Date</span>&#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">collection</span>: <span class="string">""</span> <span class="comment">// 这个是什么？？？</span></div><div class="line">    &#125;</div><div class="line">)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = mongoose.model(<span class="string">"User"</span>, newSchema)</div></pre></td></tr></table></figure></p>
-<p>在这一步里，我们成功的创造了一个Schema的实例，也就是一个新的模式，并通过mongoose.model()生成了一个model，而具体操作数据库的，就是这个model,比如这里的User，下面就插入一条数据：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先require()到刚才的文件</span></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'jesse'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">    <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">&#125;)</div><div class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;...&#125;</div><div class="line">我们可以查看一下这个数据</div><div class="line"></div><div class="line">User.find(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>好了，现在就可以进行下一步了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</span><br><span class="line"><span class="keyword">var</span> newSchema = <span class="keyword">new</span> Schema(</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#123;<span class="attr">type</span>: <span class="built_in">String</span>&#125;,</span><br><span class="line">        age: &#123;<span class="attr">type</span>: <span class="built_in">Number</span>&#125;,</span><br><span class="line">        date: &#123;<span class="attr">type</span>: <span class="built_in">Date</span>&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        collection: <span class="string">""</span> <span class="comment">// 这个是什么？？？</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = mongoose.model(<span class="string">"User"</span>, newSchema)</span><br></pre></td></tr></table></figure></p>
+<p>在这一步里，我们成功的创造了一个Schema的实例，也就是一个新的模式，并通过mongoose.model()生成了一个model，而具体操作数据库的，就是这个model,比如这里的User，下面就插入一条数据：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先require()到刚才的文件</span></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    name: <span class="string">'jesse'</span>,</span><br><span class="line">    age: <span class="number">25</span>,</span><br><span class="line">    date: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;)</span><br><span class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;...&#125;</span><br><span class="line">我们可以查看一下这个数据</span><br><span class="line"></span><br><span class="line">User.find(<span class="function"><span class="keyword">function</span>(<span class="params">err, res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>可以成功打印出刚插入数据的数据库里已经有了这条数据</p>
-<p>看一下服务器：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">show</span> collections</div><div class="line"></div><div class="line"><span class="keyword">users</span></div><div class="line"></div><div class="line">$ db.users.find()</div><div class="line">......</div><div class="line">......  //具体的数据</div></pre></td></tr></table></figure></p>
+<p>看一下服务器：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">show</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">users</span></span><br><span class="line"></span><br><span class="line">$ db.users.find()</span><br><span class="line">......</span><br><span class="line">......  //具体的数据</span><br></pre></td></tr></table></figure></p>
 <p>也没有问题，可是，这个users是怎么来的呢？还有刚刚在定义Schema时，那个collection是干什么的？我们怎么从已有的数据库中取数据呢？<br>带着这三个问题，我们继续探索！</p>
 <h3 id="继续探索"><a href="#继续探索" class="headerlink" title="继续探索"></a>继续探索</h3><p>刚才，我们定义了数据的模式，生成了model，并成功的插入了一条数据，可是我们并没有定义这个collection的名字呀，怎么多出来了一个users，经过网上的搜索，应该是mongoose在生成数据时，自动在User等Schema的后面加上了s，并转换为小写，作为collection的默认名字，但如果想要自定义这个名字该怎么做呢?</p>
-<p><strong>可以这样</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongoose.model(<span class="string">"User"</span>, newSchema,<span class="string">"userseseseses..."</span>)</div></pre></td></tr></table></figure></p>
-<p>也就是model()的第三个参数，也可以这样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    ...</div><div class="line">&#125;,&#123;</div><div class="line">    <span class="attr">collection</span>: <span class="string">"collectionName"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>可以这样</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoose.model(<span class="string">"User"</span>, newSchema,<span class="string">"userseseseses..."</span>)</span><br></pre></td></tr></table></figure></p>
+<p>也就是model()的第三个参数，也可以这样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;,&#123;</span><br><span class="line">    collection: <span class="string">"collectionName"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>即Schema({},{})的第二个参数.</p>
 
         
@@ -252,7 +253,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/11/Mongodb之mongoose入门/" data-id="cj50p366l000tucfy5m2mpk2j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/11/Mongodb之mongoose入门/" data-id="cjjhywktd000yb2fygu1iieti" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -410,6 +411,82 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -426,82 +503,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -513,7 +514,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -522,7 +523,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -531,7 +532,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -559,7 +560,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>

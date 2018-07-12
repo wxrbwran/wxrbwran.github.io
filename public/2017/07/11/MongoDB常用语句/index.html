@@ -12,6 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/11/MongoDB常用语句/index.html">
 <meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="记录一下MongoDB常用语句，顺带与SQL做个简单的对比.  查询(find)（1）查询所有结果12select * from articledb.article.find() （2）指定返回哪些键12select title, author from articledb.article.find(&amp;#123;&amp;#125;, &amp;#123;&quot;title&quot;: 1, &quot;author&quot;: 1&amp;#125">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-12T01:58:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB常用语句">
@@ -154,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                46
+                50
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                20
+                23
                 <span>标签</span>
             </div>
         </div>
@@ -223,79 +224,79 @@
             <blockquote>
 <p>记录一下MongoDB常用语句，顺带与SQL做个简单的对比.</p>
 </blockquote>
-<h3 id="查询-find"><a href="#查询-find" class="headerlink" title="查询(find)"></a>查询(find)</h3><p>（1）查询所有结果<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article</div><div class="line">db.article.find()</div></pre></td></tr></table></figure></p>
-<p>（2）指定返回哪些键<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> title, author <span class="keyword">from</span> article</div><div class="line">db.article.find(&#123;&#125;, &#123;<span class="string">"title"</span>: <span class="number">1</span>, <span class="string">"author"</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure></p>
-<p>（3）where条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span></div><div class="line">db.article.find(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;)</div></pre></td></tr></table></figure></p>
-<p>（4）and条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span> <span class="keyword">and</span> author = <span class="string">"god"</span></div><div class="line">db.article.find(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>, <span class="string">"author"</span>: <span class="string">"god"</span>&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="查询-find"><a href="#查询-find" class="headerlink" title="查询(find)"></a>查询(find)</h3><p>（1）查询所有结果<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article</span><br><span class="line">db.article.find()</span><br></pre></td></tr></table></figure></p>
+<p>（2）指定返回哪些键<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> title, author <span class="keyword">from</span> article</span><br><span class="line">db.article.find(&#123;&#125;, &#123;<span class="string">"title"</span>: <span class="number">1</span>, <span class="string">"author"</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（3）where条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span></span><br><span class="line">db.article.find(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（4）and条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span> <span class="keyword">and</span> author = <span class="string">"god"</span></span><br><span class="line">db.article.find(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>, <span class="string">"author"</span>: <span class="string">"god"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>（5）or条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span> <span class="keyword">or</span> author = <span class="string">"god"</span></div><div class="line">db.article.find(&#123;<span class="string">"$or"</span>: [&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;, &#123;<span class="string">"author"</span>: <span class="string">"god"</span>&#125;]&#125;)</div></pre></td></tr></table></figure></p>
-<p>（6）比较条件<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">select * from article where read &gt;= 100;</div><div class="line">db.article.find(&#123;"read": &#123;"$gt": 100&#125;&#125;)</div><div class="line">$gt(&gt;)、$gte(&gt;=)、$lt(&lt;)、$lte(&lt;=)</div><div class="line">select * from article where read &gt;= 100 and read &lt;= 200</div><div class="line">db.article.find(&#123;"read": &#123;"$gte": 100, "lte": 200&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<p>（7）in条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> author <span class="keyword">in</span> (<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>)</div><div class="line">db.article.find(&#123;<span class="string">"author"</span>: &#123;<span class="string">"$in"</span>: [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<p>（8）like<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title <span class="keyword">like</span> <span class="string">"%mongodb%"</span></div><div class="line">db.article.find(&#123;<span class="string">"title"</span>: /mongodb/&#125;)</div></pre></td></tr></table></figure></p>
-<p>（9）count<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> article</div><div class="line">db.article.count()</div></pre></td></tr></table></figure></p>
-<p>（10）不等于<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> author != <span class="string">"a"</span></div><div class="line">db.article.find(&#123; <span class="string">"author"</span>: &#123; <span class="string">"$ne"</span>: <span class="string">"a"</span> &#125;&#125;)</div></pre></td></tr></table></figure></p>
-<p>（11）排序<br>升序：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">"mongodb"</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">read</span> <span class="keyword">desc</span></div><div class="line">db.article.find(&#123;<span class="string">"type"</span>: <span class="string">"mongodb"</span>&#125;).sort(&#123;<span class="string">"read"</span>: <span class="number">-1</span>&#125;)</div></pre></td></tr></table></figure></p>
-<p>降序：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">"mongodb"</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">read</span> <span class="keyword">asc</span></div><div class="line">db.article.find(&#123;<span class="string">"type"</span>: <span class="string">"mongodb"</span>&#125;).sort(&#123;<span class="string">"read"</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>（5）or条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span> <span class="keyword">or</span> author = <span class="string">"god"</span></span><br><span class="line">db.article.find(&#123;<span class="string">"$or"</span>: [&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;, &#123;<span class="string">"author"</span>: <span class="string">"god"</span>&#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（6）比较条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">read</span> &gt;= <span class="number">100</span>;</span><br><span class="line">db.article.find(&#123;"read": &#123;"$gt": 100&#125;&#125;)</span><br><span class="line">$gt(&gt;)、$gte(&gt;=)、$lt(&lt;)、$lte(&lt;=)</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">read</span> &gt;= <span class="number">100</span> <span class="keyword">and</span> <span class="keyword">read</span> &lt;= <span class="number">200</span></span><br><span class="line">db.article.find(&#123;<span class="string">"read"</span>: &#123;<span class="string">"$gte"</span>: <span class="number">100</span>, <span class="string">"lte"</span>: <span class="number">200</span>&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（7）in条件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> author <span class="keyword">in</span> (<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>)</span><br><span class="line">db.article.find(&#123;<span class="string">"author"</span>: &#123;<span class="string">"$in"</span>: [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（8）like<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> title <span class="keyword">like</span> <span class="string">"%mongodb%"</span></span><br><span class="line">db.article.find(&#123;<span class="string">"title"</span>: /mongodb/&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（9）count<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> article</span><br><span class="line">db.article.count()</span><br></pre></td></tr></table></figure></p>
+<p>（10）不等于<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> author != <span class="string">"a"</span></span><br><span class="line">db.article.find(&#123; <span class="string">"author"</span>: &#123; <span class="string">"$ne"</span>: <span class="string">"a"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>（11）排序<br>升序：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">"mongodb"</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">read</span> <span class="keyword">desc</span></span><br><span class="line">db.article.find(&#123;<span class="string">"type"</span>: <span class="string">"mongodb"</span>&#125;).sort(&#123;<span class="string">"read"</span>: <span class="number">-1</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>降序：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">where</span> <span class="keyword">type</span> = <span class="string">"mongodb"</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">read</span> <span class="keyword">asc</span></span><br><span class="line">db.article.find(&#123;<span class="string">"type"</span>: <span class="string">"mongodb"</span>&#125;).sort(&#123;<span class="string">"read"</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><strong>findOne()</strong>：除了只返回一个查询结果外，使用方法与find()一样。</p>
-<h3 id="创建（insert）"><a href="#创建（insert）" class="headerlink" title="创建（insert）"></a>创建（insert）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> article(title, author, <span class="keyword">content</span>) <span class="keyword">values</span>(<span class="string">"mongodb"</span>, <span class="string">"tg"</span>, <span class="string">"haha"</span>)</div><div class="line">db.article.insert(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>, <span class="string">"author"</span>: <span class="string">"tg"</span>, <span class="string">"content"</span>: <span class="string">"haha"</span>&#125;)</div></pre></td></tr></table></figure>
-<h3 id="更新（update）"><a href="#更新（update）" class="headerlink" title="更新（update）"></a>更新（update）</h3><h4 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h4><p>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collecion.update(query, <span class="keyword">update</span>[, options] )</div></pre></td></tr></table></figure></p>
+<h3 id="创建（insert）"><a href="#创建（insert）" class="headerlink" title="创建（insert）"></a>创建（insert）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> article(title, author, <span class="keyword">content</span>) <span class="keyword">values</span>(<span class="string">"mongodb"</span>, <span class="string">"tg"</span>, <span class="string">"haha"</span>)</span><br><span class="line">db.article.insert(&#123;<span class="string">"title"</span>: <span class="string">"mongodb"</span>, <span class="string">"author"</span>: <span class="string">"tg"</span>, <span class="string">"content"</span>: <span class="string">"haha"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="更新（update）"><a href="#更新（update）" class="headerlink" title="更新（update）"></a>更新（update）</h3><h4 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h4><p>语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collecion.update(query, <span class="keyword">update</span>[, options] )</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>query : 必选，查询条件，类似find中的查询条件。<br>update : 必选，update的对象和一些更新的操作符（如$,$inc…）等<br>options：可选，一些更新配置的对象。<br>upsert：可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。<br>multi：可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。<br>writeConcern：可选，抛出异常的级别。</p>
 </blockquote>
-<p>简单更新：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> article <span class="keyword">set</span> title = <span class="string">"mongodb"</span> <span class="keyword">where</span> <span class="keyword">read</span> &gt; <span class="number">100</span></div><div class="line">db.article.update(&#123;<span class="string">"read"</span>: &#123;<span class="string">"$gt"</span>: <span class="number">100</span>&#125;&#125;, &#123;<span class="string">"$set"</span>: &#123; <span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="save"><a href="#save" class="headerlink" title="save()"></a>save()</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.save(&#123;_id: 123, title: "mongodb"&#125;)</div></pre></td></tr></table></figure>
+<p>简单更新：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> article <span class="keyword">set</span> title = <span class="string">"mongodb"</span> <span class="keyword">where</span> <span class="keyword">read</span> &gt; <span class="number">100</span></span><br><span class="line">db.article.update(&#123;<span class="string">"read"</span>: &#123;<span class="string">"$gt"</span>: <span class="number">100</span>&#125;&#125;, &#123;<span class="string">"$set"</span>: &#123; <span class="string">"title"</span>: <span class="string">"mongodb"</span>&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="save"><a href="#save" class="headerlink" title="save()"></a>save()</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.save(&#123;_id: 123, title: "mongodb"&#125;)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>执行上面的语句，如果集合中已经存在一个_id为123的文档，则更新对应字段;否则插入。<br>注：<strong>如果更新对象不存在_id，系统会自动生成并作为新的文档插入。</strong></p>
 </blockquote>
 <h4 id="更新操作符"><a href="#更新操作符" class="headerlink" title="更新操作符"></a>更新操作符</h4><p>MongoDB提供一些强大的更新操作符。</p>
-<h5 id="更新特定字段（-set）："><a href="#更新特定字段（-set）：" class="headerlink" title="更新特定字段（$set）："></a>更新特定字段（$set）：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> game <span class="keyword">set</span> <span class="keyword">count</span> = <span class="number">10000</span> <span class="keyword">where</span> _id = <span class="number">123</span></div><div class="line">db.game.update(&#123;<span class="string">"_id"</span>: <span class="number">123</span>&#125;, &#123; <span class="string">"$set"</span>: &#123;<span class="string">"count"</span>: <span class="number">10000</span>&#125;&#125;)</div></pre></td></tr></table></figure>
-<h5 id="删除特定字段（-unset）："><a href="#删除特定字段（-unset）：" class="headerlink" title="删除特定字段（$unset）："></a>删除特定字段（$unset）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id":123&#125;, &#123;"$unset": &#123;"author":1&#125;&#125;)</div></pre></td></tr></table></figure>
+<h5 id="更新特定字段（-set）："><a href="#更新特定字段（-set）：" class="headerlink" title="更新特定字段（$set）："></a>更新特定字段（$set）：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> game <span class="keyword">set</span> <span class="keyword">count</span> = <span class="number">10000</span> <span class="keyword">where</span> _id = <span class="number">123</span></span><br><span class="line">db.game.update(&#123;<span class="string">"_id"</span>: <span class="number">123</span>&#125;, &#123; <span class="string">"$set"</span>: &#123;<span class="string">"count"</span>: <span class="number">10000</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="删除特定字段（-unset）："><a href="#删除特定字段（-unset）：" class="headerlink" title="删除特定字段（$unset）："></a>删除特定字段（$unset）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id":123&#125;, &#123;"$unset": &#123;"author":1&#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>注：$unset指定字段的值只需是任意合法值即可。</p>
-<h5 id="递增或递减（-inc）"><a href="#递增或递减（-inc）" class="headerlink" title="递增或递减（$inc）"></a>递增或递减（$inc）</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123; "$inc": &#123;"count": 10&#125;&#125;) // 每次count都加10</div></pre></td></tr></table></figure>
+<h5 id="递增或递减（-inc）"><a href="#递增或递减（-inc）" class="headerlink" title="递增或递减（$inc）"></a>递增或递减（$inc）</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123; "$inc": &#123;"count": 10&#125;&#125;) // 每次count都加10</span><br></pre></td></tr></table></figure>
 <p>注意：$inc对应的字段必须是数字，而且递增或递减的值也必须是数字。</p>
-<h5 id="数组追加（-push）："><a href="#数组追加（-push）：" class="headerlink" title="数组追加（$push）："></a>数组追加（$push）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123; "$push": &#123;"score": 123&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>还可以一次追加多个元素：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$push": &#123;"score": [12,123]&#125;&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="数组追加（-push）："><a href="#数组追加（-push）：" class="headerlink" title="数组追加（$push）："></a>数组追加（$push）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123; "$push": &#123;"score": 123&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>还可以一次追加多个元素：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$push": &#123;"score": [12,123]&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>注：追加字段必须是数组。如果数组字段不存在，则自动新增，然后追加。</p>
-<h5 id="一次追加多个元素（-pushAll）："><a href="#一次追加多个元素（-pushAll）：" class="headerlink" title="一次追加多个元素（$pushAll）："></a>一次追加多个元素（$pushAll）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pushAll": &#123;"score": [12,123]&#125;&#125;)</div></pre></td></tr></table></figure>
-<h5 id="追加不重复元素（-addToSet）："><a href="#追加不重复元素（-addToSet）：" class="headerlink" title="追加不重复元素（$addToSet）："></a>追加不重复元素（$addToSet）：</h5><p>$addToSet类似集合Set，只有当这个值不在元素内时才增加：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$addToSet": &#123;"score": 123&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="删除元素（-pop）："><a href="#删除元素（-pop）：" class="headerlink" title="删除元素（$pop）："></a>删除元素（$pop）：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pop": &#123;"score": 1&#125;&#125;)  // 删除最后一个元素</div><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pop": &#123;"score": -1&#125;&#125;)  // 删除第一个元素</div></pre></td></tr></table></figure>
+<h5 id="一次追加多个元素（-pushAll）："><a href="#一次追加多个元素（-pushAll）：" class="headerlink" title="一次追加多个元素（$pushAll）："></a>一次追加多个元素（$pushAll）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pushAll": &#123;"score": [12,123]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="追加不重复元素（-addToSet）："><a href="#追加不重复元素（-addToSet）：" class="headerlink" title="追加不重复元素（$addToSet）："></a>追加不重复元素（$addToSet）：</h5><p>$addToSet类似集合Set，只有当这个值不在元素内时才增加：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$addToSet": &#123;"score": 123&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除元素（-pop）："><a href="#删除元素（-pop）：" class="headerlink" title="删除元素（$pop）："></a>删除元素（$pop）：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pop": &#123;"score": 1&#125;&#125;)  // 删除最后一个元素</span><br><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pop": &#123;"score": -1&#125;&#125;)  // 删除第一个元素</span><br></pre></td></tr></table></figure>
 <p>注：$pop每次只能删除数组中的一个元素，1表示删除最后一个，-1表示删除第一个。</p>
-<h5 id="删除特定元素（-pull）："><a href="#删除特定元素（-pull）：" class="headerlink" title="删除特定元素（$pull）："></a>删除特定元素（$pull）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pull": &#123;"score": 123&#125;&#125;)</div></pre></td></tr></table></figure>
+<h5 id="删除特定元素（-pull）："><a href="#删除特定元素（-pull）：" class="headerlink" title="删除特定元素（$pull）："></a>删除特定元素（$pull）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pull": &#123;"score": 123&#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>上面的语句表示删除数组score内值等于123的元素。</p>
-<h5 id="删除多个特定元素（-pullAll）："><a href="#删除多个特定元素（-pullAll）：" class="headerlink" title="删除多个特定元素（$pullAll）："></a>删除多个特定元素（$pullAll）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pullAll": &#123;score: [123,12]&#125;&#125;)</div></pre></td></tr></table></figure>
+<h5 id="删除多个特定元素（-pullAll）："><a href="#删除多个特定元素（-pullAll）：" class="headerlink" title="删除多个特定元素（$pullAll）："></a>删除多个特定元素（$pullAll）：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$pullAll": &#123;score: [123,12]&#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>上面的语句表示删除数组内值等于123或12的元素。</p>
-<h5 id="更新嵌套数组的值："><a href="#更新嵌套数组的值：" class="headerlink" title="更新嵌套数组的值："></a>更新嵌套数组的值：</h5><p>使用数组下标（从0开始）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  address: [&#123;place: "nanji", tel: 123&#125;, &#123;place: "dongbei", tel: 321&#125;]</div><div class="line">&#125;</div><div class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$set": &#123;"address.0.tel": 213&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<p>如果你不知道要更新数组哪项，我们可以使用$操作符（ $表示自身，也就是按查询条件找出的数组里面的项自身，而且只会应用找到的第一条数组项）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.game.update(&#123;"address.place": "nanji"&#125;, &#123;"$set": &#123;"address.$.tel": 123&#125;&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="更新嵌套数组的值："><a href="#更新嵌套数组的值：" class="headerlink" title="更新嵌套数组的值："></a>更新嵌套数组的值：</h5><p>使用数组下标（从0开始）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  address: [&#123;place: "nanji", tel: 123&#125;, &#123;place: "dongbei", tel: 321&#125;]</span><br><span class="line">&#125;</span><br><span class="line">db.game.update(&#123;"_id": 123&#125;, &#123;"$set": &#123;"address.0.tel": 213&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>如果你不知道要更新数组哪项，我们可以使用$操作符（ $表示自身，也就是按查询条件找出的数组里面的项自身，而且只会应用找到的第一条数组项）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.game.update(&#123;"address.place": "nanji"&#125;, &#123;"$set": &#123;"address.$.tel": 123&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>在上面的语句中，$就是查询条件{“address.place”: “nanji”}的查询结果，也就是{place: “nanji”, tel: 123}，所以{“address.$.tel”: 123}也就是{“address.{place: “nanji”, tel: 123}.tel”: 123}</p>
-<h3 id="删除（remove）"><a href="#删除（remove）" class="headerlink" title="删除（remove）"></a>删除（remove）</h3><h4 id="删除所有文档："><a href="#删除所有文档：" class="headerlink" title="删除所有文档："></a>删除所有文档：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> article</div><div class="line">db.article.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
-<h4 id="删除指定文档："><a href="#删除指定文档：" class="headerlink" title="删除指定文档："></a>删除指定文档：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span></div><div class="line">db.article.remove(&#123;title: <span class="string">"mongodb"</span>&#125;)</div></pre></td></tr></table></figure>
-<h3 id="MongoDB特有的语句"><a href="#MongoDB特有的语句" class="headerlink" title="MongoDB特有的语句"></a>MongoDB特有的语句</h3><h4 id="数组查询"><a href="#数组查询" class="headerlink" title="数组查询"></a>数组查询</h4><h5 id="数组的普通查询"><a href="#数组的普通查询" class="headerlink" title="数组的普通查询"></a>数组的普通查询</h5><p>假如type是[“mongodb”, “javascript”]：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"type": "mongodb"&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="删除（remove）"><a href="#删除（remove）" class="headerlink" title="删除（remove）"></a>删除（remove）</h3><h4 id="删除所有文档："><a href="#删除所有文档：" class="headerlink" title="删除所有文档："></a>删除所有文档：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> article</span><br><span class="line">db.article.remove(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="删除指定文档："><a href="#删除指定文档：" class="headerlink" title="删除指定文档："></a>删除指定文档：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> article <span class="keyword">where</span> title = <span class="string">"mongodb"</span></span><br><span class="line">db.article.remove(&#123;title: <span class="string">"mongodb"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="MongoDB特有的语句"><a href="#MongoDB特有的语句" class="headerlink" title="MongoDB特有的语句"></a>MongoDB特有的语句</h3><h4 id="数组查询"><a href="#数组查询" class="headerlink" title="数组查询"></a>数组查询</h4><h5 id="数组的普通查询"><a href="#数组的普通查询" class="headerlink" title="数组的普通查询"></a>数组的普通查询</h5><p>假如type是[“mongodb”, “javascript”]：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"type": "mongodb"&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>上面的语句可以匹配成功。</p>
-<h5 id="多个元素的查询"><a href="#多个元素的查询" class="headerlink" title="多个元素的查询"></a>多个元素的查询</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"type": &#123;"$all": ["mongodb", "javascript"]&#125;&#125;)</div></pre></td></tr></table></figure>
+<h5 id="多个元素的查询"><a href="#多个元素的查询" class="headerlink" title="多个元素的查询"></a>多个元素的查询</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"type": &#123;"$all": ["mongodb", "javascript"]&#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>只有type数组同时存在mongodb和javascript才会匹配。</p>
-<h5 id="限制数组长度查询"><a href="#限制数组长度查询" class="headerlink" title="限制数组长度查询"></a>限制数组长度查询</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"type": &#123;"$size": 2&#125;&#125;)</div></pre></td></tr></table></figure>
+<h5 id="限制数组长度查询"><a href="#限制数组长度查询" class="headerlink" title="限制数组长度查询"></a>限制数组长度查询</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"type": &#123;"$size": 2&#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>只有数组的长度是2才会匹配<br>注：type必须是数组</p>
-<h5 id="返回特定数量"><a href="#返回特定数量" class="headerlink" title="返回特定数量"></a>返回特定数量</h5><p>当$slice的参数是一个时，表示返回的数量;当是一个数组时，第一个参数表示偏移量，第二个表示返回的数量：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"type": &#123;"$slice": 1&#125;&#125;) // 返回第1个</div><div class="line">db.article.find(&#123;"type": &#123;"$slice": -1&#125;&#125;)  // 返回最后一个</div><div class="line">db.article.find(&#123;"type": &#123;"$slice": [20, 10]&#125;&#125;)  // 从第21个开始，返回10个，也就是21～30</div></pre></td></tr></table></figure></p>
+<h5 id="返回特定数量"><a href="#返回特定数量" class="headerlink" title="返回特定数量"></a>返回特定数量</h5><p>当$slice的参数是一个时，表示返回的数量;当是一个数组时，第一个参数表示偏移量，第二个表示返回的数量：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"type": &#123;"$slice": 1&#125;&#125;) // 返回第1个</span><br><span class="line">db.article.find(&#123;"type": &#123;"$slice": -1&#125;&#125;)  // 返回最后一个</span><br><span class="line">db.article.find(&#123;"type": &#123;"$slice": [20, 10]&#125;&#125;)  // 从第21个开始，返回10个，也就是21～30</span><br></pre></td></tr></table></figure></p>
 <p>注：$slice针对的是数组</p>
-<h5 id="元素匹配"><a href="#元素匹配" class="headerlink" title="元素匹配"></a>元素匹配</h5><p>如果文档中有一个字段的值是数组，可以使用$elemMatch来匹配数组内的元素：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  kown: [&#123; a: 2, b: 4&#125;, 10, &#123; a: 4&#125;, &#123;b:10&#125;]</div><div class="line">&#125;</div><div class="line">db.article.find(&#123;"kown": &#123; "$elemMatch": &#123;a: 1, b: &#123;"$gt": 2&#125;&#125;&#125;&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="元素匹配"><a href="#元素匹配" class="headerlink" title="元素匹配"></a>元素匹配</h5><p>如果文档中有一个字段的值是数组，可以使用$elemMatch来匹配数组内的元素：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  kown: [&#123; a: 2, b: 4&#125;, 10, &#123; a: 4&#125;, &#123;b:10&#125;]</span><br><span class="line">&#125;</span><br><span class="line">db.article.find(&#123;"kown": &#123; "$elemMatch": &#123;a: 1, b: &#123;"$gt": 2&#125;&#125;&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>只有a=1且b&gt;2才会匹配。</p>
-<h5 id="取模（-mod）"><a href="#取模（-mod）" class="headerlink" title="取模（$mod）"></a>取模（$mod）</h5><p>比如我们要匹配 read % 5 == 1：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"read": &#123;$mod: [5, 1]&#125;&#125;)</div></pre></td></tr></table></figure></p>
-<h5 id="是否存在（-exists"><a href="#是否存在（-exists" class="headerlink" title="是否存在（$exists)"></a>是否存在（$exists)</h5><p>如果我们要判断love字段是否存在，可以这样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"love": &#123;"$exists": true&#125;&#125;)  // 如果存在字段love，就返回</div></pre></td></tr></table></figure></p>
-<p>我们也可以判断不存在：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"love": &#123;"$exists": false&#125;&#125;) // 如果不存在字段love，就返回</div></pre></td></tr></table></figure></p>
-<h5 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h5><p>mongodb支持正则表达式，使用方法与正则字面量一样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"title": /mongodb/i&#125;)  // i是忽略大小写</div></pre></td></tr></table></figure></p>
-<h5 id="类型查询"><a href="#类型查询" class="headerlink" title="类型查询"></a>类型查询</h5><p>我们可以根据字段类型来返回数据：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"comments": &#123;"$type": 4&#125;&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="取模（-mod）"><a href="#取模（-mod）" class="headerlink" title="取模（$mod）"></a>取模（$mod）</h5><p>比如我们要匹配 read % 5 == 1：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"read": &#123;$mod: [5, 1]&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="是否存在（-exists"><a href="#是否存在（-exists" class="headerlink" title="是否存在（$exists)"></a>是否存在（$exists)</h5><p>如果我们要判断love字段是否存在，可以这样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"love": &#123;"$exists": true&#125;&#125;)  // 如果存在字段love，就返回</span><br></pre></td></tr></table></figure></p>
+<p>我们也可以判断不存在：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"love": &#123;"$exists": false&#125;&#125;) // 如果不存在字段love，就返回</span><br></pre></td></tr></table></figure></p>
+<h5 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h5><p>mongodb支持正则表达式，使用方法与正则字面量一样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"title": /mongodb/i&#125;)  // i是忽略大小写</span><br></pre></td></tr></table></figure></p>
+<h5 id="类型查询"><a href="#类型查询" class="headerlink" title="类型查询"></a>类型查询</h5><p>我们可以根据字段类型来返回数据：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"comments": &#123;"$type": 4&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>只有当comments的类型是数组才匹配<br>注：更多类型的数值可以参考这里：mongodb $type</p>
-<h5 id="内嵌文档"><a href="#内嵌文档" class="headerlink" title="内嵌文档"></a>内嵌文档</h5><p>mongodb是允许内嵌文档的，而且要查询内嵌文档也很简单（使用点语法）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  address: &#123; name: "nanji" &#125;</div><div class="line">&#125;</div><div class="line">db.article.find(&#123;"address.name": "nanji"&#125;)</div></pre></td></tr></table></figure></p>
-<p>上面的语句是查询comments中的author。<br>数组也可以采取点语法:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  comments: [&#123;title: "mongodb"&#125;, &#123;title: "javascript"&#125;]</div><div class="line">&#125;</div><div class="line">db.article.find(&#123;"comments.title": "mongodb"&#125;)</div></pre></td></tr></table></figure></p>
-<h5 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h5><p>$not是元语句，即可以用在任何其他条件之上：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find(&#123;"author": &#123;"$not": /mongodb/i&#125;&#125;)</div></pre></td></tr></table></figure></p>
+<h5 id="内嵌文档"><a href="#内嵌文档" class="headerlink" title="内嵌文档"></a>内嵌文档</h5><p>mongodb是允许内嵌文档的，而且要查询内嵌文档也很简单（使用点语法）：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  address: &#123; name: "nanji" &#125;</span><br><span class="line">&#125;</span><br><span class="line">db.article.find(&#123;"address.name": "nanji"&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面的语句是查询comments中的author。<br>数组也可以采取点语法:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  comments: [&#123;title: "mongodb"&#125;, &#123;title: "javascript"&#125;]</span><br><span class="line">&#125;</span><br><span class="line">db.article.find(&#123;"comments.title": "mongodb"&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h5><p>$not是元语句，即可以用在任何其他条件之上：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find(&#123;"author": &#123;"$not": /mongodb/i&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>只要使用$not操作符，就表示取反。</p>
-<h3 id="MongoDB常用方法"><a href="#MongoDB常用方法" class="headerlink" title="MongoDB常用方法"></a>MongoDB常用方法</h3><h4 id="控制返回数量（limit）"><a href="#控制返回数量（limit）" class="headerlink" title="控制返回数量（limit）"></a>控制返回数量（limit）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find().limit(10)</div></pre></td></tr></table></figure>
+<h3 id="MongoDB常用方法"><a href="#MongoDB常用方法" class="headerlink" title="MongoDB常用方法"></a>MongoDB常用方法</h3><h4 id="控制返回数量（limit）"><a href="#控制返回数量（limit）" class="headerlink" title="控制返回数量（limit）"></a>控制返回数量（limit）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find().limit(10)</span><br></pre></td></tr></table></figure>
 <p>返回10条数据</p>
-<h4 id="略过数量"><a href="#略过数量" class="headerlink" title="略过数量"></a>略过数量</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find().skip(5)</div></pre></td></tr></table></figure>
-<p>略过前5条数据，也就是从第6条开始返回。<br>可以结合limit()和skip()来达到分页效果：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">limit</span> <span class="number">10</span>, <span class="number">20</span></div><div class="line">db.article.find().skip(<span class="number">10</span>).limit(<span class="number">20</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h4><p>返回匹配数据的长度：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find().count()</div></pre></td></tr></table></figure></p>
-<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p>pretty()方法可以以格式化的方式显示所有文档：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.find().pretty()</div></pre></td></tr></table></figure></p>
-<h4 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h4><p>当你要删除一个集合中的所有文档时，直接删除一个集合效率会更高：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.article.drop()</div></pre></td></tr></table></figure></p>
+<h4 id="略过数量"><a href="#略过数量" class="headerlink" title="略过数量"></a>略过数量</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find().skip(5)</span><br></pre></td></tr></table></figure>
+<p>略过前5条数据，也就是从第6条开始返回。<br>可以结合limit()和skip()来达到分页效果：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> article <span class="keyword">limit</span> <span class="number">10</span>, <span class="number">20</span></span><br><span class="line">db.article.find().skip(<span class="number">10</span>).limit(<span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h4><p>返回匹配数据的长度：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find().count()</span><br></pre></td></tr></table></figure></p>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p>pretty()方法可以以格式化的方式显示所有文档：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.find().pretty()</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h4><p>当你要删除一个集合中的所有文档时，直接删除一个集合效率会更高：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.article.drop()</span><br></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -306,7 +307,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/11/MongoDB常用语句/" data-id="cj50p366p000yucfye5kn7rwa" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/11/MongoDB常用语句/" data-id="cjjhywktc000vb2fyqxbyk2t7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -464,6 +465,82 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
+                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
+                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
+                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/12/Express-模板传值对象app-locals、res-locals/" class="thumbnail">
     
     
@@ -480,82 +557,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/MongoDB常用语句/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/MongoDB常用语句/" class="title">MongoDB常用语句</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T09:35:27.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/11/Mongodb之mongoose入门/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/11/Mongodb之mongoose入门/" class="title">Mongodb之mongoose入门</a></p>
-                            <p class="item-date"><time datetime="2017-07-11T08:51:46.000Z" itemprop="datePublished">2017-07-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/08/react-router实现按需加载/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/08/react-router实现按需加载/" class="title">react-router实现按需加载</a></p>
-                            <p class="item-date"><time datetime="2017-07-08T13:56:09.000Z" itemprop="datePublished">2017-07-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/06/10/express的上传中间件multer/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/06/10/express的上传中间件multer/" class="title">express的上传中间件multer</a></p>
-                            <p class="item-date"><time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -567,7 +568,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -576,7 +577,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -585,7 +586,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/express/" style="font-size: 14px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -613,7 +614,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 织幻z<br>
+            &copy; 2018 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
