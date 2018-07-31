@@ -9,7 +9,7 @@ tags: ssh
 ssh username@ip地址
 ```
 例如：ssh root@112.232.12.12，然后输入密码即可访问。
-
+<--more-->
 ### 以Mac OS为例，别名登录
 
 使用cd ~/.ssh/ 进入ssh目录，会看到有config、known_hosts两个文件，一般的没有设置的话，只会有known_hosts，可以使用touch config命令创建config文件。
