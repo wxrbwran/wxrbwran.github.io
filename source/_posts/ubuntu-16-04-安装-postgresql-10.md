@@ -1,0 +1,34 @@
+---
+title: ubuntu 16.04 安装 postgresql 10
+date: 2018-11-05 16:01:24
+tags: ubuntu
+---
+添加postgreql源
+
+>$ wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+  $ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+
+安装 postgresql
+>$ sudo apt-get update
+  $ sudo apt-get install postgresql postgresql-contrib libpq-dev
+
+添加用户
+>$ sudo -u postgres createuser --superuser roleuser
+
+设置密码
+> $ sudo -u postgres psql
+   \password postgres
+   \q
+
+修改配置 pg_hba.conf
+> local   all             all                                     trust #修改peer为trust
+
+修改设置postgresql.conf，让postgresql可远程访问
+>listen_addresses = '*'
+
+在 pg_hba.conf 中添加
+> host    all         all         192.168.1.0/24          md5
+
+192.168.1.0 ip换为自己的ip，
+
+
