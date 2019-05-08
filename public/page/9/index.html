@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                51
+                55
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                23
+                25
                 <span>标签</span>
             </div>
         </div>
@@ -182,6 +182,538 @@
 
             
             <section id="main">
+    <article id="post-linux-交换alt和ctrl按键" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/14/linux-交换alt和ctrl按键/">linux 交换alt和ctrl按键</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/14/linux-交换alt和ctrl按键/">
+            <time datetime="2016-10-14T03:49:11.000Z" itemprop="datePublished">2016-10-14</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="为什么要交换alt键和ctrl键呢"><a href="#为什么要交换alt键和ctrl键呢" class="headerlink" title="为什么要交换alt键和ctrl键呢?"></a>为什么要交换alt键和ctrl键呢?</h3><p>珍爱小拇指,远离ctrl, ctrl键每次按时都要移动整个手掌, 而且还要看一眼键盘,实在是不爽啊<br>alt键就好了只要大拇指稍微移一下就可以按到了.<br>方法:<br>在home目录建一个文件  <code>.Xmodmap</code><br>然后在文件中写入下面几句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">remove control = Control_L                                                  </span><br><span class="line">remove mod1 = Alt_L</span><br><span class="line">keysym Control_L = Alt_L</span><br><span class="line">keysym Alt_L = Control_L</span><br><span class="line">add control = Control_L</span><br><span class="line">add mod1 = Alt_L</span><br></pre></td></tr></table></figure></p>
+<p>然后logout再登录就好了.上面的代码一定要写在 .Xmodmap 文件中才行.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/" data-id="cjvf21fdc000p3i9nmbw1on1x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/14/linux-交换alt和ctrl按键/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-使用requestAnimationFrame做动画控制" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/12/使用requestAnimationFrame做动画控制/">使用requestAnimationFrame做动画控制</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/12/使用requestAnimationFrame做动画控制/">
+            <time datetime="2016-10-12T03:04:45.000Z" itemprop="datePublished">2016-10-12</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html5/">html5</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h3 id="requestAnimationFrame是什么？"><a href="#requestAnimationFrame是什么？" class="headerlink" title="requestAnimationFrame是什么？"></a>requestAnimationFrame是什么？</h3><p>在浏览器动画程序中，我们通常使用一个定时器来循环每隔几毫秒移动目标物体一次，来让它动起来。如今有一个好消息，浏览器开发商们决定：“嗨，为什么我们不在浏览器里提供这样一个API呢，这样一来我们可以为用户优化他们的动画。”所以，这个requestAnimationFrame()函数就是针对动画效果的API，你可以把它用在DOM上的风格变化或画布动画或WebGL中。</p>
+<h3 id="使用requestAnimationFrame有什么好处？"><a href="#使用requestAnimationFrame有什么好处？" class="headerlink" title="使用requestAnimationFrame有什么好处？"></a>使用requestAnimationFrame有什么好处？</h3><p>浏览器可以优化并行的动画动作，更合理的重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果。比如，通过requestAnimationFrame()，JS动画能够和CSS动画/变换或SVG SMIL动画同步发生。另外，如果在一个浏览器标签页里运行一个动画，当这个标签页不可见时，浏览器会暂停它，这会减少CPU，内存的压力，节省电池电量。<br><strong>requestAnimationFrame的用法</strong><br><figure class="highlight javascript"><figcaption><span>requestAnimationFrame</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// usage:</span></span><br><span class="line"><span class="comment">// instead of setInterval(render, 16) ....</span></span><br><span class="line"><span class="keyword">var</span> out = <span class="built_in">document</span>.querySelector(<span class="string">'#out'</span>),</span><br><span class="line">    inner = <span class="built_in">document</span>.querySelector(<span class="string">'#inner'</span>),</span><br><span class="line">    count=<span class="number">0</span>,width=<span class="number">0</span>,inCre;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeBackground</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    inner.style.width = width+<span class="string">'%'</span>;</span><br><span class="line">    width++;</span><br><span class="line">    <span class="keyword">if</span>(width&lt;=<span class="number">100</span>)&#123;</span><br><span class="line">        inCre = requestAnimationFrame(changeBackground);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        cancelAnimationFrame(inCre)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inCre=requestAnimationFrame(changeBackground)</span><br></pre></td></tr></table></figure><br></p>
+            <p class="article-more-link">
+                <a href="/2016/10/12/使用requestAnimationFrame做动画控制/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/12/使用requestAnimationFrame做动画控制/" data-id="cjvf21fdu001m3i9nnwfi2rdq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/12/使用requestAnimationFrame做动画控制/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/12/使用requestAnimationFrame做动画控制/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-你可能并不需要jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/11/你可能并不需要jQuery/">你可能并不需要jQuery</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/11/你可能并不需要jQuery/">
+            <time datetime="2016-10-11T02:54:55.000Z" itemprop="datePublished">2016-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/jQuery/">jQuery</a>, <a class="tag-link" href="/tags/javascript/">javascript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><blockquote>
+<p>jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。</p>
+<ul>
+<li>也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。</li>
+<li>浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScript功能可以很大程度的实现jQuery提供的功能。如果你能了解这些JavaScript新技术，就能在很多地方用纯JavaScript实现以前需要jQuery才能实现的技术。</li>
+<li>新的mvvm框架的出现，数据驱动的方式解决了项目数据交互量大的时候，操作dom的代码混乱的问题。<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><h4 id="addClass"><a href="#addClass" class="headerlink" title="addClass"></a>addClass</h4>jQuery<br><code>$(el).addClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (el.classList)</span><br><span class="line">  el.classList.add(className);</span><br><span class="line">else</span><br><span class="line">  el.className += &apos; &apos; + className;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.add(className);</code></p>
+<h4 id="After"><a href="#After" class="headerlink" title="After"></a>After</h4><p>jQuery<br><code>$(el).after(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;afterend&#39;, htmlString);</code></p>
+<h4 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h4><p>jQuery<br><code>$(parent).append(el);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>parent.appendChild(el);</code></p>
+<h4 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h4><p>jQuery<br><code>$(el).before(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;beforebegin&#39;, htmlString);</code></p>
+<h4 id="Children"><a href="#Children" class="headerlink" title="Children"></a>Children</h4><p>jQuery<br><code>$(el).children();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var children = [];</span><br><span class="line">for (var i = el.children.length; i--;) &#123;</span><br><span class="line">  // Skip comment nodes on IE8</span><br><span class="line">  if (el.children[i].nodeType != 8)</span><br><span class="line">    children.unshift(el.children[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>谷歌浏览器，火狐浏览器，IE9+<br><code>el.children</code><br></p>
+            <p class="article-more-link">
+                <a href="/2016/10/11/你可能并不需要jQuery/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/11/你可能并不需要jQuery/" data-id="cjvf21fgp004a3i9n360l47j4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/11/你可能并不需要jQuery/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/11/你可能并不需要jQuery/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/">如何避免打开谷歌自动跳转香港GOOGLE.COM.HK</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/">
+            <time datetime="2016-10-11T02:24:05.000Z" itemprop="datePublished">2016-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/google/">google</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>谷歌搜索是每个程序员必用都工具，但是在国内我们经常打开谷歌就会自动跳到.HK, 如何避免打开谷歌自动跳转到香港GOOGLE.COM.HK</p>
+</blockquote>
+<h3 id="防止谷歌自动跳转到香港google-com-hk解决办法："><a href="#防止谷歌自动跳转到香港google-com-hk解决办法：" class="headerlink" title="防止谷歌自动跳转到香港google.com.hk解决办法："></a>防止谷歌自动跳转到香港google.com.hk<strong>解决办法</strong>：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原理：只要告诉Google.com不要进行区域重定向（No Country Redirection, 简称 NCR）。</span><br><span class="line">具体做法：在网址栏打入http://www.google.com/ncr，然后回车即可。如果清理了Cookies缓存，还是出现自动跳转现象，重新再在网址栏打入http://www.google.com/ncr输入，回车就行。</span><br><span class="line">如果打不开，可能是因为google因触及相关敏感关键词因素，访问受限，过段时间再试，或者通过VPN, Goagent等代理工具进行“番羽土啬”。</span><br></pre></td></tr></table></figure>
+<p><strong>知识补充</strong>：<br>谷歌自动跳转到香港google.com.hk的原因：<br>谷歌(Google)是目前全球最强的搜索引擎，几乎在全球每个国家和地区都有独立搜索网站（如中国有g.cn 和 google.cn，退出中国市场后，跳转至google.com.hk）全球搜索市场占有率超过75%，为了提升各国google用户有更好的本地搜索体验，google.com根据用户IP进行了区域重定向（或者叫国家重定向）（英文 country Redirection）向这样的设置，这是造成中国大陆&amp;香港用户打开google.com时，自动跳转到google.com.hk的原因。即使选择Google.com.hk首页右下角的英文google.com按钮也不济于事，还是google.com.hk的网址。</p>
+<h3 id="谷歌自动跳转到香港google-com-hk造成的不便："><a href="#谷歌自动跳转到香港google-com-hk造成的不便：" class="headerlink" title="谷歌自动跳转到香港google.com.hk造成的不便："></a>谷歌自动跳转到香港google.com.hk造成的不便：</h3><p>对于身处中国大陆的人士，想搜索更多国外有价值信息而言，google.com明显比google.com.hk更能胜任。这种区域重定向显然给这部分人士带来了诸多不便。</p>
+<h5 id="小提醒："><a href="#小提醒：" class="headerlink" title="小提醒："></a>小提醒：</h5><p>在中国访问google.com的搜索结果，还是和在美国本地访问搜索结果有所不同。这也同样涉及到Google排名算法的本地优先原则。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/" data-id="cjvf21fdz001w3i9n2t5r0lzv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/11/如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-使用webpack压缩图片遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -236,7 +768,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/10/10/使用webpack压缩图片遇到的问题/" data-id="cjji9blx9002e8bfy2in6jtvd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/10/10/使用webpack压缩图片遇到的问题/" data-id="cjvf21fdw001q3i9niusudq36" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -314,542 +846,6 @@
 
 
 
-    <article id="post-使用nvm安装node" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/10/使用nvm安装node/">使用nvm安装node</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/10/使用nvm安装node/">
-            <time datetime="2016-10-10T03:08:25.000Z" itemprop="datePublished">2016-10-10</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/node/">node</a>, <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>如果你想长期做 node 开发, 或者想快速更新 node 版本, 或者想快速切换 node 版本,<br>那么在非 Windows(如 osx, linux) 环境下, 请使用 nvm 来安装你的 node 开发环境, 保持系统的干净.<br>如果你使用 Windows 做开发, 那么你可以使用 nvmw 来替代 nvm</p>
-<h3 id="git-clone-nvm"><a href="#git-clone-nvm" class="headerlink" title="git clone nvm"></a>git clone nvm</h3><p>直接从 github clone nvm 到本地, 这里假设大家都使用 ~/git 目录存放 git 项目:<br><code>$ cd ~/git
-$ git clone https://github.com/creationix/nvm.git</code></p>
-<p>配置终端启动时自动执行 source ~/git/nvm/nvm.sh,<br>在 ~/.zshrc 文件添加以下命令:<br><code>source ~/git/nvm/nvm.sh</code><br>重新打开你的终端, 输入 nvm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ nvm</span><br><span class="line">Node Version Manager</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<h3 id="通过-nvm-安装任意版本的-node"><a href="#通过-nvm-安装任意版本的-node" class="headerlink" title="通过 nvm 安装任意版本的 node"></a>通过 nvm 安装任意版本的 node</h3><p>nvm 默认是从 <a href="http://nodejs.org/dist/" target="_blank" rel="noopener">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢,<br>好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node nvm ls-remote</span><br></pre></td></tr></table></figure></p>
-<p>就可以看到远程服务器上的node版本，选择一个进行安装<code>nvm install v4.6.0(nodevesion)</code>即可。<br>于是你就会看到一段非常快速进度条:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">######################################################################## 100.0%</span><br><span class="line">Now using node v4.6.0</span><br></pre></td></tr></table></figure></p>
-<p>如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .zshrc 文件中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># nvm</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br><span class="line">source ~/git/nvm/nvm.sh</span><br></pre></td></tr></table></figure></p>
-<p>然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本:</p>
-<p>$ nvm ls<br>         nvm<br>     v0.8.26<br>    v0.10.26<br>    v0.11.11<br>-&gt;  v4.3.2</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/10/使用nvm安装node/" data-id="cjji9blx8002d8bfyt0wx3oxa" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/10/使用nvm安装node/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/10/使用nvm安装node/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-linux中使用deepinQQ" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/10/linux中使用deepinQQ/">linux中使用deepinQQ</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/10/linux中使用deepinQQ/">
-            <time datetime="2016-10-10T02:09:38.000Z" itemprop="datePublished">2016-10-10</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/software/">software</a>, <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="linux-运行QQ"><a href="#linux-运行QQ" class="headerlink" title="linux 运行QQ"></a>linux 运行QQ</h3><p>我们知道在deepin linux上面，deepin团队做了很多wine的应用程序，但是在其他的linux发行版上却没有这种待遇，下面介绍一下，如何在继续debian的linux发行版上运行deepin的wine应用程序。</p>
-<hr>
-<blockquote>
-<pre><code>本文基于ubuntu16.04
-</code></pre></blockquote>
-<h3 id="安装crossover"><a href="#安装crossover" class="headerlink" title="安装crossover"></a>安装crossover</h3><p><a href="http://pan.baidu.com/s/1gflTQd9#list/path=%2F" target="_blank" rel="noopener">crossover百度网盘下载</a></p>
-<p>注：资源文件夹里面有多个版本的crossover，后缀加了free是临时破解版，请支持正版，但是存在部分功能性问题，不影响deepinwine的软件包使用。没有free的没有功能性问题，但是可能出现deepinwine软件兼容性问题，试用15天的，如果支持crossover的朋友请购买正版。建议大家来回覆盖安装这两个版本使用，基本可以互补。如果有兴趣的朋友可以和我一起讨论研究解决问题。<br>对于什么是来回覆盖安装，举个例子：free版是不能创建容器的，那么我们先安装不是free的版本也就是试用版，把容器创建好了以后，在覆盖安装free版就可以使用了。所以两个版本功能是互补的，虽然麻烦，但还是不影响正常使用的。</p>
-<h5 id="添加32位库的支持"><a href="#添加32位库的支持" class="headerlink" title="添加32位库的支持"></a>添加32位库的支持</h5><p>如果是64位系统，先添加对32位库的支持：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">###### 可能需要添加下列32位库</span><br><span class="line">sudo apt-get install lib32z1 lib32ncurses5</span><br></pre></td></tr></table></figure></p>
-<h5 id="安装crossover-1"><a href="#安装crossover-1" class="headerlink" title="安装crossover"></a>安装crossover</h5><p>如果要安装14版本，<br>从上面的分享地址里下载crossover_14.1.11-1_all.deb crossover_14.1.11-1_all-free.deb deepin-crossover_0.5.14_all.deb三个文件,依次安装。<br>如果安装15，crossover-15_15.0.3-1_all.deb crossover-15_15.0.3-1_all-free.deb deepin-crossover-helper_1.0deepin0_all.deb 并依次安装。</p>
-<h3 id="安装deepin的wine程序"><a href="#安装deepin的wine程序" class="headerlink" title="安装deepin的wine程序"></a>安装deepin的wine程序</h3><p><a href="http://packages.deepin.com/deepin/pool/non-free/a/apps.com.qq.im/" target="_blank" rel="noopener">QQ 8.x，需要Crossover 15</a><br><a href="http://packages.deepin.com/deepin/pool/non-free/d/deepinwine-qq/" target="_blank" rel="noopener">QQ 7.x 支持Crossover 14</a><br><a href="http://packages.deepin.com/deepin/pool/non-free/d/" target="_blank" rel="noopener">其他的deepin wine程序</a> 下载，实际上这就是deepin的源</p>
-<p>都是deb包，可以直接下载安装。</p>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
-<li>安装后启动不起来：重启系统。</li>
-<li>点击QQ的退出后，QQ在后台并没有真正关闭。这是需要<code>ps -A |grep QQ</code>,列出所有QQ程序，然后kill掉就可以了。</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/10/linux中使用deepinQQ/" data-id="cjji9blwy001v8bfyghtadmp0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/10/linux中使用deepinQQ/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/10/linux中使用deepinQQ/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-在ubuntu上安装apache2及mysql" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/09/在ubuntu上安装apache2及mysql/">在ubuntu上安装apache2及mysql</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/09/在ubuntu上安装apache2及mysql/">
-            <time datetime="2016-10-09T07:12:20.000Z" itemprop="datePublished">2016-10-09</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="安装Apache"><a href="#安装Apache" class="headerlink" title="安装Apache"></a>安装Apache</h2><p><code>sudo apt-get install apache2</code><br>Apache安装完成后，默认的网站根目录是”/var/www/html”，在终端窗口中输入<code>ls /var/www/html</code>,在网站根目录下有一个”index.html”文件,在浏览器中输入”localhost”,就可以打开该页面。</p>
-<h5 id="修改网站的根目录"><a href="#修改网站的根目录" class="headerlink" title="修改网站的根目录"></a>修改网站的根目录</h5><ol>
-<li>在终端窗口中输入<code>sudo vi /etc/apache2/apache2.conf</code>,找到<strong><directory var="" www=""></directory></strong>的位置,更改”/var/www/“为新的根目录”/var/Sites/“就可以了。</li>
-<li>在终端窗口中输入<code>sudo vi /etc/apache2/sites-available/000-default.conf</code>,<strong>DocumentRoot /var/www/html</strong>的位置,更改”/var/www/html”为新的根目录就可以了，这里我把它更改为”/var/Sites/“。</li>
-</ol>
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p><code>sudo apt-get install mysql-server</code></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/09/在ubuntu上安装apache2及mysql/" data-id="cjji9blxd002k8bfyihttwabw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/09/在ubuntu上安装apache2及mysql/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/09/在ubuntu上安装apache2及mysql/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-ubuntu1604-git结合beyond-compare" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/09/ubuntu1604-git结合beyond-compare/">ubuntu1604 git结合beyond compare</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/09/ubuntu1604-git结合beyond-compare/">
-            <time datetime="2016-10-09T03:29:28.000Z" itemprop="datePublished">2016-10-09</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/git/">git</a>, <a class="tag-link" href="/tags/ubuntu/">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>在<a href="http://www.scootersoftware.com/download.php" target="_blank" rel="noopener">beyond compare官网</a>下载Debian选项的安装包，然后<br><code>dpkg -i *.deb</code>安装依赖等。<br>在~/.gitconfig文件中增加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[diff]</span><br><span class="line">    tool = bc3</span><br><span class="line">[difftool]</span><br><span class="line">    prompt = false</span><br><span class="line">[merge]</span><br><span class="line">    tool = bc3</span><br><span class="line">[mergetool]</span><br><span class="line">    prompt = false</span><br></pre></td></tr></table></figure></p>
-<p>当执行git difftool的时候，就会启动bcompare比较</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/10/09/ubuntu1604-git结合beyond-compare/" data-id="cjji9blwt001n8bfy9qcch569" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/10/09/ubuntu1604-git结合beyond-compare/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/10/09/ubuntu1604-git结合beyond-compare/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">下一页 &raquo;</a>
     </nav>
@@ -866,7 +862,7 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/07/12/将git项目使用推送到多个地址/" class="thumbnail">
+                            <a href="/2019/05/08/搭建nextjs脚手架遇到的问题及解决/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -877,84 +873,84 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/07/12/将git项目使用推送到多个地址/" class="title">将git项目使用推送到多个地址</a></p>
+                            <p class="item-title"><a href="/2019/05/08/搭建nextjs脚手架遇到的问题及解决/" class="title">搭建nextjs脚手架遇到的问题及解决</a></p>
+                            <p class="item-date"><time datetime="2019-05-08T09:44:02.000Z" itemprop="datePublished">2019-05-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/05/ubuntu-16-04-安装-postgresql-10/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/05/ubuntu-16-04-安装-postgresql-10/" class="title">ubuntu 16.04 安装 postgresql 10</a></p>
+                            <p class="item-date"><time datetime="2018-11-05T08:01:24.000Z" itemprop="datePublished">2018-11-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/使用travis-ci实现持续部署/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/使用travis-ci实现持续部署/" class="title">使用travis-ci实现持续部署</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T10:16:17.000Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/31/使用SSH登录远程服务器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/31/使用SSH登录远程服务器/" class="title">使用SSH登录远程服务器</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T01:58:11.000Z" itemprop="datePublished">2018-07-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/12/将git项目推送到多个地址/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/07/12/将git项目推送到多个地址/" class="title">将git项目推送到多个地址</a></p>
                             <p class="item-date"><time datetime="2018-07-12T03:53:45.000Z" itemprop="datePublished">2018-07-12</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" class="title">代码分割结合 Prefetch 完美优化单页应用加载性能</a></p>
-                            <p class="item-date"><time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/02/使用babel-preset-env替代babel-preset-es2015/" class="title">使用babel-preset-env替代babel-preset-es2015</a></p>
-                            <p class="item-date"><time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/20/create-react-app和express共同组建的开发环境/" class="title">create-react-app和express共同组建的开发环境</a></p>
-                            <p class="item-date"><time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/18/ES7-and-ES8-特性/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/18/ES7-and-ES8-特性/" class="title">ES7 and ES8 特性</a></p>
-                            <p class="item-date"><time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time></p>
                         </div>
                     </li>
                 
@@ -969,7 +965,7 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -978,7 +974,7 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/">travis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信/">微信</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -987,7 +983,7 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 12px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/travis/" style="font-size: 10px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 12px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a>
         </div>
     </div>
 
@@ -1015,7 +1011,7 @@ $ git clone https://github.com/creationix/nvm.git</code></p>
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2018 织幻z<br>
+            &copy; 2019 织幻z<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
