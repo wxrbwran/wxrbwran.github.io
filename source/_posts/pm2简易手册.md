@@ -27,8 +27,8 @@ tags: pm2
 7. 远程控制和实时的接口 API ( Nodejs 模块,允许和 PM2 进程管理器交互 )
 
 ### 用法
-####基本启动命令
-> pm2 start
+#### 基本启动命令
+>  pm2 start
 
 // start命令启动对应的node server文件
 ```
@@ -37,7 +37,7 @@ tags: pm2
 
 通过配置文件进行启动稍后详细讲解
 启动之后，控制台会看到如下消息：
-![](././pm2简易手册/pm21.png)
+![](./pm21.png)
 > 如上图所示，可以看到项目next成功启动,id 是 2,3，并且状态时 online.之所以有两个，是因为在配置文件开了负载均衡，下面会说。
 
 - 查看详细状态信息
@@ -77,8 +77,7 @@ pm2 web
 ```
 pm2 stop (id|all)
 ```
->
-// 停止id为0的进程
+> // 停止id为0的进程
 $ pm2 stop 0
 // 停止所有进程
 $ pm2 stop all
@@ -88,8 +87,7 @@ $ pm2 stop all
 ```
 pm2 restart (id|all)
 ```
->
-// 重启id为0的进程
+>// 重启id为0的进程
 $ pm2 restart 0
 // 重启所有进程
 $ pm2 restart all
@@ -99,15 +97,14 @@ $ pm2 restart all
 ```
 pm2 delete (id|all)
 ```
->
-// 杀死id为0的进程
+>// 杀死id为0的进程
 $ pm2 delete 0
 // 杀死所有进程
 $ pm2 delete all
 
-### 配置 PM2 启动文件
+###  配置 PM2 启动文件
 pm2 启动的方式可以进行很多的扩展，比如设置环境，设置错误信息打印，设置输入信息打印等等高级功能。那么一条命令就不能完成这些任务， pm2 提供了配置文件的方式来启动.
-#### pm2.config.js
+####  pm2.config.js
 ```js
 module.exports = {
   apps: [
