@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "hexo": "^3.7.1",
+    "hexo-asset-image": "0.0.3",
     "hexo-deployer-git": "^0.2.0",
     "hexo-deployer-heroku": "^0.1.1",
     "hexo-deployer-openshift": "^0.1.1",
