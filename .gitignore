@@ -4,3 +4,4 @@ node_modules/
 .deploy_git/
 db.json
 *.lock
+yarn.lock
