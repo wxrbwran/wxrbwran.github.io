@@ -8,7 +8,7 @@ cache:
   directories:
   - node_modules
 # before_install:  
-# 使用travis公钥，避免重装麻烦
+#   使用travis公钥，避免重装麻烦
 # - openssl aes-256-cbc -K $encrypted_d2074cba7fd5_key -iv $encrypted_d2074cba7fd5_iv
 #   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 # - chmod 600 ~/.ssh/id_rsa
