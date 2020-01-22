@@ -7,16 +7,15 @@ branches:
 cache:
   directories:
   - node_modules
-# before_install:  
+before_install:  
 #   使用travis公钥，避免重装麻烦
-# - openssl aes-256-cbc -K $encrypted_d2074cba7fd5_key -iv $encrypted_d2074cba7fd5_iv
-#   -in id_rsa.enc -out ~/.ssh/id_rsa -d
-# - chmod 600 ~/.ssh/id_rsa
-# - eval $(ssh-agent)
-# - ssh-add ~/.ssh/id_rsa
-- cp .travis/known_hosts ~/.ssh/known_hosts
-# - git config --global user.name "wxrbwran"
-# - git config --global user.email "wxrbw@qq.com"
+- openssl aes-256-cbc -K $encrypted_d2074cba7fd5_key -iv $encrypted_d2074cba7fd5_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/ssh_config
+- git config --global user.name "wxrbwran"
+- git config --global user.email "wxrbw@qq.com"
 install:
 - npm install hexo-cli -g
 - npm install hexo-deployer-git --save
