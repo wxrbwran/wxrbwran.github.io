@@ -19,4 +19,14 @@ Public key for wxrbwran/wxrbwran.github.io
 ssh-rsa ......
 ```
 
-然后我分别加入到github中和腾讯云主机中，这样travis就可以自主登录操作了。
+### 将公钥添加到 authorized_keys
+```bash
+mkdir .ssh
+chmod 700 .ssh
+touch .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+vim .ssh/authorized_keys # 添加上面的公钥
+```
+使用该方案，无需方案一的添加 before_install 的步骤。
+
+然后分别加入到github中和腾讯云主机中，这样travis就可以自主登录操作了。
