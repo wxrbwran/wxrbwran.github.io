@@ -14,6 +14,7 @@ before_install:
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/ssh_config
+- echo -e "Host 123.206.90.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - git config --global user.name "wxrbwran"
 - git config --global user.email "wxrbw@qq.com"
 install:
