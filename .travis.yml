@@ -26,4 +26,4 @@ script:
 - hexo g
 after_success:
 - hexo deploy
-- ssh ubuntu@123.206.90.112 -p 22 'cd /var/www/wxrbwran.github.io && hexo clean && git pull && hexo g'
+- ssh ubuntu@123.206.90.112 -p 22 'cd /var/www/wxrbwran.github.io && yarn global add hexo-cli && yarn && hexo clean && git pull && hexo g'
