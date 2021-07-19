@@ -161,7 +161,7 @@
         <div class="base-info profile-block">
             <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
             <h2 id="name">吴晓然</h2>
-            <h3 id="title">Web 前端 &amp; NodeJs</h3>
+            <h3 id="title">Web 前端 / Node / Java</h3>
             <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
             <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
         </div>
@@ -233,11 +233,10 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p>  一般情况下，我们在启动类上面添加**@EnableFeignClients**注解就是表明当前应用服务（我们称之为<code>服务A</code>）中有的地方想要引用其它应用服务（我们称之为<code>服务B</code>）中的接口。<br>  如果<code>服务B可以单独启动起来并且注册到注册中心</code>，则我们仅仅在服务A的启动类中添加<code>@EnableFeignClients</code>注解即可；如果<code>服务B没有单独启动起来</code>，而是以Jar包的形式被引入到服务A中，则服务A在启动的时候是不会主动去加载服务B中标注了@FeignClient注解的interface而去自动生成bean对象，这样我们在服务A中的Controller类中以如下这种方式去引入<code>使用服务B中的标注了@FeignClient注解的接口</code>是会报错的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.bc.product.client.ProductClient;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientController</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductClient productClient;</span><br><span class="line"> </span><br><span class="line">    ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这个时候就需要使用<code>basePackages</code>属性字段去指明应用程序A在启动的时候需要扫描服务B中的标注了@FeignClient注解的接口的包路径</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableFeignClients(basePackages = &#123;&quot;com.bc.product.client&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderApplication</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(OrderApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <p><p>  一般情况下，我们在启动类上面添加**@EnableFeignClients**注解就是表明当前应用服务（我们称之为<code>服务A</code>）中有的地方想要引用其它应用服务（我们称之为<code>服务B</code>）中的接口。<br>  如果<code>服务B可以单独启动起来并且注册到注册中心</code>，则我们仅仅在服务A的启动类中添加<code>@EnableFeignClients</code>注解即可；如果<code>服务B没有单独启动起来</code>，而是以Jar包的形式被引入到服务A中，则服务A在启动的时候是不会主动去加载服务B中标注了@FeignClient注解的interface而去自动生成bean对象，这样我们在服务A中的Controller类中以如下这种方式去引入<code>使用服务B中的标注了@FeignClient注解的接口</code>是会报错的</p></p>
+            <p class="article-more-link">
+                <a href="/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -247,7 +246,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" data-id="ckrabi1wg000yamlt764o03fh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" data-id="ckrabw0bp000p4glt4uv9c8zh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -377,7 +376,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" data-id="ckrabi1wj0015amlt5d9b52f6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" data-id="ckrabw0by00174gltgz8p1p3n" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -507,7 +506,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" data-id="ckrabi1wt001qamlt7u3j045t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" data-id="ckrabw0ca001q4glt7b55266s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -638,7 +637,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" data-id="ckrabi1wi0013amlt6y4jg53e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" data-id="ckrabw0bx00144glt2ulog2n1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -768,7 +767,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" data-id="ckrabi1we000tamlt80um6m40" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" data-id="ckrabw0bs000t4gltgemn41nh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
