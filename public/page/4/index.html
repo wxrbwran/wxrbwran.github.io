@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     
-    <title>前端技术</title>
+    <title>晓然的自留地</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="前端工程师的自我修养">
 <meta property="og:type" content="website">
-<meta property="og:title" content="前端技术">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="前端技术">
+<meta property="og:title" content="晓然的自留地">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="前端工程师的自我修养">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="织幻z">
@@ -49,7 +49,7 @@
     
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="前端技术" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="晓然的自留地" type="application/atom+xml">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">前端技术</span>
+                <span class="site-title">晓然的自留地</span>
             </a>
             <nav id="main-nav">
                 
@@ -167,11 +167,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                57
+                66
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                27
+                35
                 <span>标签</span>
             </div>
         </div>
@@ -196,7 +196,7 @@
 
             
             <section id="main">
-    <article id="post-express的上传中间件multer" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-将git项目推送到多个地址" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -204,7 +204,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/">express的上传中间件multer</a>
+            <a class="article-title" href="/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/">将git项目推送到多个地址</a>
         </h1>
     
 
@@ -213,8 +213,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/">
-            <time datetime="2017-06-10T03:46:22.000Z" itemprop="datePublished">2017-06-10</time>
+        <a href="/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/">
+            <time datetime="2018-07-12T03:53:45.000Z" itemprop="datePublished">2018-07-12</time>
         </a>
     </div>
 
@@ -223,7 +223,148 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/express/" rel="tag">express</a>
+        <a class="tag-link-link" href="/tags/git/" rel="tag">git</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="git设置"><a href="#git设置" class="headerlink" title="git设置"></a>git设置</h3><p>公司开发项目迁移，中间大约一周左右的测试期，两边地址都要上传，那么如何方便快捷的把代码托管到多个平台呢？<br>例如我有下面两个仓库： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://gitlab.com/***/doctor.git </span><br><span class="line">https://github.com/***/doctor.git</span><br></pre></td></tr></table></figure>
+<p>先添加第一个仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://gitlab.com/***/doctor.git </span><br></pre></td></tr></table></figure>
+<p>再添加第二个仓库： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin https://github.com/***/doctor.git</span><br></pre></td></tr></table></figure>
+<p>如果还有其他，则可以像添加第二个一样继续添加其他仓库。</p>
+<p>然后使用下面命令提交： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin --all</span><br><span class="line">或者特定分支</span><br><span class="line">git push origin [branch]</span><br></pre></td></tr></table></figure>
+<p>打开.git/config，可以看到这样的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">  url = https://github.com/***/doctor.git</span><br><span class="line">  fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">  url = https://gitlab.com/***/doctor.git</span><br></pre></td></tr></table></figure>
+<p>刚才的命令其实就是添加了这些配置。如果不想用命令行，可以直接编辑该文件，添加对应的url即可。<br><strong>如果两个地址的账号还不一样呢？</strong></p>
+<h3 id="多账号ssh设置"><a href="#多账号ssh设置" class="headerlink" title="多账号ssh设置"></a>多账号ssh设置</h3><p>首先生成另一个ssh公钥， 比如id_rsa_doctor,id_rsa_doctor.pub，<br>然后配置**.ssh**文件夹下的config文件，没有的话建立。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host default</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">#second 第二个账号</span><br><span class="line">Host second</span><br><span class="line">    HostName gitlab.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_doctor</span><br></pre></td></tr></table></figure>
+<p>这样的话就可以一次操作后，提交到两个仓库地址了。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/" data-id="ckrabi1xl0038amlt3jjma3om" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-代码分割结合-Prefetch-完美优化单页应用加载性能" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/">代码分割结合 Prefetch 完美优化单页应用加载性能</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/">
+            <time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/webpack/" rel="tag">webpack</a>
     </div>
 
                     </div>
@@ -234,13 +375,10 @@
         <div class="article-entry" itemprop="articleBody">
         
             <p><blockquote>
-<p>Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。</p>
-</blockquote>
-<p><strong>注意</strong>: Multer <del>不会处理</del>任何非 multipart/form-data 类型的表单数据.</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></p>
+<p>单页应用性能的最大痛点就是 bundle 体积大导致首屏时间过长。使用 webpack 的 code splitting（代码分割）功能可以将 bundle 分片，加速首屏，但之后的交互势必会受到影响,页面变得不再流畅，稍有卡顿，所以放弃了分片，但是现在发现有webpack插件解决JS文件后加载响应慢的问题，所以记了下来。</p>
+</blockquote></p>
             <p class="article-more-link">
-                <a href="/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/#more">查看更多</a>
+                <a href="/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/#more">查看更多</a>
             </p>
         
         </div>
@@ -251,7 +389,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/" data-id="ck5oyz5ww0014vllthhdj1bz3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/" data-id="ckrabi1x30026amlt64e59fzh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -319,7 +457,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/">评论</a>
+        <a href="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/">评论</a>
     
 
         </footer>
@@ -329,7 +467,7 @@
 
 
 
-    <article id="post-使用Travis将Hexo同时部署到Coding-net" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-使用babel-preset-env替代babel-preset-es2015" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -337,7 +475,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/02/%E4%BD%BF%E7%94%A8Travis%E5%B0%86Hexo%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%88%B0Coding-net/">使用Travis将Hexo同时部署到Coding.net</a>
+            <a class="article-title" href="/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/">使用babel-preset-env替代babel-preset-es2015</a>
         </h1>
     
 
@@ -346,8 +484,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/06/02/%E4%BD%BF%E7%94%A8Travis%E5%B0%86Hexo%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%88%B0Coding-net/">
-            <time datetime="2017-06-02T15:57:18.000Z" itemprop="datePublished">2017-06-02</time>
+        <a href="/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/">
+            <time datetime="2017-10-02T11:12:01.000Z" itemprop="datePublished">2017-10-02</time>
         </a>
     </div>
 
@@ -356,279 +494,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/travis/" rel="tag">travis</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <blockquote>
-<p>既然使用了Travis在push后发不到github，那就再加点东西，发布到coding.net的Pages服务上，理论上国内服务应该快一点点。<br>  同时搭建的教程可以看看<a href="http://www.ithome.com/html/win10/311572.htm" target="_blank" rel="noopener">这里</a></p>
-</blockquote>
-<ol>
-<li>修改.travis文件夹下的<strong>ssh_config,</strong>添加coding.net <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  User git</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">Host git.coding.net</span><br><span class="line">  User git</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">  IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
-<li>修改hexo的配置文件<strong>_config.yml</strong><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">   <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">   <span class="attr">repo:</span></span><br><span class="line">     <span class="attr">coding:</span> <span class="string">git@git.coding.net:wxrbw/wxrbw.coding.me.git,master</span></span><br><span class="line">     <span class="attr">github:</span> <span class="string">git@github.com:wxrbwran/wxrbwran.github.io.git,master</span></span><br></pre></td></tr></table></figure>
-再push到github就可以自动发布到两个Pages了。</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/06/02/%E4%BD%BF%E7%94%A8Travis%E5%B0%86Hexo%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%88%B0Coding-net/" data-id="ck5oyz5xq002wvllt30z7erlv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/06/02/%E4%BD%BF%E7%94%A8Travis%E5%B0%86Hexo%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%88%B0Coding-net/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/02/%E4%BD%BF%E7%94%A8Travis%E5%B0%86Hexo%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%88%B0Coding-net/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-在express中使用es2015的新特性" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/01/%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8es2015%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">在express中使用es2015的新特性</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/01/%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8es2015%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">
-            <time datetime="2017-06-01T10:20:55.000Z" itemprop="datePublished">2017-06-01</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/es2015/" rel="tag">es2015</a>, <a class="tag-link" href="/tags/express/" rel="tag">express</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <blockquote>
-<p>在前端开发中使用es2015及正在stage中的js特性已经屡见不鲜，但是在express中使用还是第一次尝试，稍微配置下也是可以的。有没有坑，等使用后再补齐。</p>
-</blockquote>
-<h3 id="安装babel"><a href="#安装babel" class="headerlink" title="安装babel"></a>安装babel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;babel-cli&quot;: &quot;^6.24.1&quot;,</span><br><span class="line">&quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,</span><br><span class="line">&quot;babel-preset-stage-2&quot;: &quot;^6.24.1&quot;,</span><br></pre></td></tr></table></figure>
-
-<p>###根目录下创建.babelrc文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;es2015&quot;, &quot;stage-2&quot;],</span><br><span class="line">  &quot;plugins&quot;: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="安装nodemon"><a href="#安装nodemon" class="headerlink" title="安装nodemon"></a>安装nodemon</h3><p>不使用supervisor是因为配合不了babel</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install nodemon -g</span><br></pre></td></tr></table></figure>
-<h3 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon .&#x2F;bin&#x2F;www.js --exec babel-node&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>之后就可以使用es新的语法特性了~</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/06/01/%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8es2015%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" data-id="ck5oyz5xn002rvllt5cjg3eq8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/06/01/%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8es2015%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/01/%E5%9C%A8express%E4%B8%AD%E4%BD%BF%E7%94%A8es2015%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-hexo＋Travis-ci＋github构建自动化博客" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/">hexo＋Travis-ci＋github构建自动化博客</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/">
-            <time datetime="2017-06-01T02:08:52.000Z" itemprop="datePublished">2017-06-01</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ci/" rel="tag">ci</a>, <a class="tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+        <a class="tag-link-link" href="/tags/babel/" rel="tag">babel</a>
     </div>
 
                     </div>
@@ -639,28 +505,13 @@
         <div class="article-entry" itemprop="articleBody">
         
             <p><blockquote>
-<p>Travis CI：是目前新兴的开源持续集成构建项目，它与jenkins，GO的很明显的特别在于采用yaml格式，简洁清晰。</p>
+<p><strong>Babel</strong> 是每个 FEer/Node.js 的使用者都会使用的一个代码转(bian)换(yi)器，它可以把 ES6、ES7 等语法转换成 ES5 的语法，使其能在更多环境下运行。</p>
 </blockquote>
-<p>tarvis－ci是远端服务器构建，跟jenkins 不一样，不用自己搭建一个jenkins服务器。tarvis－ci是用的远端官方提供的服务器。用hexo 搭建博客，然后将博客源码提交到 Git上，用travis－ci 编译git 上的源码，然后将编译后的文件，推送到Github.io仓库下，达到自动化编译构建。</p>
-<hr>
-<h4 id="构建自动化博客的步骤"><a href="#构建自动化博客的步骤" class="headerlink" title="构建自动化博客的步骤"></a>构建自动化博客的步骤</h4><p>由于需要搭建hexo 和本地搭建Travis 所以本地需要有ruby 和 node 环境。本地搭建Travis 是为了和Travis－ci 服务器进行加密解密获得密匙，获得一次即可。</p>
-<ol>
-<li><p>安装rubu 和node.js</p>
-</li>
-<li><p>搭建hexo</p>
-</li>
-<li><p>安装 travis</p>
-</li>
-<li><p>配置git 的ssh key</p>
-</li>
-<li><p>配置Travis</p>
-</li>
-<li><p>验证</p>
-</li>
-</ol>
-<hr></p>
+<p>但是随着浏览器和 Node.js 的版本迭代，他们对新语法的支持也越来越好。但是非常尴尬的是，我们总是使用 Babel 把所有代码一股脑转换成 ES5。这意味着我们抛弃了性能优秀的 let、const 关键字，放弃了简短的代码，而选择了又长又丑像坨屎的经过变换后的代码。</p>
+<p>即使仅仅将代码跑在对 ES5 支持度在 99% 的 Node 6，一旦使用了 import 关键字，你就得用 Babel 对代码进行转换，一般还是全部转换为 ES5，辣鸡 Node.js 竟然还不支持 import 和 export。</p>
+<h2 id="那有没有什么工具能智能识别当前运行环境，并且进行适当的转换，以及填充适当的-polyfill-呢？"><a href="#那有没有什么工具能智能识别当前运行环境，并且进行适当的转换，以及填充适当的-polyfill-呢？" class="headerlink" title="那有没有什么工具能智能识别当前运行环境，并且进行适当的转换，以及填充适当的 polyfill 呢？"></a>那有没有什么工具能智能识别当前运行环境，并且进行适当的转换，以及填充适当的 <strong>polyfill</strong> 呢？</h2></p>
             <p class="article-more-link">
-                <a href="/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/#more">查看更多</a>
+                <a href="/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/#more">查看更多</a>
             </p>
         
         </div>
@@ -671,7 +522,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/" data-id="ck5oyz5wz001bvllthl43498x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/" data-id="ckrabi1x8002jamlt6zneb5gh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -739,7 +590,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/01/hexo%EF%BC%8BTravis-ci%EF%BC%8Bgithub%E6%9E%84%E5%BB%BA%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8D%9A%E5%AE%A2/">评论</a>
+        <a href="http://example.com/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/">评论</a>
     
 
         </footer>
@@ -749,7 +600,7 @@
 
 
 
-    <article id="post-react中context的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-create-react-app和express共同组建的开发环境" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -757,7 +608,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">react中context的使用</a>
+            <a class="article-title" href="/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">create-react-app和express共同组建的开发环境</a>
         </h1>
     
 
@@ -766,8 +617,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">
-            <time datetime="2017-05-27T06:29:39.000Z" itemprop="datePublished">2017-05-27</time>
+        <a href="/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+            <time datetime="2017-07-20T08:55:32.000Z" itemprop="datePublished">2017-07-20</time>
         </a>
     </div>
 
@@ -776,7 +627,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/react/" rel="tag">react</a>
+        <a class="tag-link-link" href="/tags/express/" rel="tag">express</a>
     </div>
 
                     </div>
@@ -786,9 +637,12 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="使用-Context-的原因"><a href="#使用-Context-的原因" class="headerlink" title="使用 Context 的原因"></a>使用 Context 的原因</h2><p>为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。</p></p>
+            <p><h2 id="脚手架介绍"><a href="#脚手架介绍" class="headerlink" title="脚手架介绍"></a>脚手架介绍</h2><blockquote>
+<p>在这个环境下，Facebook 提供了一套不需要配置的 React 开发方案，即create-react-app。这个脚手架已经做好了基础 webpack 配置，带有自动更新，错误提示等等功能，仅仅需要创建，启动就可以快速开发。</p>
+</blockquote>
+<p>这时也不得不提前端社区的另一个崛起者：<strong>yarn</strong>。</p></p>
             <p class="article-more-link">
-                <a href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/#more">查看更多</a>
+                <a href="/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more">查看更多</a>
             </p>
         
         </div>
@@ -799,7 +653,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ck5oyz5xa001yvllt2xe17yib" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" data-id="ckrabi1wf000wamltcoa12vrw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -867,7 +721,147 @@
 
             
     
-        <a href="http://yoursite.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">评论</a>
+        <a href="http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-ES7-and-ES8-特性" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/">ES7 and ES8 特性</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/">
+            <time datetime="2017-07-18T05:56:47.000Z" itemprop="datePublished">2017-07-18</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/es7/" rel="tag">es7</a>, <a class="tag-link-link" href="/tags/es8/" rel="tag">es8</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="ES8-was-Released"><a href="#ES8-was-Released" class="headerlink" title="ES8 was Released"></a>ES8 was Released</h2><blockquote>
+<p>虽然现在开发已经都在用es6，一个不注意，都到了es8了。记录一下新增加的常用功能，方便查阅。</p>
+</blockquote>
+<h2 id="ES7-特性："><a href="#ES7-特性：" class="headerlink" title="ES7 特性："></a>ES7 特性：</h2><ol>
+<li>Array.prototype.includes</li>
+<li>Exponentiation Operator(求冥运算)</li>
+</ol>
+<h2 id="ES8-特性"><a href="#ES8-特性" class="headerlink" title="ES8 特性"></a>ES8 特性</h2><ol>
+<li>Object.values/Object.entries</li>
+<li>String padding(字符串填充)</li>
+<li>Object.getOwnPropertyDescriptors</li>
+<li>函数参数列表和调用中的尾逗号（Trailing commas）</li>
+<li>异步函数（Async Functions）</p>
+            <p class="article-more-link">
+                <a href="/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/" data-id="ckrabi1w6000bamltg41f0zbh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/07/18/ES7-and-ES8-%E7%89%B9%E6%80%A7/">评论</a>
     
 
         </footer>
@@ -878,7 +872,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">下一页 &amp;raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">下一页 &amp;raquo;</a>
     </nav>
 </section>
             
@@ -893,7 +887,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/" class="thumbnail">
+                            <a href="/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -904,15 +898,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/" class="title">nextjs项目的部署</a></p>
-                            <p class="item-date"><time datetime="2019-05-10T02:11:05.000Z" itemprop="datePublished">2019-05-10</time></p>
+                            <p class="item-title"><a href="/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" class="title">Spring Cloud中关于@EnableFeignClients注解的属性字段basePackages</a></p>
+                            <p class="item-date"><time datetime="2021-07-19T07:20:50.000Z" itemprop="datePublished">2021-07-19</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/09/pm2%E7%AE%80%E6%98%93%E6%89%8B%E5%86%8C/" class="thumbnail">
+                            <a href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -923,15 +917,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/09/pm2%E7%AE%80%E6%98%93%E6%89%8B%E5%86%8C/" class="title">pm2简易手册</a></p>
-                            <p class="item-date"><time datetime="2019-05-09T06:31:02.000Z" itemprop="datePublished">2019-05-09</time></p>
+                            <p class="item-title"><a href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" class="title">flutter 单元测试mockito的基本运用</a></p>
+                            <p class="item-date"><time datetime="2020-06-18T09:44:20.000Z" itemprop="datePublished">2020-06-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" class="thumbnail">
+                            <a href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -942,15 +936,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" class="title">搭建nextjs脚手架遇到的问题及解决</a></p>
-                            <p class="item-date"><time datetime="2019-05-08T09:44:02.000Z" itemprop="datePublished">2019-05-08</time></p>
+                            <p class="item-title"><a href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" class="title">react hooks 组件的测试方法</a></p>
+                            <p class="item-date"><time datetime="2020-06-15T09:03:34.000Z" itemprop="datePublished">2020-06-15</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/" class="thumbnail">
+                            <a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -961,15 +955,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/" class="title">ubuntu 16.04 安装 postgresql 10</a></p>
-                            <p class="item-date"><time datetime="2018-11-05T08:01:24.000Z" itemprop="datePublished">2018-11-05</time></p>
+                            <p class="item-title"><a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="title">flutter provider中函数的形参问题</a></p>
+                            <p class="item-date"><time datetime="2020-06-02T10:26:07.000Z" itemprop="datePublished">2020-06-02</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/07/31/%E4%BD%BF%E7%94%A8travis-ci%E5%AE%9E%E7%8E%B0%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/" class="thumbnail">
+                            <a href="/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -980,8 +974,8 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/07/31/%E4%BD%BF%E7%94%A8travis-ci%E5%AE%9E%E7%8E%B0%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/" class="title">使用travis-ci实现持续部署</a></p>
-                            <p class="item-date"><time datetime="2018-07-31T10:16:17.000Z" itemprop="datePublished">2018-07-31</time></p>
+                            <p class="item-title"><a href="/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" class="title">canvas 字体颜色设置顺序</a></p>
+                            <p class="item-date"><time datetime="2020-05-19T07:34:19.000Z" itemprop="datePublished">2020-05-19</time></p>
                         </div>
                     </li>
                 
@@ -996,7 +990,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1005,7 +999,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1014,7 +1008,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 12px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
         </div>
     </div>
 
@@ -1026,7 +1020,7 @@
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
             </ul>
@@ -1043,14 +1037,11 @@
     <div class="outer">
         <div id="footer-info" class="inner">
             <div style="margin:0 auto; padding:20px 0;">
-                <a
-                 target="_blank"
-                 href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
-                 style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-                    <img
-                     src="https://pic.downk.cc/item/5e27dbc62fb38b8c3cdb958c.png"
-                      style="vertical-align: text-top;">
-                    <p style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
+                    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <img src="http://www.beian.gov.cn/img/new/gongan.png" style="vertical-align: text-top;">
+                    <p
+                        style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
                         京公网安备 11010602007043号
                     </p>
                 </a>
@@ -1058,8 +1049,9 @@
                     京ICP备19060110号- 1
                 </p>
             </div>
-            &copy; 2020 织幻z
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+            &copy; 2021 织幻z
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a
+                target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
 </footer>

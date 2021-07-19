@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     
-    <title>express的上传中间件multer | 前端技术</title>
+    <title>express的上传中间件multer | 晓然的自留地</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Multer 是一个 node.js 中间件，用于处理 multipart&#x2F;form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  注意: Multer 不会处理任何非 multipart&#x2F;form-data 类型的表单数据. 安装1npm install --save multer 使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="express的上传中间件multer">
-<meta property="og:url" content="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/index.html">
-<meta property="og:site_name" content="前端技术">
+<meta property="og:url" content="http://example.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/index.html">
+<meta property="og:site_name" content="晓然的自留地">
 <meta property="og:description" content="Multer 是一个 node.js 中间件，用于处理 multipart&#x2F;form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  注意: Multer 不会处理任何非 multipart&#x2F;form-data 类型的表单数据. 安装1npm install --save multer 使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-06-10T03:46:22.000Z">
-<meta property="article:modified_time" content="2020-01-22T05:26:24.034Z">
+<meta property="article:modified_time" content="2020-01-22T08:31:50.026Z">
 <meta property="article:author" content="织幻z">
 <meta property="article:tag" content="express">
 <meta name="twitter:card" content="summary">
@@ -52,7 +52,7 @@
     
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="前端技术" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="晓然的自留地" type="application/atom+xml">
 </head>
 
 <body>
@@ -62,7 +62,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">前端技术</span>
+                <span class="site-title">晓然的自留地</span>
             </a>
             <nav id="main-nav">
                 
@@ -170,11 +170,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                57
+                66
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                27
+                35
                 <span>标签</span>
             </div>
         </div>
@@ -225,7 +225,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/express/" rel="tag">express</a>
+        <a class="tag-link-link" href="/tags/express/" rel="tag">express</a>
     </div>
 
                     </div>
@@ -240,10 +240,10 @@
 <p>Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。</p>
 </blockquote>
 <p><strong>注意</strong>: Multer <del>不会处理</del>任何非 multipart/form-data 类型的表单数据.</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save multer</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><span id="more"></span>
 <p>Multer 会添加一个 body 对象 以及 <strong>file</strong> 或 <strong>files</strong> 对象 到 request 对象中. body 对象包含表单的文本域信息, file 或 files 对象包含对象表单上传的文件信息.<br>基本使用方法:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">dest</span>: <span class="string">'uploads/'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/profile'</span>, upload.single(<span class="string">'avatar'</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.file 是 `avatar` 文件的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">'/photos/upload'</span>, upload.array(<span class="string">'photos'</span>, <span class="number">12</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是 `photos` 文件数组的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cpUpload = upload.fields([&#123; <span class="attr">name</span>: <span class="string">'avatar'</span>, <span class="attr">maxCount</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'gallery'</span>, <span class="attr">maxCount</span>: <span class="number">8</span> &#125;])</span><br><span class="line">app.post(<span class="string">'/cool-profile'</span>, cpUpload, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是一个对象 (String -&gt; Array) 键是文件名, 值是文件数组</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 例如：</span></span><br><span class="line">  <span class="comment">//  req.files['avatar'][0] -&gt; File</span></span><br><span class="line">  <span class="comment">//  req.files['gallery'] -&gt; Array</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">&#x27;multer&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">dest</span>: <span class="string">&#x27;uploads/&#x27;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/profile&#x27;</span>, upload.single(<span class="string">&#x27;avatar&#x27;</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.file 是 `avatar` 文件的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/photos/upload&#x27;</span>, upload.array(<span class="string">&#x27;photos&#x27;</span>, <span class="number">12</span>), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是 `photos` 文件数组的信息</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cpUpload = upload.fields([&#123; <span class="attr">name</span>: <span class="string">&#x27;avatar&#x27;</span>, <span class="attr">maxCount</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;gallery&#x27;</span>, <span class="attr">maxCount</span>: <span class="number">8</span> &#125;])</span><br><span class="line">app.post(<span class="string">&#x27;/cool-profile&#x27;</span>, cpUpload, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// req.files 是一个对象 (String -&gt; Array) 键是文件名, 值是文件数组</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 例如：</span></span><br><span class="line">  <span class="comment">//  req.files[&#x27;avatar&#x27;][0] -&gt; File</span></span><br><span class="line">  <span class="comment">//  req.files[&#x27;gallery&#x27;] -&gt; Array</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// req.body 将具有文本域数据, 如果存在的话</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>#API</p>
 <h2 id="multer-opts"><a href="#multer-opts" class="headerlink" title="multer(opts)"></a>multer(opts)</h2><p>Multer 接受一个 options 对象, 其中最基本的是 dest 属性, 这将告诉 Multer 将上传文件保存在哪. 如果你省略 options 对象, 这些文件将保存在内存中，永远不会写入磁盘。</p>
 <p>为了避免命名冲突, Multer 会修改上传的文件名. 这个重命名功能可以根据您的需要定制。</p>
@@ -253,8 +253,10 @@
 <pre><code>Key                      Description
 dest or storage         在哪里存储文件
 fileFilter             文件过滤器，控制哪些文件可以被接受
-limits                 限制上传的数据</code></pre><p>通常, 只需要设置 dest 属性 像这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var upload &#x3D; multer(&#123; dest: &#39;uploads&#x2F;&#39; &#125;)</span><br></pre></td></tr></table></figure>
+limits                 限制上传的数据
+</code></pre>
+<p>通常, 只需要设置 dest 属性 像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var upload = multer(&#123; dest: &#x27;uploads/&#x27; &#125;)</span><br></pre></td></tr></table></figure>
 <p>如果你想在上传时进行更多的控制, 你可以使用storage选项替代dest. Multer 具有 DiskStorage 和 MemoryStorage 两个存储引擎; 另外还可以从第三方获得更多可用的引擎.</p>
 <h3 id="single-fieldname"><a href="#single-fieldname" class="headerlink" title=".single(fieldname)"></a>.single(fieldname)</h3><p>接受<strong>一个</strong>以 fieldname 命名的文件. 这个文件的信息保存在 <strong>req.file</strong>.</p>
 <h3 id="array-fieldname-maxCount"><a href="#array-fieldname-maxCount" class="headerlink" title=".array(fieldname[, maxCount])"></a>.array(fieldname[, maxCount])</h3><p>接受一个以 fieldname 命名的文件<strong>数组</strong>. 可以配置 maxCount 来限制上传的最大数量. 这些文件的信息保存在 <strong>req.files</strong>.</p>
@@ -262,14 +264,14 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
 <h3 id="none"><a href="#none" class="headerlink" title=".none()"></a>.none()</h3><p>只接受文本域. 如果任何文件上传到这个模式, 将发生 “LIMIT_UNEXPECTED_FILE” 错误. 这和 upload.fields([]) 的效果一样.</p>
 <h3 id="any"><a href="#any" class="headerlink" title=".any()"></a>.any()</h3><p>接受一切. 文件数组将保存在 <strong>req.files</strong>.<br><strong>警告</strong>: 确保你总是处理了用户的文件上传. 永远不要将multer作为全局中间件使用，因为恶意用户可以上传文件到一个你没有预料到的路由，应该只在你需要处理上传文件的路由上使用.</p>
 <h2 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h2><h3 id="DiskStorage"><a href="#DiskStorage" class="headerlink" title="DiskStorage"></a>DiskStorage</h3><p>磁盘存储引擎可以让你控制文件的存储.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storage = multer.diskStorage(&#123;</span><br><span class="line">  destination: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="string">'/tmp/my-uploads'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  filename: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, file.fieldname + <span class="string">'-'</span> + <span class="built_in">Date</span>.now())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">storage</span>: storage &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storage = multer.diskStorage(&#123;</span><br><span class="line">  <span class="attr">destination</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="string">&#x27;/tmp/my-uploads&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">filename</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, file.fieldname + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Date</span>.now())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = multer(&#123; <span class="attr">storage</span>: storage &#125;)</span><br></pre></td></tr></table></figure>
 <p>destination 是用来确定上传的文件应该存储在哪个文件夹中. 也可以提供一个 string (例如 ‘/tmp/uploads’). 如果没有设置 destination , 则使用操作默认的临时文件夹.<br>filename 用于确定文件夹中的文件名的确定。 如果没有设置filename , 每个文件将设置为一个随机文件名，并且是<strong>没有扩展名</strong>的<br>注意: Multer 不会为你添加任何扩展名, 你的程序应该返回一个完整的文件名.此时就可以在file.originName中获取扩展名。</p>
 <h3 id="limits"><a href="#limits" class="headerlink" title="limits"></a>limits</h3><p>可以使用下面这些:</p>
 <blockquote>
 </blockquote>
-<p>Key                                    Description                            Default<br><strong>fieldNameSize</strong>                  field 名字最大长度            <strong>100 bytes</strong><br><strong>fieldSize **                         field 值的最大长度               **1MB</strong><br><strong>fields</strong>                                非文件 field 的最大数量    <strong>无限</strong><br><strong>fileSize</strong>                               在multipart表单中, 文件最大长度 (字节单位)       <strong>无限</strong><br><strong>files</strong>                                   在multipart表单中, 文件最大数量                         <strong>无限</strong><br><strong>parts **                                  在multipart表单中, part传输的最大数量(fields + files)    **无限</strong><br><strong>headerPairs</strong>          For multipart forms, the max number of header key=&gt;value pairs to parse    <strong>2000</strong></p>
+<p>Key                                    Description                            Default<br><strong>fieldNameSize</strong>                  field 名字最大长度            <strong>100 bytes</strong><br>**fieldSize **                         field 值的最大长度               <strong>1MB</strong><br><strong>fields</strong>                                非文件 field 的最大数量    <strong>无限</strong><br><strong>fileSize</strong>                               在multipart表单中, 文件最大长度 (字节单位)       <strong>无限</strong><br><strong>files</strong>                                   在multipart表单中, 文件最大数量                         <strong>无限</strong><br>**parts **                                  在multipart表单中, part传输的最大数量(fields + files)    <strong>无限</strong><br><strong>headerPairs</strong>          For multipart forms, the max number of header key=&gt;value pairs to parse    <strong>2000</strong></p>
 <h3 id="fileFilter"><a href="#fileFilter" class="headerlink" title="fileFilter"></a>fileFilter</h3><p>设置一个函数来控制什么文件可以上传以及什么文件应该跳过，这个函数应该看起来像这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileFilter</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这个函数应该调用 `cb` 用boolean值来</span></span><br><span class="line">  <span class="comment">// 指示是否应接受该文件</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 拒绝这个文件，使用`false`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 接受这个文件，使用`true`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有问题，你可以总是这样发送一个错误:</span></span><br><span class="line">  cb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'I don\'t have a clue!'</span>))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileFilter</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这个函数应该调用 `cb` 用boolean值来</span></span><br><span class="line">  <span class="comment">// 指示是否应接受该文件</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 拒绝这个文件，使用`false`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 接受这个文件，使用`true`, 像这样:</span></span><br><span class="line">  cb(<span class="literal">null</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果有问题，你可以总是这样发送一个错误:</span></span><br><span class="line">  cb(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;I don\&#x27;t have a clue!&#x27;</span>))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -280,7 +282,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/" data-id="ck5oyz5ww0014vllthhdj1bz3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/" data-id="ckrabi1wh0010amltdt5dcd12" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -348,7 +350,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
 
             
     
-        <a href="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/">评论</a>
+        <a href="http://example.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/">评论</a>
     
 
         </footer>
@@ -383,7 +385,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2017/06/10/express的上传中间件multer/" data-title="express的上传中间件multer" data-url="http://yoursite.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/10/express的上传中间件multer/" data-title="express的上传中间件multer" data-url="http://example.com/2017/06/10/express%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%AD%E9%97%B4%E4%BB%B6multer/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;
@@ -438,7 +440,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/" class="thumbnail">
+                            <a href="/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -449,15 +451,15 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/" class="title">nextjs项目的部署</a></p>
-                            <p class="item-date"><time datetime="2019-05-10T02:11:05.000Z" itemprop="datePublished">2019-05-10</time></p>
+                            <p class="item-title"><a href="/2021/07/19/Spring-Cloud%E4%B8%AD%E5%85%B3%E4%BA%8E-EnableFeignClients%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7%E5%AD%97%E6%AE%B5basePackages/" class="title">Spring Cloud中关于@EnableFeignClients注解的属性字段basePackages</a></p>
+                            <p class="item-date"><time datetime="2021-07-19T07:20:50.000Z" itemprop="datePublished">2021-07-19</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/09/pm2%E7%AE%80%E6%98%93%E6%89%8B%E5%86%8C/" class="thumbnail">
+                            <a href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -468,15 +470,15 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/09/pm2%E7%AE%80%E6%98%93%E6%89%8B%E5%86%8C/" class="title">pm2简易手册</a></p>
-                            <p class="item-date"><time datetime="2019-05-09T06:31:02.000Z" itemprop="datePublished">2019-05-09</time></p>
+                            <p class="item-title"><a href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/" class="title">flutter 单元测试mockito的基本运用</a></p>
+                            <p class="item-date"><time datetime="2020-06-18T09:44:20.000Z" itemprop="datePublished">2020-06-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" class="thumbnail">
+                            <a href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -487,15 +489,15 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" class="title">搭建nextjs脚手架遇到的问题及解决</a></p>
-                            <p class="item-date"><time datetime="2019-05-08T09:44:02.000Z" itemprop="datePublished">2019-05-08</time></p>
+                            <p class="item-title"><a href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" class="title">react hooks 组件的测试方法</a></p>
+                            <p class="item-date"><time datetime="2020-06-15T09:03:34.000Z" itemprop="datePublished">2020-06-15</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/" class="thumbnail">
+                            <a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -506,15 +508,15 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/" class="title">ubuntu 16.04 安装 postgresql 10</a></p>
-                            <p class="item-date"><time datetime="2018-11-05T08:01:24.000Z" itemprop="datePublished">2018-11-05</time></p>
+                            <p class="item-title"><a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="title">flutter provider中函数的形参问题</a></p>
+                            <p class="item-date"><time datetime="2020-06-02T10:26:07.000Z" itemprop="datePublished">2020-06-02</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/07/31/%E4%BD%BF%E7%94%A8travis-ci%E5%AE%9E%E7%8E%B0%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/" class="thumbnail">
+                            <a href="/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -525,8 +527,8 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/07/31/%E4%BD%BF%E7%94%A8travis-ci%E5%AE%9E%E7%8E%B0%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/" class="title">使用travis-ci实现持续部署</a></p>
-                            <p class="item-date"><time datetime="2018-07-31T10:16:17.000Z" itemprop="datePublished">2018-07-31</time></p>
+                            <p class="item-title"><a href="/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/" class="title">canvas 字体颜色设置顺序</a></p>
+                            <p class="item-date"><time datetime="2020-05-19T07:34:19.000Z" itemprop="datePublished">2020-05-19</time></p>
                         </div>
                     </li>
                 
@@ -541,7 +543,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -550,7 +552,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -559,7 +561,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 12px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
         </div>
     </div>
 
@@ -571,7 +573,7 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
             </ul>
@@ -588,14 +590,11 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
     <div class="outer">
         <div id="footer-info" class="inner">
             <div style="margin:0 auto; padding:20px 0;">
-                <a
-                 target="_blank"
-                 href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
-                 style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-                    <img
-                     src="https://pic.downk.cc/item/5e27dbc62fb38b8c3cdb958c.png"
-                      style="vertical-align: text-top;">
-                    <p style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
+                    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <img src="http://www.beian.gov.cn/img/new/gongan.png" style="vertical-align: text-top;">
+                    <p
+                        style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
                         京公网安备 11010602007043号
                     </p>
                 </a>
@@ -603,8 +602,9 @@ limits                 限制上传的数据</code></pre><p>通常, 只需要设
                     京ICP备19060110号- 1
                 </p>
             </div>
-            &copy; 2020 织幻z
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+            &copy; 2021 织幻z
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a
+                target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
 </footer>

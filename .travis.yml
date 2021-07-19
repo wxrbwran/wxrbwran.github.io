@@ -1,29 +1,29 @@
 language: node_js
 node_js:
-- '12'
+  - "12"
 branches:
   only:
-  - travis
+    - travis
 cache:
   directories:
-  - node_modules
-before_install:  
-#   使用travis公钥，避免重装麻烦
-- openssl aes-256-cbc -K $encrypted_d2074cba7fd5_key -iv $encrypted_d2074cba7fd5_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
-- cp .travis/ssh_config ~/.ssh/ssh_config
-- echo -e "Host 123.206.90.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- git config --global user.name "wxrbwran"
-- git config --global user.email "wxrbw@qq.com"
+    - node_modules
+before_install:
+  #   使用travis公钥，避免重装麻烦
+  - openssl aes-256-cbc -K $encrypted_d2074cba7fd5_key -iv $encrypted_d2074cba7fd5_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa
+  - cp .travis/ssh_config ~/.ssh/ssh_config
+  - echo -e "Host 123.206.90.112\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.name "wxrbwran"
+  - git config --global user.email "wxrbw@qq.com"
 install:
-- npm install hexo-cli -g
-- npm install hexo-deployer-git --save
-- npm install
+  - npm install hexo-cli -g
+  - npm install hexo-deployer-git --save
+  - npm install
 script:
-- hexo clean
-- hexo g
+  - hexo clean
+  - hexo g
 after_success:
-- hexo deploy
-- ssh ubuntu@123.206.90.112 -p 22 'cd /var/www/wxrbwran.github.io && yarn global add hexo-cli && yarn && hexo clean && git pull && hexo g'
+  - hexo deploy
+  - ssh ubuntu@123.206.90.112 -p 22 'cd /var/www/wxrbwran.github.io && yarn global add hexo-cli && yarn && hexo clean && git pull && hexo g'

@@ -18,7 +18,7 @@ customize:
         avatar: https://avatars2.githubusercontent.com/u/13016470?v=3&s=400
         gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
         author: 吴晓然
-        author_title: Web 前端 & NodeJs
+        author_title: Web 前端 / Node / Java
         location: 天朝，帝都
         follow: https://github.com/wxrbwran/
     highlight: monokai
