@@ -27,3 +27,72 @@ with the same id but is a different node instance]; ]
 ### 解决方案
 
 删除复制的作为 slave 节点的 elastic-search 的data 文件夹即可。
+
+<!--more-->
+#### node1
+
+```yml
+cluster.name: es-cluster
+
+node.name: node-1
+node.master: true
+node.data: true
+
+network.host: 0.0.0.0
+
+http.port: 9200
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+discovery.zen.ping.unicast.hosts: ["172.16.10.25:9300","172.16.10.25:9301", "172.16.10.25:9302"]
+
+discovery.zen.minimum_master_nodes: 1
+
+
+```
+
+#### node2
+```yml
+
+cluster.name: es-cluster
+node.master: true
+node.data: true
+
+node.name: node-2
+
+network.host: 0.0.0.0
+http.port: 9201
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+transport.tcp.port: 9301
+
+discovery.zen.ping.unicast.hosts: ["172.16.10.25:9300","172.16.10.25:9301", "172.16.10.25:9302"]
+
+discovery.zen.minimum_master_nodes: 1
+
+```
+
+#### node3
+```yml
+
+cluster.name: es-cluster
+
+node.name: node-3
+node.master: true
+node.data: true
+
+network.host: 0.0.0.0
+
+http.port: 9202
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+transport.tcp.port: 9302
+
+discovery.zen.ping.unicast.hosts: ["172.16.10.25:9300","172.16.10.25:9301", "172.16.10.25:9302"]
+
+discovery.zen.minimum_master_nodes: 1
+
+
+```
