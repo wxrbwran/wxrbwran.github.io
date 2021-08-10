@@ -167,7 +167,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                67
+                68
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -196,6 +196,254 @@
 
             
             <section id="main">
+    <article id="post-你可能并不需要jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/11/%E4%BD%A0%E5%8F%AF%E8%83%BD%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81jQuery/">你可能并不需要jQuery</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/11/%E4%BD%A0%E5%8F%AF%E8%83%BD%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81jQuery/">
+            <time datetime="2016-10-11T02:54:55.000Z" itemprop="datePublished">2016-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/jQuery/" rel="tag">jQuery</a>, <a class="tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>jQuery是非常优秀的工具，它能让我们开发项目时变得更容易，但如果你想从零开始开发一个全新的项目，你应该考虑一下你的项目是否真的需要引入jQuery。</p>
+</blockquote>
+<ul>
+<li><p>也许你只需要几行技巧性的代码就能解决问题。如果你的项目是面向最新的现代浏览器，你真的可以考虑其它的一些简单的技术来代替jQuery。</p>
+</li>
+<li><p>浏览器的进步给我们带来了很多先进的JavaScript特征，新出现的原生内置(native)JavaScript功能可以很大程度的实现jQuery提供的功能。如果你能了解这些JavaScript新技术，就能在很多地方用纯JavaScript实现以前需要jQuery才能实现的技术。</p>
+</li>
+<li><p>新的mvvm框架的出现，数据驱动的方式解决了项目数据交互量大的时候，操作dom的代码混乱的问题。</p>
+<h2 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h2><h4 id="addClass"><a href="#addClass" class="headerlink" title="addClass"></a>addClass</h4><p>jQuery<br><code>$(el).addClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (el.classList)</span><br><span class="line">  el.classList.add(className);</span><br><span class="line">else</span><br><span class="line">  el.className += &#x27; &#x27; + className;</span><br></pre></td></tr></table></figure>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.add(className);</code></p>
+<h4 id="After"><a href="#After" class="headerlink" title="After"></a>After</h4><p>jQuery<br><code>$(el).after(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;afterend&#39;, htmlString);</code></p>
+<h4 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h4><p>jQuery<br><code>$(parent).append(el);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>parent.appendChild(el);</code></p>
+<h4 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h4><p>jQuery<br><code>$(el).before(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.insertAdjacentHTML(&#39;beforebegin&#39;, htmlString);</code></p>
+<h4 id="Children"><a href="#Children" class="headerlink" title="Children"></a>Children</h4><p>jQuery<br><code>$(el).children();</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var children = [];</span><br><span class="line">for (var i = el.children.length; i--;) &#123;</span><br><span class="line">  // Skip comment nodes on IE8</span><br><span class="line">  if (el.children[i].nodeType != 8)</span><br><span class="line">    children.unshift(el.children[i]);</span><br><span class="line">&#125;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``el.children``</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">#### Clone</span><br><span class="line">jQuery</span><br><span class="line">`$(el).clone();`</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">`el.cloneNode(true);``</span><br><span class="line">#### Contains</span><br><span class="line">jQuery</span><br><span class="line">``$.contains(el, child);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el !== child &amp;&amp; el.contains(child);``</span><br><span class="line">#### Contains Selector</span><br><span class="line">jQuery</span><br><span class="line">``$(el).find(selector).length;``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.querySelector(selector) !== null``</span><br><span class="line">#### Each</span><br><span class="line">jQuery</span><br><span class="line">``$(selector).each(function(i, el)&#123;&#125;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>function forEachElement(selector, fn) {<br>var elements = document.querySelectorAll(selector);<br>for (var i = 0; i &lt; elements.length; i++)<br>  fn(elements[i], i);<br>}<br>forEachElement(selector, function(el, i){});```<br>谷歌浏览器，火狐浏览器，IE9+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var elements = document.querySelectorAll(selector);</span><br><span class="line">Array.prototype.forEach.call(elements, function(el, i)&#123;&#125;);```</span><br><span class="line">#### Empty</span><br><span class="line">jQuery</span><br><span class="line">``$(el).empty();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>while(el.firstChild)<br>el.removeChild(el.firstChild);```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>el.innerHTML = &#39;&#39;;</code></p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>jQuery<br><code>$(selector).filter(filterFn);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">function filter(selector, filterFn) &#123;</span><br><span class="line">  var elements = document.querySelectorAll(selector);</span><br><span class="line">  var out = [];</span><br><span class="line">  for (var i = elements.length; i--;) &#123;</span><br><span class="line">    if (filterFn(elements[i]))&#123;</span><br><span class="line">      out.unshift(elements[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return out;</span><br><span class="line">&#125;</span><br><span class="line">filter(selector, filterFn);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);``</span><br><span class="line">#### 查找子元素</span><br><span class="line">jQuery</span><br><span class="line">``$(el).find(selector);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.querySelectorAll(selector);``</span><br><span class="line">#### 查找</span><br><span class="line">jQuery</span><br><span class="line">``$(&#x27;.my #awesome selector&#x27;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``document.querySelectorAll(&#x27;.my #awesome selector&#x27;);``</span><br><span class="line">#### 获取属性值</span><br><span class="line">jQuery</span><br><span class="line">``$(el).attr(&#x27;tabindex&#x27;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.getAttribute(&#x27;tabindex&#x27;);``</span><br><span class="line">#### 获取Html内容</span><br><span class="line">jQuery</span><br><span class="line">``$(el).html();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.innerHTML``</span><br><span class="line">#### 获取外层Html内容</span><br><span class="line">jQuery</span><br><span class="line">``$(&#x27;&lt;div&gt;&#x27;).append($(el).clone()).html();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.outerHTML``</span><br><span class="line">#### 获取CSS样式</span><br><span class="line">jQuery</span><br><span class="line">``$(el).css(ruleName);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">// Varies based on the properties being retrieved, some can be retrieved from</span><br><span class="line"></span><br><span class="line">el.currentStyle</span><br><span class="line">// https://github.com/jonathantneal/Polyfills-for-IE8/blob/master/</span><br><span class="line"></span><br><span class="line">getComputedStyle.js</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``getComputedStyle(el)[ruleName];``</span><br><span class="line">#### 获取文本内容</span><br><span class="line">jQuery</span><br><span class="line">``$(el).text();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.textContent || el.innerText``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``el.textContent``</span><br><span class="line">#### Has Class</span><br><span class="line">jQuery</span><br><span class="line">``$(el).hasClass(className);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>if (el.classList){<br>el.classList.contains(className);<br>}<br>else{<br>new RegExp(‘(^| )’ + className + ‘( |$)’, ‘gi’).test(el.className);<br>}```<br>谷歌浏览器，火狐浏览器，IE10+<br><code>el.classList.contains(className);</code></p>
+<h4 id="元素比较"><a href="#元素比较" class="headerlink" title="元素比较"></a>元素比较</h4><p>jQuery<br><code>$(el).is($(otherEl));</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el === otherEl</code></p>
+<h4 id="比较类名"><a href="#比较类名" class="headerlink" title="比较类名"></a>比较类名</h4><p>jQuery<br><code>$(el).is(&#39;.my-class&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var matches = function(el, selector) &#123;</span><br><span class="line">  var _matches = (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector);</span><br><span class="line">  if (_matches) &#123;</span><br><span class="line">    return _matches.call(el, selector);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    var nodes = el.parentNode.querySelectorAll(selector);</span><br><span class="line">    for (var i = nodes.length; i--;) &#123;</span><br><span class="line">      if (nodes[i] === el)</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">matches(el, &#x27;.my-class&#x27;);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>var matches = function(el, selector) {<br>return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);<br>};<br>matches(el, ‘.my-class’);```</p>
+<h4 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h4><p>jQuery<br><code>$(el).next();</code><br>谷歌浏览器，火狐浏览器，IE8+<br>// nextSibling can include text nodes</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function nextElementSibling(el) &#123;</span><br><span class="line">  do &#123; el = el.nextSibling; &#125; while ( el &amp;&amp; el.nodeType !== 1 );</span><br><span class="line">  return el;</span><br><span class="line">&#125;</span><br><span class="line">el.nextElementSibling || nextElementSibling(el);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``el.nextElementSibling``</span><br><span class="line">#### Offset</span><br><span class="line">jQuery</span><br><span class="line">``$(el).offset();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>var rect = el.getBoundingClientRect()<br>{<br>top: rect.top + document.body.scrollTop,<br>left: rect.left + document.body.scrollLeft<br>}```</p>
+<h4 id="Offset-Parent"><a href="#Offset-Parent" class="headerlink" title="Offset Parent"></a>Offset Parent</h4><p>jQuery<br><code>$(el).offsetParent();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetParent || el</code></p>
+<h4 id="Outer-Height"><a href="#Outer-Height" class="headerlink" title="Outer Height"></a>Outer Height</h4><p>jQuery<br><code>$(el).outerHeight();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetHeight</code></p>
+<h4 id="Outer-Height-With-Margin"><a href="#Outer-Height-With-Margin" class="headerlink" title="Outer Height With Margin"></a>Outer Height With Margin</h4><p>jQuery<br><code>$(el).outerHeight(true);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function outerHeight(el) &#123;</span><br><span class="line">  var height = el.offsetHeight;</span><br><span class="line">  var style = el.currentStyle || getComputedStyle(el);</span><br><span class="line"></span><br><span class="line">  height += parseInt(style.marginTop) + parseInt(style.marginBottom);</span><br><span class="line">  return height;</span><br><span class="line">&#125;</span><br><span class="line">outerHeight(el);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>function outerHeight(el) {<br>var height = el.offsetHeight;<br>var style = getComputedStyle(el);</p>
+<p>height += parseInt(style.marginTop) + parseInt(style.marginBottom);<br>return height;<br>}<br>outerHeight(el);```</p>
+<h4 id="Outer-Width-With-Margin"><a href="#Outer-Width-With-Margin" class="headerlink" title="Outer Width With Margin"></a>Outer Width With Margin</h4><p>jQuery<br><code>$(el).outerWidth(true);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function outerWidth(el) &#123;</span><br><span class="line">  var width = el.offsetWidth;</span><br><span class="line">  var style = el.currentStyle || getComputedStyle(el);</span><br><span class="line"></span><br><span class="line">  width += parseInt(style.marginLeft) + parseInt(style.marginRight);</span><br><span class="line">  return width;</span><br><span class="line">&#125;</span><br><span class="line">outerWidth(el);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>function outerWidth(el) {<br>var width = el.offsetWidth;<br>var style = getComputedStyle(el);</p>
+<p>width += parseInt(style.marginLeft) + parseInt(style.marginRight);<br>return width;<br>}<br>outerWidth(el);```</p>
+<h4 id="Outer-Width"><a href="#Outer-Width" class="headerlink" title="Outer Width"></a>Outer Width</h4><p>jQuery<br><code>$(el).outerWidth();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.offsetWidth</code></p>
+<h4 id="Parent"><a href="#Parent" class="headerlink" title="Parent"></a>Parent</h4><p>jQuery<br><code>$(el).parent();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.parentNode</code></p>
+<h4 id="Position"><a href="#Position" class="headerlink" title="Position"></a>Position</h4><p>jQuery<br><code>$(el).position();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>&#123;left: el.offsetLeft, top: el.offsetTop&#125;</code></p>
+<h4 id="Position-Relative-To-Viewport"><a href="#Position-Relative-To-Viewport" class="headerlink" title="Position Relative To Viewport"></a>Position Relative To Viewport</h4><p>jQuery</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var offset = el.offset();</span><br><span class="line">&#123;</span><br><span class="line">  top: offset.top - document.body.scrollTop,</span><br><span class="line">  left: offset.left - document.body.scrollLeft</span><br><span class="line">&#125;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.getBoundingClientRect()``</span><br><span class="line">#### Prepend</span><br><span class="line">jQuery</span><br><span class="line">``$(parent).prepend(el);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``parent.insertBefore(el, parent.firstChild);``</span><br><span class="line">#### Prev</span><br><span class="line">jQuery</span><br><span class="line">``$(el).prev();``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">// prevSibling can include text nodes</span><br></pre></td></tr></table></figure>
+<p>function previousElementSibling(el) {<br>do { el = el.previousSibling; } while ( el &amp;&amp; el.nodeType !== 1 );<br>return el;<br>}<br>el.previousElementSibling || previousElementSibling(el);```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>el.previousElementSibling</code></p>
+<h4 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h4><p>jQuery<br><code>$(el).remove();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.parentNode.removeChild(el);</code></p>
+<h4 id="Remove-Class"><a href="#Remove-Class" class="headerlink" title="Remove Class"></a>Remove Class</h4><p>jQuery<br><code>$(el).removeClass(className);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">if (el.classList)</span><br><span class="line">  el.classList.remove(className);</span><br><span class="line">else</span><br><span class="line">  el.className = el.className.replace(new RegExp(&#x27;(^|\\b)&#x27; + className.split(&#x27; &#x27;).join(&#x27;|&#x27;) + &#x27;(\\b|$)&#x27;, &#x27;gi&#x27;), &#x27; &#x27;);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE10+</span><br><span class="line">``el.classList.remove(className);``</span><br><span class="line">#### Replace From Html</span><br><span class="line">jQuery</span><br><span class="line">``$(el).replaceWith(string);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.outerHTML = string;``</span><br><span class="line">#### Set Attributes</span><br><span class="line">jQuery</span><br><span class="line">``$(el).attr(&#x27;tabindex&#x27;, 3);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.setAttribute(&#x27;tabindex&#x27;, 3);``</span><br><span class="line">#### Set Html</span><br><span class="line">jQuery</span><br><span class="line">``$(el).html(string);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``el.innerHTML = string;``</span><br><span class="line">#### Set Style</span><br><span class="line">jQuery</span><br><span class="line">``$(el).css(&#x27;border-width&#x27;, &#x27;20px&#x27;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">// Use a class if possible</span><br><span class="line">``el.style.borderWidth = &#x27;20px&#x27;;``</span><br><span class="line">#### Set Text</span><br><span class="line">jQuery</span><br><span class="line">``$(el).text(string);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>if (el.textContent !== undefined)<br>el.textContent = string;<br>else<br>el.innerText = string;```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>el.textContent = string;</code></p>
+<h4 id="Siblings"><a href="#Siblings" class="headerlink" title="Siblings"></a>Siblings</h4><p>jQuery<br><code>$(el).siblings();</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var siblings = Array.prototype.slice.call(el.parentNode.children);</span><br><span class="line">for (var i = siblings.length; i--;) &#123;</span><br><span class="line">  if (siblings[i] === el) &#123;</span><br><span class="line">    siblings.splice(i, 1);</span><br><span class="line">    break;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``Array.prototype.filter.call(el.parentNode.children, function(child)&#123;</span><br><span class="line">  return child !== el;</span><br><span class="line">&#125;);``</span><br><span class="line">#### Toggle Class</span><br><span class="line">jQuery</span><br><span class="line">``$(el).toggleClass(className);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>if (el.classList) {<br>el.classList.toggle(className);<br>} else {<br>  var classes = el.className.split(‘ ‘);<br>  var existingIndex = -1;<br>  for (var i = classes.length; i–;) {</p>
+<pre><code>if (classes[i] === className)
+  existingIndex = i;
+</code></pre>
+<p>  }<br>  if (existingIndex &gt;= 0)</p>
+<pre><code>classes.splice(existingIndex, 1);
+</code></pre>
+<p>  else</p>
+<pre><code>classes.push(className);
+</code></pre>
+<p>el.className = classes.join(‘ ‘);<br>}```<br>谷歌浏览器，火狐浏览器，IE9+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if (el.classList) &#123;</span><br><span class="line">  el.classList.toggle(className);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  var classes = el.className.split(&#x27; &#x27;);</span><br><span class="line">  var existingIndex = classes.indexOf(className);</span><br><span class="line">  if (existingIndex &gt;= 0)</span><br><span class="line">    classes.splice(existingIndex, 1);</span><br><span class="line">  else</span><br><span class="line">    classes.push(className);</span><br><span class="line">  el.className = classes.join(&#x27; &#x27;);</span><br><span class="line">&#125;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE10+</span><br><span class="line">``el.classList.toggle(className);``</span><br><span class="line">## 事件</span><br><span class="line">#### #### Off</span><br><span class="line">jQuery</span><br><span class="line">``$(el).off(eventName, eventHandler);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>function removeEventListener(el, eventName, handler) {<br>if (el.removeEventListener)<br>  el.removeEventListener(eventName, handler);<br>else<br>  el.detachEvent(‘on’ + eventName, handler);<br>}<br>removeEventListener(el, eventName, handler);```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>el.removeEventListener(eventName, eventHandler);</code></p>
+<h4 id="On"><a href="#On" class="headerlink" title="On"></a>On</h4><p>jQuery<br><code>$(el).on(eventName, eventHandler);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function addEventListener(el, eventName, handler) &#123;</span><br><span class="line">  if (el.addEventListener) &#123;</span><br><span class="line">    el.addEventListener(eventName, handler);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    el.attachEvent(&#x27;on&#x27; + eventName, function()&#123;</span><br><span class="line">      handler.call(el);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">addEventListener(el, eventName, handler);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``el.addEventListener(eventName, eventHandler);``</span><br><span class="line">#### Ready</span><br><span class="line">jQuery</span><br><span class="line">``$(document).ready(function()&#123;&#125;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>function ready(fn) {<br>if (document.readyState != ‘loading’){<br>  fn();<br>} else if (document.addEventListener) {<br>  document.addEventListener(‘DOMContentLoaded’, fn);<br>} else {<br>  document.attachEvent(‘onreadystatechange’, function() {</p>
+<pre><code>if (document.readyState != &#39;loading&#39;)
+  fn();
+</code></pre>
+<p>  });<br>}<br>}```<br>谷歌浏览器，火狐浏览器，IE9+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function ready(fn) &#123;</span><br><span class="line">  if (document.readyState != &#x27;loading&#x27;)&#123;</span><br><span class="line">    fn();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    document.addEventListener(&#x27;DOMContentLoaded&#x27;, fn);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;```</span><br><span class="line">#### 指定事件触发</span><br><span class="line">jQuery</span><br><span class="line">``$(el).trigger(&#x27;my-event&#x27;, &#123;some: &#x27;data&#x27;&#125;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">// Custom events are not natively supported, so you have to hijack a rndomevent.</span><br><span class="line">// Just use jQuery.</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>if (window.CustomEvent) {<br>var event = new CustomEvent(‘my-event’, {detail: {some: ‘data’}});<br>} else {<br>var event = document.createEvent(‘CustomEvent’);<br>event.initCustomEvent(‘my-event’, true, true, {some: ‘data’});<br>}<br>el.dispatchEvent(event);```</p>
+<h4 id="Trigger-Native"><a href="#Trigger-Native" class="headerlink" title="Trigger Native"></a>Trigger Native</h4><p>jQuery<br><code>$(el).trigger(&#39;change&#39;);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (document.createEvent) &#123;</span><br><span class="line">  var event = document.createEvent(&#x27;HTMLEvents&#x27;);</span><br><span class="line">  event.initEvent(&#x27;change&#x27;, true, false);</span><br><span class="line">  el.dispatchEvent(event);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  el.fireEvent(&#x27;onchange&#x27;);</span><br><span class="line">&#125;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">// For a full list of event types: https://developer.mozilla.org/en-US/docs/Web/API/document.createEvent</span><br></pre></td></tr></table></figure>
+<p>var event = document.createEvent(‘HTMLEvents’);<br>event.initEvent(‘change’, true, false);<br>el.dispatchEvent(event);```</p>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><h4 id="Array-Each"><a href="#Array-Each" class="headerlink" title="Array Each"></a>Array Each</h4><p>jQuery<br><code>$.each(array, function(i, item)&#123;&#125;);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function forEach(array, fn) &#123;</span><br><span class="line">  for (i = 0; i &lt; array.length; i++)</span><br><span class="line">    fn(array[i], i);</span><br><span class="line">&#125;</span><br><span class="line">forEach(array, function(item, i)&#123;&#125;);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``array.forEach(function(item, i)&#123;&#125;);``</span><br><span class="line">#### 深度扩展</span><br><span class="line">jQuery</span><br><span class="line">``$.extend(true, &#123;&#125;, objA, objB);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>var deepExtend = function(out) {<br>out = out || {};<br>for (var i = 1; i &lt; arguments.length; i++) {<br>  var obj = arguments[i];<br>  if (!obj)</p>
+<pre><code>continue;
+</code></pre>
+<p>  for (var key in obj) {</p>
+<pre><code>if (obj.hasOwnProperty(key)) &#123;
+  if (typeof obj[key] === &#39;object&#39;)
+    deepExtend(out[key], obj[key]);
+  else
+    out[key] = obj[key];
+&#125;
+</code></pre>
+<p>  }<br>}<br>return out;<br>};<br>deepExtend({}, objA, objB);```</p>
+<h4 id="Bind"><a href="#Bind" class="headerlink" title="Bind"></a>Bind</h4><p>jQuery<br><code>$.proxy(fn, context);</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>fn.apply(context, arguments);</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>fn.bind(context);</code><br>jQuery<br><code>$.extend(&#123;&#125;, objA, objB);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var extend = function(out) &#123;</span><br><span class="line">  out = out || &#123;&#125;;</span><br><span class="line">  for (var i = 1; i &lt; arguments.length; i++) &#123;</span><br><span class="line">    if (!arguments[i])</span><br><span class="line">      continue;</span><br><span class="line">    for (var key in arguments[i]) &#123;</span><br><span class="line">      if (arguments[i].hasOwnProperty(key))</span><br><span class="line">        out[key] = arguments[i][key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return out;</span><br><span class="line">&#125;;</span><br><span class="line">extend(&#123;&#125;, objA, objB);```</span><br><span class="line">#### Index Of</span><br><span class="line">jQuery</span><br><span class="line">``$.inArray(item, array);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>function indexOf(array, item) {<br>for (var i = 0; i &lt; array.length; i++) {<br>  if (array[i] === item)</p>
+<pre><code>return i;
+</code></pre>
+<p>}<br>return -1;<br>}<br>indexOf(array, item);```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>array.indexOf(item);</code></p>
+<h4 id="Is-Array"><a href="#Is-Array" class="headerlink" title="Is Array"></a>Is Array</h4><p>jQuery<br><code>$.isArray(arr);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">isArray = Array.isArray || function(arr) &#123;</span><br><span class="line">  return Object.prototype.toString.call(arr) == &#x27;[object Array]&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">isArray(arr);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``Array.isArray(arr);``</span><br><span class="line">#### Map</span><br><span class="line">jQuery</span><br><span class="line">``$.map(array, function(value, index)&#123;&#125;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>function map(arr, fn) {<br>var results = [];<br>for (var i = 0; i &lt; arr.length; i++)<br>  results.push(fn(arr[i], i));<br>return results;<br>map(array, function(value, index){});```<br>谷歌浏览器，火狐浏览器，IE9+<br><code>array.map(function(value, index)&#123;&#125;);</code></p>
+<h4 id="Now"><a href="#Now" class="headerlink" title="Now"></a>Now</h4><p>jQuery<br><code>$.now();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>new Date().getTime();</code><br>谷歌浏览器，火狐浏览器，IE9+<br><code>Date.now();</code></p>
+<h4 id="Parse-Html"><a href="#Parse-Html" class="headerlink" title="Parse Html"></a>Parse Html</h4><p>jQuery<br><code>$.parseHTML(htmlString);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">var parseHTML = function(str) &#123;</span><br><span class="line">  var el = document.createElement(&#x27;div&#x27;);</span><br><span class="line">  el.innerHTML = str;</span><br><span class="line">  return el.children;</span><br><span class="line">&#125;;</span><br><span class="line">parseHTML(htmlString);```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``var parseHTML = function(str) &#123;</span><br><span class="line">  var tmp = document.implementation.createHTMLDocument();</span><br><span class="line">  tmp.body.innerHTML = str;</span><br><span class="line">  return tmp.body.children;</span><br><span class="line">&#125;;</span><br><span class="line">parseHTML(htmlString);``</span><br><span class="line">#### 解析 Json</span><br><span class="line">jQuery</span><br><span class="line">``$.parseJSON(string);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``JSON.parse(string);``</span><br><span class="line">#### Trim</span><br><span class="line">jQuery</span><br><span class="line">``$.trim(string);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br><span class="line">``string.replace(/^\s+|\s+$/g, &#x27;&#x27;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br><span class="line">``string.trim();``</span><br><span class="line">#### Type</span><br><span class="line">jQuery</span><br><span class="line">``$.type(obj);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>Object.prototype.toString.call(obj).replace(/^[object (.+)]$/, “$1”).toLowerCase();```</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><p>jQuery<br><code>$.getJSON(&#39;/my/url&#39;, function(data) &#123;&#125;);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br><span class="line">request.open(&#x27;GET&#x27;, &#x27;/my/url&#x27;, true);</span><br><span class="line">request.onreadystatechange = function() &#123;</span><br><span class="line">  if (this.readyState === 4) &#123;</span><br><span class="line">    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</span><br><span class="line">      // Success!</span><br><span class="line">      var data = JSON.parse(this.responseText);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // Error :(</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.send();</span><br><span class="line">request = null;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>var request = new XMLHttpRequest();<br>request.open(‘GET’, ‘/my/url’, true);<br>request.onload = function() {<br>if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400) {<br>  // Success!<br>  var data = JSON.parse(request.responseText);<br>} else {<br>  // We reached our target server, but it returned an error<br>}<br>};<br>request.onerror = function() {<br>// There was a connection error of some sort<br>};<br>request.send();```<br>谷歌浏览器，火狐浏览器，IE10+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br><span class="line">request.open(&#x27;GET&#x27;, &#x27;/my/url&#x27;, true);</span><br><span class="line">request.onload = function() &#123;</span><br><span class="line">  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</span><br><span class="line">    // Success!</span><br><span class="line">    var data = JSON.parse(this.response);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    // We reached our target server, but it returned an error</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.onerror = function() &#123;</span><br><span class="line">  // There was a connection error of some sort</span><br><span class="line">&#125;;</span><br><span class="line">request.send();```</span><br><span class="line">#### Post</span><br><span class="line">jQuery</span><br><span class="line">``$.ajax(&#123;type: &#x27;POST&#x27;,url: &#x27;/my/url&#x27;,data: data&#125;);``</span><br><span class="line">谷歌浏览器，火狐浏览器，IE8+</span><br></pre></td></tr></table></figure>
+<p>var request = new XMLHttpRequest();<br>request.open(‘POST’, ‘/my/url’, true);<br>request.setRequestHeader(‘Content-Type’, ‘application/x-www-form-urlencoded; charset=UTF-8’);<br>request.send(data);```</p>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p>jQuery<br><code>$.ajax(&#123;type: &#39;GET&#39;,url: &#39;/my/url&#39;,success: function(resp) &#123;&#125;,error: function() &#123;&#125;&#125;);</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br><span class="line">request.open(&#x27;GET&#x27;, &#x27;/my/url&#x27;, true);</span><br><span class="line">request.onreadystatechange = function() &#123;</span><br><span class="line">  if (this.readyState === 4) &#123;</span><br><span class="line">    if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</span><br><span class="line">      // Success!</span><br><span class="line">      var resp = this.responseText;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // Error :(</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.send();</span><br><span class="line">request = null;```</span><br><span class="line">谷歌浏览器，火狐浏览器，IE9+</span><br></pre></td></tr></table></figure>
+<p>var request = new XMLHttpRequest();<br>request.open(‘GET’, ‘/my/url’, true);<br>request.onload = function() {<br>if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400) {<br>  // Success!<br>  var resp = request.responseText;<br>} else {<br>  // We reached our target server, but it returned an error<br>}<br>};<br>request.onerror = function() {<br>// There was a connection error of some sort<br>};<br>request.send();```<br>谷歌浏览器，火狐浏览器，IE10+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br><span class="line">request.open(&#x27;GET&#x27;, &#x27;/my/url&#x27;, true);</span><br><span class="line">request.onload = function() &#123;</span><br><span class="line">  if (this.status &gt;= 200 &amp;&amp; this.status &lt; 400) &#123;</span><br><span class="line">    // Success!</span><br><span class="line">    var resp = this.response;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    // We reached our target server, but it returned an error</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.onerror = function() &#123;</span><br><span class="line">  // There was a connection error of some sort</span><br><span class="line">&#125;;</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+<h2 id="特效"><a href="#特效" class="headerlink" title="特效"></a>特效</h2><h4 id="淡入淡出"><a href="#淡入淡出" class="headerlink" title="淡入淡出"></a>淡入淡出</h4><p>jQuery<br><code>$(el).fadeIn();</code><br>谷歌浏览器，火狐浏览器，IE8+</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function fadeIn(el) &#123;</span><br><span class="line">  var opacity = 0;</span><br><span class="line">  el.style.opacity = 0;</span><br><span class="line">  el.style.filter = &#x27;&#x27;;</span><br><span class="line">  var last = +new Date();</span><br><span class="line">  var tick = function() &#123;</span><br><span class="line">    opacity += (new Date() - last) / 400;</span><br><span class="line">    el.style.opacity = opacity;</span><br><span class="line">    el.style.filter = &#x27;alpha(opacity=&#x27; + (100 * opacity)|0 + &#x27;)&#x27;;</span><br><span class="line">    last = +new Date();</span><br><span class="line">    if (opacity &lt; 1) &#123;</span><br><span class="line">      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  tick();</span><br><span class="line">&#125;</span><br><span class="line">fadeIn(el);</span><br></pre></td></tr></table></figure>
+<p>谷歌浏览器，火狐浏览器，IE9+</p>
+<figure class="highlight plaintext"><figcaption><span>fadeIn(el) &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  el.style.opacity = 0;</span><br><span class="line">  var last = +new Date();</span><br><span class="line">  var tick = function() &#123;</span><br><span class="line">    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;</span><br><span class="line">    last = +new Date();</span><br><span class="line">    if (+el.style.opacity &lt; 1) &#123;</span><br><span class="line">      (window.requestAnimationFrame &amp;&amp; requestAnimationFrame(tick)) || setTimeout(tick, 16)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  tick();</span><br><span class="line">&#125;</span><br><span class="line">fadeIn(el);</span><br></pre></td></tr></table></figure>
+<p>谷歌浏览器，火狐浏览器，IE10+<br><code> el.classList.add(&#39;show&#39;); el.classList.remove(&#39;hide&#39;); .show &#123;transition: opacity 400ms;&#125; .hide &#123;opacity: 0;&#125;</code></p>
+<h4 id="Hide"><a href="#Hide" class="headerlink" title="Hide"></a>Hide</h4><p>jQuery<br><code>$(el).hide();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.style.display = &#39;none&#39;;</code></p>
+<h4 id="Show"><a href="#Show" class="headerlink" title="Show"></a>Show</h4><p>jQuery<br><code>$(el).show();</code><br>谷歌浏览器，火狐浏览器，IE8+<br><code>el.style.display = &#39;&#39;;</code></p>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2016/10/11/%E4%BD%A0%E5%8F%AF%E8%83%BD%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81jQuery/" data-id="ckryan1q7005j9ylte2br5jqp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2016/10/11/%E4%BD%A0%E5%8F%AF%E8%83%BD%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81jQuery/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2016/10/11/%E4%BD%A0%E5%8F%AF%E8%83%BD%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81jQuery/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-如何避免打开谷歌自动跳转-香港GOOGLE-COM-HK" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -251,7 +499,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/11/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E6%89%93%E5%BC%80%E8%B0%B7%E6%AD%8C%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%AC-%E9%A6%99%E6%B8%AFGOOGLE-COM-HK/" data-id="ckrk58bki0032gllt0vzm82vz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/11/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E6%89%93%E5%BC%80%E8%B0%B7%E6%AD%8C%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%AC-%E9%A6%99%E6%B8%AFGOOGLE-COM-HK/" data-id="ckryan1pc00359ylthb904nq9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -384,7 +632,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/10/%E4%BD%BF%E7%94%A8webpack%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckrk58bke002tglltcpq6ab54" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/10/%E4%BD%BF%E7%94%A8webpack%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckryan1p8002w9yltho0mfuao" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -523,7 +771,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/10/%E4%BD%BF%E7%94%A8nvm%E5%AE%89%E8%A3%85node/" data-id="ckrk58bka002mglltb38xfwu2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/10/%E4%BD%BF%E7%94%A8nvm%E5%AE%89%E8%A3%85node/" data-id="ckryan1p4002n9yltadfhcoyp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -667,7 +915,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/10/linux%E4%B8%AD%E4%BD%BF%E7%94%A8deepinQQ/" data-id="ckrk58bjq001jgllt0kn09x6s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/10/linux%E4%B8%AD%E4%BD%BF%E7%94%A8deepinQQ/" data-id="ckryan1on001k9ylteu6n0jfr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -745,138 +993,6 @@
 
 
 
-    <article id="post-在ubuntu上安装apache2及mysql" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/09/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85apache2%E5%8F%8Amysql/">在ubuntu上安装apache2及mysql</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/09/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85apache2%E5%8F%8Amysql/">
-            <time datetime="2016-10-09T07:12:20.000Z" itemprop="datePublished">2016-10-09</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="安装Apache"><a href="#安装Apache" class="headerlink" title="安装Apache"></a>安装Apache</h2><p><code>sudo apt-get install apache2</code><br>Apache安装完成后，默认的网站根目录是”/var/www/html”，在终端窗口中输入<code>ls /var/www/html</code>,在网站根目录下有一个”index.html”文件,在浏览器中输入”localhost”,就可以打开该页面。</p>
-<h5 id="修改网站的根目录"><a href="#修改网站的根目录" class="headerlink" title="修改网站的根目录"></a>修改网站的根目录</h5><ol>
-<li>在终端窗口中输入<code>sudo vi /etc/apache2/apache2.conf</code>,找到**&lt;Directory /var/www/&gt;**的位置,更改”/var/www/“为新的根目录”/var/Sites/“就可以了。</li>
-<li>在终端窗口中输入<code>sudo vi /etc/apache2/sites-available/000-default.conf</code>,<strong>DocumentRoot /var/www/html</strong>的位置,更改”/var/www/html”为新的根目录就可以了，这里我把它更改为”/var/Sites/“。</li>
-</ol>
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p><code>sudo apt-get install mysql-server</code></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://example.com/2016/10/09/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85apache2%E5%8F%8Amysql/" data-id="ckrk58bkg002xgllt6pt0c1it" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://example.com/2016/10/09/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85apache2%E5%8F%8Amysql/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2016/10/09/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85apache2%E5%8F%8Amysql/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/">下一页 &amp;raquo;</a>
     </nav>
@@ -889,6 +1005,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="title">Feign 报错：Request method &#39;POST&#39; not supported</a></p>
+                            <p class="item-date"><time datetime="2021-08-05T02:15:16.000Z" itemprop="datePublished">2021-08-05</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -966,25 +1101,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/" class="title">flutter provider中函数的形参问题</a></p>
-                            <p class="item-date"><time datetime="2020-06-02T10:26:07.000Z" itemprop="datePublished">2020-06-02</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -996,7 +1112,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1005,7 +1121,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1014,7 +1130,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
         </div>
     </div>
 

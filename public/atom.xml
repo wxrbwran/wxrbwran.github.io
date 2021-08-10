@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-07-26T04:41:07.151Z</updated>
+  <updated>2021-08-05T02:18:18.137Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Feign 报错：Request method &#39;POST&#39; not supported</title>
+    <link href="http://example.com/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/"/>
+    <id>http://example.com/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/</id>
+    <published>2021-08-05T02:15:16.000Z</published>
+    <updated>2021-08-05T02:18:18.137Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>如果Fegin代理的是get请求，那么<strong>请求参数必须带上@RequestParam 或@RequestBody</strong></p></blockquote><p>错误：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(&quot;dashboard&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DashboardClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(&quot;projects/getApiKeyByProjectId&quot;)</span></span><br><span class="line">  <span class="function">String <span class="title">getApiKeyByProjectId</span><span class="params">(Integer projectId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>正确：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(&quot;dashboard&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DashboardClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(&quot;projects/getApiKeyByProjectId&quot;)</span></span><br><span class="line">  <span class="function">String <span class="title">getApiKeyByProjectId</span><span class="params">(<span class="meta">@RequestParam</span> Integer projectId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;如果Fegin代理的是get请求，那么&lt;strong&gt;请求参数必须带上@RequestParam 或@RequestBody&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;错误：&lt;/p&gt;
+&lt;figure class=&quot;highligh</summary>
+      
+    
+    
+    
+    
+    <category term="spring-cloud" scheme="http://example.com/tags/spring-cloud/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建elasticsearch集群报错：with the same id but is a different node instance</title>
@@ -369,7 +395,7 @@
     <published>2018-07-31T01:58:11.000Z</published>
     <updated>2020-01-22T08:31:50.053Z</updated>
     
-    <content type="html"><![CDATA[<p>一般使用ssh访问远程服务器的命令是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@ip地址</span><br></pre></td></tr></table></figure><p>例如：ssh <a href="mailto:&#114;&#111;&#111;&#116;&#x40;&#x31;&#x31;&#50;&#x2e;&#50;&#51;&#50;&#x2e;&#49;&#x32;&#x2e;&#49;&#x32;">&#114;&#111;&#111;&#116;&#x40;&#x31;&#x31;&#50;&#x2e;&#50;&#51;&#50;&#x2e;&#49;&#x32;&#x2e;&#49;&#x32;</a>，然后输入密码即可访问。<br>&lt;–more–&gt;</p><h3 id="以Mac-OS为例，别名登录"><a href="#以Mac-OS为例，别名登录" class="headerlink" title="以Mac OS为例，别名登录"></a>以Mac OS为例，别名登录</h3><p>使用cd ~/.ssh/ 进入ssh目录，会看到有config、known_hosts两个文件，一般的没有设置的话，只会有known_hosts，可以使用touch config命令创建config文件。</p><p>使用vim编辑config文件，添加如下内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host txy</span><br><span class="line">HostName 1xx.1xx.1xx.1</span><br><span class="line">User root</span><br><span class="line">IdentitiesOnly yes</span><br></pre></td></tr></table></figure><p>其中：<br>1、Host 后边的是别名，以后可以根据这个名称进行访问；<br>2、HostName是你的主机IP地址；<br>3、User为主机登录的用户名；<br>4、IdentitiesOnly yes固有配置；</p><p>设置完成，后期的话使用:ssh txy 然后输入密码，就可以登录到远程主机啦！</p><h3 id="密钥登录"><a href="#密钥登录" class="headerlink" title="密钥登录"></a>密钥登录</h3><p>每次登录SH都需要输入密码很麻烦，而且可能不太安全。SSH还能使用另外一种登录方式，也就是使用密钥登录。这种登录方式需要客户端生成一堆公钥私钥对，然后将公钥添加到服务器中，这样下次就可以直接登录了。</p><p>首先生成SSH密钥，依照提示输入信息即可。默认生成在用户主目录中的.ssh文件夹中。带pub的是公钥，接下来需要添加到服务器中。</p><p>然后登陆服务器，打开.ssh文件夹，在authorized_keys中添加到对应公钥。然后退出SSH重新登陆试试，成功的话不需要输入密码就会直接进入远程服务器。</p>]]></content>
+    <content type="html"><![CDATA[<p>一般使用ssh访问远程服务器的命令是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@ip地址</span><br></pre></td></tr></table></figure><p>例如：ssh <a href="mailto:&#x72;&#111;&#111;&#x74;&#64;&#49;&#49;&#x32;&#46;&#x32;&#51;&#50;&#x2e;&#x31;&#x32;&#46;&#x31;&#x32;">&#x72;&#111;&#111;&#x74;&#64;&#49;&#49;&#x32;&#46;&#x32;&#51;&#50;&#x2e;&#x31;&#x32;&#46;&#x31;&#x32;</a>，然后输入密码即可访问。<br>&lt;–more–&gt;</p><h3 id="以Mac-OS为例，别名登录"><a href="#以Mac-OS为例，别名登录" class="headerlink" title="以Mac OS为例，别名登录"></a>以Mac OS为例，别名登录</h3><p>使用cd ~/.ssh/ 进入ssh目录，会看到有config、known_hosts两个文件，一般的没有设置的话，只会有known_hosts，可以使用touch config命令创建config文件。</p><p>使用vim编辑config文件，添加如下内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host txy</span><br><span class="line">HostName 1xx.1xx.1xx.1</span><br><span class="line">User root</span><br><span class="line">IdentitiesOnly yes</span><br></pre></td></tr></table></figure><p>其中：<br>1、Host 后边的是别名，以后可以根据这个名称进行访问；<br>2、HostName是你的主机IP地址；<br>3、User为主机登录的用户名；<br>4、IdentitiesOnly yes固有配置；</p><p>设置完成，后期的话使用:ssh txy 然后输入密码，就可以登录到远程主机啦！</p><h3 id="密钥登录"><a href="#密钥登录" class="headerlink" title="密钥登录"></a>密钥登录</h3><p>每次登录SH都需要输入密码很麻烦，而且可能不太安全。SSH还能使用另外一种登录方式，也就是使用密钥登录。这种登录方式需要客户端生成一堆公钥私钥对，然后将公钥添加到服务器中，这样下次就可以直接登录了。</p><p>首先生成SSH密钥，依照提示输入信息即可。默认生成在用户主目录中的.ssh文件夹中。带pub的是公钥，接下来需要添加到服务器中。</p><p>然后登陆服务器，打开.ssh文件夹，在authorized_keys中添加到对应公钥。然后退出SSH重新登陆试试，成功的话不需要输入密码就会直接进入远程服务器。</p>]]></content>
     
     
       
@@ -449,28 +475,6 @@
     
     
     <category term="babel" scheme="http://example.com/tags/babel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>create-react-app和express共同组建的开发环境</title>
-    <link href="http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <id>http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</id>
-    <published>2017-07-20T08:55:32.000Z</published>
-    <updated>2020-01-22T08:31:50.025Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="脚手架介绍"><a href="#脚手架介绍" class="headerlink" title="脚手架介绍"></a>脚手架介绍</h2><blockquote><p>在这个环境下，Facebook 提供了一套不需要配置的 React 开发方案，即create-react-app。这个脚手架已经做好了基础 webpack 配置，带有自动更新，错误提示等等功能，仅仅需要创建，启动就可以快速开发。</p></blockquote><p>这时也不得不提前端社区的另一个崛起者：<strong>yarn</strong>。</p><span id="more"></span><p>Yarn与 npm 一样，是一款 NodeJS 包管理工具。 为何要选择使用 yarn 呢？官网的描述是：</p><blockquote><p>Yarn 会缓存它下载的每个包，所以不需要重复下载。它还能并行化操作以最大化资源利用率，所以安装速度之快前所未有。</p></blockquote><blockquote><p>Yarn 在每个安装包的代码执行前使用校验码验证包的完整性。</p></blockquote><blockquote><p>Yarn 使用一个格式详尽但简洁的 lockfile 和一个精确的算法来安装，能够保证在一个系统上的运行的安装过程也会以同样的方式运行在其他系统上。<br>选用 Yarn 的原因也是因为他的速度提升比npm 要快，使用yarn add <package-name> ，yarn remove <package-name> 增删 node 包（对应npm install和npm uninstall）.</p></blockquote><blockquote><p>另一点是，yarn 在更新之后，集成了create, 通过yarn create，可以快速启动一个项目。</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn create react-app my-app</span><br><span class="line">yarn create react-native-app my-app</span><br><span class="line">yarn create next-app my-app</span><br></pre></td></tr></table></figure><h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>假设我们需要创建一个demo-app项目：</p><h4 id="创建目录yarn-create-react-app-demo-app"><a href="#创建目录yarn-create-react-app-demo-app" class="headerlink" title="创建目录yarn create react-app demo-app"></a>创建目录yarn create react-app demo-app</h4><p>稍等片刻，yarn 会为我们创建一个目录，拉取依赖，wepack 的配置通过 yarn 来调用，可以看到目录结构很干净</p><h4 id="开始开发：cd-demo-app-amp-amp-yarn-start"><a href="#开始开发：cd-demo-app-amp-amp-yarn-start" class="headerlink" title="开始开发：cd demo-app &amp;&amp; yarn start"></a>开始开发：cd demo-app &amp;&amp; yarn start</h4><p>这时会启动一个默认端口为3000的页面，如果端口冲突，会提示你是否选用另一个端口<br>进入src目录开始开发即可</p><p>开发完成后需要发布时，运行yarn build进行编译，发布build目录<br>创建完成会自动生成build文件夹，将 js,css 文件放入 static 目录中,发布build目录即可</p><p>三部曲完成，中间省略了非常多配置问题，给需要快速构建项目带来了极大的便利性。当然，默认配置也许不能够满足所有需求，create-react-app也提供了 抛出所有配置项的yarn eject供给开发者使用，如果需要到调整 webpack 的内容，就需要使用到这个命令。不过这样也会导致不能再回滚。官方的更新比较快，如果不是必要的情况建议直接使用内置的行为。</p><h2 id="配合-Express-构建-server-端应用"><a href="#配合-Express-构建-server-端应用" class="headerlink" title="配合 Express 构建 server 端应用"></a>配合 Express 构建 server 端应用</h2><p>如果在项目开发过程中需要 express 构建server 端应用，那么开发模式就需要有小调整。</p><p>首先创建一个叫server的文件夹和初始化 package.json文件：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir server &amp;&amp; cd server &amp;&amp; yarn init</span><br></pre></td></tr></table></figure><h4 id="增加依赖包"><a href="#增加依赖包" class="headerlink" title="增加依赖包"></a>增加依赖包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add express body-parser nodemon babel-cli babel-preset-es2015</span><br></pre></td></tr></table></figure><p>主要用到express, body-parser, nodemon（检测node.js 改动并自动重启，适用于开发阶段）,babel-cli和babel-preset-es2015(以便使用 es6开发)<br>修改package.json，增加npm scripts</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;scripts&quot;: &#123;</span><br><span class="line">     &quot;start&quot;: &quot;nodemon --exec babel-node -- ./server.js&quot;,</span><br><span class="line">     &quot;build&quot;: &quot;babel ./server.js --out-file server-compiled.js&quot;,</span><br><span class="line">     &quot;serve&quot;: &quot;node server-compiled.js&quot;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>这里使用nodemon在开发阶段检测node.js 改动并自动重启<br>发布build的时候则通过 babel编译成 es5的文件<br>create-react-app会启动一个静态资源服务器，那么同时需要进行 server 端的时候需要怎么做呢？</p><p>我们回过头来去修改一下demo-app目录下的package.json。</p><p>create-react-app会默认添加好3段scripts:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;react-scripts test --env=jsdom&quot;,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>我们需要对 start和build做调整，以便可以同时启动前端开发页面以及后端服务。在这里引入concurrently这个包来执行两条命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add concurrently</span><br></pre></td></tr></table></figure><p>package.json:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;react-start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">    &quot;start&quot;: &quot;concurrently &#x27;yarn react-start&#x27; &#x27;cd server &amp;&amp; yarn start&#x27;&quot;,</span><br><span class="line">    &quot;react-build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;concurrently &#x27;yarn react-build&#x27; &#x27;cd server &amp;&amp; yarn build&#x27;&quot;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><p>这样，我们只要执行yarn start会同步启动 webpack 以及 server文件夹下的 nodeman.</p><h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p>如果我们在前端页面用使用fetch(/api/data)这样 请求，默认是会发送到create-react-app 启动的 localhost:3000/api/data去的，无法达到目的。为了指向 server 端，需要指定proxy:</p><p>假设 server 端 express 启动了5000端口，则需要在package.json中增加：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;proxy&quot;: &quot;http://127.0.0.1:5000&quot;</span><br></pre></td></tr></table></figure><p>这时当你使用fetch(/api/data)请求，则会指向到localhost:5000/api/data</p><p>轻松的开始开发吧~</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;脚手架介绍&quot;&gt;&lt;a href=&quot;#脚手架介绍&quot; class=&quot;headerlink&quot; title=&quot;脚手架介绍&quot;&gt;&lt;/a&gt;脚手架介绍&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;在这个环境下，Facebook 提供了一套不需要配置的 React 开发方案，即create-react-app。这个脚手架已经做好了基础 webpack 配置，带有自动更新，错误提示等等功能，仅仅需要创建，启动就可以快速开发。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这时也不得不提前端社区的另一个崛起者：&lt;strong&gt;yarn&lt;/strong&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="express" scheme="http://example.com/tags/express/"/>
     
   </entry>
   
