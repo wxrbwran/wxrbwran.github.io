@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>nextjs项目的部署 | 晓然的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="常规部署Export静态资源提到发布页面，就不能不提到Next提供的这个功能了，前面也减少过，但是很简单的介绍的，正好这个Demo全是静态页，没有任何数据获取操作～Export的功能就是通过配置，将对应的pages下的路由页面导出成静态html文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nextjs项目的部署">
+<meta property="og:url" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="晓然的自留地">
+<meta property="og:description" content="常规部署Export静态资源提到发布页面，就不能不提到Next提供的这个功能了，前面也减少过，但是很简单的介绍的，正好这个Demo全是静态页，没有任何数据获取操作～Export的功能就是通过配置，将对应的pages下的路由页面导出成静态html文件。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next1.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next2.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next3.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next4.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next5.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next6.png">
+<meta property="og:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next7.png">
+<meta property="article:published_time" content="2019-05-10T02:11:05.000Z">
+<meta property="article:modified_time" content="2021-08-14T01:30:53.526Z">
+<meta property="article:author" content="织幻z">
+<meta property="article:tag" content="nextjs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/next1.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/vendor/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+
+    
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="晓然的自留地" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">晓然的自留地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+            <h2 id="name">吴晓然</h2>
+            <h3 id="title">Web 前端 / Node / Java</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
+            <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                39
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/wxrbwran/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-nextjs项目的部署" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            nextjs项目的部署
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/">
+            <time datetime="2019-05-10T02:11:05.000Z" itemprop="datePublished">2019-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/nextjs/" rel="tag">nextjs</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="常规部署"><a href="#常规部署" class="headerlink" title="常规部署"></a>常规部署</h2><h3 id="Export静态资源"><a href="#Export静态资源" class="headerlink" title="Export静态资源"></a>Export静态资源</h3><p>提到发布页面，就不能不提到Next提供的这个功能了，前面也减少过，但是很简单的介绍的，正好这个Demo全是静态页，没有任何数据获取操作～<br>Export的功能就是通过配置，将对应的pages下的路由页面导出成静态html文件。</p>
+<span id="more"></span>
+
+<h3 id="export-配置"><a href="#export-配置" class="headerlink" title="export 配置"></a>export 配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;NODE_ENV=development node server.ts -p 3006&quot;</span>,</span><br><span class="line">    <span class="string">&quot;prod&quot;</span>: <span class="string">&quot;NODE_ENV=production node server.ts -p 3006&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;NODE_ENV=production node server.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;next build&quot;</span>,</span><br><span class="line">    <span class="comment">// 新增export命令</span></span><br><span class="line">    <span class="string">&quot;export&quot;</span>: <span class="string">&quot;yarn build &amp;&amp; next export&quot;</span>,</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">// next.config.js</span></span><br><span class="line"> <span class="attr">exportPathMap</span>: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">defaultPathMap</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="string">&#x27;/&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/&#x27;</span> &#125;,</span><br><span class="line">      <span class="string">&#x27;/user&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user&#x27;</span> &#125;,</span><br><span class="line">      <span class="string">&#x27;/user/list&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user/list&#x27;</span> &#125;,</span><br><span class="line">      <span class="string">&#x27;/user/detail&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user/detail&#x27;</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="serve启动"><a href="#serve启动" class="headerlink" title="serve启动"></a>serve启动</h3><p>我们通过export命令，会将项目生成一个静态资源文件夹out，如图所示：<br><img src="./next1.png"></p>
+<blockquote>
+<p>其实这个就跟我们正常的SPA应用例如create-react-app生成的build文件夹很像，里面有一个index.html。同理，我们可以使用serve来进行启动～</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>安装serve</span><br><span class="line">yarn add serve</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>增加启动命令</span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 增加</span></span><br><span class="line">    <span class="string">&quot;static&quot;</span>: <span class="string">&quot;yarn export &amp;&amp; serve out&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>运行命令</span><br><span class="line">yarn <span class="keyword">static</span></span><br></pre></td></tr></table></figure>
+<p>期间任务失败，主要是antd的less问题，查阅各个网站，目前只能降级到nextjs7.0.2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(function (exports, require, module, __filename, __dirname) &#123; @import &#x27;./themes/default&#x27;;</span><br><span class="line">                                                              ^</span><br><span class="line"></span><br><span class="line">SyntaxError: Invalid or unexpected token</span><br></pre></td></tr></table></figure>
+<p>解决问题后，运行后控制台截图，以及访问localhost:5000/<br><img src="./next2.png"></p>
+<h2 id="生产环境部署"><a href="#生产环境部署" class="headerlink" title="生产环境部署"></a>生产环境部署</h2><blockquote>
+<p>官方的代码就是将NODE_ENV设置成production即可，就是生产环境～，这里说明一下正好有人问过，如果是windows环境，命令应该变成”prod”: “set NODE_ENV=production &amp;&amp; node server.js”<br>即： yarn build</p>
+</blockquote>
+<h2 id="PM2实现高级部署上线"><a href="#PM2实现高级部署上线" class="headerlink" title="PM2实现高级部署上线"></a>PM2实现高级部署上线</h2><ul>
+<li>第一步：配置文件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">apps</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 指定解释器</span></span><br><span class="line">      <span class="attr">interpreter</span>: <span class="string">&#x27;./node_modules/.bin/ts-node&#x27;</span>,</span><br><span class="line">      <span class="comment">// 解释器参数 -P 表示项目路径，会自动使用项目的 tsconfig.json</span></span><br><span class="line">      <span class="attr">interpreter_args</span>: <span class="string">&#x27;-P ./ -r tsconfig-paths/register&#x27;</span>,</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;next&#x27;</span>, <span class="comment">// 应用名称</span></span><br><span class="line">      <span class="attr">script</span>: <span class="string">&#x27;./server.ts&#x27;</span>, <span class="comment">// 启动文件地址</span></span><br><span class="line">      <span class="attr">cwd</span>: <span class="string">&#x27;./&#x27;</span>, <span class="comment">// 当前工作路径</span></span><br><span class="line">      <span class="attr">watch</span>: [</span><br><span class="line">        <span class="comment">// 监控变化的目录，一旦变化，自动重启</span></span><br><span class="line">        <span class="string">&#x27;.next&#x27;</span>,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">ignore_watch</span>: [</span><br><span class="line">        <span class="comment">// 从监控目录中排除</span></span><br><span class="line">        <span class="string">&#x27;node_modules&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;logs&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;static&#x27;</span>,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">instances</span>: <span class="number">2</span>, <span class="comment">// 负载均衡，启动2个实例</span></span><br><span class="line">      <span class="attr">node_args</span>: <span class="string">&#x27;--harmony&#x27;</span>, <span class="comment">// node的启动模式</span></span><br><span class="line">      <span class="attr">env</span>: &#123;</span><br><span class="line">        <span class="attr">NODE_ENV</span>: <span class="string">&#x27;production&#x27;</span>, <span class="comment">// 设置运行环境，此时process.env.NODE_ENV的值就是development</span></span><br><span class="line">        <span class="attr">port</span>: <span class="number">3006</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">env_production</span>: &#123;</span><br><span class="line">        <span class="attr">NODE_ENV</span>: <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">        <span class="attr">port</span>: <span class="number">5555</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">out_file</span>: <span class="string">&#x27;./logs/out.log&#x27;</span>, <span class="comment">// 普通日志路径</span></span><br><span class="line">      <span class="attr">error_file</span>: <span class="string">&#x27;./logs/err.log&#x27;</span>, <span class="comment">// 错误日志路径</span></span><br><span class="line">      <span class="attr">merge_logs</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">log_date_format</span>: <span class="string">&#x27;YYYY-MM-DD HH:mm Z&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>第二步：部署服务<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 运行命令</span><br><span class="line">$ pm2 start pm2.config.js --env production</span><br></pre></td></tr></table></figure>
+<img src="./next3.png"><br>如上图所示，我这边开发环境是3006端口，生产环境是5555端口，使用pm2部署服务以后，访问项目都是正常的，包括API服务。并且pm2还为我们提供日志以及监控功能，详细如下图：</li>
+</ul>
+<p>系统所有的控制台输出日志：<br><img src="./next4.png"></p>
+<h2 id="now-部署"><a href="#now-部署" class="headerlink" title="now 部署"></a>now 部署</h2><p>Next.js原本就是zeit仓库的一个项目，而对应配套的，zeit仓库还有一个now项目，专门进行部署的<br>now-cli很强大，我只用来部署Next.js项目了，其实它可以支持很多很多种部署，具体如下图<br><img src="next5.png"></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先就是安装now工具了，官方提供下载地址，各种版本的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 安装now</span><br><span class="line">npm install -g now</span><br></pre></td></tr></table></figure>
+<h3 id="部署踩坑"><a href="#部署踩坑" class="headerlink" title="部署踩坑"></a>部署踩坑</h3><p>安装完之后迫不及待的进行尝试，我其实就是按照文档一步一步来做的，文档地址<a target="_blank" rel="noopener" href="https://zeit.co/docs/v2/deployments/official-builders/next-js-now-next/">now-next docs</a>。</p>
+<h4 id="第一次尝试-add-now-json"><a href="#第一次尝试-add-now-json" class="headerlink" title="第一次尝试 - add now.json"></a>第一次尝试 - add now.json</h4><p>新建now.json配置文件，键入如下代码：<br>{<br>  “version”: 2,<br>  “builds”: [{ “src”: “next.config.js”, “use”: “@now/next” }]<br>}<br>复制代码然后运行部署命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">now</span><br></pre></td></tr></table></figure>
+<p>now会让我们注册，邮件等照做就可以了。<br>因为我们降级了，所以并没有遇到serverless或publicRuntimeConfig等问题，但是出现了**Unable to import module ‘now__launcher’**的错误。<br>这个错误是由于在next.config.js中直接引用了withLess之类的插件导致的。在now环境下require插件需要在PHASE_PRODUCTION_SERVER阶段下，如果不加这个阶段的判断就会报错。<br>我们一般把引用放到文件头部，但这里会出错，向下面这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> withCSS = <span class="built_in">require</span>(<span class="string">&#x27;@zeit/next-css&#x27;</span>); <span class="comment">// 由于不在PHASE_PRODUCTION_SERVER阶段所以报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; PHASE_PRODUCTION_SERVER &#125; =</span><br><span class="line"></span><br><span class="line">  process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span></span><br><span class="line"></span><br><span class="line">    ? &#123;&#125;</span><br><span class="line"></span><br><span class="line">    : !process.env.NOW_REGION</span><br><span class="line"></span><br><span class="line">      ? <span class="built_in">require</span>(<span class="string">&#x27;next/constants&#x27;</span>)</span><br><span class="line"></span><br><span class="line">      : <span class="built_in">require</span>(<span class="string">&#x27;next-server/constants&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">phase, &#123; defaultConfig &#125;</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (phase === PHASE_PRODUCTION_SERVER) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Config used to run in production.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> withCSS();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>正确的写法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; PHASE_PRODUCTION_SERVER &#125; = process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span></span><br><span class="line">  ? &#123;&#125;</span><br><span class="line">  : !process.env.NOW_REGION</span><br><span class="line">    ? <span class="built_in">require</span>(<span class="string">&#x27;next/constants&#x27;</span>)</span><br><span class="line">    : <span class="built_in">require</span>(<span class="string">&#x27;next-server/constants&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// fix: prevents error when .less files are required by node</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">require</span> !== <span class="string">&#x27;undefined&#x27;</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>.extensions[<span class="string">&#x27;.less&#x27;</span>] = <span class="function">(<span class="params">file</span>) =&gt;</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(&#x27;theme&#x27;, theme);</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">phase, &#123; defaultConfig &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (phase === PHASE_PRODUCTION_SERVER) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> theme = <span class="built_in">require</span>(<span class="string">&#x27;./theme&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> withTypescript = <span class="built_in">require</span>(<span class="string">&#x27;@zeit/next-typescript&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> cssLoaderConfig = <span class="built_in">require</span>(<span class="string">&#x27;@zeit/next-css/css-loader-config&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> withTypescript(&#123;</span><br><span class="line">    <span class="attr">pageExtensions</span>: [<span class="string">&#x27;jsx&#x27;</span>, <span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;ts&#x27;</span>, <span class="string">&#x27;tsx&#x27;</span>],</span><br><span class="line">    <span class="attr">exportPathMap</span>: <span class="keyword">async</span> (defaultPathMap) =&gt; &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&#x27;/&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/&#x27;</span> &#125;,</span><br><span class="line">        <span class="string">&#x27;/user&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user&#x27;</span> &#125;,</span><br><span class="line">        <span class="string">&#x27;/user/list&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user/list&#x27;</span> &#125;,</span><br><span class="line">        <span class="string">&#x27;/user/detail&#x27;</span>: &#123; <span class="attr">page</span>: <span class="string">&#x27;/user/detail&#x27;</span> &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">webpack</span>(<span class="params">config, options</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!options.defaultLoaders) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">          <span class="string">&#x27;This plugin is not compatible with Next.js versions below 5.0.0 https://err.sh/next-plugins/upgrade&#x27;</span>,</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> &#123; dev, defaultLoaders, isServer &#125; = options;</span><br><span class="line">      <span class="comment">// const nextConfig = &#123;&#125;;</span></span><br><span class="line">      <span class="keyword">const</span> &#123;</span><br><span class="line">        cssModules,</span><br><span class="line">        cssLoaderOptions,</span><br><span class="line">        postcssLoaderOptions,</span><br><span class="line">        lessLoaderOptions = &#123;&#125;,</span><br><span class="line">      &#125; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// console.log(&#x27;options.defaultLoaders&#x27;, defaultLoaders);</span></span><br><span class="line"></span><br><span class="line">      config.resolve.extensions.push(<span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.tsx&#x27;</span>);</span><br><span class="line">      config.resolve.alias = <span class="built_in">Object</span>.assign(&#123;&#125;, config.resolve.alias, &#123;</span><br><span class="line">        <span class="string">&#x27;@utils&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;utils&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;@assets&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;assets&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;@pages&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;pages&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;@components&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;components&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;@services&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;services&#x27;</span>),</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      defaultLoaders.less = cssLoaderConfig(config, &#123;</span><br><span class="line">        <span class="attr">extensions</span>: [<span class="string">&#x27;less&#x27;</span>],</span><br><span class="line">        cssModules,</span><br><span class="line">        cssLoaderOptions,</span><br><span class="line">        postcssLoaderOptions,</span><br><span class="line">        dev,</span><br><span class="line">        isServer,</span><br><span class="line">        <span class="attr">loaders</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">loader</span>: <span class="string">&#x27;less-loader&#x27;</span>,</span><br><span class="line">            <span class="attr">options</span>: lessLoaderOptions,</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      config.module.rules.push(&#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.less$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        use: options.defaultLoaders.less,</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 我们禁用了antd的cssModules</span></span><br><span class="line">      config.module.rules.push(&#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.less$/</span>,</span><br><span class="line">        include: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        use: cssLoaderConfig(config, &#123;</span><br><span class="line">          <span class="attr">extensions</span>: [<span class="string">&#x27;less&#x27;</span>],</span><br><span class="line">          <span class="attr">cssModules</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">cssLoaderOptions</span>: &#123;&#125;,</span><br><span class="line">          dev,</span><br><span class="line">          isServer,</span><br><span class="line">          <span class="attr">loaders</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">loader</span>: <span class="string">&#x27;less-loader&#x27;</span>,</span><br><span class="line">              <span class="attr">options</span>: &#123;</span><br><span class="line">                <span class="attr">javascriptEnabled</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">modifyVars</span>: theme,</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;),</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      config.module.rules.push(&#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        use: cssLoaderConfig(config, &#123;</span><br><span class="line">          <span class="attr">extensions</span>: [<span class="string">&#x27;scss&#x27;</span>],</span><br><span class="line">          <span class="attr">cssModules</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="attr">cssLoaderOptions</span>: &#123;</span><br><span class="line">            <span class="attr">importLoaders</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">localIdentName</span>: <span class="string">&#x27;[local]_[hash:base64:6]&#x27;</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          dev,</span><br><span class="line">          isServer,</span><br><span class="line">          <span class="attr">loaders</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">loader</span>: <span class="string">&#x27;sass-loader&#x27;</span>,</span><br><span class="line">              <span class="attr">options</span>: &#123;</span><br><span class="line">                <span class="attr">data</span>: <span class="string">&#x27;@import &quot;_base.scss&quot;;&#x27;</span>,</span><br><span class="line">                <span class="attr">includePaths</span>: [path.resolve(<span class="string">&#x27;./styles&#x27;</span>)],</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;),</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">if</span> (dev) &#123;</span><br><span class="line">        config.module.rules.push(&#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/\.(ts|tsx|js|jsx)$/</span>,</span><br><span class="line">          enforce: <span class="string">&#x27;pre&#x27;</span>,</span><br><span class="line">          <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="attr">configFile</span>: path.resolve(<span class="string">&#x27;.eslintrc&#x27;</span>),</span><br><span class="line">            <span class="attr">eslint</span>: &#123;</span><br><span class="line">              <span class="attr">configFile</span>: path.resolve(__dirname, <span class="string">&#x27;.eslintrc&#x27;</span>),</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">fix</span>: <span class="literal">true</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&#x27;eslint-loader&#x27;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">        config.devtool = <span class="string">&#x27;cheap-module-eval-source-map&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> config;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这之后偶尔会出现 **Error! File size limit exceeded (0B)**的错误，重新启动即可。<br><img src="next6.png"><br><img src="next7.png"></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/" data-id="cksb3yqnr001od1fzdx3zd6mq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/22/%E4%BD%BF%E7%94%A8travis%E4%BB%93%E5%BA%93%E5%85%AC%E9%92%A5%E6%9B%BF%E6%8D%A2%E8%87%AA%E5%B7%B1%E4%B8%BB%E6%9C%BA%E5%85%AC%E9%92%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    使用travis仓库公钥替换自己主机公钥
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2019/05/09/pm2%E7%AE%80%E6%98%93%E6%89%8B%E5%86%8C/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">pm2简易手册</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2019/05/10/nextjs项目的部署/" data-title="nextjs项目的部署" data-url="http://example.com/2019/05/10/nextjs%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%83%A8%E7%BD%B2/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/14/%E4%BD%BF%E7%94%A8brew%E5%AE%89%E8%A3%85jenkins%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%B1%80%E5%9F%9F%E7%BD%91IP%E8%AE%BF%E9%97%AE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/14/%E4%BD%BF%E7%94%A8brew%E5%AE%89%E8%A3%85jenkins%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%B1%80%E5%9F%9F%E7%BD%91IP%E8%AE%BF%E9%97%AE/" class="title">使用brew安装jenkins并配置局域网IP访问</a></p>
+                            <p class="item-date"><time datetime="2021-08-14T01:33:39.000Z" itemprop="datePublished">2021-08-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/10/jenkins%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7NodeJs%E5%8F%8AJdk/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/10/jenkins%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7NodeJs%E5%8F%8AJdk/" class="title">jenkins配置全局工具NodeJs及Jdk,Maven</a></p>
+                            <p class="item-date"><time datetime="2021-08-10T14:42:56.000Z" itemprop="datePublished">2021-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/10/%E5%8D%95%E7%82%B9kafka%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/10/%E5%8D%95%E7%82%B9kafka%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="title">单点kafka的安装配置</a></p>
+                            <p class="item-date"><time datetime="2021-08-10T06:28:06.000Z" itemprop="datePublished">2021-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="title">Feign 报错：Request method &#39;POST&#39; not supported</a></p>
+                            <p class="item-date"><time datetime="2021-08-05T02:15:16.000Z" itemprop="datePublished">2021-08-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/07/26/%E6%90%AD%E5%BB%BAelasticsearch%E9%9B%86%E7%BE%A4%E6%8A%A5%E9%94%99%EF%BC%9Awith%20the%20same%20id%20but%20is%20a%20different%20node%20instance/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/07/26/%E6%90%AD%E5%BB%BAelasticsearch%E9%9B%86%E7%BE%A4%E6%8A%A5%E9%94%99%EF%BC%9Awith%20the%20same%20id%20but%20is%20a%20different%20node%20instance/" class="title">搭建elasticsearch集群报错：with the same id but is a different node instance</a></p>
+                            <p class="item-date"><time datetime="2021-07-26T03:53:02.000Z" itemprop="datePublished">2021-07-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 12px;">jenkins</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            <div style="margin:0 auto; padding:20px 0;">
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
+                    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <img src="http://www.beian.gov.cn/img/new/gongan.png" style="vertical-align: text-top;">
+                    <p
+                        style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                        京公网安备 11010602007043号
+                    </p>
+                </a>
+                <p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                    京ICP备19060110号- 1
+                </p>
+            </div>
+            &copy; 2021 织幻z
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a
+                target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'xiaoranhexo'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

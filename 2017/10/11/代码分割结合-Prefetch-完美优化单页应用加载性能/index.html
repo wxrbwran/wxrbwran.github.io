@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>代码分割结合 Prefetch 完美优化单页应用加载性能 | 晓然的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="单页应用性能的最大痛点就是 bundle 体积大导致首屏时间过长。使用 webpack 的 code splitting（代码分割）功能可以将 bundle 分片，加速首屏，但之后的交互势必会受到影响,页面变得不再流畅，稍有卡顿，所以放弃了分片，但是现在发现有webpack插件解决JS文件后加载响应慢的问题，所以记了下来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码分割结合 Prefetch 完美优化单页应用加载性能">
+<meta property="og:url" content="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/index.html">
+<meta property="og:site_name" content="晓然的自留地">
+<meta property="og:description" content="单页应用性能的最大痛点就是 bundle 体积大导致首屏时间过长。使用 webpack 的 code splitting（代码分割）功能可以将 bundle 分片，加速首屏，但之后的交互势必会受到影响,页面变得不再流畅，稍有卡顿，所以放弃了分片，但是现在发现有webpack插件解决JS文件后加载响应慢的问题，所以记了下来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-10-11T09:26:46.000Z">
+<meta property="article:modified_time" content="2021-08-14T01:30:53.539Z">
+<meta property="article:author" content="织幻z">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/vendor/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+
+    
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="晓然的自留地" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">晓然的自留地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://avatars2.githubusercontent.com/u/13016470?v=3&amp;s=400" />
+            <h2 id="name">吴晓然</h2>
+            <h3 id="title">Web 前端 / Node / Java</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>天朝，帝都</span>
+            <a id="follow" target="_blank" href="https://github.com/wxrbwran/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                71
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                39
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/wxrbwran/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-代码分割结合-Prefetch-完美优化单页应用加载性能" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            代码分割结合 Prefetch 完美优化单页应用加载性能
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/">
+            <time datetime="2017-10-11T09:26:46.000Z" itemprop="datePublished">2017-10-11</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/webpack/" rel="tag">webpack</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>单页应用性能的最大痛点就是 bundle 体积大导致首屏时间过长。使用 webpack 的 code splitting（代码分割）功能可以将 bundle 分片，加速首屏，但之后的交互势必会受到影响,页面变得不再流畅，稍有卡顿，所以放弃了分片，但是现在发现有webpack插件解决JS文件后加载响应慢的问题，所以记了下来。</p>
+</blockquote>
+<span id="more"></span>
+<p>先说结论：比较理想的解决方案是<strong>code split</strong> + <strong>prefetch</strong> 方式，对于<del>不支持prefetch的safari浏览器</del>另做<strong>preload</strong>处理。</p>
+<h3 id="preload"><a href="#preload" class="headerlink" title="preload"></a>preload</h3><p><strong>preload</strong> 是较新的 web 标准。他可以声明式的告诉浏览器去获取某个资源，并且可以为资源设置优先级。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;preload&quot; href=&quot;<span class="attribute">font</span><span class="selector-class">.woff2</span>&quot; as=&quot;<span class="attribute">font</span>&quot; type=&quot;<span class="attribute">font</span>/woff2&quot; crossorigin&gt;</span><br></pre></td></tr></table></figure>
+<p>preload <strong>加载资源后并不会执行</strong>，可以安全的预加载 JavaScript。我们一般使用 preload 来主动通知浏览器获取本页的关键资源。现在浏览器都有 Preloader，可以尽早发现大多数基于标记语言的资源，但依然存在一些隐藏在 CSS 和 JavaScript 中的资源，例如字体文件，其为首屏关键资源又隐藏在 CSS 中。这种场景适合使用 preload 进行声明，尽早进行资源加载，避免页面渲染延迟。<br>preload 的更多细节可参考文章 Preload: <a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/">What Is It Good For?</a>，它适合用来预加载被隐藏的首屏关键资源。preload 的兼容性并不理想，目前只有最新版的 chrome 和 safari 才支持。</p>
+<h3 id="prefetch"><a href="#prefetch" class="headerlink" title="prefetch"></a>prefetch</h3><p>使用 prefetch 声明的资源是对浏览器的提示，<strong>暗示该资源可能『未来』会被用到</strong>，适用于对可能跳转到的其他路由页面进行资源缓存。被 prefetch 的资源的加载时机由浏览器决定，一般来说优先级较低，会在浏览器『空闲』时进行下载。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;prefetch&quot; href=&quot;//example<span class="selector-class">.com</span>/industry-qualification-audit/js/common-<span class="selector-tag">main</span>.<span class="number">550</span>d4<span class="selector-class">.chunk</span><span class="selector-class">.js</span>&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;prefetch&quot; href=&quot;//example<span class="selector-class">.com</span>/industry-qualification-audit/js/Food.<span class="number">86661</span><span class="selector-class">.chunk</span><span class="selector-class">.js</span>&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;prefetch&quot; href=&quot;//example<span class="selector-class">.com</span>/industry-qualification-audit/js/Pub.<span class="number">9045</span>b<span class="selector-class">.chunk</span><span class="selector-class">.js</span>&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;prefetch&quot; href=&quot;//example<span class="selector-class">.com</span>/industry-qualification-audit/js/Screencast.<span class="number">1</span>eb1a<span class="selector-class">.chunk</span><span class="selector-class">.js</span>&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>由于关键资源 main.js 已被切分，体积小加载快，prefetch 的资源也未发生抢占带宽的现象，实际效果还是比较符合期望的。<br>prefetch 的兼容性稍好，chrome、firefox、edge、android 4.4+ 都支持，但 safari、IE11-、iOS safari 始终未支持。</p>
+<h2 id="3-结论"><a href="#3-结论" class="headerlink" title="3. 结论"></a>3. 结论</h2><p>经过分析，资源加载方式简单总结如下：<br><strong>首屏关键资源</strong>：优先级高，使用阻塞方式载入，若有隐藏在 CSS、JavaScript 内部的关键资源（如字体），可使用 preload 声明提前开始加载。<br><strong>首屏非关键资源</strong>（第三方插件，如广告、评论、统计、分享）：优先级低，若无执行顺序要求，可使用 async 进行异步加载，但应警惕 onload 事件延迟现象（很多插件和业务逻辑都依赖 onload 事件），若产生了性能问题最好在 onload 事件后手动加载。<br><strong>非首屏资源</strong>（如其他路由的分片 thunk）：优先级最低，可使用 prefetch 声明进行预加载。在 safari、iOS 等不支持 prefetch 的浏览器上，在 onload 事件后手动进行加载。<br>单页应用的分片 <strong>thunk 为非首屏资源</strong>，可以采用 prefetch + onload 手动加载的方式实现全平台的预加载。prefetch 可以使用<a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/preload-webpack-plugin"> <strong>preload-webpack-plugin</strong></a> 插件自动打入，preload可以使用<a target="_blank" rel="noopener" href="https://github.com/jin5354/prefetch-polyfill-webpack-plugin">prefetch-polyfill-webpack-plugin</a>,可以自动生成在 onload 事件触发时执行的 prefetch polyfill 函数，由于其身份是作为 prefetch 的补足，所以仅在 IE、safari、iOS 上执行，可选择使用 image 或者 async模式 对分片 thunk 做预加载。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      <span class="attr">template</span>: path.join(__dirname, <span class="string">&#x27;src/index.html&#x27;</span>),</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;index&#x27;</span>,</span><br><span class="line">      <span class="attr">minify</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">inject</span>: <span class="string">&#x27;body&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> PreloadWebpackPlugin(&#123;</span><br><span class="line">      <span class="attr">rel</span>: <span class="string">&#x27;prefetch&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> PrefetchPolyfillPlugin(&#123;</span><br><span class="line">      <span class="attr">mode</span>: <span class="string">&#x27;async&#x27;</span>,</span><br><span class="line">    &#125;),</span><br></pre></td></tr></table></figure>
+<p>经过这样细致的优化，就可以保证我们的单页应用既有快速的首屏响应时间，又能享受流畅的交互体验了。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/" data-id="cksb3yqo3002cd1fz3btm2oq6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/07/12/%E5%B0%86git%E9%A1%B9%E7%9B%AE%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    将git项目推送到多个地址
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/10/02/%E4%BD%BF%E7%94%A8babel-preset-env%E6%9B%BF%E4%BB%A3babel-preset-es2015/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">使用babel-preset-env替代babel-preset-es2015</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/10/11/代码分割结合-Prefetch-完美优化单页应用加载性能/" data-title="代码分割结合 Prefetch 完美优化单页应用加载性能" data-url="http://example.com/2017/10/11/%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2%E7%BB%93%E5%90%88-Prefetch-%E5%AE%8C%E7%BE%8E%E4%BC%98%E5%8C%96%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/14/%E4%BD%BF%E7%94%A8brew%E5%AE%89%E8%A3%85jenkins%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%B1%80%E5%9F%9F%E7%BD%91IP%E8%AE%BF%E9%97%AE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/14/%E4%BD%BF%E7%94%A8brew%E5%AE%89%E8%A3%85jenkins%E5%B9%B6%E9%85%8D%E7%BD%AE%E5%B1%80%E5%9F%9F%E7%BD%91IP%E8%AE%BF%E9%97%AE/" class="title">使用brew安装jenkins并配置局域网IP访问</a></p>
+                            <p class="item-date"><time datetime="2021-08-14T01:33:39.000Z" itemprop="datePublished">2021-08-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/10/jenkins%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7NodeJs%E5%8F%8AJdk/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/10/jenkins%E9%85%8D%E7%BD%AE%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7NodeJs%E5%8F%8AJdk/" class="title">jenkins配置全局工具NodeJs及Jdk,Maven</a></p>
+                            <p class="item-date"><time datetime="2021-08-10T14:42:56.000Z" itemprop="datePublished">2021-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/10/%E5%8D%95%E7%82%B9kafka%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/10/%E5%8D%95%E7%82%B9kafka%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="title">单点kafka的安装配置</a></p>
+                            <p class="item-date"><time datetime="2021-08-10T06:28:06.000Z" itemprop="datePublished">2021-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="title">Feign 报错：Request method &#39;POST&#39; not supported</a></p>
+                            <p class="item-date"><time datetime="2021-08-05T02:15:16.000Z" itemprop="datePublished">2021-08-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/07/26/%E6%90%AD%E5%BB%BAelasticsearch%E9%9B%86%E7%BE%A4%E6%8A%A5%E9%94%99%EF%BC%9Awith%20the%20same%20id%20but%20is%20a%20different%20node%20instance/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/07/26/%E6%90%AD%E5%BB%BAelasticsearch%E9%9B%86%E7%BE%A4%E6%8A%A5%E9%94%99%EF%BC%9Awith%20the%20same%20id%20but%20is%20a%20different%20node%20instance/" class="title">搭建elasticsearch集群报错：with the same id but is a different node instance</a></p>
+                            <p class="item-date"><time datetime="2021-07-26T03:53:02.000Z" itemprop="datePublished">2021-07-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 12px;">jenkins</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            <div style="margin:0 auto; padding:20px 0;">
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602007043"
+                    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <img src="http://www.beian.gov.cn/img/new/gongan.png" style="vertical-align: text-top;">
+                    <p
+                        style="display:inline-block; height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                        京公网安备 11010602007043号
+                    </p>
+                </a>
+                <p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                    京ICP备19060110号- 1
+                </p>
+            </div>
+            &copy; 2021 织幻z
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a
+                target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'xiaoranhexo'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
