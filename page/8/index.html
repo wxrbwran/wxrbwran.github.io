@@ -167,7 +167,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                72
+                73
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -196,6 +196,134 @@
 
             
             <section id="main">
+    <article id="post-react中context的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">react中context的使用</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <time datetime="2017-05-27T06:29:39.000Z" itemprop="datePublished">2017-05-27</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/react/" rel="tag">react</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="使用-Context-的原因"><a href="#使用-Context-的原因" class="headerlink" title="使用 Context 的原因"></a>使用 Context 的原因</h2><p>为了有时候想传递数据通过组件树，但是不想给每一层级的组件手动传递属性，那么 context 就能帮你 “越级” 传递数据到组件树中你想传递到的深层次组件。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="cktvbso860020mklt36s57fqm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2017/05/27/react%E4%B8%ADcontext%E7%9A%84%E4%BD%BF%E7%94%A8/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-使用ES2015全局对象--webpack下添加polyfill" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -250,7 +378,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2017/01/22/%E4%BD%BF%E7%94%A8ES2015%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1--webpack%E4%B8%8B%E6%B7%BB%E5%8A%A0polyfill/" data-id="ckszhsm1z002gp5ltbrjeh4hp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2017/01/22/%E4%BD%BF%E7%94%A8ES2015%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1--webpack%E4%B8%8B%E6%B7%BB%E5%8A%A0polyfill/" data-id="cktvbso8g002kmklt11xz579b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -389,7 +517,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/11/15/%E8%B0%83%E8%AF%95%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%BE%AE%E4%BF%A1X5%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="ckszhsm2l003op5ltd475895r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/11/15/%E8%B0%83%E8%AF%95%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%BE%AE%E4%BF%A1X5%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="cktvbso8z003vmkltgj1m4fac" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -540,7 +668,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/11/09/ES2015%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" data-id="ckszhsm3c005sp5lt7cqy7ypb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/11/09/ES2015%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" data-id="cktvbso9o005tmklt9vsl2rgl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -700,7 +828,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/11/07/ES2015%E4%B9%8BClass/" data-id="ckszhsm38005lp5lta3ao5tsu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/11/07/ES2015%E4%B9%8BClass/" data-id="cktvbso9m005nmklt1e0a9so7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -778,201 +906,6 @@
 
 
 
-    <article id="post-ES2015第七种数据结构Symbols" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/02/ES2015%E7%AC%AC%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Symbols/">ES2015第七种数据结构Symbols</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/02/ES2015%E7%AC%AC%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Symbols/">
-            <time datetime="2016-11-02T15:39:29.000Z" itemprop="datePublished">2016-11-02</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/es2015/" rel="tag">es2015</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>1997年JavaScript首次被标准化，那时只有六种原始类型，在ES6以前，JS程序中使用的每一个值都是以下几种类型之一：</p>
-<ul>
-<li>Undefined 未定义</li>
-<li>Null 空值</li>
-<li>Boolean 布尔类型</li>
-<li>Number 数字类型</li>
-<li>String 字符串类型</li>
-<li>Object 对象类型</li>
-</ul>
-<p>每种类型都是多个值的集合，前五个集合是有限的。布尔类型只有两个值，true和false，不会再创造第三种布尔值；数字类型和字符串类型的值更多。然而，对象类型值的集合是无限的。每一个对象都像珍贵的雪花一样独一无二，每一次你打开一个Web页面，都会创建一堆对象。</p>
-<blockquote>
-<p> ES6新特性中的symbol也是值，但它不是字符串，也不是对象，而是是全新的——第七种类型的原始值。Symbol值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的Symbol类型。凡是属性名属于Symbol类型，就都是<strong>独一无二</strong>的，可以保证不会与其他属性名产生冲突。</p>
-</blockquote>
-<p>让我们一起探讨一下symbol的实际应用场景。</p>
-<h3 id="从一个简单的布尔类型出发"><a href="#从一个简单的布尔类型出发" class="headerlink" title="从一个简单的布尔类型出发"></a>从一个简单的布尔类型出发</h3><p>有时候你可以非常轻松地将别人的外部数据存储到一个JavaScript对象中。</p>
-<p>举 个例子，假设你正在写一个JS库，可以通过CSS transitions使DOM元素在屏幕上移动。你可能会注意到，当你尝试在一个div元素上同时应用多重CSS transitions时并不会生效。实际效果是丑陋而又不连续的“跳闪”。你认为可以修复这个问题，但前提是你需要一种发现给定元素是否已经移动过的方 法。</p>
-<h6 id="应当如何解决这个问题呢？"><a href="#应当如何解决这个问题呢？" class="headerlink" title="应当如何解决这个问题呢？"></a>应当如何解决这个问题呢？</h6><p>一种方法是，用CSS API来告诉浏览器元素是否正在移动，但这样简直小题大做。在元素移动的第一时间内你的库就应该记录下移动的状态，所以它自然知道元素正在移动。</p>
-<p>你真正想要的是一种持续跟踪某个元素正在移动的方法。你可以维护一个数组，记录所有正在移动的元素，每当你的库被调用来移动某个元素时，你可以检索数组来查看元素是否已经存在，亦即它是否正在移动中。</p>
-<p>当然，如果数组非常大的话，线性搜索将会非常缓慢。</p>
-<p>实际上你只想为元素设置一个标记：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (element.isMoving) &#123;</span><br><span class="line">  smoothAnimations(element);</span><br><span class="line">&#125;</span><br><span class="line">element.isMoving = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-<p>这样也会有一些潜在的问题，事实上，你的代码很可能不是唯一一段操作DOM的代码。</p>
-<ol>
-<li>你创建的属性很可能影响到其它使用了for-in或Object.keys()的代码。</li>
-<li>一些聪明的库作者可能已经考虑并使用了这项技术，这样一来你的库就会与已有的库产生某些冲突</li>
-<li>当然，很可能你比他们更聪明，你先采用了这项技术，但是他们的库仍然无法与你的库默契配合。</li>
-<li>标准委员会可能决定为所有的元素增加一个.isMoving()方法，到那时你需要重写相关逻辑，必定会有深深的挫败感。<br>当然你可以选择一个乏味而愚蠢的命名（其他人根本不会想用的那些名称）来解决最后的三个问题：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (element.__$jorendorff_animation_library$PLEASE_DO_NOT_USE_THIS_PROPERTY$isMoving__) &#123;</span><br><span class="line">  smoothAnimations(element);</span><br><span class="line">&#125;</span><br><span class="line">element.__$jorendorff_animation_library$PLEASE_DO_NOT_USE_THIS_PROPERTY$isMoving__ = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-这只会造成无畏的眼疲劳。为什么这个问题如此困难？我们只想要一个小小的布尔值啊！</li>
-</ol>
-<h3 id="symbol是最终的解决方案"><a href="#symbol是最终的解决方案" class="headerlink" title="symbol是最终的解决方案"></a>symbol是最终的解决方案</h3><p>symbol是程序创建并且可以用作属性键的值，并且它能避免命名冲突的风险。</p>
-<p><code>var mySymbol = Symbol();</code><br>调用Symbol()创建一个新的symbol，它的值与其它任何值皆不相等。</p>
-<p>字符串或数字可以作为属性的键，symbol也可以，它不等同于任何字符串，因而这个以symbol为键的属性可以保证不与任何其它属性产生冲突。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj[mySymbol] = <span class="string">&quot;ok!&quot;</span>;  <span class="comment">// 保证不会冲突</span></span><br><span class="line"><span class="built_in">console</span>.log(obj[mySymbol]);  <span class="comment">// ok!</span></span><br></pre></td></tr></table></figure>
-<p>想要在上述讨论的场景中使用symbol，你可以这样做：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个独一无二的symbol</span></span><br><span class="line"><span class="keyword">var</span> isMoving = <span class="built_in">Symbol</span>(<span class="string">&quot;isMoving&quot;</span>);</span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (element[isMoving]) &#123;</span><br><span class="line">  smoothAnimations(element);</span><br><span class="line">&#125;</span><br><span class="line">element[isMoving] = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-<p>有关这段代码的一些解释：</p>
-<ul>
-<li><p>**Symbol(“isMoving”)**中的isMoving被称作描述。你可以通过console.log()将它打印出来，对调试非常有帮助；你也可以用.toString()方法将它转换为字符串呈现；它也可以被用在错误信息中。</p>
-</li>
-<li><p>element[isMoving]被称作一个以symbol为键（symbol-keyed）的属性。简而言之，它的名字是symbol而不是一个字符串。除此之外，它与一个普通的属性没有什么区别。</p>
-</li>
-<li><p>以symbol为键的属性属性与数组元素类似，<strong>不能被类似obj.name的点号法访问，你必须使用方括号访问</strong>这些属性。</p>
-</li>
-<li><p>如果你已经得到了symbol，那么访问一个以symbol为键的属性同样简单，以上的示例很好地展示了如何获取element[isMoving]的值以及如何为它赋值。如果我们需要，可以查看属性是否存在：<code>if (isMoving in element)</code>，也可以删除属性：<code>delete element[isMoving]</code>。</p>
-</li>
-<li><p>另一方面，只有当isMoving在当前作用域中时才会生效。这是symbol的弱封装机制：模块创建了几个symbol，可以在任意对象上使用，无须担心与其它代码创建的属性产生冲突。</p>
-</li>
-</ul>
-<p>symbol键的设计初衷是避免冲突，因此JavaScript中最常见的对象检查的特性会忽略symbol键。例如，for-in循环只会遍历对象的字符串键，symbol键直接跳过，Object.keys(obj)和Object.getOwnPropertyNames(obj)也是一样。但是symbols也不完全是私有的：用新的APIObject.getOwnPropertySymbols(obj)就可以列出对象的symbol键。另一个新的API，Reflect.ownKeys(obj)，会同时返回字符串键和symbol键。（我们将在随后的文章中讲解Reflect(反射) API）。</p>
-<p>慢慢地我们会发现，越来越多的库和框架将大量使用symbol，语言本身也会将symbol应用于广泛的用途。</p>
-<p>但是，到底什么是symbol呢？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">typeof</span> <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="string">&quot;symbol&quot;</span></span><br></pre></td></tr></table></figure>
-<p>确切地说，symbol与其它类型并不完全相像。</p>
-<p>symbol被创建后就不可变更，你不能为它设置属性（在严格模式下尝试设置属性会得到TypeError的错误）。他们可以用作属性名称，这些性质与字符串类似。</p>
-<p>另一方面，每一个symbol都独一无二，不与其它symbol等同，即使二者有相同的描述也不相等；你可以轻松地创建一个新的symbol。这些性质与对象类似。</p>
-<p>ES6中的symbol与Lisp和Ruby这些语言中更传统的symbol类似，但不像它们集成得那么紧密。在Lisp中，所有的标识符都是symbol；在JS中，标识符和大多数的属性键仍然是字符串，symbol只是一个额外的选项。</p>
-<p>关于symbol的忠告：symbol不能被自动转换为字符串，这和语言中的其它类型不同。尝试拼接symbol与字符串将得到TypeError错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> sym = <span class="built_in">Symbol</span>(<span class="string">&quot;&lt;3&quot;</span>);</span><br><span class="line">&gt; <span class="string">&quot;your symbol is &quot;</span> + sym</span><br><span class="line"><span class="comment">// TypeError: can&#x27;t convert symbol to string</span></span><br><span class="line">&gt; <span class="string">`your symbol is <span class="subst">$&#123;sym&#125;</span>`</span></span><br><span class="line"><span class="comment">// TypeError: can&#x27;t convert symbol to string</span></span><br></pre></td></tr></table></figure>
-<p>通过String(sym)或sym.toString()可以显示地将symbol转换为一个字符串，从而回避这个问题。</p>
-<p>获取symbol的三种方法</p>
-<p>有三种获取symbol的方法。</p>
-<ol>
-<li><p>调用Symbol()。正如我们上文中所讨论的，这种方式每次调用都会返回一个新的唯一symbol。</p>
-</li>
-<li><p>调用Symbol.for(string)。这种方式会访问symbol注册表，其中存储了已经存在的一系列symbol。这种方式与通过Symbol()定义的独立symbol不同，symbol注册表中的symbol是共享的。如果你连续三十次调用Symbol.for(“cat”)，每次都会返回相同的symbol。注册表非常有用，在多个web页面或同一个web页面的多个模块中经常需要共享一个symbol。</p>
-</li>
-<li><p>使用标准定义的symbol，例如：Symbol.iterator。标准根据一些特殊用途定义了少许的几个symbol。</p>
-</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://example.com/2016/11/02/ES2015%E7%AC%AC%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Symbols/" data-id="ckszhsm0y000bp5lt0w4tc5h5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://example.com/2016/11/02/ES2015%E7%AC%AC%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Symbols/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2016/11/02/ES2015%E7%AC%AC%E4%B8%83%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Symbols/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">下一页 &amp;raquo;</a>
     </nav>
@@ -985,6 +918,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/09/22/Jenkins-Gitlab-Webhook%E8%A7%A6%E5%8F%91%E5%A4%9A%E5%88%86%E6%94%AF%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/09/22/Jenkins-Gitlab-Webhook%E8%A7%A6%E5%8F%91%E5%A4%9A%E5%88%86%E6%94%AF%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" class="title">Jenkins&amp;Gitlab:Webhook触发多分支项目构建</a></p>
+                            <p class="item-date"><time datetime="2021-09-22T09:38:07.000Z" itemprop="datePublished">2021-09-22</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1062,25 +1014,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/08/05/Feign-%E6%8A%A5%E9%94%99%EF%BC%9ARequest-method-POST-not-supported/" class="title">Feign 报错：Request method &#39;POST&#39; not supported</a></p>
-                            <p class="item-date"><time datetime="2021-08-05T02:15:16.000Z" itemprop="datePublished">2021-08-05</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1092,7 +1025,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1101,7 +1034,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1110,7 +1043,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 12px;">jenkins</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pnpm/" style="font-size: 10px;">pnpm</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 14px;">jenkins</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pnpm/" style="font-size: 10px;">pnpm</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
         </div>
     </div>
 
