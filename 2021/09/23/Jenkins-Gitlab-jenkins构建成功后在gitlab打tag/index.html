@@ -3,17 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2020/6 | 晓然的自留地</title>
+    <title>Jenkins&amp;Gitlab:jenkins构建成功后在gitlab打tag | 晓然的自留地</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="前端工程师的自我修养">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晓然的自留地">
-<meta property="og:url" content="http://example.com/archives/2020/06/index.html">
+    <meta name="description" content="插件？首先想找找jenkins有没有合适的插件：  git publisher长时间无人维护； git push 并不适合目前的多分支流水线构建。此路不通。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins&amp;Gitlab:jenkins构建成功后在gitlab打tag">
+<meta property="og:url" content="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/index.html">
 <meta property="og:site_name" content="晓然的自留地">
-<meta property="og:description" content="前端工程师的自我修养">
+<meta property="og:description" content="插件？首先想找找jenkins有没有合适的插件：  git publisher长时间无人维护； git push 并不适合目前的多分支流水线构建。此路不通。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/gitlab-token.png">
+<meta property="og:image" content="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/jenkins-cert.png">
+<meta property="article:published_time" content="2021-09-23T06:18:42.000Z">
+<meta property="article:modified_time" content="2021-09-23T08:30:39.345Z">
 <meta property="article:author" content="织幻z">
+<meta property="article:tag" content="jenkins">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/gitlab-token.png">
     
 
     
@@ -195,107 +201,208 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2020</h1>
-            </div>
+            <section id="main"><article id="post-Jenkins-Gitlab-jenkins构建成功后在gitlab打tag" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/">flutter 单元测试mockito的基本运用</a>
+        <h1 class="article-title" itemprop="name">
+            Jenkins&amp;Gitlab:jenkins构建成功后在gitlab打tag
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2020/06/18/flutter-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mockito%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%94%A8/">
-            <time datetime="2020-06-18T09:44:20.000Z" itemprop="datePublished">2020-06-18</time>
+        <a href="/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/">
+            <time datetime="2021-09-23T06:18:42.000Z" itemprop="datePublished">2021-09-23</time>
         </a>
     </div>
 
 
-                    
-                    
+                        
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/flutter/" rel="tag">flutter</a>
+        <a class="tag-link-link" href="/tags/jenkins/" rel="tag">jenkins</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/">react hooks 组件的测试方法</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="插件？"><a href="#插件？" class="headerlink" title="插件？"></a>插件？</h3><p>首先想找找jenkins有没有合适的插件：</p>
+<ul>
+<li>git publisher长时间无人维护；</li>
+<li>git push 并不适合目前的多分支流水线构建。<br>此路不通。<span id="more"></span>
+<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2></li>
+</ul>
+<p>那只能走<a target="_blank" rel="noopener" href="https://docs.gitlab.com/12.10/ee/api/tags.html">gitlab-doc</a>这条路了。</p>
+<ol>
+<li><p>创建gitlab token, setting-&gt;access tokens,创建个人token，确保有访问构建的项目权限。<br><img src="./gitlab-token.png" alt="token"></p>
+</li>
+<li><p>jenkins 安装 <code>http request</code>插件，创建<strong>全局凭据</strong>，类型切记选择<strong>secret text</strong>,不要选<del>gitlab api token</del>.<br><img src="./jenkins-cert.png" alt="凭据"></p>
+</li>
+<li><p>在share library <code>jenkins-library</code> 创建目录src/com/xzlcorp,创建文件gitlab.groovy.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">package</span> com.xzlcorp</span><br><span class="line"></span><br><span class="line"><span class="comment">//封装HTTP请求</span></span><br><span class="line"><span class="keyword">def</span> HttpReq(reqType,reqUrl,reqBody)&#123;</span><br><span class="line">    <span class="keyword">def</span> gitServer = <span class="string">&quot;https://git.xzlcorp.com/api/v4&quot;</span></span><br><span class="line">    withCredentials([string(<span class="attr">credentialsId:</span> <span class="string">&#x27;gitlab-token&#x27;</span>, <span class="attr">variable:</span> <span class="string">&#x27;gitlabToken&#x27;</span>)]) &#123;</span><br><span class="line">      result = httpRequest <span class="attr">customHeaders:</span> [[<span class="attr">maskValue:</span> <span class="literal">true</span>, <span class="attr">name:</span> <span class="string">&#x27;PRIVATE-TOKEN&#x27;</span>, <span class="attr">value:</span> <span class="string">&quot;$&#123;gitlabToken&#125;&quot;</span>]], </span><br><span class="line">                <span class="symbol">httpMode:</span> reqType, </span><br><span class="line">                <span class="symbol">contentType:</span> <span class="string">&quot;APPLICATION_JSON&quot;</span>,</span><br><span class="line">                <span class="symbol">consoleLogResponseBody:</span> <span class="literal">true</span>,</span><br><span class="line">                <span class="symbol">ignoreSslErrors:</span> <span class="literal">true</span>, </span><br><span class="line">                <span class="symbol">requestBody:</span> reqBody,</span><br><span class="line">                <span class="symbol">url:</span> <span class="string">&quot;$&#123;gitServer&#125;/$&#123;reqUrl&#125;&quot;</span></span><br><span class="line">                <span class="comment">//quiet: true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建tag</span></span><br><span class="line"><span class="keyword">def</span> CreateTag(projectId, tag, branchName)&#123;</span><br><span class="line">    <span class="keyword">def</span> apiUrl = <span class="string">&quot;projects/$&#123;projectId&#125;/repository/tags&quot;</span></span><br><span class="line">    reqBody = <span class="string">&quot;&quot;&quot;&#123;&quot;tag_name&quot;: &quot;$&#123;tag&#125;&quot;,&quot;ref&quot;:&quot;$&#123;branchName&#125;&quot;, &quot;message&quot;: &quot;$&#123;branchName&#125;&quot;&#125;&quot;&quot;&quot;</span></span><br><span class="line">    response = HttpReq(<span class="string">&#x27;POST&#x27;</span>,apiUrl,reqBody)</span><br><span class="line">    println(response)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ol start="4">
+<li>在项目的jenkinsfile中加入代码：<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Library</span>(<span class="string">&#x27;jenkins-libs-web@master&#x27;</span>) _</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> gitlab = <span class="keyword">new</span> com.xzlcorp.gitlab()</span><br><span class="line"><span class="keyword">def</span> tool = <span class="keyword">new</span> com.xzlcorp.tools()</span><br><span class="line"></span><br><span class="line">String projectName = <span class="string">&quot;project-name&quot;</span></span><br><span class="line"></span><br><span class="line">pipiline &#123;</span><br><span class="line">  ...</span><br><span class="line">  post &#123;</span><br><span class="line">    always &#123;</span><br><span class="line">      <span class="comment">// echo &quot;构建结束&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    success &#123;</span><br><span class="line">      <span class="comment">// echo &quot;构建成功&quot;</span></span><br><span class="line">      script &#123;</span><br><span class="line">        <span class="keyword">if</span> (env.BRANCH == <span class="string">&quot;master&quot;</span>) &#123;</span><br><span class="line">          projectId = gitlab.GetProjectID(projectName)</span><br><span class="line">          tool.PrintMsg(<span class="string">&quot;打tag start&quot;</span>,<span class="string">&quot;blue&quot;</span>)</span><br><span class="line">          String tagString = <span class="string">&quot;v$&#123;new Date().format(&quot;</span>yy.MMdd.HHmm<span class="string">&quot;)&#125;&quot;</span></span><br><span class="line">          gitlab.CreateTag(projectId, tagString, env.BRANCH_NAME)</span><br><span class="line">          tool.PrintMsg(<span class="string">&quot;打tag end&quot;</span>,<span class="string">&quot;blue&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    failure &#123;</span><br><span class="line">      echo <span class="string">&quot;构建失败&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    aborted &#123;</span><br><span class="line">      echo <span class="string">&quot;构建中断&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/06/15/react-hooks-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/">
-            <time datetime="2020-06-15T09:03:34.000Z" itemprop="datePublished">2020-06-15</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/hooks/" rel="tag">hooks</a>, <a class="tag-link-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/">flutter provider中函数的形参问题</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/06/02/flutter-provider%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E9%97%AE%E9%A2%98/">
-            <time datetime="2020-06-02T10:26:07.000Z" itemprop="datePublished">2020-06-02</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/flutter/" rel="tag">flutter</a>
-    </div>
 
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/" data-id="cktwodwig000pj5ltg8yodepf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/09/22/Jenkins-Gitlab-Webhook%E8%A7%A6%E5%8F%91%E5%A4%9A%E5%88%86%E6%94%AF%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Jenkins&amp;Gitlab:Webhook触发多分支项目构建</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2021/09/23/Jenkins-Gitlab-jenkins构建成功后在gitlab打tag/" data-title="Jenkins&amp;Gitlab:jenkins构建成功后在gitlab打tag" data-url="http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">

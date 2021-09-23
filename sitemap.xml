@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/09/23/Jenkins-Gitlab-jenkins%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F%E5%90%8E%E5%9C%A8gitlab%E6%89%93tag/</loc>
+    
+    <lastmod>2021-09-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/09/22/Jenkins-Gitlab-Webhook%E8%A7%A6%E5%8F%91%E5%A4%9A%E5%88%86%E6%94%AF%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/</loc>
     
     <lastmod>2021-09-22</lastmod>
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2016/10/08/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%AE%98%E6%96%B9linux%E7%89%88%EF%BC%81/</loc>
+    <loc>http://example.com/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2019/05/08/%E6%90%AD%E5%BB%BAnextjs%E8%84%9A%E6%89%8B%E6%9E%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/</loc>
+    <loc>http://example.com/2016/10/08/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%AE%98%E6%96%B9linux%E7%89%88%EF%BC%81/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
@@ -212,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/</loc>
+    <loc>http://example.com/2016/10/09/ubuntu1604-git%E7%BB%93%E5%90%88beyond-compare/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2016/10/09/ubuntu1604-git%E7%BB%93%E5%90%88beyond-compare/</loc>
+    <loc>http://example.com/2018/11/05/ubuntu-16-04-%E5%AE%89%E8%A3%85-postgresql-10/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
@@ -359,14 +366,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/</loc>
+    <loc>http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2017/07/20/create-react-app%E5%92%8Cexpress%E5%85%B1%E5%90%8C%E7%BB%84%E5%BB%BA%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+    <loc>http://example.com/2020/05/19/canvas-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E9%A1%BA%E5%BA%8F/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
@@ -464,14 +471,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2016/11/02/ES2015%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Set%E5%92%8CMap/</loc>
+    <loc>http://example.com/2016/11/01/ES2015%E5%87%BD%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC,rest%E5%8F%82%E6%95%B0%E5%8F%8A%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2016/11/01/ES2015%E5%87%BD%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC,rest%E5%8F%82%E6%95%B0%E5%8F%8A%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
+    <loc>http://example.com/2016/11/02/ES2015%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Set%E5%92%8CMap/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
@@ -492,14 +499,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/2016/11/01/ES2015%E4%B8%AD%E7%9A%84%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</loc>
+    <loc>http://example.com/2016/10/30/ES2015%E4%B8%AD%E7%9A%84%E8%A7%A3%E6%9E%84/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2016/10/30/ES2015%E4%B8%AD%E7%9A%84%E8%A7%A3%E6%9E%84/</loc>
+    <loc>http://example.com/2016/11/01/ES2015%E4%B8%AD%E7%9A%84%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</loc>
     
     <lastmod>2021-08-14</lastmod>
     
@@ -522,7 +529,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -530,280 +537,280 @@
   
   <url>
     <loc>http://example.com/tags/es2015/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/es7/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/es8/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/express/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/spring-cloud/</loc>
-    <lastmod>2021-09-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/html5/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/jenkins/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/html5/</loc>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/mongodb/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/spring/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/vue/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/canvas/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/css3/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/flutter/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/ci/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/hexo/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/javascript/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/git/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/ubuntu/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/software/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/nextjs/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/mariadb/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/pm2/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/hooks/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/react/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/uni-app/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/webpack/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/pnpm/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/mock/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/ssh/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/travis/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/babel/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/node/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/kafka/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/google/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/elasticsearch/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/elasticstash/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/ssr/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%BE%AE%E4%BF%A1/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/jQuery/</loc>
-    <lastmod>2021-09-22</lastmod>
+    <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
