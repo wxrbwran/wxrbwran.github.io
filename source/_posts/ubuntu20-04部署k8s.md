@@ -58,9 +58,14 @@ sudo apt-get -y install kubectl kubelet kubeadm
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 ### 初始化master
-注意，这里使用了阿里云的镜像，然后使用了flanel网络
+注意，这里使用了阿里云的镜像，然后使用了flanel（法兰绒）网络
 ```sh
 sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address="其他节点可连接的ip地址" --pod-network-cidr=10.244.0.0/16
+```
+
+### 安装pod网络插件（cni） 法兰绒网络
+```sh
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
 上面的命令执行成功后，会输出一条设置命令和kubeadm join相关的命令，后面加入worker node的时候要使用。
@@ -74,7 +79,7 @@ kubeadm join 10.211.55.9:6443 --token yea46k.9mzdlxxvxperbbpq \
 ```
 
 ## 遇到的问题
-1. Ubuntu20.04无法启动kubelet的问题 ：[Ubuntu20.04无法启动kubelet的问题](https://www.coder4.com/archives/7344)
+1. Ubuntu20.04无法启动kubelet的问题 ：(Ubuntu20.04无法启动kubelet的问题 | 四号程序员 (coder4.com))
 2. kubeadm init 命令 端口被占用的问题：使用kubeadm reset 重置
 3. 设置网络后，节点一直是NotReady:
   ‒ ```kubectl describe node "nodename"```
