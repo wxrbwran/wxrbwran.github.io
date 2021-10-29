@@ -63,19 +63,20 @@ sudo apt-mark hold kubelet kubeadm kubectl
 sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address="其他节点可连接的ip地址" --pod-network-cidr=10.244.0.0/16
 ```
 
-### 安装pod网络插件（cni） 法兰绒网络
-```sh
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-```
+
 
 上面的命令执行成功后，会输出一条设置命令和kubeadm join相关的命令，后面加入worker node的时候要使用。
 ```sh
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+### 安装pod网络插件（cni） 法兰绒网络
+```sh
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-kubeadm join 10.211.55.9:6443 --token yea46k.9mzdlxxvxperbbpq \
---discovery-token-ca-cert-hash sha256:fee7a6d4255b1ba747f48061528977084991ae0acd5cb79d358ccfe79f3de726
+kubeadm join ip:6443 --token xxx \
+--discovery-token-ca-cert-hash sha256:yyy
 ```
 
 ## 遇到的问题
