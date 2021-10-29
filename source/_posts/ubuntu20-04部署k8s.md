@@ -80,7 +80,7 @@ kubeadm join ip:6443 --token xxx \
 ```
 
 ## 遇到的问题
-1. Ubuntu20.04无法启动kubelet的问题 ：(Ubuntu20.04无法启动kubelet的问题 | 四号程序员 (coder4.com))
+1. Ubuntu20.04无法启动kubelet的问题 ：[Ubuntu20.04无法启动kubelet的问题](https://www.coder4.com/archives/7344)
 2. kubeadm init 命令 端口被占用的问题：使用kubeadm reset 重置
 3. 设置网络后，节点一直是NotReady:
   ‒ ```kubectl describe node "nodename"```
