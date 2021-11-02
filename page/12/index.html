@@ -167,7 +167,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                79
+                80
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -196,6 +196,162 @@
 
             
             <section id="main">
+    <article id="post-ES2015字符串扩展" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/">Es2015字符串扩展</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/">
+            <time datetime="2016-10-31T07:00:05.000Z" itemprop="datePublished">2016-10-31</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/es2015/" rel="tag">es2015</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(), startsWith(), endsWith()"></a>includes(), startsWith(), endsWith()</h2><p>传统上，JavaScript只有<code>indexOf</code>方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。</p>
+<ul>
+<li>**includes()**：返回布尔值，表示是否找到了参数字符串。</li>
+<li>**startsWith()**：返回布尔值，表示参数字符串是否在源字符串的头部。</li>
+<li>**endsWith()**：返回布尔值，表示参数字符串是否在源字符串的尾部。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;Hello world!&#x27;</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">&#x27;Hello&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">&#x27;!&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>这三个方法都支持第二个参数，表示开始搜索的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;Hello world!&#x27;</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">&#x27;world&#x27;</span>, <span class="number">6</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">&#x27;Hello&#x27;</span>, <span class="number">5</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">&#x27;Hello&#x27;</span>, <span class="number">6</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，使用第二个参数<code>n</code>时，<code>endsWith</code>的行为与其他两个方法有所不同。它针对前<code>n</code>个字符，而其他两个方法针对从第<code>n</code>个位置直到字符串结束。</p>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><p><code>repeat</code>方法返回一个新字符串，表示将原字符串重复<code>n</code>次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;x&#x27;</span>.repeat(<span class="number">3</span>) <span class="comment">// &quot;xxx&quot;</span></span><br><span class="line"><span class="string">&#x27;hello&#x27;</span>.repeat(<span class="number">2</span>) <span class="comment">// &quot;hellohello&quot;</span></span><br><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="number">0</span>) <span class="comment">// &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>参数如果是小数，会被取整。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="number">2.9</span>) <span class="comment">// &quot;nana&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>repeat</code>的参数是负数或者<code>Infinity</code>，会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="literal">Infinity</span>)</span><br><span class="line"><span class="comment">// RangeError</span></span><br><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(-<span class="number">1</span>)</span><br><span class="line"><span class="comment">// RangeError</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，如果参数是0到-1之间的小数，则等同于0，这是因为会先进行取整运算。0到-1之间的小数，取整以后等于<code>-0</code>，<code>repeat</code>视同为0。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(-<span class="number">0.9</span>) <span class="comment">// &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>参数<code>NaN</code>等同于0。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="literal">NaN</span>) <span class="comment">// &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>repeat</code>的参数是字符串，则会先转换成数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="string">&#x27;na&#x27;</span>) <span class="comment">// &quot;&quot;</span></span><br><span class="line"><span class="string">&#x27;na&#x27;</span>.repeat(<span class="string">&#x27;3&#x27;</span>) <span class="comment">// &quot;nanana&quot;</span></span><br></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://example.com/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/" data-id="ckvhp2uvl0006wkltdg9rh5jy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://example.com/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2016/10/31/ES2015%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-ES2015中的解构" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -281,7 +437,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/30/ES2015%E4%B8%AD%E7%9A%84%E8%A7%A3%E6%9E%84/" data-id="ckvfd1tmn00047ifz4bd42seg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/30/ES2015%E4%B8%AD%E7%9A%84%E8%A7%A3%E6%9E%84/" data-id="ckvhp2uvk0005wklt1aemb8wu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -428,7 +584,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/29/ES2015%E4%B9%8Blet-%E5%92%8C-const/" data-id="ckvfd1tpb00627ifz7pck3ni3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/29/ES2015%E4%B9%8Blet-%E5%92%8C-const/" data-id="ckvhp2uy9006jwkltg52j2qz2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -557,7 +713,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/28/vuex2-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%98%E5%8C%96/" data-id="ckvfd1tny002m7ifzcfae4b4l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/28/vuex2-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%98%E5%8C%96/" data-id="ckvhp2uwt002kwkltes1k037z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -686,7 +842,7 @@
 
 </div>
 
-    <a data-url="http://example.com/2016/10/28/vue-router2%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%98%E5%8C%96/" data-id="ckvfd1tnx002k7ifz5kb94qku" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://example.com/2016/10/28/vue-router2%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%98%E5%8C%96/" data-id="ckvhp2uws002iwklt24ko7xbj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -764,172 +920,6 @@
 
 
 
-    <article id="post-Vue中的过渡效果" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/">Vue中的过渡效果</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/">
-            <time datetime="2016-10-26T03:10:31.000Z" itemprop="datePublished">2016-10-26</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/vue/" rel="tag">vue</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><blockquote>
-<p> 这里只写由css实现的简单过渡，js用到在做记录。</p>
-</blockquote>
-<h3 id="过渡效果"><a href="#过渡效果" class="headerlink" title="过渡效果"></a>过渡效果</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。<br>包括以下工具：</p>
-<ol>
-<li>在 CSS 过渡和动画中自动应用 class</li>
-<li>可以配合使用第三方 CSS 动画库，如 <a target="_blank" rel="noopener" href="https://daneden.github.io/animate.css/">Animate.css</a></li>
-<li>在过渡钩子函数中使用 JavaScript 直接操作 DOM</li>
-<li>可以配合使用第三方 JavaScript 动画库，如 <a target="_blank" rel="noopener" href="http://velocityjs.org/">Velocity.js</a></li>
-</ol>
-<h4 id="单元素-组件的过渡"><a href="#单元素-组件的过渡" class="headerlink" title="单元素/组件的过渡"></a>单元素/组件的过渡</h4><p>Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加 entering/leaving 过渡</p>
-<ul>
-<li>条件渲染 （使用 v-if）</li>
-<li>条件展示 （使用 v-show）</li>
-<li>动态组件</li>
-<li>组件根节点<br>这里是一个典型的例子：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> id=&quot;demo&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">button</span> v-on:click=<span class="string">&quot;show = !show&quot;</span>&gt;</span><br><span class="line">    Toggle</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">  &lt;transition name=<span class="string">&quot;fade&quot;</span>&gt;</span><br><span class="line">    &lt;p v-if=<span class="string">&quot;show&quot;</span>&gt;hello&lt;/p&gt;</span><br><span class="line">  &lt;/transition&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">new <span class="built_in">Vue</span>(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#demo&#x27;</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    show: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="selector-class">.fade-enter-active</span>, <span class="selector-class">.fade-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity .<span class="number">5s</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fade-enter</span>, <span class="selector-class">.fade-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-元素封装成过渡组件之后，在遇到插入或删除时，Vue 将自动嗅探目标元素是否有 CSS 过渡或动画，并在合适时添加/删除 CSS 类名。</li>
-</ul>
-<p>如果过渡组件设置了过渡的 JavaScript 钩子函数，会在相应的阶段调用钩子函数。</p>
-<p>如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作（插入/删除）在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，与 Vue，和Vue的 nextTick 概念不同)</p>
-<h4 id="过渡的-CSS-类名"><a href="#过渡的-CSS-类名" class="headerlink" title="过渡的-CSS-类名"></a>过渡的-CSS-类名</h4><p>会有 4 个(CSS)类名在 enter/leave 的过渡中切换</p>
-<p><strong>v-enter</strong>: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。</p>
-<p><strong>v-enter-active</strong>: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。</p>
-<p><strong>v-leave</strong>: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。</p>
-<p><strong>v-leave-active</strong>: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。</p>
-<p><img src="https://vuefe.cn/images/transition.png" alt="Transition Diagram"></p>
-<p>对于这些在 enter/leave 过渡中切换的类名，v- 是这些类名的前缀。使用 &lt;name=”my-transition&gt;” 可以重置前缀，比如 v-enter 替换为 my-transition-enter。</p>
-<p>v-enter-active 和 v-leave-active 可以控制 进入/离开 过渡的不同阶段，在下面章节会有个示例说明。</p>
-<h3 id="CSS-过渡"><a href="#CSS-过渡" class="headerlink" title="CSS 过渡"></a>CSS 过渡</h3><p><strong>常用的过渡都是使用 CSS 过渡。</strong></p>
-<p>下面是一个简单例子：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> id=&quot;example-<span class="number">1</span>&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">button</span> <span class="keyword">@click</span>=&quot;show = !show<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    Toggle render</span></span><br><span class="line"><span class="string">  &lt;/button&gt;</span></span><br><span class="line"><span class="string">  &lt;transition name=&quot;</span>slide-fade<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;p v-if=&quot;</span>show<span class="string">&quot;&gt;hello&lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;/transition&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">  el: &#x27;#example-1&#x27;,</span></span><br><span class="line"><span class="string">  data: &#123;</span></span><br><span class="line"><span class="string">    show: true</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">/* 可以设置不同的进入和离开动画 */</span></span><br><span class="line"><span class="string">/* 设置持续时间和动画函数 */</span></span><br><span class="line"><span class="string">.slide-fade-enter-active &#123;</span></span><br><span class="line"><span class="string">  transition: all .3s ease;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.slide-fade-leave-active &#123;</span></span><br><span class="line"><span class="string">  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.slide-fade-enter, .slide-fade-leave-active &#123;</span></span><br><span class="line"><span class="string">  padding-left: 10px;</span></span><br><span class="line"><span class="string">  opacity: 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="CSS-动画"><a href="#CSS-动画" class="headerlink" title="CSS 动画"></a>CSS 动画</h4><p>CSS 动画用法同 CSS 过渡，区别是在动画中 v-enter 类名在节点插入 DOM 后不会立即删除，而是在 animationend 事件触发时删除。</p>
-<p>示例： (省略了兼容性前缀)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> id=&quot;example-<span class="number">2</span>&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">button</span> <span class="keyword">@click</span>=&quot;show = !show<span class="string">&quot;&gt;Toggle show&lt;/button&gt;</span></span><br><span class="line"><span class="string">  &lt;transition name=&quot;</span>bounce<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;p v-if=&quot;</span>show<span class="string">&quot;&gt;Look at me!&lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;/transition&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">  el: &#x27;#example-2&#x27;,</span></span><br><span class="line"><span class="string">  data: &#123;</span></span><br><span class="line"><span class="string">    show: true</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">.bounce-enter-active &#123;</span></span><br><span class="line"><span class="string">  animation: bounce-in .5s;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">.bounce-leave-active &#123;</span></span><br><span class="line"><span class="string">  animation: bounce-out .5s;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">@keyframes bounce-in &#123;</span></span><br><span class="line"><span class="string">  0% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(0);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  50% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(1.5);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  100% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(1);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">@keyframes bounce-out &#123;</span></span><br><span class="line"><span class="string">  0% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(1);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  50% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(1.5);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  100% &#123;</span></span><br><span class="line"><span class="string">    transform: scale(0);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="自定义过渡类名"><a href="#自定义过渡类名" class="headerlink" title="自定义过渡类名"></a>自定义过渡类名</h4><p>我们可以通过以下特性来自定义过渡类名：</p>
-<p><strong>enter-class</strong><br><strong>enter-active-class</strong><br><strong>leave-class</strong><br><strong>leave-active-class</strong><br>他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如** Animate.css **结合使用十分有用。</p>
-<p>示例：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;https://unpkg.com/animate.css@<span class="number">3.5</span>.<span class="number">1</span>/animate.min.css<span class="string">&quot; rel=&quot;</span>stylesheet<span class="string">&quot; type=&quot;</span>text/css<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;div id=&quot;</span>example-<span class="number">3</span><span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">  &lt;button @click=&quot;</span>show = !show<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">    Toggle render</span></span><br><span class="line"><span class="string">  &lt;/button&gt;</span></span><br><span class="line"><span class="string">  &lt;transition</span></span><br><span class="line"><span class="string">    name=&quot;</span>custom-classes-transition<span class="string">&quot;</span></span><br><span class="line"><span class="string">    enter-active-class=&quot;</span>animated tada<span class="string">&quot;</span></span><br><span class="line"><span class="string">    leave-active-class=&quot;</span>animated bounceOutRight<span class="string">&quot;</span></span><br><span class="line"><span class="string">  &gt;</span></span><br><span class="line"><span class="string">    &lt;p v-if=&quot;</span>show<span class="string">&quot;&gt;hello&lt;/p&gt;</span></span><br><span class="line"><span class="string">  &lt;/transition&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">  el: &#x27;#example-3&#x27;,</span></span><br><span class="line"><span class="string">  data: &#123;</span></span><br><span class="line"><span class="string">    show: true</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure></p>
-            <p class="article-more-link">
-                <a href="/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://example.com/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/" data-id="ckvfd1tn700117ifzb723ffjz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://example.com/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://example.com/2016/10/26/Vue%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/">下一页 &amp;raquo;</a>
     </nav>
@@ -942,6 +932,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/02/Docker-Pull%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3Get-https-k8s-gcr-io-v2-net-http-request-canceled-while-waiting-for-connection/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/11/02/Docker-Pull%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3Get-https-k8s-gcr-io-v2-net-http-request-canceled-while-waiting-for-connection/" class="title">Docker Pull设置代理解决Get https://k8s.gcr.io/v2/: net/http: request canceled while waiting for connection</a></p>
+                            <p class="item-date"><time datetime="2021-11-02T06:10:48.000Z" itemprop="datePublished">2021-11-02</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1019,25 +1028,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2021/09/26/web%E9%94%99%E8%AF%AF%E6%94%B6%E9%9B%86/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2021/09/26/web%E9%94%99%E8%AF%AF%E6%94%B6%E9%9B%86/" class="title">web错误收集</a></p>
-                            <p class="item-date"><time datetime="2021-09-26T06:58:49.000Z" itemprop="datePublished">2021-09-26</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1049,7 +1039,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1058,7 +1048,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sonarqube/" rel="tag">sonarqube</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="tag">异常处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/" rel="tag">babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ci/" rel="tag">ci</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticstash/" rel="tag">elasticstash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/" rel="tag">es2015</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/" rel="tag">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es8/" rel="tag">es8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hooks/" rel="tag">hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/" rel="tag">mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nextjs/" rel="tag">nextjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm2/" rel="tag">pm2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sonarqube/" rel="tag">sonarqube</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-cloud/" rel="tag">spring-cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/" rel="tag">ssr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/travis/" rel="tag">travis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="tag">异常处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" rel="tag">测试方法</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1067,7 +1057,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 16px;">jenkins</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pnpm/" style="font-size: 10px;">pnpm</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/sonarqube/" style="font-size: 10px;">sonarqube</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" style="font-size: 10px;">异常处理</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
+            <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/ci/" style="font-size: 10px;">ci</a> <a href="/tags/css3/" style="font-size: 12px;">css3</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/elasticstash/" style="font-size: 10px;">elasticstash</a> <a href="/tags/es2015/" style="font-size: 20px;">es2015</a> <a href="/tags/es7/" style="font-size: 10px;">es7</a> <a href="/tags/es8/" style="font-size: 10px;">es8</a> <a href="/tags/express/" style="font-size: 16px;">express</a> <a href="/tags/flutter/" style="font-size: 14px;">flutter</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hooks/" style="font-size: 10px;">hooks</a> <a href="/tags/html5/" style="font-size: 12px;">html5</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/jenkins/" style="font-size: 16px;">jenkins</a> <a href="/tags/k8s/" style="font-size: 12px;">k8s</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/mongodb/" style="font-size: 12px;">mongodb</a> <a href="/tags/nextjs/" style="font-size: 10px;">nextjs</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pnpm/" style="font-size: 10px;">pnpm</a> <a href="/tags/react/" style="font-size: 14px;">react</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/software/" style="font-size: 12px;">software</a> <a href="/tags/sonarqube/" style="font-size: 10px;">sonarqube</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 12px;">spring-cloud</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/travis/" style="font-size: 14px;">travis</a> <a href="/tags/ubuntu/" style="font-size: 18px;">ubuntu</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" style="font-size: 10px;">异常处理</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 10px;">测试方法</a>
         </div>
     </div>
 

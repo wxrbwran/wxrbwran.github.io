@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-31T15:00:16.522Z</updated>
+  <updated>2021-11-02T06:12:18.397Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker Pull设置代理解决Get https://k8s.gcr.io/v2/: net/http: request canceled while waiting for connection</title>
+    <link href="http://example.com/2021/11/02/Docker-Pull%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3Get-https-k8s-gcr-io-v2-net-http-request-canceled-while-waiting-for-connection/"/>
+    <id>http://example.com/2021/11/02/Docker-Pull%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3Get-https-k8s-gcr-io-v2-net-http-request-canceled-while-waiting-for-connection/</id>
+    <published>2021-11-02T06:10:48.000Z</published>
+    <updated>2021-11-02T06:12:18.397Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天搭建k8s集群时，发现一系列k8s.gcr.io的镜像无法pull：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-&lt;%&gt;- docker pull k8s.gcr.io/kube-proxy</span><br><span class="line">Using default tag: latest</span><br><span class="line">Error response from daemon: Get https://k8s.gcr.io/v2/: net/http: request canceled <span class="keyword">while</span> waiting <span class="keyword">for</span> connection (Client.Timeout exceeded <span class="keyword">while</span> awaiting headers)</span><br></pre></td></tr></table></figure><p>原来是万恶的g/f….w，需要为docker设置代理，并重启docker daemon：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d </span><br><span class="line">sudo touch /etc/systemd/system/docker.service.d/proxy.conf</span><br><span class="line">sudo chmod 777 /etc/systemd/system/docker.service.d/proxy.conf</span><br><span class="line">sudo <span class="built_in">echo</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Environment=&quot;HTTP_PROXY=http://proxy.xxx.com:8888/&quot; </span></span><br><span class="line"><span class="string">Environment=&quot;HTTPS_PROXY=http://proxy.xxx.com:8888/&quot;</span></span><br><span class="line"><span class="string">&#x27;</span> &gt;&gt; /etc/systemd/system/docker.service.d/proxy.conf</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">sudo systemctl restart kubelet</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天搭建k8s集群时，发现一系列k8s.gcr.io的镜像无法pull：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="k8s" scheme="http://example.com/tags/k8s/"/>
+    
+    <category term="docker" scheme="http://example.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu20安装SonarQube</title>
@@ -448,31 +473,6 @@
     
     
     <category term="uni-app" scheme="http://example.com/tags/uni-app/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>osx 安装 mariadb</title>
-    <link href="http://example.com/2020/05/01/osx-%E5%AE%89%E8%A3%85-mariadb/"/>
-    <id>http://example.com/2020/05/01/osx-%E5%AE%89%E8%A3%85-mariadb/</id>
-    <published>2020-05-01T09:04:52.000Z</published>
-    <updated>2021-08-14T01:30:53.529Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mariadb</span><br></pre></td></tr></table></figure><h3 id="启动-停止"><a href="#启动-停止" class="headerlink" title="启动/停止"></a>启动/停止</h3><p>启动/停止 mariadb 有两种方式，按需选择其中一种就可以：</p><ol><li>方式一： 通过brew启动/停止，<br>这种方法可以跟随系统启动（改plist那些操作麻烦并且会造成不稳定因素）<br>启动：brew services start mariadb<br>停止：brew services stop mariadb</li><li>方式二： 通过mysql.server，这个不能够跟随系统启动，每次重启MAC需要手动运行<br>启动：mysql.server start<br>停止：mysql.server stop</li></ol><span id="more"></span><h3 id="初始化mariadb-mysql"><a href="#初始化mariadb-mysql" class="headerlink" title="初始化mariadb(mysql)"></a>初始化mariadb(mysql)</h3><ol><li>初始化数据库，将数据库信息安装上去</li></ol><p>  sudo mysql_install_db<br>  可能有的人会提示已经安装，不管它，跑一次这个。</p><ol start="2"><li>初始化root账号及数据库各种设定<br>这一步很重要，下面会列出所有需要设置的选项，运行：</li></ol><p>  sudo mysql_secure_installation</p><p><strong>运行之后会进行初始化引导，每一步都有详细的说明。</strong><br><strong>下面列出每个选项的翻译，根据自己需要配置：</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Enter current password <span class="keyword">for</span> root (enter <span class="keyword">for</span> none): &lt;– 初次运行直接回车</span><br><span class="line">…</span><br><span class="line">Set root password? [Y/n] &lt;– 是否设置root用户密码，建议设置，输入Y按回车</span><br><span class="line">…</span><br><span class="line">New password: &lt;– 设置root用户的密码</span><br><span class="line">Re-enter new password: &lt;– 再输入一次你设置的root的密码</span><br><span class="line">…</span><br><span class="line">Remove anonymous users? [Y/n] &lt;– 是否删除匿名用户，建议删除，Y删除，n不删除</span><br><span class="line">…</span><br><span class="line">Disallow root login remotely? [Y/n] &lt;– 是否禁止root远程登录，按需配置，Y禁止远程登录，n开启远程登录</span><br><span class="line">…</span><br><span class="line">Remove <span class="built_in">test</span> database and access to it? [Y/n] &lt;– 是否删除<span class="built_in">test</span>数据库，Y删除、n留着</span><br><span class="line">…</span><br><span class="line">Reload privilege tables now? [Y/n]&lt;– 是否重新加载权限表，建议重新加载，Y重新加载，n不重新加载</span><br><span class="line">…</span><br><span class="line">All <span class="keyword">done</span>! If you’ve completed all of the above steps, your MariaDB</span><br><span class="line">installation should now be secure.</span><br><span class="line">Thanks <span class="keyword">for</span> using MariaDB!</span><br></pre></td></tr></table></figure><p>通过这个就可以配置好mariadb。</p>]]></content>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew install mariadb&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;启动-停止&quot;&gt;&lt;a href=&quot;#启动-停止&quot; class=&quot;headerlink&quot; title=&quot;启动/停止&quot;&gt;&lt;/a&gt;启动/停止&lt;/h3&gt;&lt;p&gt;启动/停止 mariadb 有两种方式，按需选择其中一种就可以：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;方式一： 通过brew启动/停止，&lt;br&gt;这种方法可以跟随系统启动（改plist那些操作麻烦并且会造成不稳定因素）&lt;br&gt;启动：brew services start mariadb&lt;br&gt;停止：brew services stop mariadb&lt;/li&gt;
-&lt;li&gt;方式二： 通过mysql.server，这个不能够跟随系统启动，每次重启MAC需要手动运行&lt;br&gt;启动：mysql.server start&lt;br&gt;停止：mysql.server stop&lt;/li&gt;
-&lt;/ol&gt;</summary>
-    
-    
-    
-    
-    <category term="mariadb" scheme="http://example.com/tags/mariadb/"/>
     
   </entry>
   
